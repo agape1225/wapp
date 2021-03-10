@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 @Service
-public class AdminLoginServiceImp {
+public class AdminLoginServiceImp implements AdminLoginService{
     @Autowired
     AdminLoginDao adminLoginDao;
 

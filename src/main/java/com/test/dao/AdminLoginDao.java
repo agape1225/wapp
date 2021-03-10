@@ -17,8 +17,8 @@ public class AdminLoginDao {
 
     public ArrayList<AdminLoginDto> getLoginImfo(){
         try{
-            AdminLoginMapper loginLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
-            ArrayList<AdminLoginDto> loginImfo = loginLoginMapper.getLoginImfo();
+            AdminLoginMapper adminLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
+            ArrayList<AdminLoginDto> loginImfo = adminLoginMapper.getLoginImfo();
             return loginImfo;
 
         }catch (Exception e){

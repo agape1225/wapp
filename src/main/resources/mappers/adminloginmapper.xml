@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.test.mapper.categoryMapper">
-    <select id="getCategoryList" resultType="AdminLoginMapper">
+<mapper namespace="com.test.mapper.AdminLoginMapper">
+    <select id="getLoginImfo" resultType="AdminLoginDto">
         select * from admin_login
     </select>
 </mapper>
