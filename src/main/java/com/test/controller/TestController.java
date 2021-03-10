@@ -29,7 +29,6 @@ public class TestController {
     @GetMapping("/")
     public String main(Model model){
         try{
-            //System.out.println("양동균 개새1끼");
 
         }catch (Exception e){
             e.printStackTrace();
