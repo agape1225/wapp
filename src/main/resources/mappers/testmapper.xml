@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.TestMapper">
+    <select id="getItemList" resultType="TestDto">
+        select * from testtable
+    </select>
+    <delete id="deleteItem">
+        delete from testtable where number=#{number}
+    </delete>
+    <insert id="addItem">
+        insert into testtable(data) VALUES(#{data})
+    </insert>
+    <update id="updateItem">
+        update testtable set data=#{data} where number=#{number}
+    </update>
+</mapper>

@@ -1,0 +1,9 @@
+out
+out/*
+aws_s3.*
+.idea/*
+.idea
+wap.iml
+target
+target/*
+/src/main/webapp/resources/aws_s3
