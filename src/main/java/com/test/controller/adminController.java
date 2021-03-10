@@ -38,16 +38,17 @@ public class adminController {
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginImfo = adminloginService.getLoginImfo();
             AdminLoginDto result = loginImfo.get(0);
-            //result.
-            //System.out.println(result.id);
-            System.out.println(loginImfo);
-            //System.out.println("1");
-            //System.out.println(loginImfo.get(0));
+
+            if(id.equals(result.getId()) && password.equals(result.getPassword())){
+                return "admin";
+            }else{
+                return "adminLogin";
+            }
 
         }catch (Exception e){
             e.printStackTrace();
+            return "adminLogin";
         }
-        return "admin";
     }
 
 }
