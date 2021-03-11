@@ -9,5 +9,3 @@ public class TestDto {
     private int number;
     private String data;
 }
-
-

@@ -39,19 +39,6 @@
     </div>
 </div>
 
-<h1>카테고리</h1>
-<div class="categoryList">
-    <div class="data">
-        <ol>
-            <c:forEach varStatus="i" var="item" items="${categoryList}">
-                <li class="data">
-                    <p style="display: inline">${item.name}</p>
-                </li>
-            </c:forEach>
-        </ol>
-
-    </div>
-
 </div>
 </body>
 </html>

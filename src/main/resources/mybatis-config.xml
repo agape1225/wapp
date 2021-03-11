@@ -10,7 +10,6 @@
     </settings>
     <typeAliases>
         <typeAlias alias="TestDto" type="com.test.dto.TestDto"/>
-        <typeAlias alias="CategoryDto" type="com.test.dto.CategoryDto"/>
         <typeAlias alias="AdminLoginDto" type="com.test.dto.AdminLoginDto"/>
     </typeAliases>
 </configuration>

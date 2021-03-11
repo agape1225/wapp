@@ -43,14 +43,4 @@ public class TestDao {
             e.printStackTrace();
         }
     }
-
-    public void updateItem(String number, String data){
-        try{
-            TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-            testMapper.updateItem(number, data);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

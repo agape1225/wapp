@@ -30,10 +30,4 @@ public class TestServiceImp implements TestService {
         System.out.println("service: " + data);
         testDao.addItem(data);
     }
-
-    @Override
-    public void updateItem(String number, String data) {
-        System.out.println("update: " + data);
-        testDao.updateItem(number, data);
-    }
 }

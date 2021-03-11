@@ -9,5 +9,4 @@ public interface TestMapper {
     ArrayList<TestDto> getItemList();
     void deleteItem(@Param("number") String number);
     void addItem(@Param("data") String data);
-    void updateItem(@Param("number") String number, @Param("data") String data);
 }
