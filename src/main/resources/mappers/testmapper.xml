@@ -8,12 +8,9 @@
         select * from testtable
     </select>
     <delete id="deleteItem">
-        delete from testtable where number=#{number}
+        delete from testtable where number=${number}
     </delete>
     <insert id="addItem">
         insert into testtable(data) VALUES(#{data})
     </insert>
-    <update id="updateItem">
-        update testtable set data=#{data} where number=#{number}
-    </update>
 </mapper>

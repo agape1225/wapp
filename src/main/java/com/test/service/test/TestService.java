@@ -8,5 +8,4 @@ public interface TestService {
     ArrayList<TestDto> getItemList();
     void deleteItem(String number);
     void addItem(String data);
-    void updateItem(String number, String data);
 }

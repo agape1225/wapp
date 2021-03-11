@@ -1,8 +1,6 @@
 package com.test.controller;
 
-import com.test.dto.CategoryDto;
 import com.test.dto.TestDto;
-import com.test.service.category.CatrgoryService;
 import com.test.service.test.TestService;
 import com.test.util.firebase.FirebaseMessagingSnippets;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +20,6 @@ public class TestController {
     @Autowired
     TestService testService;
     @Autowired
-    CatrgoryService catrgoryService;
-    @Autowired
     FirebaseMessagingSnippets firebaseMessagingSnippets;
 
     @GetMapping("/")
@@ -41,9 +37,7 @@ public class TestController {
         try{
             System.out.println("test.do Controller");
             ArrayList<TestDto> itemList = testService.getItemList();
-            ArrayList<CategoryDto> categoryList = catrgoryService.getCategoryList();
             model.addAttribute("itemList", itemList);
-            model.addAttribute("categoryList",categoryList);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -78,29 +72,6 @@ public class TestController {
         try{
             System.out.println("number: " + number);
             testService.deleteItem(number);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "redirect:/test.do";
-    }
-
-    @RequestMapping(value = "/update.do", method = RequestMethod.GET)
-    public String updateView(Model model, @RequestParam(value = "number") String number ){
-        try{
-            System.out.println("number: " + number);
-            model.addAttribute("number", number);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "/update";
-    }
-
-    @RequestMapping(value = "/update.do/update", method = RequestMethod.POST)
-    public String update(@RequestParam(value = "number") String number, @RequestParam(value = "data") String data){
-        try{
-            System.out.println("number: " + number);
-            System.out.println("data: " + data);
-            testService.updateItem(number,data);
         }catch (Exception e){
             e.printStackTrace();
         }
