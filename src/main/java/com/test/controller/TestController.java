@@ -29,7 +29,7 @@ public class TestController {
     @GetMapping("/")
     public String main(Model model){
         try{
-
+            System.out.println("1111");
         }catch (Exception e){
             e.printStackTrace();
         }
