@@ -4,6 +4,6 @@ import com.test.dto.AdminLoginDto;
 
 import java.util.ArrayList;
 
-public interface lectureMapper.java {
+public interface lectureMapper {
 
 }
