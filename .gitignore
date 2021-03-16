@@ -7,3 +7,4 @@ wap.iml
 target
 target/*
 /src/main/webapp/resources/aws_s3
+webapp/WEB-INF/spring/applicationContext.xml
