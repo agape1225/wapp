@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +24,7 @@ public class LectureController {
 
     @Autowired
     LectureService lectureService;
+
 
     @GetMapping("/admin/login/insert")
     public String main(Model model){
@@ -54,17 +57,5 @@ public class LectureController {
         }
         return "redirect:/";
     }
-
-    /*@RequestMapping(value = "/post.do", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "data") String data){
-        try{
-            System.out.println("post방식 data: " + data);
-            testService.addItem(data);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "redirect:/test.do";
-    }*/
-
 
 }
