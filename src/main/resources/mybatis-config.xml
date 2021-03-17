@@ -11,5 +11,6 @@
     <typeAliases>
         <typeAlias alias="TestDto" type="com.test.dto.TestDto"/>
         <typeAlias alias="AdminLoginDto" type="com.test.dto.AdminLoginDto"/>
+        <typeAlias alias="LectureDto" type="com.test.dto.LectureDto"/>
     </typeAliases>
 </configuration>
