@@ -8,7 +8,7 @@
         select * from testtable
     </select>
     <delete id="deleteItem">
-        delete from testtable where number=${number}
+        delete from testtable where number=#{number}
     </delete>
     <insert id="addItem">
         insert into testtable(data) VALUES(#{data})
