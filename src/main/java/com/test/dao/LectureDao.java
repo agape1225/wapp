@@ -16,12 +16,12 @@ public class LectureDao {
     SqlSession sqlSession;
 
 
-    public void insertLecture(String category, String name, String price, String regDate){
+    public void insertLecture(String category, String name, String price, String regDate, String img){
         try{
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             //TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-            System.out.println("dao: " + category + "," + name + "," + price + "," + regDate );
-            lecMapper.insertLecture(category, name, price, regDate);
+            System.out.println("dao: " + category + "," + name + "," + price + "," + regDate + "," + img );
+            lecMapper.insertLecture(category, name, price, regDate, img);
         }catch (Exception e){
             e.printStackTrace();
         }

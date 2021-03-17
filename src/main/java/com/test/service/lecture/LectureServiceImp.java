@@ -15,9 +15,9 @@ public class LectureServiceImp implements LectureService {
     LectureDao lectureDao;
 
     @Override
-    public void insertLecture(String category, String name, String price, String date){
-        System.out.println("service" +  category + "," + name + "," + price + "," + date);
-        lectureDao.insertLecture(category, name, price, date);
+    public void insertLecture(String category, String name, String price, String date, String img){
+        System.out.println("service" +  category + "," + name + "," + price + "," + date + "," + img);
+        lectureDao.insertLecture(category, name, price, date, img);
     }
 
     @Override
