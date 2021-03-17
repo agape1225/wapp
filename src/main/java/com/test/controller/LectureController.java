@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import com.test.dto.LectureDto;
 import com.test.dto.TestDto;
 import com.test.service.lecture.LectureService;
 import com.test.service.test.TestService;
@@ -42,6 +43,17 @@ public class LectureController {
             e.printStackTrace();
         }
         return "redirect:/admin/";
+    }
+
+    @GetMapping("/admin/login/lecture_list")
+    public String test(Model model){
+        try{
+            ArrayList<LectureDto> lectureList = lectureService.readBasicData();
+            model.addAttribute("lectureList", lectureList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "lecture_list";
     }
 
 
