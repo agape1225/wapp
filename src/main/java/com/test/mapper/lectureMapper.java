@@ -9,7 +9,8 @@ public interface lectureMapper {
     void insertLecture(@Param("category") String category,
                        @Param("name") String name,
                        @Param("price") String price,
-                       @Param("regDate") String regDate);
+                       @Param("regDate") String regDate,
+                       @Param("lecImg") String lecImg);
 
     void deleteLecture(@Param("lecNo") String lecNo);
 }

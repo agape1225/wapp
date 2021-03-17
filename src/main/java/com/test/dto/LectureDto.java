@@ -12,4 +12,5 @@ public class LectureDto
     String lecName;
     String lecPrice;
     String lecRegDate;
+    String lecImg;
 }

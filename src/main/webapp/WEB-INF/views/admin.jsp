@@ -13,15 +13,15 @@
 </head>
 <body>
 <h1>관리자 페이지</h1>
-<img src="<spring:url value='/resources/img/test.png'/>">
+<!--<img src="<spring:url value='${img}'/>">-->
 
 <form method="post" action="login/upload" enctype="multipart/form-data">
-    ​
-    <br><br>
+
+    category: <input type="text" name="lecCategory" /> <br>
+    name: <input type="text" name="lecName" /> <br>
+    price: <input type="text" name="lecPrice" /> <br>
     <label>파일:</label>
-    <input type="file" name="file1">
-    ​
-    <br><br>
+    <input type="file" name="lecImg">
     <input type="submit" value="upload">
     ​
 </form>
