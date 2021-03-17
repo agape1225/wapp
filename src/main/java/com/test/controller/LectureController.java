@@ -43,7 +43,17 @@ public class LectureController {
         }
         return "redirect:/admin/";
     }
-
+  
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam(value = "lecNo") String lecNo){
+        try{
+            System.out.println("lecNo: " + lecNo);
+            lectureService.deleteLecture(lecNo);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "redirect:/";
+    }
 
     /*@RequestMapping(value = "/post.do", method = RequestMethod.POST)
     public String post(@RequestParam(value = "data") String data){

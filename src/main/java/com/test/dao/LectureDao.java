@@ -26,4 +26,14 @@ public class LectureDao {
             e.printStackTrace();
         }
     }
+
+    public void deleteLecture(String lectureNo){
+        try{
+            lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
+            System.out.println("dao: " + lectureNo);
+            lecMapper.deleteLecture(lectureNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

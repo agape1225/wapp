@@ -8,4 +8,7 @@
         insert into lecture(lecCategory, lecName, lecPrice, lecRegDate)
         VALUES(#{category}, #{name}, #{price}, #{regDate})
     </insert>
+    <delete id="deleteLecture">
+        delete from lecture where lecNo = #{lecNo}
+    </delete>
 </mapper>
