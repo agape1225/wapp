@@ -11,4 +11,5 @@ public interface lectureMapper {
                        @Param("price") String price,
                        @Param("regDate") String regDate);
 
+    void deleteLecture(@Param("lecNo") String lecNo);
 }

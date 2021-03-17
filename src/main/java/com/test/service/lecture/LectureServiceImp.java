@@ -20,4 +20,10 @@ public class LectureServiceImp implements LectureService {
         lectureDao.insertLecture(category, name, price, date);
     }
 
+    @Override
+    public void deleteLecture(String lecNo) {
+        System.out.println("service delete " + lecNo);
+        lectureDao.deleteLecture(lecNo);
+    }
+
 }
