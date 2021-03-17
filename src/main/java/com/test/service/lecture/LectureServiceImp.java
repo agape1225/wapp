@@ -25,5 +25,4 @@ public class LectureServiceImp implements LectureService {
         System.out.println("service delete " + lecNo);
         lectureDao.deleteLecture(lecNo);
     }
-
 }
