@@ -8,7 +8,10 @@
         select * from lecture
     </select>
     <insert id="insertLecture">
-        insert into lecture(lecCategory, lecName, lecPrice, lecRegDate)
-        VALUES(#{category}, #{name}, #{price}, #{regDate})
+        insert into lecture(lecCategory, lecName, lecPrice, lecRegDate, lecImg)
+        VALUES(#{category}, #{name}, #{price}, #{regDate}, #{lecImg})
     </insert>
+    <delete id="deleteLecture">
+        delete from lecture where lecNo = #{lecNo}
+    </delete>
 </mapper>
