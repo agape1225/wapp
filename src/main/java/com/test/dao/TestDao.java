@@ -2,7 +2,6 @@ package com.test.dao;
 
 import com.test.dto.TestDto;
 import com.test.mapper.TestMapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
