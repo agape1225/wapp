@@ -29,7 +29,7 @@ public class TestController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "index";
+        return "mainPage";
     }
 
     @GetMapping("/test.do")
