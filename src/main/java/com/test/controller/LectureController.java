@@ -86,7 +86,7 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "lectureImg" + File.separator;
+        String relativeFolder = File.separator + "resources" + File.separator + "img" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
@@ -103,7 +103,7 @@ public class LectureController {
 
         lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "admin";
+        return "redirect:/admin";
     }
 
 }
