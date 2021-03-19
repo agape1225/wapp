@@ -23,7 +23,10 @@
     <label>파일:</label>
     <input type="file" name="lecImg">
     <input type="submit" value="upload">
+
     ​
 </form>
+<h1 style="margin-bottom: 0">데이터 리스트</h1>
+
 </body>
 </html>

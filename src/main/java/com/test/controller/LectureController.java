@@ -1,9 +1,8 @@
 package com.test.controller;
 
-import com.test.dto.TestDto;
+
+import com.test.dto.LectureDto;
 import com.test.service.lecture.LectureService;
-import com.test.service.test.TestService;
-import com.test.util.firebase.FirebaseMessagingSnippets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +51,18 @@ public class LectureController {
         }
         return "redirect:/admin/";
     }
-  
+
+    @GetMapping("/admin/login/lecture_list")
+    public String test(Model model){
+        try{
+            ArrayList<LectureDto> lectureList = lectureService.readBasicData();
+            model.addAttribute("lectureList", lectureList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "lecture_list";
+    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo){
         try{

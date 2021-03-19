@@ -1,5 +1,6 @@
 package com.test.dao;
 
+import com.test.dto.LectureDto;
 import com.test.dto.TestDto;
 import com.test.mapper.TestMapper;
 import com.test.mapper.lectureMapper;
@@ -14,6 +15,19 @@ import java.util.ArrayList;
 public class LectureDao {
     @Autowired
     SqlSession sqlSession;
+
+    public ArrayList<LectureDto> readBasicData(){
+        try{
+            System.out.println("calling Lecture list do");
+            lectureMapper lMapper = sqlSession.getMapper(lectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicData();
+            System.out.println("calling Lecture list end");
+            return lectureInfoList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     public void insertLecture(String category, String name, String price, String regDate, String img){
