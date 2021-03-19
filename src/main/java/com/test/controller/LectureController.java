@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import com.test.dto.LectureDto;
 import com.test.dto.TestDto;
 import com.test.service.lecture.LectureService;
 import com.test.service.test.TestService;
@@ -31,10 +32,9 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-
     @GetMapping("/admin/login/insert")
-    public String main(Model model){
-        try{
+    public String main(Model model) {
+        try {
 
             String category = "testCategory";
             String name = "testName";
@@ -46,19 +46,30 @@ public class LectureController {
             String date = sdf.format(d);
 
 
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "redirect:/admin/";
     }
-  
+
+    @GetMapping("/admin/login/lecture_list")
+    public String test(Model model) {
+        try {
+            ArrayList<LectureDto> lectureList = lectureService.readBasicData();
+            model.addAttribute("lectureList", lectureList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "lecture_list";
+    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delete(@RequestParam(value = "lecNo") String lecNo){
-        try{
+    public String delete(@RequestParam(value = "lecNo") String lecNo) {
+
+        try {
             System.out.println("lecNo: " + lecNo);
             lectureService.deleteLecture(lecNo);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "redirect:/";
