@@ -34,6 +34,6 @@ public class LectureServiceImp implements LectureService {
     @Override
     public void updateLecture(String lecNo, LectureUpdateDto updateDto) {
         System.out.println("service update " + lecNo);
-        lectureDao.updateLecture(lecNo, updateDto.getLecName(), updateDto.getLecCategory(), updateDto.getLecImg(), updateDto.getLecPrice());
+        //lectureDao.updateLecture(lecNo, updateDto.getLecName(), updateDto.getLecCategory(), updateDto.getLecImg(), updateDto.getLecPrice());
     }
 }

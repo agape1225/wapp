@@ -30,26 +30,6 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/insert")
-    public String main(Model model) {
-        try {
-
-            String category = "testCategory";
-            String name = "testName";
-            String price = "1111";
-
-            Date d = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-            String date = sdf.format(d);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "redirect:/admin/";
-    }
-
     @GetMapping("/admin/login/lecture_list")
     public String test(Model model) {
         try {
@@ -73,7 +53,7 @@ public class LectureController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/admin/login/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login/lecUpload", method = RequestMethod.POST)
     public String insert(@RequestParam(value = "lecCategory") String lecCategory,
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
@@ -95,7 +75,7 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "img" + File.separator;
+        String relativeFolder = File.separator + "resources" + File.separator + "lectureImg" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
@@ -115,7 +95,7 @@ public class LectureController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/login/update/{lecNo}")
+    /*@GetMapping("/admin/login/update/{lecNo}")
     public String lectureUpdate(@PathVariable String lecNo, Model model) {
         LectureDto lectureDto = lectureService.readBasicDataByNo(lecNo);
         model.addAttribute("lecture", lectureDto);
@@ -137,5 +117,5 @@ public class LectureController {
             e.printStackTrace();
             return "admin";
         }
-    }
+    }*/
 }
