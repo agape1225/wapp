@@ -31,27 +31,6 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-
-    @GetMapping("/admin/login/insert")
-    public String main(Model model){
-        try{
-
-            String category = "testCategory";
-            String name = "testName";
-            String price = "1111";
-
-            Date d = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-            String date = sdf.format(d);
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "redirect:/admin/";
-    }
   
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo){
@@ -64,17 +43,12 @@ public class LectureController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/admin/login/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login/lecUpload", method = RequestMethod.POST)
     public String insert(@RequestParam(value = "lecCategory") String lecCategory,
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
                          @RequestParam("lecImg") MultipartFile file,
                          HttpServletRequest request) throws IOException {
-
-        // String path = new
-        // ClassPathResource("/src/main/resources/uploads").getPath();
-
-        // FileCopyUtils.copy(file.getBytes(), new File(path));
 
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
