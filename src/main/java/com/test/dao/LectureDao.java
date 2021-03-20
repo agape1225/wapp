@@ -47,4 +47,14 @@ public class LectureDao {
             e.printStackTrace();
         }
     }
+
+    public void updateLecture(String lecNo, String lecName, String lecCategory, String lecImg, String lecPrice) {
+        try{
+            lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
+            System.out.println("dao: " + lecNo);
+            lecMapper.updateLecture(lecNo, lecName, lecCategory, lecImg, lecPrice);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
