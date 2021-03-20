@@ -13,4 +13,10 @@ public interface lectureMapper {
                        @Param("lecImg") String lecImg);
 
     void deleteLecture(@Param("lecNo") String lecNo);
+
+    void updateLecture(@Param("lecNo") String lecNo,
+                       @Param("lecName")String lecName,
+                       @Param("lecCategory")String lecCategory,
+                       @Param("lecImg")String lecImg,
+                       @Param("lecPrice")String lecPrice);
 }

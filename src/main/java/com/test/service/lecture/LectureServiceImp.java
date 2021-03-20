@@ -2,6 +2,7 @@ package com.test.service.lecture;
 
 import com.test.dao.LectureDao;
 import com.test.dto.LectureDto;
+import com.test.dto.LectureUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,11 @@ public class LectureServiceImp implements LectureService {
     public void deleteLecture(String lecNo) {
         System.out.println("service delete " + lecNo);
         lectureDao.deleteLecture(lecNo);
+    }
+
+    @Override
+    public void updateLecture(String lecNo, LectureUpdateDto updateDto) {
+        System.out.println("service update " + lecNo);
+        lectureDao.updateLecture(lecNo, updateDto.getLecName(), updateDto.getLecCategory(), updateDto.getLecImg(), updateDto.getLecPrice());
     }
 }

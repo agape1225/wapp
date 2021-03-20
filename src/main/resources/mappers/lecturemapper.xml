@@ -14,4 +14,9 @@
     <delete id="deleteLecture">
         delete from lecture where lecNo = #{lecNo}
     </delete>
+    <update id="updateLecture">
+        update lecture
+        set (lecName, lecCategory, lecImg, lecPrice) = (#{lecName}, #{lecCategory}, #{lecImg}, #{lecPrice})
+        where lecNo = #{lecNo}
+    </update>
 </mapper>
