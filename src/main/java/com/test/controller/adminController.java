@@ -46,6 +46,7 @@ public class adminController {
             System.out.println("id: " + id);
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
+            System.out.println(loginInfo);
             AdminLoginDto result = loginInfo.get(0);
 
             model.addAttribute("img", "/resources/img/test.png");
