@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter
 @Setter
-public class LectureDto
-{
-
+public class LectureDto {
     String lecNo;
     String lecCategory;
     String lecName;

@@ -7,8 +7,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LectureUpdateDto {
 
-    private String lecName;
-    private String lecCategory;
-    private String lecImg;
-    private String lecPrice;
+    final private String lecName;
+    final private String lecCategory;
+    final private String lecImg;
+    final private String lecPrice;
+
 }

@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.test.mapper.lectureMapper">
+    <select id="readBasicDataList" resultType="LectureDto">
+        select * from lecture
+    </select>
     <insert id="insertLecture">
         insert into lecture(lecCategory, lecName, lecPrice, lecRegDate, lecImg)
         VALUES(#{category}, #{name}, #{price}, #{regDate}, #{lecImg})
@@ -11,4 +14,21 @@
     <delete id="deleteLecture">
         delete from lecture where lecNo = #{lecNo}
     </delete>
+    <select id="readBasicDataByLecNo">
+        select * from lecture where lecNo = #{lecNo}
+    </select>
+    <select id="readBasicDataByLecName">
+        select * from lecture where lecName like "%#{lecName}%"
+    </select>
+    <select id="readBasicDataByLecCategory">
+        select * from lecture where lecCategory = #{lecCategory}
+    </select>
+    <select id="readBasicDataByLecPrice">
+        select * from lecture where lecPrice between #{minPrice} and #{maxPrice}
+    </select>
+    <update id="updateLecture">
+        update lecture
+        set (lecName, lecCategory, lecImg, lecPrice) = (#{lecName}, #{lecCategory}, #{lecImg}, #{lecPrice})
+        where lecNo = #{lecNo}
+    </update>
 </mapper>
