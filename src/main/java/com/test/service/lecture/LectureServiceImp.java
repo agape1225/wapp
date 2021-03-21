@@ -20,9 +20,9 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
-    public ArrayList<LectureDto> readBasicData() {
+    public ArrayList<LectureDto> readBasicDataList() {
         System.out.println("reading lecture List");
-        return lectureDao.readBasicData();
+        return lectureDao.readBasicDataList();
     }
 
     @Override
@@ -32,6 +32,24 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
+    public LectureDto readBasicDataByLecNo(String lecNo) {
+        return lectureDao.readBasicDataByLecNo(lecNo);
+    }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataByLecName(String lecName) {
+        return lectureDao.readBasicDataByLecName(lecName);
+    }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataByLecCategory(String lecCategory) {
+        return lectureDao.readBasicDataByLecCategory(lecCategory);
+    }
+
+    public ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice) {
+        return lectureDao.readBasicDataByLecPrice(minPrice, maxPrice);
+    }
+
     public void updateLecture(String lecNo, LectureUpdateDto updateDto) {
         System.out.println("service update " + lecNo);
         //lectureDao.updateLecture(lecNo, updateDto.getLecName(), updateDto.getLecCategory(), updateDto.getLecImg(), updateDto.getLecPrice());

@@ -11,4 +11,5 @@ public class LectureUpdateDto {
     final private String lecCategory;
     final private String lecImg;
     final private String lecPrice;
+
 }
