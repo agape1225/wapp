@@ -25,5 +25,41 @@
     <input type="submit" value="upload">
     ​
 </form>
+
+<h1 style="margin-bottom: 0">강의 리스트</h1>
+<div class="dataList">
+    <div class="data">
+        <ul>
+            <c:forEach varStatus="i" var="lecture" items="${Lecture_Detail}">
+                <li class="data">
+                    <p style="display: inline">${lecture.lecCategory}</p>
+                    <p style="display: inline">${lecture.lecName}</p>
+                    <p style="display: inline">${lecture.lecPrice}</p>
+                    <p style="display: inline">${lecture.lecRegDate}</p>
+                    <button onclick="location.href='/delete?lecNo=${lecture.lecNo}'">삭제</button>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
+
+<form action="/admin/login/specific_search" method="get">
+    <h3>이름 검색</h3>
+    <input type="text" name="LecName" />
+    <button>검색</button>
+</form>
+<form action="/admin/login/specific_search" method="get">
+    <h3>카테고리 검색</h3>
+    <input type="text" name="LecCategory" />
+    <button>검색</button>
+</form>
+<form action="/admin/login/specific_search" method="get">
+    <h3>가격 검색</h3>
+    <input type="text" name="minPrice"/>
+    <input type="text" name="maxPrice"/>
+    <button>검색</button>
+</form>
+
+
 </body>
 </html>
