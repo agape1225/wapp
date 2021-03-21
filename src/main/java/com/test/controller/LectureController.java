@@ -2,15 +2,14 @@ package com.test.controller;
 
 import com.test.dao.LectureDao;
 import com.test.dto.LectureDto;
+import com.test.dto.LectureUpdateDto;
+import com.test.dto.TestDto;
 import com.test.service.lecture.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -30,26 +29,6 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/insert")
-    public String main(Model model) {
-        try {
-
-            String category = "testCategory";
-            String name = "testName";
-            String price = "1111";
-
-            Date d = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-            String date = sdf.format(d);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "redirect:/admin/";
-    }
-
     @GetMapping("/admin/login/lecture_list")
     public String test(Model model) {
         try {
@@ -61,7 +40,7 @@ public class LectureController {
         return "redirect:/admin/login";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo) {
 
         try {
@@ -70,10 +49,10 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/admin/login/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login/lecUpload", method = RequestMethod.POST)
     public String insert(@RequestParam(value = "lecCategory") String lecCategory,
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
@@ -112,7 +91,15 @@ public class LectureController {
 
         lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "admin";
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/login/update/{lecNo}")
+    public String lectureUpdate(@PathVariable String lecNo, Model model) {
+        LectureDto lectureDto = lectureService.readBasicDataByLecNo(lecNo);
+        model.addAttribute("lecture", lectureDto);
+
+        return "lecture-update";
     }
 
     @GetMapping("/admin/login/detail")
@@ -152,5 +139,21 @@ public class LectureController {
             e.printStackTrace();
         }
         return "admin";
+    }
+
+    @RequestMapping(value = "/admin/login/update/{lecNo}", method = RequestMethod.POST)
+    public String lectureUpdateComplete(@PathVariable String lecNo,
+                                        @RequestParam(value = "lecName") String lecName,
+                                        @RequestParam(value = "lecCategory") String lecCategory,
+                                        @RequestParam(value = "lecImg") String lecImg,
+                                        @RequestParam(value = "lecPrice") String lecPrice) {
+        try{
+            LectureUpdateDto updateDto = new LectureUpdateDto(lecName, lecCategory, lecImg, lecPrice);
+            lectureService.updateLecture(lecNo, updateDto);
+            return "admin";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "admin";
+        }
     }
 }

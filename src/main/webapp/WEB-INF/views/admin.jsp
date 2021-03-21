@@ -15,7 +15,7 @@
 <h1>관리자 페이지</h1>
 <!--<img src="<spring:url value='${img}'/>">-->
 
-<form method="post" action="login/upload" enctype="multipart/form-data">
+<form method="post" action="/admin/login/lecUpload" enctype="multipart/form-data">
 
     category: <input type="text" name="lecCategory" /> <br>
     name: <input type="text" name="lecName" /> <br>
@@ -61,5 +61,14 @@
 </form>
 
 
+<form method="post" action="/admin/login/banUpload" enctype="multipart/form-data">
+
+    title: <input type="text" name="banTitle" /> <br>
+    content: <input type="text" name="banContent" /> <br>
+    <label>파일:</label>
+    <input type="file" name="banImg">
+    <input type="submit" value="upload">
+    ​
+</form>
 </body>
 </html>

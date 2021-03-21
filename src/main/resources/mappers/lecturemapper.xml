@@ -26,4 +26,9 @@
     <select id="readBasicDataByLecPrice">
         select * from lecture where lecPrice between #{minPrice} and #{maxPrice}
     </select>
+    <update id="updateLecture">
+        update lecture
+        set (lecName, lecCategory, lecImg, lecPrice) = (#{lecName}, #{lecCategory}, #{lecImg}, #{lecPrice})
+        where lecNo = #{lecNo}
+    </update>
 </mapper>

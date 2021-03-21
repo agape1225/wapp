@@ -17,4 +17,9 @@ public interface lectureMapper {
     ArrayList<LectureDto> readBasicDataByLecName(@Param("lecName") String lecName);
     ArrayList<LectureDto> readBasicDataByLecCategory(@Param("lecCategory") String lecCategory);
     ArrayList<LectureDto> readBasicDataByLecPrice(@Param("minPrice") String minPrice, @Param("maxPrice") String maxPrice);
+    void updateLecture(@Param("lecNo") String lecNo,
+                       @Param("lecName")String lecName,
+                       @Param("lecCategory")String lecCategory,
+                       @Param("lecImg")String lecImg,
+                       @Param("lecPrice")String lecPrice);
 }

@@ -26,20 +26,20 @@ public class LectureDao {
         }
     }
 
-    public void insertLecture(String category, String name, String price, String regDate, String img){
-        try{
+    public void insertLecture(String category, String name, String price, String regDate, String img) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             //TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-            System.out.println("dao: " + category + "," + name + "," + price + "," + regDate + "," + img );
+            System.out.println("dao: " + category + "," + name + "," + price + "," + regDate + "," + img);
             lecMapper.insertLecture(category, name, price, regDate, img);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
 
-    public void deleteLecture(String lectureNo){
-        try{
+    public void deleteLecture(String lectureNo) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             System.out.println("dao: " + lectureNo);
             lecMapper.deleteLecture(lectureNo);
@@ -48,8 +48,8 @@ public class LectureDao {
         }
     }
 
-    public LectureDto readBasicDataByLecNo(String lectureNo){
-        try{
+    public LectureDto readBasicDataByLecNo(String lectureNo) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             System.out.println("dao: " + lectureNo);
             return lecMapper.readBasicDataByLecNo(lectureNo);
@@ -59,8 +59,8 @@ public class LectureDao {
         }
     }
 
-    public ArrayList<LectureDto> readBasicDataByLecName(String lectureName){
-        try{
+    public ArrayList<LectureDto> readBasicDataByLecName(String lectureName) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             System.out.println("dao: " + lectureName);
             return lecMapper.readBasicDataByLecName(lectureName);
@@ -70,8 +70,8 @@ public class LectureDao {
         }
     }
 
-    public ArrayList<LectureDto> readBasicDataByLecCategory(String lectureCategory){
-        try{
+    public ArrayList<LectureDto> readBasicDataByLecCategory(String lectureCategory) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             System.out.println("dao: " + lectureCategory);
             return lecMapper.readBasicDataByLecCategory(lectureCategory);
@@ -81,14 +81,25 @@ public class LectureDao {
         }
     }
 
-    public ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice){
-        try{
+    public ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice) {
+        try {
             lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
             System.out.println("dao: " + minPrice + "~" + maxPrice);
             return lecMapper.readBasicDataByLecPrice(minPrice, maxPrice);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void updateLecture(String lecNo, String lecName, String lecCategory, String lecImg, String lecPrice) {
+        try {
+            lectureMapper lecMapper = sqlSession.getMapper(lectureMapper.class);
+            System.out.println("dao: " + lecNo);
+            lecMapper.updateLecture(lecNo, lecName, lecCategory, lecImg, lecPrice);
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
     }
 }
