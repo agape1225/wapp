@@ -17,6 +17,7 @@ public class AdminLoginDao {
         try{
             AdminLoginMapper adminLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
             ArrayList<AdminLoginDto> loginInfo = adminLoginMapper.getLoginInfo();
+            System.out.println("Dao: " + loginInfo);
             return loginInfo;
 
         }catch (Exception e){

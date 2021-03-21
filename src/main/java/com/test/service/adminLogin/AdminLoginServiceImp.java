@@ -16,6 +16,8 @@ public class AdminLoginServiceImp implements AdminLoginService{
     @Override
     public ArrayList<AdminLoginDto> getLoginInfo(){
         ArrayList<AdminLoginDto> loginInfo = adminLoginDao.getLoginInfo();
+        System.out.println("Service: ");
+        System.out.println(loginInfo);
         return loginInfo;
 
     }
