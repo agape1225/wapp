@@ -29,7 +29,7 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/")
+    @GetMapping("/admin/manage-lecture")
     public String test(Model model) {
         try {
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();

@@ -7,6 +7,12 @@
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/dispatcher-servlet.xml</file>
         </fileset>
+        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/out/artifacts/wapp_Web_exploded/WEB-INF/spring/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/out/artifacts/wapp_Web_exploded/WEB-INF/spring/dispatcher-servlet.xml</file>
+        </fileset>
       </configuration>
     </facet>
     <facet type="web" name="Web">
