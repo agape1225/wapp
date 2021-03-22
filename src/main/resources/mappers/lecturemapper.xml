@@ -14,16 +14,16 @@
     <delete id="deleteLecture">
         delete from lecture where lecNo = #{lecNo}
     </delete>
-    <select id="readBasicDataByLecNo">
+    <select id="readBasicDataByLecNo" resultType="LectureDto">
         select * from lecture where lecNo = #{lecNo}
     </select>
-    <select id="readBasicDataByLecName">
+    <select id="readBasicDataByLecName" resultType="LectureDto">
         select * from lecture where lecName like "%#{lecName}%"
     </select>
-    <select id="readBasicDataByLecCategory">
+    <select id="readBasicDataByLecCategory" resultType="LectureDto">
         select * from lecture where lecCategory = #{lecCategory}
     </select>
-    <select id="readBasicDataByLecPrice">
+    <select id="readBasicDataByLecPrice" resultType="LectureDto">
         select * from lecture where lecPrice between #{minPrice} and #{maxPrice}
     </select>
     <update id="updateLecture">
