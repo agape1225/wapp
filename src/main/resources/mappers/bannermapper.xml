@@ -8,4 +8,10 @@
         insert into banner(banImg, banCount, banRegDate, banTitle, banContent)
         VALUES(#{img}, #{count}, #{regDate}, #{title}, #{content})
     </insert>
+    <select id="readBasicDataList" resultType="BannerDto">
+        select * from banner
+    </select>
+    <select id="readBasicDataByBanNo" resultType="BannerDto">
+        select * from banner where banNo = #{banNo}
+    </select>
 </mapper>
