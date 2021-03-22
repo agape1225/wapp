@@ -76,6 +76,7 @@ public class BannerController {
             e.printStackTrace();
         }
         return "redirect:/admin";
+    }
   
     @GetMapping(value = "/admin/login/bannerList")
     public String readBasicDataList(Model model){

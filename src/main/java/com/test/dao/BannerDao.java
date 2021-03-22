@@ -30,12 +30,14 @@ public class BannerDao {
 
 
     public void deleteBanner(String banNo) {
-        try{
+        try {
             BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
-            System.out.println("dao: " + banNo );
+            System.out.println("dao: " + banNo);
             bannerMapper.deleteBanner(banNo);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
 
     public ArrayList<BannerDto> readBasicDataList(){
         try {
