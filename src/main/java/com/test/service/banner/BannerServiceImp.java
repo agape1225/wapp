@@ -18,4 +18,9 @@ public class BannerServiceImp implements BannerService {
                                         getDate + "," + title + "," + content);
         bannerDao.insertBanner(img,count,getDate,title,content);
     }
+
+    @Override
+    public void deleteBanner(String banNo) {
+        bannerDao.deleteBanner(banNo);
+    }
 }

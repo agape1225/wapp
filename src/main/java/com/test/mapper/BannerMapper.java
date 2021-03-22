@@ -9,4 +9,5 @@ public interface BannerMapper {
                       @Param("title") String title,
                       @Param("content") String content);
 
+    void deleteBanner(@Param("banNo") String banNo);
 }

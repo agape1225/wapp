@@ -40,7 +40,7 @@ public class LectureController {
         return "redirect:/admin/login";
     }
 
-    @RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login/lecDelete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo) {
 
         try {

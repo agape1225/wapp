@@ -62,4 +62,16 @@ public class BannerController {
         return "template/demo_1/manage-banner";
     }
 
+    @RequestMapping(value = "/admin/login/banDelete", method = RequestMethod.GET)
+    public String delete(@RequestParam(value = "banNo") String banNo) {
+
+        try {
+            System.out.println("banNo: " + banNo);
+            bannerService.deleteBanner(banNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin";
+    }
+
 }

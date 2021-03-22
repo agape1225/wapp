@@ -24,4 +24,14 @@ public class BannerDao {
         }
     }
 
+    public void deleteBanner(String banNo) {
+        try{
+            BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+            System.out.println("dao: " + banNo );
+            bannerMapper.deleteBanner(banNo);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

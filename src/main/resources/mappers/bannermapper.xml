@@ -8,4 +8,7 @@
         insert into banner(banImg, banCount, banRegDate, banTitle, banContent)
         VALUES(#{img}, #{count}, #{regDate}, #{title}, #{content})
     </insert>
+    <delete id="deleteBanner">
+        delete from banner where banNo = #{banNo}
+    </delete>
 </mapper>
