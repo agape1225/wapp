@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class LectureController {
@@ -57,6 +60,7 @@ public class LectureController {
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
                          @RequestParam("lecImg") MultipartFile file,
+                         RedirectAttributes   redirect,
                          HttpServletRequest request) throws IOException {
 
         // String path = new
@@ -91,7 +95,12 @@ public class LectureController {
 
         lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "template/demo_1/manage-lecture";
+        Map<String, Object> map = new HashMap<String,Object>();
+        map.put("id", "root");
+        map.put("password", "1234");
+        redirect.addFlashAttribute("vo", map);
+
+        return "redirect:/admin/login";
     }
 
     @GetMapping("/admin/login/update/{lecNo}")

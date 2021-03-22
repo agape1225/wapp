@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
@@ -76,12 +77,15 @@ public class adminController {
     }
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String adminLogin(Model model, @RequestParam(value = "id") String id, @RequestParam(value = "password") String password){
+    public String adminLogin(Model model, @RequestParam(value = "id") String id,
+                             @RequestParam(value = "password") String password,
+                             HttpServletRequest request){
         try{
             System.out.println("id: " + id);
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
             AdminLoginDto result = loginInfo.get(0);
+
 
             //model.addAttribute("img", "/resources/img/test.png");
 
