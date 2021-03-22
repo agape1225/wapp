@@ -59,7 +59,7 @@ public class BannerController {
 
         //lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "admin";
+        return "template/demo_1/manage-banner";
     }
 
 }

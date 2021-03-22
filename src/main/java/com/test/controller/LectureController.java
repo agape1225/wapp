@@ -91,7 +91,7 @@ public class LectureController {
 
         lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "redirect:/admin";
+        return "template/demo_1/manage-lecture";
     }
 
     @GetMapping("/admin/login/update/{lecNo}")

@@ -30,6 +30,51 @@ public class adminController {
         return "adminLogin";
     }
 
+    @GetMapping("admin/admin-page")
+    public String admin_page(Model model){
+        try{
+            System.out.println("Start manageLcture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/admin-page";
+    }
+
+    @GetMapping("admin/manage-banner")
+    public String manage_banner(Model model){
+        try{
+            System.out.println("Start manageLcture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/manage-banner";
+    }
+
+    @GetMapping("admin/manage-category")
+    public String manage_category(Model model){
+        try{
+            System.out.println("Start manageLcture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/manage-category";
+    }
+
+
+    @GetMapping("admin/manage-lecture")
+    public String manage_lecture(Model model){
+        try{
+            System.out.println("Start manageLcture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/manage-lecture";
+    }
+
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String adminLogin(Model model, @RequestParam(value = "id") String id, @RequestParam(value = "password") String password){
         try{
@@ -41,7 +86,7 @@ public class adminController {
             //model.addAttribute("img", "/resources/img/test.png");
 
             if(id.equals(result.getId()) && password.equals(result.getPassword())){
-                return "admin";
+                return "template/demo_1/admin-page";
             }else{
                 return "adminLogin";
             }
