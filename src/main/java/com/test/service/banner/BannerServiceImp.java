@@ -23,6 +23,10 @@ public class BannerServiceImp implements BannerService {
     }
 
     @Override
+    public void deleteBanner(String banNo) {
+        bannerDao.deleteBanner(banNo);
+
+    @Override
     public ArrayList<BannerDto> readBasicDataList() {
         return bannerDao.readBasicDataList();
     }

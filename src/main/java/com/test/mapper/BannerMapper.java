@@ -11,6 +11,10 @@ public interface BannerMapper {
                       @Param("regDate") String regDate,
                       @Param("title") String title,
                       @Param("content") String content);
+
+    void deleteBanner(@Param("banNo") String banNo);
+
     ArrayList<BannerDto> readBasicDataList();
     BannerDto readBasicDataByBanNo(@Param("banNo") String banNo);
+
 }
