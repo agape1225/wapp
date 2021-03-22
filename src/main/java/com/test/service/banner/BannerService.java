@@ -9,5 +9,8 @@ public interface BannerService {
                       String title, String content);
     ArrayList<BannerDto> readBasicDataList();
 
+    void deleteBanner(String banNo);
+
     BannerDto readBasicDataByBanNo(String banNo);
+
 }

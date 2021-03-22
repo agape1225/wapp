@@ -1,0 +1,45 @@
+section {
+  margin: 18px 362px 50px 362px;
+}
+#notice_btn {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 5px 30px;
+  border: 0;
+}
+
+#cart_btn {
+  padding: 20px 30px;
+  border: 0;
+}
+
+.icon_section_img {
+  width: 55px;
+  height: 55px;
+}
+
+.icon_section_width {
+  float: left;
+  width: 16.6%;
+}
+
+.banner {
+  vertical-align: middle;
+  float: left;
+  position: relative;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+}
+
+.price {
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 0px;
+  height: 5px;
+  vertical-align: middle;
+  border-style: none;
+  box-sizing: border-box;
+}

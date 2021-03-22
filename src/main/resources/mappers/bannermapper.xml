@@ -8,10 +8,16 @@
         insert into banner(banImg, banCount, banRegDate, banTitle, banContent)
         VALUES(#{img}, #{count}, #{regDate}, #{title}, #{content})
     </insert>
+
+    <delete id="deleteBanner">
+        delete from banner where banNo = #{banNo}
+    </delete>
+
     <select id="readBasicDataList" resultType="BannerDto">
         select * from banner
     </select>
     <select id="readBasicDataByBanNo" resultType="BannerDto">
         select * from banner where banNo = #{banNo}
     </select>
+
 </mapper>
