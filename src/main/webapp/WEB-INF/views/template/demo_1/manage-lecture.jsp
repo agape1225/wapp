@@ -121,9 +121,10 @@
                                     </div>
                                 </div>-->
                                     <ul>
+                                        <c:forEach varStatus="i" var="item" items="${lectureList}" end="4">
 
                                         <li class="data">
-                                            <p style="display: inline">강의명</p>
+                                            <p style="display: inline">${item.lecName}</p>
                                             <div style="float: right;">
                                                 <button class="btn btn-primary mr-2"
                                                     onclick="location.href='/delete.do?number=${item.number}'">수정</button>
@@ -133,6 +134,7 @@
                                             </div>
                                             <br><br>
                                         </li>
+                                        </c:forEach>
 
                                     </ul>
 

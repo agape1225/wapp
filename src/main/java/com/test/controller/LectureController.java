@@ -29,7 +29,7 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/lecture_list")
+    @GetMapping("/admin/login/")
     public String test(Model model) {
         try {
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
@@ -37,7 +37,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login";
+        return "template/demo_1/manage-lecture";
     }
 
     @RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
@@ -74,7 +74,7 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "lectureImg" + File.separator;
+        String relativeFolder = File.separator + "resources" + File.separator + "img" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
@@ -112,7 +112,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "admin";
+        return "template/demo_1/manage-lecture";
     }
 
     @GetMapping("/admin/login/specific_search")
@@ -138,7 +138,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "admin";
+        return "\"template/demo_1/manage-lecture\"";
     }
 
     @RequestMapping(value = "/admin/login/update/{lecNo}", method = RequestMethod.POST)

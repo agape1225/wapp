@@ -13,14 +13,15 @@ public class AdminLoginDao {
     @Autowired
     SqlSession sqlSession;
 
-    public ArrayList<AdminLoginDto> getLoginInfo(){
-        try{
+    public ArrayList<AdminLoginDto> getLoginInfo() {
+        try {
             AdminLoginMapper adminLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
             ArrayList<AdminLoginDto> loginInfo = adminLoginMapper.getLoginInfo();
             return loginInfo;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
+
         }
     }
 }
