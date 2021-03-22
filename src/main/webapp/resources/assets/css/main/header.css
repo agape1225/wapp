@@ -1,0 +1,77 @@
+header {
+  margin: 18px 362px 50px 362px;
+}
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.bar:nth-child(2) {
+  margin-left: 10px;
+}
+.bar__column {
+  display: flex;
+  align-items: center;
+}
+.bar__column span {
+  margin: 0px 15px;
+  font-size: var(--font-size);
+}
+.input {
+  margin-left: 30px;
+  height: 47px;
+  width: 430px;
+  background: var(--gray-bg);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  margin-right: 10px;
+}
+.memu {
+  width: 100%;
+  height: 22px;
+}
+
+.menu__column {
+  display: inline;
+}
+.mg {
+  margin-right: 40px;
+}
+.mg button {
+  font-weight: bolder;
+}
+.menu button {
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+  position: relative;
+  padding: 0 0.1px;
+}
+.menu button:not(.menu__column__first) {
+  margin-left: 20px;
+}
+.menu button:not(.menu__column__blue):hover {
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+.menu__column button:not(.mg):hover {
+  font-weight: bolder;
+}
+.menu__column__blue {
+  color: var(--blue);
+}
+.menu__column__blue:hover {
+  border-bottom: 2px solid var(--blue);
+}
