@@ -33,6 +33,15 @@
             <property name="useCacheControlHeader" value="true" />
             <property name="useCacheControlNoStore" value="true" />
         </bean>
+
+
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/login/**" />
+            <mvc:exclude-mapping path="/admin/login"/>
+            <bean class="com.test.controller.adminLoginInterceptor" />
+        </mvc:interceptor>
+
+
     </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

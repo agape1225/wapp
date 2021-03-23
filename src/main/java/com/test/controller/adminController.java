@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Controller
@@ -19,6 +20,7 @@ public class adminController {
 
     @Autowired
     AdminLoginService adminloginService;
+
 
     @GetMapping("/admin")
     public String main(Model model){
@@ -31,10 +33,10 @@ public class adminController {
         return "adminLogin";
     }
 
-    @GetMapping("admin/admin-page")
+    @GetMapping("admin/login/admin-page")
     public String admin_page(Model model){
         try{
-            System.out.println("Start manageLcture");
+            System.out.println("Start admin_page");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -42,10 +44,10 @@ public class adminController {
         return "template/demo_1/admin-page";
     }
 
-    @GetMapping("admin/manage-banner")
+    @GetMapping("admin/login/manage-banner")
     public String manage_banner(Model model){
         try{
-            System.out.println("Start manageLcture");
+            System.out.println("Start manage_banner");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -53,10 +55,10 @@ public class adminController {
         return "template/demo_1/manage-banner";
     }
 
-    @GetMapping("admin/manage-category")
+    @GetMapping("admin/login/manage-category")
     public String manage_category(Model model){
         try{
-            System.out.println("Start manageLcture");
+            System.out.println("Start manage_category");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -65,10 +67,10 @@ public class adminController {
     }
 
 
-    @GetMapping("admin/manage-lecture")
+    @GetMapping("admin/login/manage-lecture")
     public String manage_lecture(Model model){
         try{
-            System.out.println("Start manageLcture");
+            System.out.println("Start manage_lecture");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -77,9 +79,11 @@ public class adminController {
     }
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String adminLogin(Model model, @RequestParam(value = "id") String id,
+    public String adminLogin(Model model,
+                             @RequestParam(value = "id") String id,
                              @RequestParam(value = "password") String password,
-                             HttpServletRequest request){
+                             HttpServletRequest request,
+                             HttpSession session){
         try{
             System.out.println("id: " + id);
             System.out.println("password: " + password);
@@ -90,6 +94,7 @@ public class adminController {
             //model.addAttribute("img", "/resources/img/test.png");
 
             if(id.equals(result.getId()) && password.equals(result.getPassword())){
+                session.setAttribute("adminLogin",result);
                 return "template/demo_1/admin-page";
             }else{
                 return "adminLogin";
