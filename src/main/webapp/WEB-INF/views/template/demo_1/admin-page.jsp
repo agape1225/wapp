@@ -44,7 +44,7 @@
                 <ul class="nav">
                     <li class="nav-item nav-category">HOME</li>
                     <li class="nav-item">
-                        <a href="admin-page" class="nav-link">
+                        <a href="/admin/login/admin-page" class="nav-link">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Home</span>
                         </a>
@@ -52,20 +52,20 @@
                     <li class="nav-item nav-category">MANAGE</li>
 
                     <li class="nav-item">
-                        <a href="manage-lecture" class="nav-link">
+                        <a href="/admin/login/manage-lecture" class="nav-link">
                             <i class="link-icon" data-feather="message-square"></i>
                             <span class="link-title">강의</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="manage-category" class="nav-link">
+                        <a href="/admin/login/manage-category" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">카테고리</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="manage-banner" class="nav-link">
+                        <a href="/admin/login/manage-banner" class="nav-link">
                             <i class="link-icon" data-feather="feather"></i>
                             <span class="link-title">배너</span>
                         </a>
@@ -94,6 +94,7 @@
                             <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
                         </div>
                     </form>
+                </div>
             </nav>
         
         <!-- partial -->
