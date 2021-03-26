@@ -2,6 +2,7 @@ package com.test.dao;
 
 import com.test.dto.BannerDto;
 import com.test.dto.UserDto;
+import com.test.dto.UserInsertDto;
 import com.test.mapper.BannerMapper;
 import com.test.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
@@ -51,4 +52,14 @@ public class UserDao {
         }
     }
 
+    public UserDto readBasicDataByUserEmail(String userEmail) {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        UserDto userInfo = userMapper.readUserInfoListByUserEmail(userEmail);
+        return userInfo;
+    }
+
+    public void insertUser(UserInsertDto userDto) {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.insertUser(userDto);
+    }
 }

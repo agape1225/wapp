@@ -5,10 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
-    String userNo;
+public class UserRegisterDto {
     String userName;
     String userEmail;
     String userPw;
-    String userRegDate;
 }

@@ -2,6 +2,7 @@ package com.test.service.user;
 
 import com.test.dao.UserDao;
 import com.test.dto.UserDto;
+import com.test.dto.UserInsertDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,19 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserDto readUserInfoListByUserNo(String userNo) {
-        return null;
+        return userDao.readUserInfoListByUserNo(userNo);
     }
 
+    @Override
+    public UserDto readUserInfoListByUserEmail(String userEmail) {
+        return userDao.readBasicDataByUserEmail(userEmail);
+    }
+
+    @Override
+    public void insertUser(UserInsertDto userDto) {
+        System.out.println("service insertUser" + userDto.toString());
+        userDao.insertUser(userDto);
+        System.out.println("service insertUser success");
+    }
 
 }
