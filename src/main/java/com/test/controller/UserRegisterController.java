@@ -35,6 +35,10 @@ public class UserRegisterController {
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
     public String registerUser(UserRegisterDto userRegisterDto) {
 
+        UserDto originUserDto = userService.readUserInfoListByUserEmail(userRegisterDto.getUserEmail());
+        if (originUserDto != null)
+            return "userRegister";
+
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(d);

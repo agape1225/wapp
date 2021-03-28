@@ -2,8 +2,10 @@ package com.test.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class LectureUpdateDto {
 
     public LectureUpdateDto(String lecName, String lecCategory, String lecImg, String lecPrice) {
