@@ -30,7 +30,7 @@ public class UserController {
     @Autowired
     ServletContext servletContext;
 
-
+    @Autowired
     UserService userService;
 
     @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)

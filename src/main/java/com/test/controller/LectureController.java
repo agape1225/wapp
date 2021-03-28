@@ -1,9 +1,7 @@
 package com.test.controller;
 
-import com.test.dao.LectureDao;
 import com.test.dto.LectureDto;
 import com.test.dto.LectureUpdateDto;
-import com.test.dto.TestDto;
 import com.test.service.lecture.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +30,7 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/lecture_list")
+    @GetMapping("/admin/manage-lecture")
     public String test(Model model) {
         try {
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
@@ -40,10 +38,10 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login";
+        return "template/demo_1/manage-lecture";
     }
 
-    @RequestMapping(value = "/admin/login/lecDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/manage-lecture/lecDelete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo) {
 
         try {
@@ -52,7 +50,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin";
+        return "redirect:/admin/manage-lecture";
     }
 
     @RequestMapping(value = "/admin/login/lecUpload", method = RequestMethod.POST)
@@ -78,7 +76,7 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "lectureImg" + File.separator;
+        String relativeFolder = File.separator + "resources" + File.separator + "img" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
@@ -104,11 +102,12 @@ public class LectureController {
     }
 
     @GetMapping("/admin/login/update/{lecNo}")
-    public String lectureUpdate(@PathVariable String lecNo, Model model) {
+    public String lectureUpdate(@PathVariable(value = "lecNo") String lecNo, Model model) {
+        System.out.println(lecNo);
         LectureDto lectureDto = lectureService.readBasicDataByLecNo(lecNo);
         model.addAttribute("lecture", lectureDto);
 
-        return "lecture-update";
+        return "template/demo_1/lecture-update";
     }
 
     @GetMapping("/admin/login/detail")
@@ -121,7 +120,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "admin";
+        return "template/demo_1/manage-lecture";
     }
 
     @GetMapping("/admin/login/specific_search")
@@ -147,11 +146,11 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "admin";
+        return "\"template/demo_1/manage-lecture\"";
     }
 
     @RequestMapping(value = "/admin/login/update/{lecNo}", method = RequestMethod.POST)
-    public String lectureUpdateComplete(@PathVariable String lecNo,
+    public String lectureUpdateComplete(@PathVariable(value = "lecNo") String lecNo,
                                         @RequestParam(value = "lecName") String lecName,
                                         @RequestParam(value = "lecCategory") String lecCategory,
                                         @RequestParam(value = "lecImg") String lecImg,
