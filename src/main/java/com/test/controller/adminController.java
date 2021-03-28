@@ -104,9 +104,11 @@ public class adminController {
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
             boolean isIdAndPasswordCorrect = false;
+            AdminLoginDto insert = new AdminLoginDto();
             for (AdminLoginDto result : loginInfo) {
                 if(id.equals(result.getId()) && password.equals(result.getPassword())){
                     isIdAndPasswordCorrect = true;
+                    insert = result;
                     break;
                 }
             }
@@ -116,7 +118,7 @@ public class adminController {
             //model.addAttribute("img", "/resources/img/test.png");
 
             if(isIdAndPasswordCorrect){
-                session.setAttribute("adminLogin",result);
+                session.setAttribute("adminLogin",insert);
                 return "template/demo_1/admin-page";
             }else{
                 return "adminLogin";
