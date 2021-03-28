@@ -41,6 +41,12 @@
             <bean class="com.test.controller.adminLoginInterceptor" />
         </mvc:interceptor>
 
+        <mvc:interceptor>
+            <mvc:mapping path="/user/login/**" />
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.test.controller.UserLoginInterceptor" />
+        </mvc:interceptor>
+
 
     </mvc:interceptors>
 
