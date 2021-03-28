@@ -102,6 +102,7 @@
                             <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
                         </div>
                     </form>
+                </div>
             </nav>
 
             <!-- partial -->
@@ -111,7 +112,7 @@
                 <nav class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">MANAGE</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> 배너 </li>
+                        <li class="breadcrumb-item active" aria-current="page"> 팝업 </li>
                     </ol>
                 </nav>
                 <div class="row">
@@ -119,41 +120,25 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">배너 목록</h6>
-                                <form class="forms-sample">
-                                    <!--<div class="form-group row">
-                                    <span class="col-sm-3 col-form-label">강의명</span>
-                                    <div class="col-sm-9">
-                                        <button class="btn btn-primary mr-2">수정</button>
-                                        <button class="btn btn-light">삭제</button>
-                                    </div>
-                                </div>-->
-                                    <ul>
-
-                                        <c:forEach varStatus="i" var="item" items="${bannerList}" end="4">
-
-                                            <li class="data">
-                                            <li class="photo">
-                                                <img src="${item.banImg}" width="100" height="100">
-                                            </li>
-                                            <p style="display: inline">${item.banTitle}</p>
-                                            <p style="display: inline">/${item.banCount}</p>
-                                            <p style="display: inline">/${item.banContent}</p>
-                                            <p style="display: inline">/${item.lecRegDate}</p>
-                                            <div style="float: right;">
-                                                <!--저기 href에서 delete 아닌 것 같음...-->
-                                                <button class="btn btn-light"
-                                                        onclick="location.href='/admin/manage-banner/banDelete?banNo=${item.banNo}'">
-                                                    삭제
-                                                </button>
+                                <c:set var="popupData" value="${popupList}"/>
+                                <c:choose>
+                                    <c:when test="${popupData.isEmpty() eq true}">
+                                        <h6>현재 팝업 컨탠츠 없음</h6>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <h6 class="card-title">현재 팝업 컨텐츠</h6>
+                                        <form class="forms-sample">
+                                            <img src="${popupData.get(popupData.size()-1).img}">
+                                            <!--<div class="form-group row">
+                                            <span class="col-sm-3 col-form-label">강의명</span>
+                                            <div class="col-sm-9">
+                                                <button class="btn btn-primary mr-2">수정</button>
+                                                <button class="btn btn-light">삭제</button>
                                             </div>
-                                            <br><br>
-                                            </li>
-                                        </c:forEach>
-
-                                    </ul>
-
-                                </form>
+                                        </div>-->
+                                        </form>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -162,27 +147,13 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">배너 등록</h6>
-                                <form class="forms-sample" method="post" action="/admin/login/banUpload" enctype="multipart/form-data">
+                                <h6 class="card-title">팝업 등록</h6>
+                                <form class="forms-sample" method="post" action="/admin/login/manage-popup/popupUpload" enctype="multipart/form-data">
                                     <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">배너 이름</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2"
-                                                placeholder="배너 이름" name="banTitle">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">배너 내용</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputEmail2"
-                                                autocomplete="off" placeholder="배너 내용" name="banContent">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">배너 이미지</label>
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">팝업 이미지</label>
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" id="exampleInputPassword2"
-                                                autocomplete="off" name="banImg">
+                                                autocomplete="off" name="popoupImg">
                                         </div>
                                     </div>
 

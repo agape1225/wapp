@@ -19,10 +19,10 @@ public class UserController {
     @Autowired
     ServletContext servletContext;
 
-
+    @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user/login/userDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "userNo") String userNo) {
 
         try {

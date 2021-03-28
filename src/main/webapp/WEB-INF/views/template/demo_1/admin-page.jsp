@@ -70,6 +70,13 @@
                             <span class="link-title">배너</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/login/manage-popup" class="nav-link">
+                            <i class="link-icon" data-feather="feather"></i>
+                            <span class="link-title">팝업</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
