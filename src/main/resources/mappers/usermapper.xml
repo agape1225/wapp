@@ -18,4 +18,12 @@
         select * from user where userNo = #{userNo}
     </select>
 
+    <select id="readUserInfoListByUserEmail" resultType="UserDto">
+        select * from user where userEmail = #{userEmail}
+    </select>
+
+    <insert id="insertUser">
+        insert into user(userName, userEmail, userRegDate, userPw)
+        values(#{userName}, #{userEmail}, #{userRegDate}, #{userPw})
+    </insert>
 </mapper>
