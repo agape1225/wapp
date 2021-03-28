@@ -49,18 +49,4 @@ public class UserController {
 
         return "user/login/user_data";
     }
-
-    @GetMapping("/user/register")
-    public String test2(Model model){
-        try{
-            System.out.println("Start signUp Page");
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "userRegister";
-    }
-
-
-
 }
