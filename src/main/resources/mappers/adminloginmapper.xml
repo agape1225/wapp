@@ -7,8 +7,4 @@
     <select id="getLoginInfo" resultType="AdminLoginDto">
         select * from admin_login
     </select>
-    <insert id="registerLoginInfo">
-        insert into admin_login(id, password)
-        VALUES(#{id}, #{password})
-    </insert>
 </mapper>

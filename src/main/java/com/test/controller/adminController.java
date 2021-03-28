@@ -30,20 +30,6 @@ public class adminController {
         return "adminLogin";
     }
 
-    @PostMapping("admin/register")
-    public String register(@RequestParam(value = "adminId") String id,
-                           @RequestParam(value = "adminPassword") String password)
-    {
-        try{
-            System.out.println("admin register");
-            System.out.println("ID = " + id + " password = " + password);
-            adminloginService.registerLoginInfo(id, password);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "adminLogin";
-    }
 
     @GetMapping("admin/login/admin-page")
     public String admin_page(Model model){
@@ -55,6 +41,7 @@ public class adminController {
         }
         return "template/demo_1/admin-page";
     }
+
 
     @GetMapping("admin/login/manage-banner")
     public String manage_banner(Model model){
@@ -103,22 +90,11 @@ public class adminController {
             System.out.println("id: " + id);
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
-            boolean isIdAndPasswordCorrect = false;
-            AdminLoginDto insert = new AdminLoginDto();
-            for (AdminLoginDto result : loginInfo) {
-                if(id.equals(result.getId()) && password.equals(result.getPassword())){
-                    isIdAndPasswordCorrect = true;
-                    insert = result;
-                    break;
-                }
-            }
-
-
-
+            AdminLoginDto result = loginInfo.get(0);
             //model.addAttribute("img", "/resources/img/test.png");
 
-            if(isIdAndPasswordCorrect){
-                session.setAttribute("adminLogin",insert);
+            if(id.equals(result.getId()) && password.equals(result.getPassword())){
+                session.setAttribute("adminLogin",result);
                 return "template/demo_1/admin-page";
             }else{
                 return "adminLogin";

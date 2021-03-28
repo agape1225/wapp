@@ -7,6 +7,4 @@ import java.util.ArrayList;
 
 public interface AdminLoginMapper {
     ArrayList<AdminLoginDto> getLoginInfo();
-    void registerLoginInfo(@Param("id") String id,
-                                    @Param("password") String password);
 }

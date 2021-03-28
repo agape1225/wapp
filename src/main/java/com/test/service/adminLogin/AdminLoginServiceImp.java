@@ -19,9 +19,4 @@ public class AdminLoginServiceImp implements AdminLoginService{
         return loginInfo;
 
     }
-
-    @Override
-    public void registerLoginInfo(String id, String password) {
-        adminLoginDao.registerLoginInfo(id, password);
-    }
 }

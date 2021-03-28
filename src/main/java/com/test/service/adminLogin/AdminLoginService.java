@@ -6,5 +6,4 @@ import java.util.ArrayList;
 
 public interface AdminLoginService {
     ArrayList<AdminLoginDto> getLoginInfo();
-    void registerLoginInfo(String id, String password);
 }

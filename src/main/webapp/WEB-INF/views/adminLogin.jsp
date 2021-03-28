@@ -19,32 +19,7 @@
     <button>로그인</button>
 </form>
 
-<div class="col-md-6 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h6 class="card-title">회원 가입</h6>
-            <form class="forms-sample" action="/admin/register" enctype="multipart/form-data"
-                  method="post">
-                <div class="form-group row">
-                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputUsername2"
-                               placeholder="아이디" name="adminId">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputEmail2"
-                               autocomplete="off" placeholder="비밀번호" name="adminPassword">
-                    </div>
-                </div>
 
-                <button type="submit" class="btn btn-primary mr-2">등록</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

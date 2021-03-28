@@ -25,14 +25,4 @@ public class AdminLoginDao {
 
         }
     }
-
-    public void registerLoginInfo(String id, String password){
-        try {
-            AdminLoginMapper adminLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
-            //TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-            adminLoginMapper.registerLoginInfo(id, password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
