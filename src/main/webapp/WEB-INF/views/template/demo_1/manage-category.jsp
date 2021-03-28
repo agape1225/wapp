@@ -94,6 +94,7 @@
                             <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
                         </div>
                     </form>
+                </div>
             </nav>
 
             <!-- partial -->

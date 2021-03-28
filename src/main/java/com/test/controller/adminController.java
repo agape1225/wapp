@@ -5,10 +5,7 @@ import com.test.service.adminLogin.AdminLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +23,21 @@ public class adminController {
     public String main(Model model){
         try{
             System.out.println("Start adminLogin");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "adminLogin";
+    }
+
+    @PostMapping("admin/register")
+    public String register(@RequestParam(value = "adminId") String id,
+                           @RequestParam(value = "adminPassword") String password)
+    {
+        try{
+            System.out.println("admin register");
+            System.out.println("ID = " + id + " password = " + password);
+            adminloginService.registerLoginInfo(id, password);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -91,12 +103,19 @@ public class adminController {
             System.out.println("id: " + id);
             System.out.println("password: " + password);
             ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
-            AdminLoginDto result = loginInfo.get(0);
+            boolean isIdAndPasswordCorrect = false;
+            for (AdminLoginDto result : loginInfo) {
+                if(id.equals(result.getId()) && password.equals(result.getPassword())){
+                    isIdAndPasswordCorrect = true;
+                    break;
+                }
+            }
+
 
 
             //model.addAttribute("img", "/resources/img/test.png");
 
-            if(id.equals(result.getId()) && password.equals(result.getPassword())){
+            if(isIdAndPasswordCorrect){
                 session.setAttribute("adminLogin",result);
                 return "template/demo_1/admin-page";
             }else{
