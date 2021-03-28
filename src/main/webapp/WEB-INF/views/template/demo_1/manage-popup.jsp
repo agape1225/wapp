@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,6 +102,7 @@
                             <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
                         </div>
                     </form>
+                </div>
             </nav>
 
             <!-- partial -->
@@ -110,7 +112,7 @@
                 <nav class="page-breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">MANAGE</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> 강의 </li>
+                        <li class="breadcrumb-item active" aria-current="page"> 팝업 </li>
                     </ol>
                 </nav>
                 <div class="row">
@@ -118,67 +120,40 @@
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">강의 목록</h6>
-                                <form class="forms-sample">
-                                    <!--<div class="form-group row">
-                                    <span class="col-sm-3 col-form-label">강의명</span>
-                                    <div class="col-sm-9">
-                                        <button class="btn btn-primary mr-2">수정</button>
-                                        <button class="btn btn-light">삭제</button>
-                                    </div>
-                                </div>-->
-                                    <ul>
-
-                                        <li class="data">
-                                            <p style="display: inline">강의명</p>
-                                            <div style="float: right;">
-                                                <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">수정</button>
-                                                <!--저기 href에서 delete 아닌 것 같음...-->
-                                                <button class="btn btn-light"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">삭제</button>
+                                <c:set var="popupData" value="${popupList}"/>
+                                <c:choose>
+                                    <c:when test="${popupData.isEmpty() eq true}">
+                                        <h6>현재 팝업 컨탠츠 없음</h6>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <h6 class="card-title">현재 팝업 컨텐츠</h6>
+                                        <form class="forms-sample">
+                                            <img src="${popupData.get(popupData.size()-1).img}">
+                                            <!--<div class="form-group row">
+                                            <span class="col-sm-3 col-form-label">강의명</span>
+                                            <div class="col-sm-9">
+                                                <button class="btn btn-primary mr-2">수정</button>
+                                                <button class="btn btn-light">삭제</button>
                                             </div>
-                                            <br><br>
-                                        </li>
-
-                                    </ul>
-
-                                </form>
+                                        </div>-->
+                                        </form>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
 
+
                     <div class="col-md-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">강의 등록</h6>
-                                <form class="forms-sample" action="/admin/login/lecUpload" enctype="multipart/form-data" method="post">
+                                <h6 class="card-title">팝업 등록</h6>
+                                <form class="forms-sample" method="post" action="/admin/login/manage-popup/popupUpload" enctype="multipart/form-data">
                                     <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">강의명</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2"
-                                                placeholder="강의명" name="lecName">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">카테고리</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputEmail2"
-                                                autocomplete="off" placeholder="카테고리" name="lecCategory">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">수강료</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="exampleInputMobile"
-                                                placeholder="(단위: 원)" name="lecPrice">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">대표 사진</label>
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">팝업 이미지</label>
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" id="exampleInputPassword2"
-                                                autocomplete="off" name="lecImg">
+                                                autocomplete="off" name="popoupImg">
                                         </div>
                                     </div>
 

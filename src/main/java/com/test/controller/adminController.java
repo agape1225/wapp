@@ -1,7 +1,9 @@
 package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
+import com.test.dto.PopupDto;
 import com.test.service.adminLogin.AdminLoginService;
+import com.test.service.popup.PopupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Controller
@@ -20,6 +23,8 @@ public class adminController {
 
     @Autowired
     AdminLoginService adminloginService;
+    @Autowired
+    PopupService popupService;
 
 
     @GetMapping("/admin")
@@ -76,6 +81,22 @@ public class adminController {
             e.printStackTrace();
         }
         return "template/demo_1/manage-lecture";
+    }
+
+    @GetMapping("admin/login/manage-popup")
+    public String manage_popup(Model model){
+        try{
+            System.out.println("Start manage_popup");
+            ArrayList<PopupDto> popupList;
+            popupList = popupService.getPopupList();
+            System.out.println(popupList.get(0).getImg());
+            model.addAttribute("popupList", popupList);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/manage-popup";
     }
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
