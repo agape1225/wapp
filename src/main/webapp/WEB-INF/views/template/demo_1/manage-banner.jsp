@@ -123,17 +123,26 @@
                                 </div>-->
                                     <ul>
 
-                                        <li class="data">
-                                            <p style="display: inline">배너</p>
+                                        <c:forEach varStatus="i" var="item" items="${bannerList}" end="4">
+
+                                            <li class="data">
+                                            <li class="photo">
+                                                <img src="${item.banImg}" width="100" height="100">
+                                            </li>
+                                            <p style="display: inline">${item.banTitle}</p>
+                                            <p style="display: inline">/${item.banCount}</p>
+                                            <p style="display: inline">/${item.banContent}</p>
+                                            <p style="display: inline">/${item.lecRegDate}</p>
                                             <div style="float: right;">
-                                                <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">수정</button>
                                                 <!--저기 href에서 delete 아닌 것 같음...-->
                                                 <button class="btn btn-light"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">삭제</button>
+                                                        onclick="location.href='/admin/manage-banner/banDelete?banNo=${item.banNo}'">
+                                                    삭제
+                                                </button>
                                             </div>
                                             <br><br>
-                                        </li>
+                                            </li>
+                                        </c:forEach>
 
                                     </ul>
 

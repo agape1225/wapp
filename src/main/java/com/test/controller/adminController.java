@@ -67,7 +67,10 @@ public class adminController {
     }
 
 
+    /*@GetMapping("admin/manage-lecture")
+
     @GetMapping("admin/login/manage-lecture")
+
     public String manage_lecture(Model model){
         try{
             System.out.println("Start manage_lecture");
@@ -76,7 +79,7 @@ public class adminController {
             e.printStackTrace();
         }
         return "template/demo_1/manage-lecture";
-    }
+    }*/
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String adminLogin(Model model,

@@ -66,7 +66,7 @@ public class BannerController {
         return "template/demo_1/manage-banner";
     }
 
-    @RequestMapping(value = "/admin/login/banDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/manage-banner/banDelete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "banNo") String banNo) {
 
         try {

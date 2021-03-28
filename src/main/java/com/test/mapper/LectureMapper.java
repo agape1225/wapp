@@ -4,7 +4,7 @@ import com.test.dto.LectureDto;
 import org.apache.ibatis.annotations.Param;
 import java.util.ArrayList;
 
-public interface lectureMapper {
+public interface LectureMapper {
     ArrayList<LectureDto> readBasicDataList();
     void insertLecture(@Param("category") String category,
                        @Param("name") String name,
