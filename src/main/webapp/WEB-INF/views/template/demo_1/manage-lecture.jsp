@@ -39,6 +39,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
+<<<<<<< HEAD
             </div>
         </div>
 
@@ -54,6 +55,8 @@
                     <span></span>
                     <span></span>
                     <span></span>
+=======
+>>>>>>> 070142e319a231684e32d7401062fc945cdc3e0a
                 </div>
             </div>
             <div class="sidebar-body">
@@ -95,6 +98,7 @@
                     </li>
                 </ul>
             </div>
+<<<<<<< HEAD
         </nav>
 
 
@@ -131,7 +135,10 @@
             </ul>
         </div>
         </div>
+=======
+>>>>>>> 070142e319a231684e32d7401062fc945cdc3e0a
     </nav>
+
 
     <!-- partial -->
 
