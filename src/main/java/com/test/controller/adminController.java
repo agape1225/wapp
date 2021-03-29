@@ -71,8 +71,7 @@ public class adminController {
         return "template/demo_1/manage-category";
     }
 
-
-    /*@GetMapping("admin/manage-lecture")
+    //@GetMapping("admin/manage-lecture")
 
     @GetMapping("admin/login/manage-lecture")
 
@@ -84,7 +83,7 @@ public class adminController {
             e.printStackTrace();
         }
         return "template/demo_1/manage-lecture";
-    }*/
+    }
 
     @GetMapping("admin/login/manage-popup")
     public String manage_popup(Model model){

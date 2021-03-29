@@ -39,8 +39,10 @@
                 <span></span>
                 <span></span>
                 <span></span>
+            </div>
+        </div>
 
-    <div class="main-wrapper">
+        <div class="main-wrapper">
 
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar">
@@ -92,9 +94,10 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
-        </div>
+        </nav>
+
+
         <div class="sidebar-body">
             <ul class="nav">
                 <li class="nav-item nav-category">HOME</li>
@@ -127,6 +130,7 @@
                 </li>
             </ul>
         </div>
+        </div>
     </nav>
 
     <!-- partial -->
@@ -149,6 +153,7 @@
                         <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
                     </div>
                 </form>
+            </div>
         </nav>
 
         <!-- partial -->
@@ -212,7 +217,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">강의 등록</h6>
-                            <form class="forms-sample" action="/admin/login/lecUpload" enctype="multipart/form-data"
+                            <form class="forms-sample" action="/admin/login/manage-lecture/lecUpload" enctype="multipart/form-data"
                                   method="post">
                                 <div class="form-group row">
                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">강의명</label>

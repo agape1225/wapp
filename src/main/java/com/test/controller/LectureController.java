@@ -53,7 +53,7 @@ public class LectureController {
         return "redirect:/admin/manage-lecture";
     }
 
-    @RequestMapping(value = "/admin/login/lecUpload", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login/manage-lecture/lecUpload", method = RequestMethod.POST)
     public String insert(@RequestParam(value = "lecCategory") String lecCategory,
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
@@ -98,7 +98,7 @@ public class LectureController {
         map.put("password", "1234");
         redirect.addFlashAttribute("vo", map);
 
-        return "redirect:/admin/login";
+        return "redirect:/admin/login/manage-lecture";
     }
 
     @GetMapping("/admin/login/update/{lecNo}")

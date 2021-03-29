@@ -81,7 +81,7 @@
         </div>
         <div class="bar__column">
           <span>크리에이터 지원</span>
-          <span><a href="admin">관리자 로그인</a> </span>
+          <span>로그인</span>
         </div>
       </div>
       <div class="menu">
