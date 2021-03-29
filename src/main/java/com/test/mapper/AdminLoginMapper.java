@@ -1,6 +1,7 @@
 package com.test.mapper;
 
 import com.test.dto.AdminLoginDto;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
 
