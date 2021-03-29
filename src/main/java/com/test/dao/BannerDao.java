@@ -1,9 +1,7 @@
 package com.test.dao;
 
 import com.test.dto.BannerDto;
-import com.test.dto.LectureDto;
 import com.test.mapper.BannerMapper;
-import com.test.mapper.lectureMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

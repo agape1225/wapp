@@ -2,6 +2,7 @@ package com.test.dao;
 
 import com.test.dto.AdminLoginDto;
 import com.test.mapper.AdminLoginMapper;
+import com.test.mapper.LectureMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,14 +14,15 @@ public class AdminLoginDao {
     @Autowired
     SqlSession sqlSession;
 
-    public ArrayList<AdminLoginDto> getLoginInfo(){
-        try{
+    public ArrayList<AdminLoginDto> getLoginInfo() {
+        try {
             AdminLoginMapper adminLoginMapper = sqlSession.getMapper(AdminLoginMapper.class);
             ArrayList<AdminLoginDto> loginInfo = adminLoginMapper.getLoginInfo();
             return loginInfo;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
+
         }
     }
 }

@@ -27,189 +27,205 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
+<div class="main-wrapper">
 
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <a href="admin-page.jsp" class="sidebar-brand">
-                    Noble<span>UI</span>
-                </a>
-                <div class="sidebar-toggler not-active">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <a href="admin-page.jsp" class="sidebar-brand">
+                Noble<span>UI</span>
+            </a>
+            <div class="sidebar-toggler not-active">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="sidebar-body">
-                <ul class="nav">
-                    <li class="nav-item nav-category">HOME</li>
-                    <li class="nav-item">
-                        <a href="/admin/login/admin-page" class="nav-link">
-                            <i class="link-icon" data-feather="box"></i>
-                            <span class="link-title">Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">MANAGE</li>
+        </div>
+        <div class="sidebar-body">
+            <ul class="nav">
+                <li class="nav-item nav-category">HOME</li>
+                <li class="nav-item">
+                    <a href="/admin/login/admin-page" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">MANAGE</li>
 
-                    <li class="nav-item">
-                        <a href="/admin/login/manage-lecture" class="nav-link">
-                            <i class="link-icon" data-feather="message-square"></i>
-                            <span class="link-title">강의</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/admin/login/manage-category" class="nav-link">
-                            <i class="link-icon" data-feather="calendar"></i>
-                            <span class="link-title">카테고리</span>
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a href="/admin/login/manage-lecture" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">강의</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/login/manage-category" class="nav-link">
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">카테고리</span>
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a href="/admin/login/manage-banner" class="nav-link">
-                            <i class="link-icon" data-feather="feather"></i>
-                            <span class="link-title">배너</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a href="/admin/login/manage-banner" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">배너</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/login/manage-popup" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">팝업</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- partial -->
+
+    <div class="page-wrapper">
+
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar">
+            <a href="#" class="sidebar-toggler">
+                <i data-feather="menu"></i>
+            </a>
+            <div class="navbar-content">
+                <form class="search-form">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i data-feather="search"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                    </div>
+                </form>
         </nav>
 
         <!-- partial -->
 
-        <div class="page-wrapper">
+        <div class="page-content">
 
-            <!-- partial:partials/_navbar.html -->
-            <nav class="navbar">
-                <a href="#" class="sidebar-toggler">
-                    <i data-feather="menu"></i>
-                </a>
-                <div class="navbar-content">
-                    <form class="search-form">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i data-feather="search"></i>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-                        </div>
-                    </form>
+            <nav class="page-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">MANAGE</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> 배너 </li>
+                </ol>
             </nav>
+            <div class="row">
 
-            <!-- partial -->
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">배너 목록</h6>
+                            <form class="forms-sample">
+                                <!--<div class="form-group row">
+                                <span class="col-sm-3 col-form-label">강의명</span>
+                                <div class="col-sm-9">
+                                    <button class="btn btn-primary mr-2">수정</button>
+                                    <button class="btn btn-light">삭제</button>
+                                </div>
+                            </div>-->
+                                <ul>
 
-            <div class="page-content">
-
-                <nav class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">MANAGE</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> 배너 </li>
-                    </ol>
-                </nav>
-                <div class="row">
-
-                    <div class="col-md-6 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">배너 목록</h6>
-                                <form class="forms-sample">
-                                    <!--<div class="form-group row">
-                                    <span class="col-sm-3 col-form-label">강의명</span>
-                                    <div class="col-sm-9">
-                                        <button class="btn btn-primary mr-2">수정</button>
-                                        <button class="btn btn-light">삭제</button>
-                                    </div>
-                                </div>-->
-                                    <ul>
+                                    <c:forEach varStatus="i" var="item" items="${bannerList}" end="4">
 
                                         <li class="data">
-                                            <p style="display: inline">배너</p>
-                                            <div style="float: right;">
-                                                <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">수정</button>
-                                                <!--저기 href에서 delete 아닌 것 같음...-->
-                                                <button class="btn btn-light"
-                                                    onclick="location.href='/delete.do?number=${item.number}'">삭제</button>
-                                            </div>
-                                            <br><br>
+                                        <li class="photo">
+                                            <img src="${item.banImg}" width="100" height="100">
                                         </li>
+                                        <p style="display: inline">${item.banTitle}</p>
+                                        <p style="display: inline">/${item.banCount}</p>
+                                        <p style="display: inline">/${item.banContent}</p>
+                                        <p style="display: inline">/${item.lecRegDate}</p>
+                                        <div style="float: right;">
+                                            <!--저기 href에서 delete 아닌 것 같음...-->
+                                            <button class="btn btn-light"
+                                                    onclick="location.href='/admin/manage-banner/banDelete?banNo=${item.banNo}'">
+                                                삭제
+                                            </button>
+                                        </div>
+                                        <br><br>
+                                        </li>
+                                    </c:forEach>
 
-                                    </ul>
+                                </ul>
 
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
+                </div>
 
 
-                    <div class="col-md-6 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">배너 등록</h6>
-                                <form class="forms-sample" method="post" action="/admin/login/banUpload" enctype="multipart/form-data">
-                                    <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">배너 이름</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputUsername2"
-                                                placeholder="배너 이름" name="banTitle">
-                                        </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">배너 등록</h6>
+                            <form class="forms-sample" method="post" action="/admin/login/banUpload" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">배너 이름</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="exampleInputUsername2"
+                                               placeholder="배너 이름" name="banTitle">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">배너 내용</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="exampleInputEmail2"
-                                                autocomplete="off" placeholder="배너 내용" name="banContent">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">배너 내용</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="exampleInputEmail2"
+                                               autocomplete="off" placeholder="배너 내용" name="banContent">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">배너 이미지</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" class="form-control" id="exampleInputPassword2"
-                                                autocomplete="off" name="banImg">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">배너 이미지</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" class="form-control" id="exampleInputPassword2"
+                                               autocomplete="off" name="banImg">
                                     </div>
+                                </div>
 
-                                    <button type="submit" class="btn btn-primary mr-2">등록</button>
-                                </form>
-                            </div>
+                                <button type="submit" class="btn btn-primary mr-2">등록</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            <!-- partial:partials/_footer.html -->
-            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © 2020 <a href="https://www.nobleui.com"
-                        target="_blank">NobleUI</a>. All rights reserved</p>
-                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i
-                        class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
-            </footer>
-            <!-- partial -->
-
         </div>
-    </div>
 
-    <!-- core:js -->
-    <script src="${path}/resources/assets/vendors/core/core.js"></script>
-    <!-- endinject -->
-    <!-- plugin js for this page -->
-    <script src="${path}/resources/assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="${path}/resources/assets/vendors/jquery.flot/jquery.flot.js"></script>
-    <script src="${path}/resources/assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
-    <script src="${path}/resources/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <script src="${path}/resources/assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="${path}/resources/assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <!-- end plugin js for this page -->
-    <!-- inject:js -->
-    <script src="${path}/resources/assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="${path}/resources/assets/js/template.js"></script>
-    <!-- endinject -->
-    <!-- custom js for this page -->
-    <script src="${path}/resources/assets/js/dashboard.js"></script>
-    <script src="${path}/resources/assets/js/datepicker.js"></script>
-    <!-- end custom js for this page -->
+
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <p class="text-muted text-center text-md-left">Copyright © 2020 <a href="https://www.nobleui.com"
+                                                                               target="_blank">NobleUI</a>. All rights reserved</p>
+            <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i
+                    class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
+        </footer>
+        <!-- partial -->
+
+    </div>
+</div>
+
+<!-- core:js -->
+<script src="${path}/resources/assets/vendors/core/core.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="${path}/resources/assets/vendors/chartjs/Chart.min.js"></script>
+<script src="${path}/resources/assets/vendors/jquery.flot/jquery.flot.js"></script>
+<script src="${path}/resources/assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
+<script src="${path}/resources/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="${path}/resources/assets/vendors/apexcharts/apexcharts.min.js"></script>
+<script src="${path}/resources/assets/vendors/progressbar.js/progressbar.min.js"></script>
+<!-- end plugin js for this page -->
+<!-- inject:js -->
+<script src="${path}/resources/assets/vendors/feather-icons/feather.min.js"></script>
+<script src="${path}/resources/assets/js/template.js"></script>
+<!-- endinject -->
+<!-- custom js for this page -->
+<script src="${path}/resources/assets/js/dashboard.js"></script>
+<script src="${path}/resources/assets/js/datepicker.js"></script>
+<!-- end custom js for this page -->
 </body>
 
 </html>
