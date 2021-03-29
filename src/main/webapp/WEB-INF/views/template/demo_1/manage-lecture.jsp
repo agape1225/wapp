@@ -39,7 +39,6 @@
                 <span></span>
                 <span></span>
                 <span></span>
-<<<<<<< HEAD
             </div>
         </div>
 
@@ -55,8 +54,6 @@
                     <span></span>
                     <span></span>
                     <span></span>
-=======
->>>>>>> 070142e319a231684e32d7401062fc945cdc3e0a
                 </div>
             </div>
             <div class="sidebar-body">
@@ -135,8 +132,6 @@
             </ul>
         </div>
         </div>
-=======
->>>>>>> 070142e319a231684e32d7401062fc945cdc3e0a
     </nav>
 
 
@@ -188,24 +183,25 @@
                                 </div>
                             </div>-->
                                 <ul>
-                                    <c:forEach varStatus="i" var="item" items="${lectureList}" end="4">
+                                    <c:forEach varStatus="i" var="item" items="${lectureList}">
 
                                         <li class="data">
                                         <li class="photo">
                                             <img src="${item.lecImg}" width="100" height="100">
                                         </li>
+                                        <p style="display: inline">${item.lecNo}</p>
                                         <p style="display: inline">${item.lecName}</p>
                                         <p style="display: inline">/${item.lecCategory}</p>
                                         <p style="display: inline">/${item.lecPrice}원</p>
                                         <p style="display: inline">/${item.lecRegDate}</p>
                                         <div style="float: right;">
                                             <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='http://localhost:8080/admin/login/update/${item.lecNo}'">
+                                                    onclick="location.href='/admin/login/update/${item.lecNo}'">
                                                 수정
                                             </button>
                                             <!--저기 href에서 delete 아닌 것 같음...-->
                                             <button class="btn btn-light"
-                                                    onclick="location.href='/admin/manage-lecture/lecDelete?lecNo=${item.lecNo}'">
+                                                    onclick="location.href='/lecDelete?lecNo=${item.lecNo}'">
                                                 삭제
                                             </button>
                                         </div>

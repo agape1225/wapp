@@ -30,7 +30,7 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/login/manage-lecture")
+    /*@GetMapping("/admin/login/manage-lecture")
     public String test(Model model) {
         try {
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
@@ -39,18 +39,19 @@ public class LectureController {
             e.printStackTrace();
         }
         return "template/demo_1/manage-lecture";
-    }
-
-    @RequestMapping(value = "/admin/login/manage-lecture/lecDelete", method = RequestMethod.GET)
-    public String delete(@RequestParam(value = "lecNo") String lecNo) {
+    }*/
+    @RequestMapping(value   = "/admin/login/manage-lecture/lecDelete",
+                    method  = RequestMethod.GET)
+    public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
+        System.out.println("Start delLecture");
 
         try {
-            System.out.println("lecNo: " + lecNo);
+            System.out.println("lecNo: \n\n\n" + lecNo);
             lectureService.deleteLecture(lecNo);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/manage-lecture";
+        return "redirect:/admin/login/manage-lecture";
     }
 
     @RequestMapping(value = "/admin/login/manage-lecture/lecUpload", method = RequestMethod.POST)

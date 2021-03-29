@@ -1,8 +1,10 @@
 package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
+import com.test.dto.LectureDto;
 import com.test.dto.PopupDto;
 import com.test.service.adminLogin.AdminLoginService;
+import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class adminController {
     AdminLoginService adminloginService;
     @Autowired
     PopupService popupService;
+    @Autowired
+    LectureService lectureService;
 
 
     @GetMapping("/admin")
@@ -53,6 +57,7 @@ public class adminController {
         try{
             System.out.println("Start manage_banner");
 
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -77,6 +82,16 @@ public class adminController {
     public String manage_lecture(Model model){
         try{
             System.out.println("Start manage_lecture");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+
+            if(lectureList.size() > 5){
+                while(lectureList.size() > 5){
+                    lectureList.remove(0);
+                }
+            }
+
+            model.addAttribute("lectureList", lectureList);
+            System.out.println("end manageLecture");
 
         }catch (Exception e){
             e.printStackTrace();
