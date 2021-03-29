@@ -30,7 +30,7 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    @GetMapping("/admin/manage-lecture")
+    @GetMapping("/admin/login/manage-lecture")
     public String test(Model model) {
         try {
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
@@ -41,7 +41,7 @@ public class LectureController {
         return "template/demo_1/manage-lecture";
     }
 
-    @RequestMapping(value = "/admin/manage-lecture/lecDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login/manage-lecture/lecDelete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "lecNo") String lecNo) {
 
         try {
