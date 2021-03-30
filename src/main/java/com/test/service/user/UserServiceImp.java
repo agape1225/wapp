@@ -1,6 +1,7 @@
 package com.test.service.user;
 
 import com.test.dao.UserDao;
+import com.test.dto.TestDto;
 import com.test.dto.UserDto;
 import com.test.dto.UserInsertDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,9 @@ public class UserServiceImp implements UserService {
 
     @Override
     public ArrayList<UserDto> readUserInfoList() {
-        return userDao.readUserInfoList();
+
+        ArrayList<UserDto> userInfoList = userDao.readUserInfoList();
+        return userInfoList;
     }
 
     @Override

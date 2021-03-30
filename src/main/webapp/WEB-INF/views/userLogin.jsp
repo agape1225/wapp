@@ -25,5 +25,22 @@
     <img src="/resources/img/kakao_login_medium.png">
 </a>
 
+<h1 style="margin-bottom: 0">로그인 리스트</h1>
+<div class="dataList">
+    <div class="data">
+        <ul>
+            <c:forEach varStatus="i" var="item" items="${userList}">
+                <li class="data">
+                    <p style="display: inline">${item.userName}</p>
+<%--                    <div style="float: right;">--%>
+<%--                    <button onclick="location.href='/deleteUser?userNo=${item.userNo}'">삭제</button>--%>
+<%--                    </div>--%>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
+
+
 </body>
 </html>
