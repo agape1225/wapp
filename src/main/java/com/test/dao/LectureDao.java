@@ -102,4 +102,17 @@ public class LectureDao {
 
         }
     }
+
+    public ArrayList<LectureDto> readBasicDataListByUserNo(String userNo) {
+        try {
+            LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
+            System.out.println("dao: " + userNo);
+            ArrayList<LectureDto> lectureInfoList = lecMapper.readBasicDataListByUserNo(userNo);
+            return lectureInfoList;
+        } catch (Exception e) {
+            System.out.println("what error ㅜㅜ");
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

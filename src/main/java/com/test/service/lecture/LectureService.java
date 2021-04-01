@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public interface LectureService {
     ArrayList<LectureDto> readBasicDataList();
 
+    ArrayList<LectureDto> readBasicDatListByUserNo(String userNo);
+
     void insertLecture(String category, String name, String price, String date, String img);
 
     void deleteLecture(String lecNo);
