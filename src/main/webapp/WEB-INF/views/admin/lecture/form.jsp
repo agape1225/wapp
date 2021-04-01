@@ -47,7 +47,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
-                            <form action="/admin/addLecture.do" method="post" enctype="multipart/form-data">
+                            <form action="/admin/login/addLecture.do" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
                                     <input type="text" oninput="btn_status()" class="form-control"
@@ -69,7 +69,7 @@
 
                                 <div class="form-group">
                                     <label>Image upload</label>
-                                    <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1"
+                                    <input type="file" oninput="btn_status()" name="lecImg" id="exampleImage1"
                                            class="file-upload-default">
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info"

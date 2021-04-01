@@ -186,7 +186,6 @@
                 <div style="color: gray" class="class-description">단 24시간, 최저가로 만나보세요</div>
             </div>
             <div class="swiper-container">
-                <p>1</p>
                 <div class="swiper-wrapper">
                     <c:forEach varStatus="i" var="item" items="${lectureList}">
                     <div class="swiper-slide">
@@ -205,7 +204,7 @@
                                 <span class="total-month"> (?개월)(이벤트기간)</span>
                             </div>
                         </div>
-                    </div>e
+                    </div>
                     </c:forEach>
                 </div>
                 <!-- Add Arrows -->

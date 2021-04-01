@@ -54,7 +54,9 @@ public class LectureController {
         return "redirect:/admin/login/manage-lecture";
     }
 
-    @RequestMapping(value = "/admin/login/manage-lecture/lecUpload", method = RequestMethod.POST)
+///
+
+    @RequestMapping(value = "/admin/login/addLecture.do", method = RequestMethod.POST)
     public String insert(@RequestParam(value = "lecCategory") String lecCategory,
                          @RequestParam(value = "lecName") String lecName,
                          @RequestParam(value = "lecPrice") String lecPrice,
@@ -77,7 +79,8 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder =   "files" +File.separator + "img" + File.separator;
+        //webappRoot = webappRoot.replace("/","");
+        String relativeFolder =  "files" + File.separator + "img" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
@@ -99,8 +102,75 @@ public class LectureController {
         map.put("password", "1234");
         redirect.addFlashAttribute("vo", map);
 
-        return "redirect:/admin/login/manage-lecture";
+        return "redirect:/admin/login/lecture/data-table.do";
     }
+///admin/popup/edit.do
+@RequestMapping(value   = "/admin/lecture/edit.do",
+                method  = {RequestMethod.GET, RequestMethod.POST} )
+public String update_lecture(@RequestParam(value = "lecNo") String lecNo,  Model model) {
+    System.out.println("Start update ecture");
+
+
+    try {
+        LectureDto lecDto = lectureService.readBasicDataByLecNo(lecNo);
+        model.addAttribute("lecture",lecDto);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return "admin/lecture/edit";
+}
+
+
+
+//    @RequestMapping(value = "/admin/login/manage-lecture/lecUpload", method = RequestMethod.POST)
+//    public String insert(@RequestParam(value = "lecCategory") String lecCategory,
+//                         @RequestParam(value = "lecName") String lecName,
+//                         @RequestParam(value = "lecPrice") String lecPrice,
+//                         @RequestParam("lecImg") MultipartFile file,
+//                         RedirectAttributes   redirect,
+//                         HttpServletRequest request) throws IOException {
+//
+//        // String path = new
+//        // ClassPathResource("/src/main/resources/uploads").getPath();
+//
+//        // FileCopyUtils.copy(file.getBytes(), new File(path));
+//
+//        Date d = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        String date = sdf.format(d);
+//
+//        System.out.println(lecCategory);
+//        System.out.println(lecName);
+//        System.out.println(lecPrice);
+//        System.out.println(date);
+//
+//        String webappRoot = servletContext.getRealPath("/");
+//        //webappRoot = webappRoot.replace("/","");
+//        String relativeFolder =  "files" + File.separator + "img" + File.separator;
+//        System.out.println(webappRoot);
+//        System.out.println(relativeFolder);
+//
+//        String filename = webappRoot + relativeFolder + file.getOriginalFilename();
+//        String lecFileName = relativeFolder + file.getOriginalFilename();
+//
+//        System.out.println(lecCategory);
+//        System.out.println(lecName);
+//        System.out.println(lecPrice);
+//        System.out.println(date);
+//        System.out.println(lecFileName);
+//
+//        FileCopyUtils.copy(file.getBytes(), new File(filename));
+//
+//        lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
+//
+//        Map<String, Object> map = new HashMap<String,Object>();
+//        map.put("id", "root");
+//        map.put("password", "1234");
+//        redirect.addFlashAttribute("vo", map);
+//
+//        return "redirect:/admin/login/manage-lecture";
+//    }
 
     @GetMapping("/admin/login/update/{lecNo}")
     public String lectureUpdate(@PathVariable(value = "lecNo") String lecNo, Model model) {

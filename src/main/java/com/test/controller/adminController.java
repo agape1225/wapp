@@ -137,7 +137,6 @@ public class adminController {
         }
         return "admin/lecture/data-table";
     }
-
     @GetMapping("admin/login/popup/form.do")
     public String manage_popup(Model model){
         try{
@@ -162,7 +161,6 @@ public class adminController {
             popupList = popupService.getPopupList();
             System.out.println(popupList.get(0).getImg());
             model.addAttribute("popupList", popupList);
-
 
         }catch (Exception e){
             e.printStackTrace();
