@@ -93,6 +93,13 @@
                             <span class="link-title">팝업</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/login/manage-user" class="nav-link">
+                            <i class="link-icon" data-feather="message-square"></i>
+                            <span class="link-title">유저</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 <<<<<<< HEAD
@@ -127,6 +134,13 @@
                     <a href="manage-banner" class="nav-link">
                         <i class="link-icon" data-feather="feather"></i>
                         <span class="link-title">배너</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/login/manage-user" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">유저</span>
                     </a>
                 </li>
             </ul>

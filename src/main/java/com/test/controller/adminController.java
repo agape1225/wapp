@@ -4,9 +4,11 @@ import com.mysql.cj.x.protobuf.MysqlxCrud;
 import com.test.dto.AdminLoginDto;
 import com.test.dto.LectureDto;
 import com.test.dto.PopupDto;
+import com.test.dto.UserDto;
 import com.test.service.adminLogin.AdminLoginService;
 import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
+import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ public class adminController {
     PopupService popupService;
     @Autowired
     LectureService lectureService;
+    @Autowired
+    UserService userService;
 
 
     @GetMapping("/admin")
@@ -118,7 +122,32 @@ public class adminController {
             e.printStackTrace();
         }
         return "template/demo_1/manage-popup";
+}
+
+    @GetMapping("admin/login/manage-user")
+
+    public String manage_user(Model model){
+        try{
+            System.out.println("Start manage_user");
+            ArrayList<UserDto> userList = userService.readUserInfoList();
+
+            if(userList.size() > 4){
+                while(userList.size() > 4){
+                    userList.remove(0);
+                }
+            }
+
+            Collections.reverse(userList);
+
+            model.addAttribute("userList", userList);
+            System.out.println("end manageLecture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "template/demo_1/manage-user";
     }
+
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String adminLogin(Model model,

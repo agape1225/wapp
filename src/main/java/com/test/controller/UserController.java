@@ -22,8 +22,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login/manage-user/userDelete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "userNo") String userNo) {
+        System.out.println("Start DeleteUser");
 
         try {
             System.out.println("userNo: " + userNo);
@@ -31,22 +32,32 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/user";
+        return "redirect:/admin/login/manage-user";
     }
 
-    @GetMapping(value = "/user/login/userList")
+    @GetMapping(value = "/admin/login/manage-user/userInfo")
     public String readUserInfoList(Model model){
-        ArrayList<UserDto> userList =  userService.readUserInfoList();
-        model.addAttribute("userList", userList);
-
-        return "user/login/userList";
+        try{
+            System.out.println("user Controller");
+            ArrayList<UserDto> userList =  userService.readUserInfoList();
+            if(userList.size() > 5){
+                while(userList.size() > 5){
+                    userList.remove(0);
+                }
+            }
+            model.addAttribute("userList", userList);
+            System.out.println("end manageLecture");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "/admin/login/manage-user";
     }
 
-    @GetMapping(value = "/user/login/user_data")
-    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
-        UserDto user =  userService.readUserInfoListByUserNo(userNo);
-        model.addAttribute("user_detail", user);
-
-        return "user/login/user_data";
-    }
+//    @GetMapping(value = "/user/login/user_data")
+//    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
+//        UserDto user =  userService.readUserInfoListByUserNo(userNo);
+//        model.addAttribute("user_detail", user);
+//
+//        return "userInfo";
+//    }
 }
