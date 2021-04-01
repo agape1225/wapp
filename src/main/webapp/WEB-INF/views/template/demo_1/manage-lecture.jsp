@@ -44,66 +44,23 @@
 
         <div class="main-wrapper">
 
-            <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar">
-                <div class="sidebar-header">
-                    <a href="admin-page.jsp" class="sidebar-brand">
-                        Noble<span>UI</span>
-                    </a>
-                    <div class="sidebar-toggler not-active">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a href="admin-page.jsp" class="sidebar-brand">
+                    Noble<span>UI</span>
+                </a>
+                <div class="sidebar-toggler not-active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="sidebar-body">
-                    <ul class="nav">
-                        <li class="nav-item nav-category">HOME</li>
-                        <li class="nav-item">
-                            <a href="/admin/login/admin-page" class="nav-link">
-                                <i class="link-icon" data-feather="box"></i>
-                                <span class="link-title">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-item nav-category">MANAGE</li>
-
-                        <li class="nav-item">
-                            <a href="/admin/login/manage-lecture" class="nav-link">
-                                <i class="link-icon" data-feather="message-square"></i>
-                                <span class="link-title">강의</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/login/manage-category" class="nav-link">
-                                <i class="link-icon" data-feather="calendar"></i>
-                                <span class="link-title">카테고리</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/admin/login/manage-banner" class="nav-link">
-                                <i class="link-icon" data-feather="feather"></i>
-                                <span class="link-title">배너</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/admin/login/manage-popup" class="nav-link">
-                                <i class="link-icon" data-feather="feather"></i>
-                                <span class="link-title">팝업</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <<<<<<< HEAD
-            </nav>
-
-
+            </div>
             <div class="sidebar-body">
                 <ul class="nav">
                     <li class="nav-item nav-category">HOME</li>
                     <li class="nav-item">
-                        <a href="admin-page" class="nav-link">
+                        <a href="/admin/login/admin-page" class="nav-link">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Home</span>
                         </a>
@@ -111,26 +68,69 @@
                     <li class="nav-item nav-category">MANAGE</li>
 
                     <li class="nav-item">
-                        <a href="manage-lecture" class="nav-link">
+                        <a href="/admin/login/manage-lecture" class="nav-link">
                             <i class="link-icon" data-feather="message-square"></i>
                             <span class="link-title">강의</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="manage-category" class="nav-link">
+                        <a href="/admin/login/manage-category" class="nav-link">
                             <i class="link-icon" data-feather="calendar"></i>
                             <span class="link-title">카테고리</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="manage-banner" class="nav-link">
+                        <a href="/admin/login/manage-banner" class="nav-link">
                             <i class="link-icon" data-feather="feather"></i>
                             <span class="link-title">배너</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/login/manage-popup" class="nav-link">
+                            <i class="link-icon" data-feather="feather"></i>
+                            <span class="link-title">팝업</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
+<<<<<<< HEAD
+        </nav>
+
+
+        <div class="sidebar-body">
+            <ul class="nav">
+                <li class="nav-item nav-category">HOME</li>
+                <li class="nav-item">
+                    <a href="admin-page" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">MANAGE</li>
+
+                <li class="nav-item">
+                    <a href="manage-lecture" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">강의</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="manage-category" class="nav-link">
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">카테고리</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="manage-banner" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">배너</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
         </div>
     </nav>
 
@@ -186,31 +186,26 @@
                                     <c:forEach varStatus="i" var="item" items="${lectureList}">
 
                                         <li class="data">
-                                        <li class="photo">
-                                            <img src="${item.lecImg}" width="100" height="100">
-                                        </li>
-                                        <p style="display: inline">${item.lecNo}</p>
+                                        <img src="${item.lecImg}" width="100" height="100">
                                         <p style="display: inline">${item.lecName}</p>
                                         <p style="display: inline">/${item.lecCategory}</p>
                                         <p style="display: inline">/${item.lecPrice}원</p>
                                         <p style="display: inline">/${item.lecRegDate}</p>
                                         <div style="float: right;">
                                             <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='/admin/login/update/${item.lecNo}'">
+                                                    onclick="location.href='/admin/login/update?lecNo=${item.lecNo}'">
                                                 수정
                                             </button>
                                             <!--저기 href에서 delete 아닌 것 같음...-->
-                                            <button class="btn btn-light"
-                                                    onclick="location.href='/lecDelete?lecNo=${item.lecNo}'">
+                                            <div class="cursor-pointer"
+                                                    onclick="location.href='/admin/login/manage-lecture/lecDelete?lecNo=${item.lecNo}'">
                                                 삭제
-                                            </button>
+                                            </div>
                                         </div>
                                         <br><br>
                                         </li>
                                     </c:forEach>
-
                                 </ul>
-
                             </form>
                         </div>
                     </div>

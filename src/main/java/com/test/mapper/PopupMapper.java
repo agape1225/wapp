@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface PopupMapper {
     ArrayList<PopupDto> getPopupList();
     void addItem(@Param("popType") String popType,
-                 @Param("popImg") String popImg,
-                 @Param("popRegDate") String popRegDate);
+                    @Param("popImg") String popImg,
+                    @Param("popRegDate") String popRegDate);
     void deletePopup(@Param("data") String data);
 }

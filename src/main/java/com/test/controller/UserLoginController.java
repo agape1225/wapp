@@ -1,6 +1,5 @@
 package com.test.controller;
 
-
 import com.test.dto.UserDto;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 @Controller
 public class UserLoginController {
@@ -23,6 +21,11 @@ public class UserLoginController {
 
     @Autowired
     UserService userService;
+
+    @GetMapping("/user")
+    public String user(Model model){
+        return "login";
+    }
 
     @GetMapping("/user/login")
     public String userLogin(Model model){

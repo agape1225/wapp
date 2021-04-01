@@ -41,7 +41,7 @@ public class LectureController {
         return "template/demo_1/manage-lecture";
     }*/
     @RequestMapping(value   = "/admin/login/manage-lecture/lecDelete",
-            method  = RequestMethod.GET)
+                    method  = RequestMethod.GET)
     public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
         System.out.println("Start delLecture");
 

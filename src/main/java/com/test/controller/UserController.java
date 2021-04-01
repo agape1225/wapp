@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import javax.servlet.ServletContext;
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user/deleteuser", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "userNo") String userNo) {
 
         try {
@@ -35,29 +34,19 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping(value = "/user")
+    @GetMapping(value = "/user/login/userList")
     public String readUserInfoList(Model model){
-        try{
-            System.out.println("user Controller");
-            ArrayList<UserDto> userList =  userService.readUserInfoList();
-            if(userList.size() > 5){
-                while(userList.size() > 5){
-                    userList.remove(0);
-                }
-            }
-            model.addAttribute("userList", userList);
-            System.out.println("end manageLecture");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "user";
+        ArrayList<UserDto> userList =  userService.readUserInfoList();
+        model.addAttribute("userList", userList);
+
+        return "user/login/userList";
     }
 
-//    @GetMapping(value = "/user")
-//    public String readUserInfoListByUserNo(@RequestParam(value = "userNo", required = false) String userNo, Model model){
-//        UserDto user =  userService.readUserInfoListByUserNo(userNo);
-//        model.addAttribute("user_detail", user);
-//
-//        return "user";
-//    }
+    @GetMapping(value = "/user/login/user_data")
+    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
+        UserDto user =  userService.readUserInfoListByUserNo(userNo);
+        model.addAttribute("user_detail", user);
+
+        return "user/login/user_data";
+    }
 }
