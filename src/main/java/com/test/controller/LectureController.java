@@ -80,7 +80,7 @@ public class LectureController {
 
         String webappRoot = servletContext.getRealPath("/");
         //webappRoot = webappRoot.replace("/","");
-        String relativeFolder =  "files" + File.separator + "img" + File.separator;
+        String relativeFolder =  "/files/img/";
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
