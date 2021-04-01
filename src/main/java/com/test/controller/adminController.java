@@ -55,7 +55,7 @@ public class adminController {
     }
 
 
-    @GetMapping("admin/login/manage-banner")
+    @GetMapping("admin/login/banner/form.do")
     public String manage_banner(Model model){
         try{
             System.out.println("Start manage_banner");
@@ -64,7 +64,19 @@ public class adminController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "template/demo_1/manage-banner";
+        return "admin/banner/form";
+    }
+
+    @GetMapping("admin/login/banner/data-table.do")
+    public String banner_manage(Model model){
+        try{
+            System.out.println("Start manage_banner");
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/banner/data-table";
     }
 
     @GetMapping("admin/login/manage-category")
@@ -80,8 +92,7 @@ public class adminController {
 
     //@GetMapping("admin/manage-lecture")
 
-    @GetMapping("admin/login/manage-lecture")
-
+    @GetMapping("admin/login/lecture/form.do")
     public String manage_lecture(Model model){
         try{
             System.out.println("Start manage_lecture");
@@ -101,10 +112,33 @@ public class adminController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "template/demo_1/manage-lecture";
+        return "admin/lecture/form";
     }
 
-    @GetMapping("admin/login/manage-popup")
+    @GetMapping("admin/login/lecture/data-table.do")
+    public String lecture_manage(Model model){
+        try{
+            System.out.println("Start manage_lecture");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+
+            if(lectureList.size() > 4){
+                while(lectureList.size() > 4){
+                    lectureList.remove(0);
+                }
+            }
+
+            Collections.reverse(lectureList);
+
+            model.addAttribute("lectureList", lectureList);
+            System.out.println("end manageLecture");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/lecture/data-table";
+    }
+
+    @GetMapping("admin/login/popup/form.do")
     public String manage_popup(Model model){
         try{
             System.out.println("Start manage_popup");
@@ -117,7 +151,23 @@ public class adminController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "template/demo_1/manage-popup";
+        return "admin/popup/form";
+    }
+
+    @GetMapping("admin/login/popup/data-table.do")
+    public String popup_manage(Model model){
+        try{
+            System.out.println("Start manage_popup");
+            ArrayList<PopupDto> popupList;
+            popupList = popupService.getPopupList();
+            System.out.println(popupList.get(0).getImg());
+            model.addAttribute("popupList", popupList);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/popup/data-table";
     }
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
@@ -135,7 +185,7 @@ public class adminController {
 
             if(id.equals(result.getId()) && password.equals(result.getPassword())){
                 session.setAttribute("adminLogin",result);
-                return "template/demo_1/admin-page";
+                return "admin/home";
             }else{
                 return "adminLogin";
             }

@@ -1,6 +1,8 @@
 package com.test.controller;
 
+import com.test.dto.LectureDto;
 import com.test.dto.TestDto;
+import com.test.service.lecture.LectureService;
 import com.test.service.test.TestService;
 import com.test.util.firebase.FirebaseMessagingSnippets;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,21 @@ public class TestController {
     TestService testService;
     @Autowired
     FirebaseMessagingSnippets firebaseMessagingSnippets;
+    @Autowired
+    LectureService lectureService;
 
     @GetMapping("/")
     public String main(Model model){
         try{
+
+            System.out.printf("Start main");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            System.out.println(lectureList.size());
+            for(int i = 0; i < lectureList.size(); i++){
+                System.out.println(lectureList.get(i).getLecName());
+            }
+            model.addAttribute("lectureList",lectureList);
+            System.out.printf("End main");
 
         }catch (Exception e){
             e.printStackTrace();

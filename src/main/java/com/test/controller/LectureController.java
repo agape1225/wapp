@@ -77,7 +77,7 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "img" + File.separator;
+        String relativeFolder =   "files" +File.separator + "img" + File.separator;
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
