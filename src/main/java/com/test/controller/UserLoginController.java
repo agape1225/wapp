@@ -22,6 +22,11 @@ public class UserLoginController {
     @Autowired
     UserService userService;
 
+    @GetMapping("/user")
+    public String user(Model model){
+        return "login";
+    }
+
     @GetMapping("/user/login")
     public String userLogin(Model model){
         return "userLogin";

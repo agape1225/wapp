@@ -186,31 +186,26 @@
                                     <c:forEach varStatus="i" var="item" items="${lectureList}">
 
                                         <li class="data">
-                                        <li class="photo">
-                                            <img src="${item.lecImg}" width="100" height="100">
-                                        </li>
-                                        <p style="display: inline">${item.lecNo}</p>
+                                        <img src="${item.lecImg}" width="100" height="100">
                                         <p style="display: inline">${item.lecName}</p>
                                         <p style="display: inline">/${item.lecCategory}</p>
                                         <p style="display: inline">/${item.lecPrice}원</p>
                                         <p style="display: inline">/${item.lecRegDate}</p>
                                         <div style="float: right;">
                                             <button class="btn btn-primary mr-2"
-                                                    onclick="location.href='/admin/login/update/${item.lecNo}'">
+                                                    onclick="location.href='/admin/login/update?lecNo=${item.lecNo}'">
                                                 수정
                                             </button>
                                             <!--저기 href에서 delete 아닌 것 같음...-->
-                                            <button class="btn btn-light"
-                                                    onclick="location.href='/lecDelete?lecNo=${item.lecNo}'">
+                                            <div class="cursor-pointer"
+                                                    onclick="location.href='/admin/login/manage-lecture/lecDelete?lecNo=${item.lecNo}'">
                                                 삭제
-                                            </button>
+                                            </div>
                                         </div>
                                         <br><br>
                                         </li>
                                     </c:forEach>
-
                                 </ul>
-
                             </form>
                         </div>
                     </div>

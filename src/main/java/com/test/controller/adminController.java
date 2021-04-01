@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import com.test.dto.AdminLoginDto;
 import com.test.dto.LectureDto;
 import com.test.dto.PopupDto;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 @Controller
 public class adminController {
@@ -84,11 +87,13 @@ public class adminController {
             System.out.println("Start manage_lecture");
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
 
-            if(lectureList.size() > 5){
-                while(lectureList.size() > 5){
+            if(lectureList.size() > 4){
+                while(lectureList.size() > 4){
                     lectureList.remove(0);
                 }
             }
+
+            Collections.reverse(lectureList);
 
             model.addAttribute("lectureList", lectureList);
             System.out.println("end manageLecture");
