@@ -2,6 +2,8 @@ package com.test.controller;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import com.test.dto.AdminLoginDto;
+import com.test.dto.LectureDto;
+import com.test.dto.PopupDto;
 import com.test.service.adminLogin.AdminLoginService;
 import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
