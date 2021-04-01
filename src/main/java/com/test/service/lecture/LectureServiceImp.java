@@ -2,7 +2,6 @@ package com.test.service.lecture;
 
 import com.test.dao.LectureDao;
 import com.test.dto.LectureDto;
-import com.test.dto.LectureUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,9 @@ public class LectureServiceImp implements LectureService {
     LectureDao lectureDao;
 
     @Override
-    public void insertLecture(String category, String name, String price, String date, String img) {
-        System.out.println("service" + category + "," + name + "," + price + "," + date + "," + img);
-        lectureDao.insertLecture(category, name, price, date, img);
+    public void insertLecture(LectureDto lectureDto) {
+        System.out.println("lecture service");
+        lectureDao.insertLecture(lectureDto);
     }
 
     @Override

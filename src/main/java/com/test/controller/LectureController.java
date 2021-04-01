@@ -1,7 +1,6 @@
 package com.test.controller;
 
 import com.test.dto.LectureDto;
-import com.test.dto.LectureUpdateDto;
 import com.test.service.lecture.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,71 +28,42 @@ public class LectureController {
     @Autowired
     LectureService lectureService;
 
-    /*@GetMapping("/admin/login/manage-lecture")
-    public String test(Model model) {
-        try {
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
-            model.addAttribute("lectureList", lectureList);
-        } catch (Exception e) {
+    //////////////////////////////////////// CREATE
+    @GetMapping("admin/login/lecture/form.do")
+    public String manage_lecture(Model model){
+        try{
+
+        }catch (Exception e){
             e.printStackTrace();
         }
-        return "template/demo_1/manage-lecture";
-    }*/
-
-    @GetMapping("/admin/login/lecture/delete.do")
-    public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
-        System.out.println("Start delLecture");
-
-        try {
-            System.out.println("lecNo: \n\n\n" + lecNo);
-            lectureService.deleteLecture(lecNo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "redirect:/admin/login/lecture/data-table.do";
+        return "admin/lecture/form";
     }
 
-///
-
-    @RequestMapping(value = "/admin/login/addLecture.do", method = RequestMethod.POST)
-    public String insert(@RequestParam(value = "lecCategory") String lecCategory,
-                         @RequestParam(value = "lecName") String lecName,
-                         @RequestParam(value = "lecPrice") String lecPrice,
-                         @RequestParam("lecImg") MultipartFile file,
-                         RedirectAttributes   redirect,
-                         HttpServletRequest request) throws IOException {
-
-        // String path = new
-        // ClassPathResource("/src/main/resources/uploads").getPath();
-
-        // FileCopyUtils.copy(file.getBytes(), new File(path));
+    @PostMapping("/admin/login/addLecture.do")
+    public String insert(LectureDto lectureDto, MultipartFile lecImage, RedirectAttributes redirect) throws IOException {
 
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(d);
 
-        System.out.println(lecCategory);
-        System.out.println(lecName);
-        System.out.println(lecPrice);
-        System.out.println(date);
-
         String webappRoot = servletContext.getRealPath("/");
         String relativeFolder =  "/files/img/";
-        System.out.println(webappRoot);
-        System.out.println(relativeFolder);
+        System.out.println(webappRoot + relativeFolder);
+        String filename = webappRoot + relativeFolder + lecImage.getOriginalFilename();
+        String lecFileName = relativeFolder + lecImage.getOriginalFilename();
 
-        String filename = webappRoot + relativeFolder + file.getOriginalFilename();
-        String lecFileName = relativeFolder + file.getOriginalFilename();
-
-        System.out.println(lecCategory);
-        System.out.println(lecName);
-        System.out.println(lecPrice);
+        System.out.println(lectureDto.getLecCategory());
+        System.out.println(lectureDto.getLecName());
+        System.out.println(lectureDto.getLecPrice());
         System.out.println(date);
         System.out.println(lecFileName);
 
-        FileCopyUtils.copy(file.getBytes(), new File(filename));
+        lectureDto.setLecRegDate(date);
+        lectureDto.setLecImg(lecFileName);
 
-        lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
+        FileCopyUtils.copy(lecImage.getBytes(), new File(filename));
+
+        lectureService.insertLecture(lectureDto);
 
         Map<String, Object> map = new HashMap<String,Object>();
         map.put("id", "root");
@@ -103,7 +72,23 @@ public class LectureController {
 
         return "redirect:/admin/login/lecture/data-table.do";
     }
-    ///admin/popup/edit.do
+
+    //////////////////////////////////////// READ
+    @GetMapping("admin/login/lecture/data-table.do")
+    public String lecture_manage(Model model){
+        try{
+            System.out.println("Start manage_lecture");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+
+            model.addAttribute("lectureList", lectureList);
+            System.out.println("end manageLecture");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/lecture/data-table";
+    }
+
+    //////////////////////////////////////// UPDATE
     @GetMapping("/admin/login/lecture/edit.do")
     public String update_lecture_form(@RequestParam(value = "lecNo") String lecNo,  Model model) {
         System.out.println("Start update lecture form");
@@ -165,104 +150,17 @@ public class LectureController {
         return "redirect:/admin/login/lecture/data-table.do";
     }
 
+    //////////////////////////////////////// DELETE
+    @GetMapping("/admin/login/lecture/delete.do")
+    public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
+        System.out.println("Start delLecture");
 
-
-
-//    @RequestMapping(value = "/admin/login/manage-lecture/lecUpload", method = RequestMethod.POST)
-//    public String insert(@RequestParam(value = "lecCategory") String lecCategory,
-//                         @RequestParam(value = "lecName") String lecName,
-//                         @RequestParam(value = "lecPrice") String lecPrice,
-//                         @RequestParam("lecImg") MultipartFile file,
-//                         RedirectAttributes   redirect,
-//                         HttpServletRequest request) throws IOException {
-//
-//        // String path = new
-//        // ClassPathResource("/src/main/resources/uploads").getPath();
-//
-//        // FileCopyUtils.copy(file.getBytes(), new File(path));
-//
-//        Date d = new Date();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String date = sdf.format(d);
-//
-//        System.out.println(lecCategory);
-//        System.out.println(lecName);
-//        System.out.println(lecPrice);
-//        System.out.println(date);
-//
-//        String webappRoot = servletContext.getRealPath("/");
-//        //webappRoot = webappRoot.replace("/","");
-//        String relativeFolder =  "files" + File.separator + "img" + File.separator;
-//        System.out.println(webappRoot);
-//        System.out.println(relativeFolder);
-//
-//        String filename = webappRoot + relativeFolder + file.getOriginalFilename();
-//        String lecFileName = relativeFolder + file.getOriginalFilename();
-//
-//        System.out.println(lecCategory);
-//        System.out.println(lecName);
-//        System.out.println(lecPrice);
-//        System.out.println(date);
-//        System.out.println(lecFileName);
-//
-//        FileCopyUtils.copy(file.getBytes(), new File(filename));
-//
-//        lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
-//
-//        Map<String, Object> map = new HashMap<String,Object>();
-//        map.put("id", "root");
-//        map.put("password", "1234");
-//        redirect.addFlashAttribute("vo", map);
-//
-//        return "redirect:/admin/login/manage-lecture";
-//    }
-
-    @GetMapping("/admin/login/update/{lecNo}")
-    public String lectureUpdate(@PathVariable(value = "lecNo") String lecNo, Model model) {
-        System.out.println(lecNo);
-        LectureDto lectureDto = lectureService.readBasicDataByLecNo(lecNo);
-        model.addAttribute("lecture", lectureDto);
-
-        return "template/demo_1/lecture-update";
-    }
-
-    @GetMapping("/admin/login/detail")
-    public String detail(@RequestParam(value = "lecNo") String lecNo,
-                         Model model)
-    {
         try {
-            LectureDto lectureDetail = lectureService.readBasicDataByLecNo(lecNo);
-            model.addAttribute("Lecture_Detail", lectureDetail);
+            System.out.println("lecNo: \n\n\n" + lecNo);
+            lectureService.deleteLecture(lecNo);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "template/demo_1/manage-lecture";
+        return "redirect:/admin/login/lecture/data-table.do";
     }
-
-    @GetMapping("/admin/login/specific_search")
-    public String specificSearch(@RequestParam(value = "LecName", required = false) String lecName,
-                                 @RequestParam(value = "minPrice", required = false) String minPrice,
-                                 @RequestParam(value = "maxPrice", required = false) String maxPrice,
-                                 @RequestParam(value = "LecCategory", required = false) String lecCategory,
-                                 Model model)
-    {
-        try {
-            if(lecName != null){
-                ArrayList<LectureDto> searchedLecture = lectureService.readBasicDataByLecName(lecName);
-                model.addAttribute("searched_Lecture", searchedLecture);
-            }else if(lecCategory != null){
-                ArrayList<LectureDto> searchedLecture = lectureService.readBasicDataByLecCategory(lecCategory);
-                model.addAttribute("searched_Lecture", searchedLecture);
-            }else if(minPrice != null && maxPrice != null){
-                ArrayList<LectureDto> searchedLecture = lectureService.readBasicDataByLecPrice(minPrice, maxPrice);
-                model.addAttribute("searched_Lecture", searchedLecture);
-            }else{
-                //검색어가 없을 때의 경우 : 웹에서 검색을 할 때 아무것도 입력하지 않으면 or 가격 범위를 제대로 설정하지 않으면 이 함수 자체에 들어오지 않도록 구현해야합니다.
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "\"template/demo_1/manage-lecture\"";
-    }
-
 }

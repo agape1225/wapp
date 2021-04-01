@@ -1,18 +1,12 @@
 package com.test.mapper;
 
 import com.test.dto.LectureDto;
-import com.test.dto.LectureUpdateDto;
 import org.apache.ibatis.annotations.Param;
 import java.util.ArrayList;
 
 public interface LectureMapper {
     ArrayList<LectureDto> readBasicDataList();
-    void insertLecture(@Param("category") String category,
-                       @Param("name") String name,
-                       @Param("price") String price,
-                       @Param("regDate") String regDate,
-                       @Param("lecImg") String lecImg);
-
+    void insertLecture(@Param("lectureDto") LectureDto lectureDto);
     void deleteLecture(@Param("lecNo") String lecNo);
     LectureDto readBasicDataByLecNo(@Param("lecNo") String lecNo);
     ArrayList<LectureDto> readBasicDataByLecName(@Param("lecName") String lecName);
