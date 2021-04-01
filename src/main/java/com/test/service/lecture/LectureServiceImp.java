@@ -50,8 +50,8 @@ public class LectureServiceImp implements LectureService {
         return lectureDao.readBasicDataByLecPrice(minPrice, maxPrice);
     }
 
-    public void updateLecture(String lecNo, LectureUpdateDto updateDto) {
+    public void updateLecture(String lecNo, LectureDto updateDto) {
         System.out.println("service update " + lecNo);
-        //lectureDao.updateLecture(lecNo, updateDto.getLecName(), updateDto.getLecCategory(), updateDto.getLecImg(), updateDto.getLecPrice());
+        lectureDao.updateLecture(lecNo, updateDto);
     }
 }

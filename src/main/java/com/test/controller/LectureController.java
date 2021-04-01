@@ -40,8 +40,8 @@ public class LectureController {
         }
         return "template/demo_1/manage-lecture";
     }*/
-    @RequestMapping(value   = "/admin/login/manage-lecture/lecDelete",
-                    method  = RequestMethod.GET)
+
+    @GetMapping("/admin/login/lecture/delete.do")
     public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
         System.out.println("Start delLecture");
 
@@ -51,7 +51,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/manage-lecture";
+        return "redirect:/admin/login/lecture/data-table.do";
     }
 
 ///
@@ -79,7 +79,6 @@ public class LectureController {
         System.out.println(date);
 
         String webappRoot = servletContext.getRealPath("/");
-        //webappRoot = webappRoot.replace("/","");
         String relativeFolder =  "/files/img/";
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
@@ -104,22 +103,68 @@ public class LectureController {
 
         return "redirect:/admin/login/lecture/data-table.do";
     }
-///admin/popup/edit.do
-@RequestMapping(value   = "/admin/lecture/edit.do",
-                method  = {RequestMethod.GET, RequestMethod.POST} )
-public String update_lecture(@RequestParam(value = "lecNo") String lecNo,  Model model) {
-    System.out.println("Start update ecture");
+    ///admin/popup/edit.do
+    @GetMapping("/admin/login/lecture/edit.do")
+    public String update_lecture_form(@RequestParam(value = "lecNo") String lecNo,  Model model) {
+        System.out.println("Start update lecture form");
 
+        try {
+            LectureDto lecDto = lectureService.readBasicDataByLecNo(lecNo);
+            model.addAttribute("lecture",lecDto);
 
-    try {
-        LectureDto lecDto = lectureService.readBasicDataByLecNo(lecNo);
-        model.addAttribute("lecture",lecDto);
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "admin/lecture/edit";
     }
-    return "admin/lecture/edit";
-}
+
+    @RequestMapping(value = "/admin/login/editLecture.do", method = {RequestMethod.POST, RequestMethod.GET})
+    public String update_lecture(@RequestParam(value = "lecNo") String lecNo, LectureDto lectureDto, MultipartFile lecImage, Model model) {
+        System.out.println("Start update lecture");
+
+        try {
+            LectureDto lectureInDb = lectureService.readBasicDataByLecNo(lecNo);
+
+            String filename = lecImage.getOriginalFilename();
+            if (filename.isEmpty()) { // 이미지이름이 빈칸 == 이미지새로 업로드 안함
+                System.out.println("editItemWithoutImg");
+
+                lectureDto.setLecImg(lectureInDb.getLecImg()); // db에 있던 배너이미지를 그대로 넣어주기
+            } else { // 이미지 이름이 있으면 기존이미지 삭제 후 새이미지를 저장
+                System.out.println("editItemWithImg");
+
+                File targetFile = new File(servletContext.getRealPath("/") + lectureInDb.getLecImg()); // 서버에있는 삭제할 배너파일 지정
+                String delName = targetFile.getName(); // 삭제될 배너파일이름
+                if (targetFile.delete()) {
+                    System.out.println("Deleted file : " + delName);
+                } else {
+                    System.out.println("Failed to delete the file.");
+                }
+
+                // 서버에 사진 저장
+                String rootPath = servletContext.getRealPath("/");
+                String relativeFolder =  "/files/img/";
+                System.out.println(rootPath + relativeFolder);
+
+                String serverFile = rootPath + relativeFolder + filename;
+
+                FileCopyUtils.copy(lecImage.getBytes(), new File(serverFile)); // 서버에 이미지 저장
+
+                lectureDto.setLecImg("/files/img/" + filename); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
+            }
+            System.out.println(lectureDto.getLecCategory());
+            System.out.println(lectureDto.getLecName());
+            System.out.println(lectureDto.getLecPrice());
+            System.out.println(lectureDto.getLecImg());
+            lectureService.updateLecture(lecNo, lectureDto); // db에 저장
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin/login/lecture/data-table.do";
+    }
+
 
 
 
@@ -220,19 +265,4 @@ public String update_lecture(@RequestParam(value = "lecNo") String lecNo,  Model
         return "\"template/demo_1/manage-lecture\"";
     }
 
-    @RequestMapping(value = "/admin/login/update/{lecNo}", method = RequestMethod.POST)
-    public String lectureUpdateComplete(@PathVariable(value = "lecNo") String lecNo,
-                                        @RequestParam(value = "lecName") String lecName,
-                                        @RequestParam(value = "lecCategory") String lecCategory,
-                                        @RequestParam(value = "lecImg") String lecImg,
-                                        @RequestParam(value = "lecPrice") String lecPrice) {
-        try{
-            LectureUpdateDto updateDto = new LectureUpdateDto(lecName, lecCategory, lecImg, lecPrice);
-            lectureService.updateLecture(lecNo, updateDto);
-            return "admin";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "admin";
-        }
-    }
 }

@@ -20,6 +20,6 @@ public interface LectureService {
 
     ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice);
 
-    void updateLecture(String lecNo, LectureUpdateDto updateDto);
+    void updateLecture(String lecNo, LectureDto updateDto);
 
 }

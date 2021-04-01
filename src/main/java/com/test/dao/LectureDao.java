@@ -92,11 +92,11 @@ public class LectureDao {
         }
     }
 
-    public void updateLecture(String lecNo, String lecName, String lecCategory, String lecImg, String lecPrice) {
+    public void updateLecture(String lecNo, LectureDto updateDto) {
         try {
             LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
             System.out.println("dao: " + lecNo);
-            lecMapper.updateLecture(lecNo, lecName, lecCategory, lecImg, lecPrice);
+            lecMapper.updateLecture(lecNo, updateDto);
         } catch (Exception e) {
             e.printStackTrace();
 

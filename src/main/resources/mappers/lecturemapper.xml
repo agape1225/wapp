@@ -28,7 +28,7 @@
     </select>
     <update id="updateLecture">
         update lecture
-        set (lecName, lecCategory, lecImg, lecPrice) = (#{lecName}, #{lecCategory}, #{lecImg}, #{lecPrice})
+        set lecName=#{updateDto.lecName}, lecCategory=#{updateDto.lecCategory}, lecImg=#{updateDto.lecImg}, lecPrice=#{updateDto.lecPrice}
         where lecNo = #{lecNo}
     </update>
 </mapper>

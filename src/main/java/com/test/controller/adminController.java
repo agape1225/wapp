@@ -121,14 +121,6 @@ public class adminController {
             System.out.println("Start manage_lecture");
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
 
-            if(lectureList.size() > 4){
-                while(lectureList.size() > 4){
-                    lectureList.remove(0);
-                }
-            }
-
-            Collections.reverse(lectureList);
-
             model.addAttribute("lectureList", lectureList);
             System.out.println("end manageLecture");
 
