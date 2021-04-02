@@ -25,6 +25,12 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
+    public ArrayList<LectureDto> readBasicDatListByUserNo(String userNo) {
+        System.out.println("reading lecture List By UserNo");
+        return lectureDao.readBasicDataListByUserNo(userNo);
+    }
+
+    @Override
     public void deleteLecture(String lecNo) {
         System.out.println("service delete " + lecNo);
         lectureDao.deleteLecture(lecNo);

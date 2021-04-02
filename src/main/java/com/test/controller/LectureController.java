@@ -2,6 +2,7 @@ package com.test.controller;
 
 import com.test.dto.LectureDto;
 import com.test.service.lecture.LectureService;
+import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -162,5 +166,27 @@ public class LectureController {
             e.printStackTrace();
         }
         return "redirect:/admin/login/lecture/data-table.do";
+    }
+
+    @GetMapping("/user/login/myPage")
+    public String getLectureListByUserNo(HttpServletRequest request, Model model) {
+        try{
+            HttpSession session = request.getSession();
+            UserDto userLogin = (UserDto) session.getAttribute("userLogin");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDatListByUserNo(userLogin.getUserNo());
+            for (LectureDto lectureDto : lectureList) {
+                System.out.println(lectureDto.getLecNo()
+                        + lectureDto.getLecCategory()
+                        + lectureDto.getLecName()
+                        + lectureDto.getLecPrice()
+                        + lectureDto.getLecRegDate()
+                        + lectureDto.getLecImg());
+            }
+            model.addAttribute("lectureList", lectureList);
+        } catch (Exception e) {
+            System.out.println("!!!getLectureListByUserNo Error!!!");
+            e.printStackTrace();
+        }
+        return "myPage";
     }
 }

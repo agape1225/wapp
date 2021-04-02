@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public interface LectureService {
     ArrayList<LectureDto> readBasicDataList();
-
     void insertLecture(LectureDto lectureDto);
+
+    ArrayList<LectureDto> readBasicDatListByUserNo(String userNo);
 
     void deleteLecture(String lecNo);
 

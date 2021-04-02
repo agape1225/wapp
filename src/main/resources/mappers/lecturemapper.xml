@@ -31,4 +31,12 @@
         set lecName=#{updateDto.lecName}, lecCategory=#{updateDto.lecCategory}, lecImg=#{updateDto.lecImg}, lecPrice=#{updateDto.lecPrice}
         where lecNo = #{lecNo}
     </update>
+    <select id="readBasicDataListByUserNo" resultType="LectureDto">
+        select *
+        from lecture
+        where lecNo
+                  in (select likes.lecNo
+                      from user, likes
+                      where user.userNo = likes.userNo and likes.userNo = #{userNo})
+    </select>
 </mapper>
