@@ -22,4 +22,6 @@ public interface LectureMapper {
                        @Param("lecCategory")String lecCategory,
                        @Param("lecImg")String lecImg,
                        @Param("lecPrice")String lecPrice);
+
+    ArrayList<LectureDto> readBasicDataListByUserNo(@Param("userNo") String userNo);
 }
