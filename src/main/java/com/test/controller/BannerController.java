@@ -1,17 +1,16 @@
 package com.test.controller;
 
 import com.test.dto.BannerDto;
+import com.test.dto.LectureDto;
 import com.test.service.banner.BannerService;
 import com.test.service.lecture.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -30,43 +29,72 @@ public class BannerController {
     @Autowired
     BannerService bannerService;
 
+    @GetMapping("admin/login/banner/data-table.do")
+    public String banner_manage(Model model){
+        try{
+            System.out.println("Start manage_banner");
+            ArrayList<BannerDto> bannerDto = bannerService.readBasicDataList();
+            model.addAttribute("bannerData",bannerDto);
 
-    @RequestMapping(value = "/admin/login/banUpload", method = RequestMethod.POST)
-    public String insert(@RequestParam(value = "banTitle") String banTitle,
-                         @RequestParam(value = "banContent") String banContent,
-                         @RequestParam("banImg") MultipartFile file,
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/banner/data-table";
+    }
+
+    @PostMapping(value = "/admin/login/addBanner.do")
+    public String insert_banner(BannerDto bannerDto,
+                         MultipartFile banImage,
                          HttpServletRequest request) throws IOException {
 
-        String banCount = "0";
+        System.out.println(bannerDto.getBanTitle());
+        System.out.println(bannerDto.getBanContent());
+
+        //String banCount = "0";
+
+        //set banner count
+        bannerDto.setBanCount("0");
 
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateForImage = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         String date = sdf.format(d);
+        String dateForImg = dateForImage.format(d);
+
+        dateForImg = dateForImg.replace('.','_');
+        dateForImg = dateForImg.replace(':','_');
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder = File.separator + "resources" + File.separator + "bannerImg" + File.separator;
+        String relativeFolder =  "/files/bannerImage/";
+
+
+
         System.out.println(webappRoot);
         System.out.println(relativeFolder);
 
-        String filename = webappRoot + relativeFolder + file.getOriginalFilename();
-        String banFileName = relativeFolder + file.getOriginalFilename();
+        String filename = webappRoot + relativeFolder + dateForImg + banImage.getOriginalFilename();
+        String banFileName = relativeFolder + dateForImg +banImage.getOriginalFilename();
 
-        System.out.println(banTitle);
-        System.out.println(banContent);
-        System.out.println(banCount);
-        System.out.println(date);
-        System.out.println(banFileName);
+        //set ban file
+        bannerDto.setBanImg(banFileName);
 
-        FileCopyUtils.copy(file.getBytes(), new File(filename));
+        //set reg date
+        bannerDto.setBanRegDate(date);
+        FileCopyUtils.copy(banImage.getBytes(), new File(filename));
 
-        bannerService.insertBanner(banFileName, banCount,date,banTitle,banContent);
+        System.out.println(bannerDto.getBanImg());
+        System.out.println(bannerDto.getBanContent());
+        System.out.println(bannerDto.getBanRegDate());
+        System.out.println(bannerDto.getBanTitle());
+        System.out.println(bannerDto.getBanCount());
 
+        bannerService.insertBanner(bannerDto);
         //lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "template/demo_1/manage-banner";
+        return "redirect:/admin/login/banner/data-table.do";
     }
 
-    @RequestMapping(value = "/admin/manage-banner/banDelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/login/banner/delete.do", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "banNo") String banNo) {
 
         try {
@@ -75,7 +103,7 @@ public class BannerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin";
+        return "redirect:/admin/login/banner/data-table.do";
     }
   
     @GetMapping(value = "/admin/login/bannerList")

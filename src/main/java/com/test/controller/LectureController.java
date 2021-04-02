@@ -1,6 +1,7 @@
 package com.test.controller;
 
 import com.test.dto.LectureDto;
+import com.test.dto.UserDto;
 import com.test.service.lecture.LectureService;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,16 @@ public class LectureController {
     }
 
     @PostMapping("/admin/login/addLecture.do")
-    public String insert(LectureDto lectureDto, MultipartFile lecImage, RedirectAttributes redirect) throws IOException {
+    public String insert(LectureDto lectureDto,
+                         MultipartFile lecImage,
+                         RedirectAttributes redirect) throws IOException {
 
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(d);
 
         String webappRoot = servletContext.getRealPath("/");
-        String relativeFolder =  "/files/img/";
+        String relativeFolder =  "/files/lectureImage/";
         System.out.println(webappRoot + relativeFolder);
         String filename = webappRoot + relativeFolder + lecImage.getOriginalFilename();
         String lecFileName = relativeFolder + lecImage.getOriginalFilename();
@@ -108,12 +111,14 @@ public class LectureController {
     }
 
     @RequestMapping(value = "/admin/login/editLecture.do", method = {RequestMethod.POST, RequestMethod.GET})
-    public String update_lecture(@RequestParam(value = "lecNo") String lecNo, LectureDto lectureDto, MultipartFile lecImage, Model model) {
+    public String update_lecture(@RequestParam(value = "lecNo") String lecNo,
+                                 LectureDto lectureDto, MultipartFile lecImage,
+                                 Model model) {
         System.out.println("Start update lecture");
 
         try {
             LectureDto lectureInDb = lectureService.readBasicDataByLecNo(lecNo);
-
+            System.out.println(lectureInDb.getLecName());
             String filename = lecImage.getOriginalFilename();
             if (filename.isEmpty()) { // 이미지이름이 빈칸 == 이미지새로 업로드 안함
                 System.out.println("editItemWithoutImg");
@@ -132,14 +137,14 @@ public class LectureController {
 
                 // 서버에 사진 저장
                 String rootPath = servletContext.getRealPath("/");
-                String relativeFolder =  "/files/img/";
+                String relativeFolder =  "/files/lectureImage/";
                 System.out.println(rootPath + relativeFolder);
 
                 String serverFile = rootPath + relativeFolder + filename;
 
                 FileCopyUtils.copy(lecImage.getBytes(), new File(serverFile)); // 서버에 이미지 저장
 
-                lectureDto.setLecImg("/files/img/" + filename); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
+                lectureDto.setLecImg("/files/lectureImage/" + filename); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
             }
             System.out.println(lectureDto.getLecCategory());
             System.out.println(lectureDto.getLecName());
@@ -154,7 +159,6 @@ public class LectureController {
         return "redirect:/admin/login/lecture/data-table.do";
     }
 
-    //////////////////////////////////////// DELETE
     @GetMapping("/admin/login/lecture/delete.do")
     public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
         System.out.println("Start delLecture");

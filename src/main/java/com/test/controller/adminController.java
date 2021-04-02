@@ -1,8 +1,10 @@
 package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
+import com.test.dto.BannerDto;
 import com.test.dto.PopupDto;
 import com.test.service.adminLogin.AdminLoginService;
+import com.test.service.banner.BannerService;
 import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class adminController {
     PopupService popupService;
     @Autowired
     LectureService lectureService;
+    @Autowired
+    BannerService bannerService;
 
 
     @GetMapping("/admin")
@@ -80,17 +84,7 @@ public class adminController {
         return "admin/banner/form";
     }
 
-    @GetMapping("admin/login/banner/data-table.do")
-    public String banner_manage(Model model){
-        try{
-            System.out.println("Start manage_banner");
 
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "admin/banner/data-table";
-    }
 
     /////////////////////////////////////////////// 팝업
     @GetMapping("admin/login/popup/form.do")

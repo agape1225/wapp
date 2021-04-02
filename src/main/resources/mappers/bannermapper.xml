@@ -6,7 +6,7 @@
 <mapper namespace="com.test.mapper.BannerMapper">
     <insert id="insertBanner">
         insert into banner(banImg, banCount, banRegDate, banTitle, banContent)
-        VALUES(#{img}, #{count}, #{regDate}, #{title}, #{content})
+        VALUES(#{bannerDto.banImg}, #{bannerDto.banCount}, #{bannerDto.banRegDate}, #{bannerDto.banTitle}, #{bannerDto.banContent})
     </insert>
 
     <delete id="deleteBanner">

@@ -14,15 +14,26 @@ public class BannerDao {
     SqlSession sqlSession;
 
 
-    public void insertBanner(String img, String count, String getDate,
-                             String title, String content){
-        try{
-            BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+//    public void insertBanner(String img, String count, String getDate,
+//                             String title, String content){
+//        try{
+//            BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+//
+//            System.out.println("dao: " + count + "," + getDate + "," + title + "," + content + "," + img );
+//            bannerMapper.insertBanner(img, count, getDate, title, content);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
-            System.out.println("dao: " + count + "," + getDate + "," + title + "," + content + "," + img );
-            bannerMapper.insertBanner(img, count, getDate, title, content);
-        }catch (Exception e){
-            e.printStackTrace();
+    public void insertBanner(BannerDto bannerDto){
+        System.out.println("Start insert banner dao");
+        try {
+            BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+            bannerMapper.insertBanner(bannerDto);
+
+        }catch(Exception e){
+
         }
     }
 
