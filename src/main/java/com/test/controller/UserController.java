@@ -1,6 +1,8 @@
 package com.test.controller;
 
+import com.test.dto.LectureDto;
 import com.test.dto.UserDto;
+import com.test.service.lecture.LectureService;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,29 @@ public class UserController {
     ServletContext servletContext;
 
     @Autowired
+    LectureService lectureService;
+
+    @Autowired
     UserService userService;
+
+    @GetMapping("/")
+    public String main(Model model){
+        try{
+
+            System.out.printf("Start main");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            System.out.println(lectureList.size());
+            for(int i = 0; i < lectureList.size(); i++){
+                System.out.println(lectureList.get(i).getLecName());
+            }
+            model.addAttribute("lectureList",lectureList);
+            System.out.printf("End main");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "index";
+    }
 
     @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "userNo") String userNo) {
