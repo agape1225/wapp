@@ -1,7 +1,6 @@
 package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
-import com.test.dto.PopupDto;
 import com.test.service.adminLogin.AdminLoginService;
 import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
@@ -27,9 +25,13 @@ public class adminController {
 
 
     @GetMapping("/admin")
-    public String main(Model model){
+    public String main(Model model, HttpSession session){
         try{
             System.out.println("Start adminLogin");
+            Object loginInfo = session.getAttribute("adminLogin");
+            if (loginInfo != null) {// 로그인정보가 이미 있으면 바로 홈으로 보내주기
+                return "redirect:/admin/login/home";
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -68,7 +70,7 @@ public class adminController {
     }
 
     /////////////////////////////////////////////// 배너
-    @GetMapping("admin/login/banner/form.do")
+    @GetMapping("admin/login/banner/form")
     public String manage_banner(Model model){
         try{
             System.out.println("Start manage_banner");
@@ -80,7 +82,7 @@ public class adminController {
         return "admin/banner/form";
     }
 
-    @GetMapping("admin/login/banner/data-table.do")
+    @GetMapping("admin/login/banner/data-table")
     public String banner_manage(Model model){
         try{
             System.out.println("Start manage_banner");
@@ -91,51 +93,4 @@ public class adminController {
         }
         return "admin/banner/data-table";
     }
-
-    /////////////////////////////////////////////// 팝업
-    @GetMapping("admin/login/popup/form.do")
-    public String manage_popup(Model model){
-        try{
-            System.out.println("Start manage_popup");
-            ArrayList<PopupDto> popupList;
-            popupList = popupService.getPopupList();
-            System.out.println(popupList.get(0).getImg());
-            model.addAttribute("popupList", popupList);
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "admin/popup/form";
-    }
-
-    @GetMapping("admin/login/popup/data-table.do")
-    public String popup_manage(Model model){
-        try{
-            System.out.println("Start manage_popup");
-            ArrayList<PopupDto> popupList;
-            popupList = popupService.getPopupList();
-            System.out.println(popupList.get(0).getImg());
-            model.addAttribute("popupList", popupList);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "admin/popup/data-table";
-    }
-
-
-
-    @GetMapping("admin/login/manage-category")
-    public String manage_category(Model model){
-        try{
-            System.out.println("Start manage_category");
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "template/demo_1/manage-category";
-    }
-
-
 }

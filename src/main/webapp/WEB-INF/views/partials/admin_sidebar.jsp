@@ -48,13 +48,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/popup/form.do">
+                <a class="nav-link" href="/admin/login/popup/form">
                     <i class="link-icon" data-feather="inbox"></i>
                     <span class="link-title">팝업 추가</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/popup/data-table.do">
+                <a class="nav-link" href="/admin/login/popup/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">팝업 관리</span>
                 </a>

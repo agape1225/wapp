@@ -39,16 +39,10 @@ public class adminLoginInterceptor extends HandlerInterceptorAdapter {
             if(adminLog.getId().equals(result.getId()) &&
                     adminLog.getPassword().equals(result.getPassword())){
                 return true;
-
-            }else{
-                response.sendRedirect("/admin");
-                return false;
             }
-
-        }else{
-            System.out.println("session is null");
-            return false;
         }
-
+        System.out.println("session is null");
+        response.sendRedirect("/admin");
+        return false;
     }
 }
