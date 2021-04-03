@@ -22,16 +22,6 @@ public class TestController {
     @Autowired
     FirebaseMessagingSnippets firebaseMessagingSnippets;
 
-    @GetMapping("/")
-    public String main(Model model){
-        try{
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "index";
-    }
-
     @GetMapping("/test.do")
     public String test(Model model){
         try{

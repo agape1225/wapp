@@ -1,6 +1,8 @@
 package com.test.controller;
 
+import com.test.dto.LectureDto;
 import com.test.dto.UserDto;
+import com.test.service.lecture.LectureService;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,32 @@ public class UserController {
     ServletContext servletContext;
 
     @Autowired
+    LectureService lectureService;
+
+    @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/admin/login/manage-user/userDelete", method = RequestMethod.GET)
+    @GetMapping("/")
+    public String main(Model model){
+        try{
+
+            System.out.printf("Start main");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            System.out.println(lectureList.size());
+            for(int i = 0; i < lectureList.size(); i++){
+                System.out.println(lectureList.get(i).getLecName());
+            }
+            model.addAttribute("lectureList",lectureList);
+            System.out.printf("End main");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "index";
+    }
+
+    @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "userNo") String userNo) {
-        System.out.println("Start DeleteUser");
 
         try {
             System.out.println("userNo: " + userNo);
@@ -32,32 +55,22 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/manage-user";
+        return "redirect:/user";
     }
 
-    @GetMapping(value = "/admin/login/manage-user/userInfo")
+    @GetMapping(value = "/user/login/userList")
     public String readUserInfoList(Model model){
-        try{
-            System.out.println("user Controller");
-            ArrayList<UserDto> userList =  userService.readUserInfoList();
-            if(userList.size() > 5){
-                while(userList.size() > 5){
-                    userList.remove(0);
-                }
-            }
-            model.addAttribute("userList", userList);
-            System.out.println("end manageLecture");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "/admin/login/manage-user";
+        ArrayList<UserDto> userList =  userService.readUserInfoList();
+        model.addAttribute("userList", userList);
+
+        return "user/login/userList";
     }
 
-//    @GetMapping(value = "/user/login/user_data")
-//    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
-//        UserDto user =  userService.readUserInfoListByUserNo(userNo);
-//        model.addAttribute("user_detail", user);
-//
-//        return "userInfo";
-//    }
+    @GetMapping(value = "/user/login/user_data")
+    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
+        UserDto user =  userService.readUserInfoListByUserNo(userNo);
+        model.addAttribute("user_detail", user);
+
+        return "user/login/user_data";
+    }
 }

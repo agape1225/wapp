@@ -6,20 +6,14 @@ import java.util.ArrayList;
 
 public interface LectureMapper {
     ArrayList<LectureDto> readBasicDataList();
-    void insertLecture(@Param("category") String category,
-                       @Param("name") String name,
-                       @Param("price") String price,
-                       @Param("regDate") String regDate,
-                       @Param("lecImg") String lecImg);
-
+    void insertLecture(@Param("lectureDto") LectureDto lectureDto);
     void deleteLecture(@Param("lecNo") String lecNo);
     LectureDto readBasicDataByLecNo(@Param("lecNo") String lecNo);
     ArrayList<LectureDto> readBasicDataByLecName(@Param("lecName") String lecName);
     ArrayList<LectureDto> readBasicDataByLecCategory(@Param("lecCategory") String lecCategory);
     ArrayList<LectureDto> readBasicDataByLecPrice(@Param("minPrice") String minPrice, @Param("maxPrice") String maxPrice);
-    void updateLecture(@Param("lecNo") String lecNo,
-                       @Param("lecName")String lecName,
-                       @Param("lecCategory")String lecCategory,
-                       @Param("lecImg")String lecImg,
-                       @Param("lecPrice")String lecPrice);
+
+    void updateLecture(@Param("lecNo") String lecNo, @Param("updateDto") LectureDto updateDto);
+    ArrayList<LectureDto> readBasicDataListByUserNo(@Param("userNo") String userNo);
+
 }
