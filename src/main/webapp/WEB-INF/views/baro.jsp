@@ -77,7 +77,8 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <select id="exampleInputText1" name="Category" oninput="btn_status()" onchange="if(this.value) location.href='/baro?category='+(this.value);">
+                    <select id="exampleInputText1" onchange="if(this.value) location.href='/baro?category='+(this.value);">
+                        <option value="all">모두보기</option>
                         <option value="취미">취미</option>
                         <option value="수익 창출">수익 창출</option>
                         <option value="직무교육">직무교육</option>
@@ -85,9 +86,9 @@
                         <option value="시그니처">시그니처</option>
                         <option value="키즈">키즈</option>
                     </select>
-                    <select id="exampleInputText2" name="sort" oninput="btn_status()">
-                        <option value="최신순">최신순</option>
-                        <option value="인기순">인기순</option>
+                    <select id="exampleInputText2" onchange="if(this.value) location.href='/baro?sort='+(this.value);">
+                        <option value="latest">최신순</option>
+                        <option value="popular">인기순</option>
                     </select>
                 </div>
             </div>

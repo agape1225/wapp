@@ -66,16 +66,39 @@ public class UserController {
     }
 
     @GetMapping("/baro")
-    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "취미") String categoty) {
+    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "all") String categoty,
+                           @RequestParam(value = "sort", defaultValue = "latest") String sortKey) {
         System.out.println("바로수강페이지");
         System.out.println(categoty);
+        System.out.println(sortKey);
         try {
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDataByLecCategory(categoty);
-            model.addAttribute("lectureList", lectureList);
+            if (categoty.equals("all")){
+                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataList(), sortKey);
+                model.addAttribute("lectureList", sortedList);
+            } else {
+                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataByLecCategory(categoty), sortKey);
+                model.addAttribute("lectureList", sortedList);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "baro";
+    }
+
+    private ArrayList<LectureDto> lectureSort(ArrayList<LectureDto> lectureList, String sortKey) {
+        if (sortKey.equals("latest")) {
+            lectureList.sort((l1, l2) -> {
+                String RegDate1 = l1.getLecRegDate().replace("-", "");
+                String RegDate2 = l2.getLecRegDate().replace("-", "");
+                int Date1 = Integer.parseInt(RegDate1);
+                int Date2 = Integer.parseInt(RegDate2);
+                return Date2 - Date1; // 최신순
+            });
+        } else if (sortKey.equals("popular")) { // 인기순으로 정렬하기 (미구현)
+
+        }
+
+        return lectureList;
     }
 
 
