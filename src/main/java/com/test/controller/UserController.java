@@ -65,4 +65,17 @@ public class UserController {
         return "redirect:/admin/user/data-table.do";
     }
 
+    @GetMapping("/baro")
+    public String barohome(Model model) {
+        System.out.println("바로수강페이지");
+        try {
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            model.addAttribute("lectureList", lectureList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "baro";
+    }
+
+
 }

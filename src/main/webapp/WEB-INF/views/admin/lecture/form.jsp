@@ -50,9 +50,15 @@
                             <form action="/admin/addLecture" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
-                                    <input type="text" oninput="btn_status()" class="form-control"
-                                           id="exampleInputText1"
-                                           placeholder="Lecture Category" name="lecCategory">
+                                    <select id="exampleInputText1" name="lecCategory" oninput="btn_status()">
+                                        <option value="영상/디자인">영상/디자인</option>
+                                        <option value="온라인쇼핑몰">온라인쇼핑몰</option>
+                                        <option value="창업">창업</option>
+                                        <option value="etc">설정에서변경하세요</option>
+                                    </select>
+<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
+<%--                                           id="exampleInputText1"--%>
+<%--                                           placeholder="Lecture Category" name="lecCategory">--%>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputText2">NAME</label>

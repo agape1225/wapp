@@ -51,7 +51,7 @@
                             <form action="/admin/editLecture?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
-                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}">
+                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputText2">NAME</label>

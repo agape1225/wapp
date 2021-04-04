@@ -65,7 +65,7 @@
                 <button>DIY ・ 키트</button>
                 <div class="gap"></div>
                 <button style="font-weight: normal; color: #1D4EFA;">101월드</button>
-                <button style="font-weight: normal; margin-right: 0px">바로 수강</button>
+                <button style="font-weight: normal; margin-right: 0px" onclick="location.href='/baro'">바로 수강</button>
             </div>
         </div>
 

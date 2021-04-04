@@ -53,7 +53,7 @@
                                     <label for="exampleInputText1">Type</label>
                                     <input type="text" oninput="btn_status()" class="form-control"
                                            id="exampleInputText1"
-                                           placeholder="Popup Type" name="popType" value="${popup.popType}">
+                                           placeholder="Popup Type" name="popType" value="${popup.popType}" disabled>
                                 </div>
 
                                 <div class="form-group">
