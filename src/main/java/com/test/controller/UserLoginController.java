@@ -55,4 +55,11 @@ public class UserLoginController {
             return "userLogin";
         }
     }
+
+    @GetMapping("/logout")
+    public String logOut(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "index";
+    }
 }

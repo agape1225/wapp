@@ -39,12 +39,12 @@
                 <div class="login-container">
 
                     <c:choose>
-                        <c:when test="${empty userName}">
+                        <c:when test="${empty userLogin}">
                             <button style="font-weight: normal;" onclick="location.href='/user'">로그인</button>
                         </c:when>
                         <c:otherwise>
-                            <span>${userName}님</span>
-                            <button style="font-weight: normal;" onclick="location.href='/'">마이페이지</button> <!-- 미구현 -->
+                            <span>${userLogin.userName}님 </span>
+                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button> <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
@@ -204,6 +204,12 @@
                                 <span class="total-month"> (?개월)(이벤트기간)</span>
                             </div>
                         </div>
+                        <form action="/user/login/likes/insert" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                        </form>
+                        <form action="/user/login/likes/delete" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                        </form>
                     </div>
                     </c:forEach>
                 </div>
@@ -236,6 +242,42 @@
             prevEl: '.swiper-button-prev',
         },
     });
+
+</script>
+<script>
+    // function add_like_btn(item){
+    //     alert('아');
+    //
+    //     $.ajax({
+    //         url: '/user/login/likes/insert',
+    //         type: 'POST',
+    //         data: JSON.stringify(item),
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         success : function (data) {
+    //             alert('성공');
+    //         }
+    //     }).done(function () {
+    //         alert('찜이 추가되었습니다.');
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    // function del_like_btn(item){
+    //     alert(s);
+    //     $.ajax({
+    //         url: '/user/login/likes/delete',
+    //         type: 'POST',
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         data: JSON.stringify(s)
+    //     }).done(function () {
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

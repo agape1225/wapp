@@ -102,11 +102,12 @@ public class LectureController {
 
     @RequestMapping(value = "/admin/login/editLecture", method = {RequestMethod.POST, RequestMethod.GET})
     public String update_lecture(@RequestParam(value = "lecNo") String lecNo, LectureDto lectureDto, MultipartFile lecImage, Model model) {
+
         System.out.println("Start update lecture");
 
         try {
             LectureDto lectureInDb = lectureService.readBasicDataByLecNo(lecNo);
-
+            System.out.println(lectureInDb.getLecName());
             String filename = lecImage.getOriginalFilename();
             if (filename.isEmpty()) { // 이미지이름이 빈칸 == 이미지새로 업로드 안함
                 System.out.println("editItemWithoutImg");
@@ -128,6 +129,7 @@ public class LectureController {
                 String regDateForServer = dateForServer.format(currentTime);
                 String fullName = relativePath + regDateForServer + filename;
                 lectureDto.setLecImg(fullName); // 이미지이름 저장
+
 
                 String filename_server = root_path + fullName;
                 FileCopyUtils.copy(lecImage.getBytes(), new File(filename_server)); // 서버에 저장
@@ -161,7 +163,7 @@ public class LectureController {
         return "redirect:/admin/login/lecture/data-table";
     }
 
-    @GetMapping("/user/login/myPage")
+    @GetMapping("/myPage")
     public String getLectureListByUserNo(HttpServletRequest request, Model model) {
         try{
             HttpSession session = request.getSession();

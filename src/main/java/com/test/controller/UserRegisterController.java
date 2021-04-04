@@ -8,12 +8,15 @@ import com.test.service.user.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -59,10 +62,13 @@ public class UserRegisterController {
     }
 
     @RequestMapping("/user/kakao_login")
-    public String kakaoLogIn(@Param(value = "code") String code) {
+    public String kakaoLogIn(@Param(value = "code") String code,
+                             HttpServletRequest request,
+                             Model model) {
         System.out.println("code : " + code);
         String access_Token = kakaoApiService.getAccessToken(code);
         System.out.println("access_token : " + access_Token);
+        HttpSession session = request.getSession();
         HashMap<String, Object> userInfo = kakaoApiService.getUserInfo(access_Token);
 
         if (userInfo.get("email") != null) {
@@ -88,6 +94,16 @@ public class UserRegisterController {
                 userService.insertUser(userDto);
             }else{
                 System.out.println("Registered Kakao User");
+            }
+            if(session.getAttribute("userLogin") != null)
+                session.removeAttribute("userLogin");
+
+            UserDto userDto = userService.readUserInfoListByUserEmail(userEmail);
+            if(userDto != null && userDto.getUserEmail().equals(userEmail) && userDto.getUserName().equals(userName)){
+                session.setAttribute("userLogin", userDto);
+            }else {
+                //해당 로직을 돌면서 문제 생길 확률이 낮지만 혹시 모를 오류를 위해 등록
+                model.addAttribute("msg", "카카오 로그인 오류 및 알 수 없는 오류가 발생했습니다.");
             }
 
             return "redirect:/";

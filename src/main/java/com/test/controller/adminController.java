@@ -2,6 +2,7 @@ package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
 import com.test.service.adminLogin.AdminLoginService;
+import com.test.service.banner.BannerService;
 import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class adminController {
     PopupService popupService;
     @Autowired
     LectureService lectureService;
+    @Autowired
+    BannerService bannerService;
 
 
     @GetMapping("/admin")

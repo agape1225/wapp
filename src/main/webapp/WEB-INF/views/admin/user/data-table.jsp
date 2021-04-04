@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wapp Team B Admin</title>
+    <title>Admin</title>
     <!-- core:css -->
     <link rel="stylesheet" href="../../../assets/vendors/core/core.css">
     <!-- endinject -->
@@ -40,7 +40,7 @@
 
             <nav class="page-breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Lectures</a></li>
+                    <li class="breadcrumb-item"><a href="#">Users</a></li>
                 </ol>
             </nav>
 
@@ -48,41 +48,29 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Lecture Table</h6>
+                            <h6 class="card-title">User Table</h6>
                             <div class="table-responsive">
                                 <table id="dataTableExample" class="table">
                                     <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>이름</th>
-                                        <th>내용</th>
-                                        <th>클릭수</th>
+                                        <th>이메일</th>
                                         <th>등록 날짜</th>
-                                        <th>이미지</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var="bannerList" value="${bannerData}"/>
-                                    <c:forEach var="i" begin = "1" end = "${bannerData.size()}">
+                                    <c:set var="userList" value="${userList}"/>
+                                    <c:forEach var="i" begin = "1" end = "${userList.size()}">
                                         <tr>
                                             <td>${i}</td>
-                                            <td>${bannerList[i-1].banTitle}</td>
-                                            <td>${bannerList[i-1].banContent}</td>
-                                            <td>${bannerList[i-1].banCount}</td>
-<%--                                            <td><fmt:formatDate value="${bannerList[i-1].banRegDate}" pattern="yyyy-MM-dd" /></td>--%>
-                                            <c:choose>
-                                            <c:when test="${empty bannerList[i-1].banImg}">
-                                                <td>이미지 없음</td>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <td><button class="btn btn-primary" onclick="window.open('${bannerList[i-1].banImg}')">이미지 보기</button></td>
-                                            </c:otherwise>
-                                            </c:choose>
+                                            <td>${userList[i-1].userName}</td>
+                                            <td>${userList[i-1].userEmail}</td>
+                                            <td>${userList[i-1].userRegDate}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-primary" onclick="location.href='/admin/banner/edit.do?banNo=${bannerList[i-1].banNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/banner/delete.do?banNo=${bannerList[i-1].banNo}';} else {return false;}">삭제</button>
+                                                    <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/user/delete.do?userNo=${userList[i-1].userNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

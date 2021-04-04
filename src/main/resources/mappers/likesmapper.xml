@@ -9,6 +9,6 @@
     </delete>
     <insert id="insertLikes">
         insert into likes(userNo, lecNo)
-        VALUES(#{popType}, #{popImg}, #{popRegDate})
+        VALUES(#{userNo}, #{lecNo})
     </insert>
 </mapper>

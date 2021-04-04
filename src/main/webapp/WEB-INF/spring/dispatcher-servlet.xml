@@ -25,6 +25,7 @@
     </bean>
 
     <!-- 일반 파일 업로드 경로 -->
+<!--    <mvc:resources mapping="/files/**" location="/files/" cache-period="0" />-->
 
     <mvc:interceptors>
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
