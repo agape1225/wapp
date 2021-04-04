@@ -39,12 +39,12 @@
                 <div class="login-container">
 
                     <c:choose>
-                        <c:when test="${empty userName}">
+                        <c:when test="${empty userLogin}">
                             <button style="font-weight: normal;" onclick="location.href='/user'">로그인</button>
                         </c:when>
                         <c:otherwise>
-                            <span>${userName}님</span>
-                            <button style="font-weight: normal;" onclick="location.href='/'">마이페이지</button> <!-- 미구현 -->
+                            <span>${userLogin.userName}님 </span>
+                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button> <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>

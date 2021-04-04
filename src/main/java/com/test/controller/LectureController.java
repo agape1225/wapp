@@ -172,7 +172,7 @@ public class LectureController {
         return "redirect:/admin/login/lecture/data-table.do";
     }
 
-    @GetMapping("/user/login/myPage")
+    @GetMapping("/myPage")
     public String getLectureListByUserNo(HttpServletRequest request, Model model) {
         try{
             HttpSession session = request.getSession();
