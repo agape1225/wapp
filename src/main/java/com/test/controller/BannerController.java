@@ -176,12 +176,7 @@ public class BannerController {
 
                 bannerDto.setBanImg("/files/lectureImage/" + fileName); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
             }
-//            System.out.println(lectureDto.getLecCategory());
-//            System.out.println(lectureDto.getLecName());
-//            System.out.println(lectureDto.getLecPrice());
-//            System.out.println(lectureDto.getLecImg());
-//            lectureService.updateLecture(lecNo, lectureDto); // db에 저장
-            //bannerService.
+
             bannerService.updateBanner(banNo, bannerDto);
 
         } catch (Exception e) {
@@ -189,5 +184,4 @@ public class BannerController {
         }
         return "redirect:/admin/login/banner/data-table.do";
     }
-
 }
