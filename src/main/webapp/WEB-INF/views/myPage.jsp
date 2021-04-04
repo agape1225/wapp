@@ -33,5 +33,7 @@
     </c:forEach>
 </table>
 
+<button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
+
 </body>
 </html>

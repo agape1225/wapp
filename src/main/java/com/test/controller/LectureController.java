@@ -239,7 +239,7 @@ public String update_lecture(@RequestParam(value = "lecNo") String lecNo,  Model
         }
     }
 
-    @GetMapping("/user/login/myPage")
+    @GetMapping("/myPage")
     public String getLectureListByUserNo(HttpServletRequest request, Model model) {
         try{
             HttpSession session = request.getSession();
