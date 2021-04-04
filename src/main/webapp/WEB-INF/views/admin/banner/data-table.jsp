@@ -63,14 +63,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var="bannerList" value="${bannerList}"/>
-                                    <c:forEach var="i" begin = "1" end = "${bannerList.size()}">
+                                    <c:set var="bannerList" value="${bannerData}"/>
+                                    <c:forEach var="i" begin = "1" end = "${bannerData.size()}">
                                         <tr>
                                             <td>${i}</td>
                                             <td>${bannerList[i-1].banTitle}</td>
                                             <td>${bannerList[i-1].banContent}</td>
                                             <td>${bannerList[i-1].banCount}</td>
-                                            <td><fmt:formatDate value="${bannerList[i-1].banRegDate}" pattern="yyyy-MM-dd" /></td>
+<%--                                            <td><fmt:formatDate value="${bannerList[i-1].banRegDate}" pattern="yyyy-MM-dd" /></td>--%>
                                             <c:choose>
                                             <c:when test="${empty bannerList[i-1].banImg}">
                                                 <td>이미지 없음</td>
@@ -82,7 +82,7 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button class="btn btn-primary" onclick="location.href='/admin/banner/edit.do?banNo=${bannerList[i-1].banNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/banner/delete.do?banNo=${bannerList[i-1].banNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/banner/delete.do?banNo=${bannerList[i-1].banNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

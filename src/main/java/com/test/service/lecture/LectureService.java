@@ -1,16 +1,14 @@
 package com.test.service.lecture;
 
 import com.test.dto.LectureDto;
-import com.test.dto.LectureUpdateDto;
 
 import java.util.ArrayList;
 
 public interface LectureService {
     ArrayList<LectureDto> readBasicDataList();
+    void insertLecture(LectureDto lectureDto);
 
     ArrayList<LectureDto> readBasicDatListByUserNo(String userNo);
-
-    void insertLecture(String category, String name, String price, String date, String img);
 
     void deleteLecture(String lecNo);
 
@@ -22,6 +20,6 @@ public interface LectureService {
 
     ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice);
 
-    void updateLecture(String lecNo, LectureUpdateDto updateDto);
+    void updateLecture(String lecNo, LectureDto updateDto);
 
 }

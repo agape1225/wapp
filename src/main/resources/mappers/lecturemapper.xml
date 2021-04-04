@@ -9,7 +9,7 @@
     </select>
     <insert id="insertLecture">
         insert into lecture(lecCategory, lecName, lecPrice, lecRegDate, lecImg)
-        VALUES(#{category}, #{name}, #{price}, #{regDate}, #{lecImg})
+        VALUES(#{lectureDto.lecCategory}, #{lectureDto.lecName}, #{lectureDto.lecPrice}, #{lectureDto.lecRegDate}, #{lectureDto.lecImg})
     </insert>
     <delete id="deleteLecture">
         delete from lecture where lecNo = #{lecNo}
@@ -28,7 +28,7 @@
     </select>
     <update id="updateLecture">
         update lecture
-        set (lecName, lecCategory, lecImg, lecPrice) = (#{lecName}, #{lecCategory}, #{lecImg}, #{lecPrice})
+        set lecName=#{updateDto.lecName}, lecCategory=#{updateDto.lecCategory}, lecImg=#{updateDto.lecImg}, lecPrice=#{updateDto.lecPrice}
         where lecNo = #{lecNo}
     </update>
     <select id="readBasicDataListByUserNo" resultType="LectureDto">

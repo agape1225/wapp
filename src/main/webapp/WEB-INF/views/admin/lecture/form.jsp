@@ -69,7 +69,7 @@
 
                                 <div class="form-group">
                                     <label>Image upload</label>
-                                    <input type="file" oninput="btn_status()" name="lecImg" id="exampleImage1"
+                                    <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1"
                                            class="file-upload-default">
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info"

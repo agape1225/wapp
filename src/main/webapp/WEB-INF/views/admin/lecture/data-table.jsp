@@ -69,7 +69,7 @@
                                             <td>${i}</td>
                                             <td>${lectureList[i-1].lecCategory}</td>
                                             <td>${lectureList[i-1].lecName}</td>
-                                            <td style="text-align: right"><fmt:formatNumber value="${lectureList[i-1].lecPrice}" type="currency" currencySymbol="" />원</td>
+<%--                                            <td style="text-align: right"><fmt:formatNumber value="${lectureList[i-1].lecPrice}" type="currency" currencySymbol="" />원</td>--%>
 <%--                                            <td><fmt:formatDate value="${lectureList[i-1].lecRegDate}" pattern="yyyy-MM-dd" /></td>--%>
                                             <td>${lectureList[i-1].lecRegDate}</td>
                                             <c:choose>
@@ -82,8 +82,8 @@
                                             </c:choose>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-primary" onclick="location.href='/admin/lecture/edit.do?lecNo=${lectureList[i-1].lecNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/lecture/delete.do?lecNo=${lectureList[i-1].lecNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-primary" onclick="location.href='/admin/login/lecture/edit.do?lecNo=${lectureList[i-1].lecNo}'">수정</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/lecture/delete.do?lecNo=${lectureList[i-1].lecNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

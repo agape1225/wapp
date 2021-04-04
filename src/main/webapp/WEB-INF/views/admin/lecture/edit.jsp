@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
                             <c:set var="lecture" value="${lecture}"/>
-                            <form action="/admin/editLecture.do?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/login/editLecture.do?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
                                     <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}">
@@ -66,7 +66,7 @@
                                     <label>File upload</label>
                                     <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1" class="file-upload-default">
                                     <div class="input-group col-xs-12">
-                                        <c:set var="lecimg" value="${lecture.lecImg.replaceAll('/files/lecture/','')}"/>
+                                        <c:set var="lecimg" value="${lecture.lecImg.replaceAll('/files/img/','')}"/>
                                         <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image"  value="${lecimg}">
                                         <span class="input-group-append">
 												<button class="file-upload-browse btn btn-primary" type="button">Upload</button>
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn">수정</button>
-                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/lecture/data-table.do'">취소</button>
+                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/login/lecture/data-table.do'">취소</button>
                             </form>
                         </div>
                     </div>
