@@ -13,9 +13,9 @@ public class LikesDao {
 
     public void insertLikes(String userNo, String lecNo) {
         try {
-            LikesMapper lecMapper = sqlSession.getMapper(LikesMapper.class);
+            LikesMapper likesMapper = sqlSession.getMapper(LikesMapper.class);
             System.out.println("dao: " + userNo + "," + lecNo);
-            lecMapper.insertLikes(userNo, lecNo);
+            likesMapper.insertLikes(userNo, lecNo);
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -24,11 +24,13 @@ public class LikesDao {
 
     public void deleteLikes(String userNo, String lecNo) {
         try {
-            LikesMapper lecMapper = sqlSession.getMapper(LikesMapper.class);
+            LikesMapper likesMapper = sqlSession.getMapper(LikesMapper.class);
             System.out.println("dao: " + userNo + lecNo);
-            lecMapper.deleteLikes(userNo, lecNo);
+            likesMapper.deleteLikes(userNo, lecNo);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 }

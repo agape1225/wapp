@@ -60,6 +60,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/admin/login/user/data-table.do">
+                    <i class="link-icon" data-feather="layout"></i>
+                    <span class="link-title">유저 관리</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/login/logout">
                     <i class="link-icon" data-feather="log-out"></i>
                     <span class="link-title">로그아웃</span>

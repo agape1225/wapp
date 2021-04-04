@@ -204,6 +204,12 @@
                                 <span class="total-month"> (?개월)(이벤트기간)</span>
                             </div>
                         </div>
+                        <form action="/user/login/likes/insert" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                        </form>
+                        <form action="/user/login/likes/delete" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                        </form>
                     </div>
                     </c:forEach>
                 </div>
@@ -236,6 +242,42 @@
             prevEl: '.swiper-button-prev',
         },
     });
+
+</script>
+<script>
+    // function add_like_btn(item){
+    //     alert('아');
+    //
+    //     $.ajax({
+    //         url: '/user/login/likes/insert',
+    //         type: 'POST',
+    //         data: JSON.stringify(item),
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         success : function (data) {
+    //             alert('성공');
+    //         }
+    //     }).done(function () {
+    //         alert('찜이 추가되었습니다.');
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    // function del_like_btn(item){
+    //     alert(s);
+    //     $.ajax({
+    //         url: '/user/login/likes/delete',
+    //         type: 'POST',
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         data: JSON.stringify(s)
+    //     }).done(function () {
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

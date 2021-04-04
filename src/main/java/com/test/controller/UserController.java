@@ -7,10 +7,7 @@ import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import java.util.ArrayList;
@@ -46,31 +43,32 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping(value = "/user/login/userDetlete", method = RequestMethod.GET)
-    public String delete(@RequestParam(value = "userNo") String userNo) {
+    @GetMapping("admin/login/user/data-table.do")
+    public String user_manage(Model model){
+        try{
+            System.out.println("Start manage_user");
+            ArrayList<UserDto> userList =  userService.readUserInfoList();
+
+            model.addAttribute("userList", userList);
+            System.out.println("end manageUser");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/user/data-table";
+    }
+
+
+    @GetMapping("/admin/login/user/delete.do")
+    public String delete_lec(@RequestParam(value = "userNo") String userNo) {
+        System.out.println("Start delUser");
 
         try {
-            System.out.println("userNo: " + userNo);
+            System.out.println("userNo: \n\n\n" + userNo);
             userService.deleteUser(userNo);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/user";
+        return "redirect:/admin/login/user/data-table.do";
     }
 
-    @GetMapping(value = "/user/login/userList")
-    public String readUserInfoList(Model model){
-        ArrayList<UserDto> userList =  userService.readUserInfoList();
-        model.addAttribute("userList", userList);
-
-        return "user/login/userList";
-    }
-
-    @GetMapping(value = "/user/login/user_data")
-    public String readUserInfoListByUserNo(@RequestParam(value = "userNo") String userNo, Model model){
-        UserDto user =  userService.readUserInfoListByUserNo(userNo);
-        model.addAttribute("user_detail", user);
-
-        return "user/login/user_data";
-    }
 }
