@@ -41,10 +41,10 @@ public class UserDao {
 
     public UserDto readUserInfoListByUserNo(String userNo){
         try {
-            System.out.println("calling Banner do");
+            System.out.println("calling User  do");
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             UserDto user = userMapper.readUserInfoListByUserNo(userNo);
-            System.out.println("calling Banner end");
+            System.out.println("calling User do");
             return user;
         } catch (Exception e) {
             e.printStackTrace();

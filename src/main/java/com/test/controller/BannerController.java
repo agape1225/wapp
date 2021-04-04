@@ -105,7 +105,7 @@ public class BannerController {
         }
         return "redirect:/admin/login/banner/data-table.do";
     }
-  
+
     @GetMapping(value = "/admin/login/bannerList")
     public String readBasicDataList(Model model){
         ArrayList<BannerDto> bannerList =  bannerService.readBasicDataList();
