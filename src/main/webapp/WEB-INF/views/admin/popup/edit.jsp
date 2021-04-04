@@ -47,34 +47,31 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
-                            <c:set var="lecture" value="${lecture}"/>
-                            <form action="/admin/editLecture.do?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
+                            <c:set var="popup" value="${popup}"/>
+                            <form action="/admin/login/editPopup?popNo=${popup.popNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="exampleInputText1">CATEGORY</label>
-                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputText2">NAME</label>
-                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText2" placeholder="Lecture Name" name="lecName" value="${lecture.lecName}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputNumber1">PRICE</label>
-                                    <input type="number" oninput="btn_status()" class="form-control" id="exampleInputNumber1" placeholder="Price" name="lecPrice" value="${lecture.lecPrice}">
+                                    <label for="exampleInputText1">Type</label>
+                                    <input type="text" oninput="btn_status()" class="form-control"
+                                           id="exampleInputText1"
+                                           placeholder="Popup Type" name="popType" value="${popup.popType}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>File upload</label>
-                                    <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1" class="file-upload-default">
+                                    <label>Image upload</label>
+                                    <input type="file" oninput="btn_status()" name="popImage" id="exampleImage1"
+                                           class="file-upload-default">
                                     <div class="input-group col-xs-12">
-                                        <c:set var="lecimg" value="${lecture.lecImg.replaceAll('/files/lecture/','')}"/>
-                                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image"  value="${lecimg}">
+                                        <c:set var="popImg" value="${popup.popImg.split('_')[1]}"/>
+                                        <input type="text" class="form-control file-upload-info" id="exampleInputImage1" disabled=""
+                                               placeholder="Upload Image" value="${popImg}">
                                         <span class="input-group-append">
-												<button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-											</span>
+												<button class="file-upload-browse btn btn-primary"
+                                                        type="button">Upload</button>
+                                        </span>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn">수정</button>
-                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/lecture-data-table.do'">취소</button>
+                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/login/popup-data-table'">취소</button>
                             </form>
                         </div>
                     </div>
@@ -93,9 +90,7 @@
 <script>
 
     function btn_status() {
-        if (document.getElementById("exampleInputText1").value !== '' &&
-            document.getElementById("exampleInputText2").value !== '' &&
-            document.getElementById("exampleInputNumber1").value !== '') {
+        if (document.getElementById("exampleInputText1").value !== '') {
             document.getElementById("sub_btn").disabled = false;
         } else {
             document.getElementById("sub_btn").disabled = true;

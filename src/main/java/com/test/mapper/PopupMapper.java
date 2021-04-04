@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 public interface PopupMapper {
     ArrayList<PopupDto> getPopupList();
-    void addItem(@Param("popType") String popType,
-                    @Param("popImg") String popImg,
-                    @Param("popRegDate") String popRegDate);
-    void deletePopup(@Param("data") String data);
+    void addItem(@Param("popupDto") PopupDto popupDto);
+    void deleteItem(@Param("popNo") String popNo);
+    void editItem(@Param("popupDto") PopupDto popupDto);
+    PopupDto selectItem(@Param("popNo") String popNo);
+
 }

@@ -7,11 +7,17 @@
     <select id="getPopupList" resultType="PopupDto">
         select * from popup
     </select>
-    <delete id="deletePopup">
-        delete from popup where number=#{data}
+    <delete id="deleteItem">
+        delete from popup where popNo=#{popNo}
     </delete>
     <insert id="addItem">
         insert into popup(popType, popImg, popRegDate)
-        VALUES(#{popType}, #{popImg}, #{popRegDate})
+        VALUES(#{popupDto.popType}, #{popupDto.popImg}, #{popupDto.popRegDate})
     </insert>
+    <select id="selectItem" resultType="PopupDto">
+        select * from popup where popNo=${popNo}
+    </select>
+    <update id="editItem">
+        update popup set popType=#{popupDto.popType}, popImg=#{popupDto.popImg} where popNo=#{popupDto.popNo}
+    </update>
 </mapper>

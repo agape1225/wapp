@@ -1,10 +1,7 @@
 package com.test.service.popup;
 
 import com.test.dao.PopupDao;
-import com.test.dao.TestDao;
 import com.test.dto.PopupDto;
-import com.test.dto.TestDto;
-import com.test.service.test.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +12,29 @@ public class PopupServiceImp implements PopupService {
     @Autowired
     PopupDao popupDao;
 
-
     @Override
     public ArrayList<PopupDto> getPopupList() {
-        ArrayList<PopupDto> popupList = popupDao.getPopupList();
-        return popupList;
+        return popupDao.getPopupList();
     }
 
     @Override
-    public void deletePopup(String data) {
-        popupDao.deletePopup(data);
-
+    public void deleteItem(String popNo) {
+        popupDao.deleteItem(popNo);
     }
 
     @Override
-    public void addItem(String popType, String popImg, String popRegDate) {
-        popupDao.addItem(popType, popImg, popRegDate);
-
+    public void addItem(PopupDto popupDto) {
+        popupDao.addItem(popupDto);
     }
+
+    @Override
+    public void editItem(PopupDto popupDto){
+        popupDao.editItem(popupDto);
+    }
+
+    @Override
+    public PopupDto selectItem(String popNo) {
+        return popupDao.selectItem(popNo);
+    }
+
 }

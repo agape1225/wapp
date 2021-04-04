@@ -66,7 +66,7 @@
                                         <tr>
                                             <td>${i}</td>
                                             <td>${popupList[i-1].popType}</td>
-                                            <td><fmt:formatDate value="${popupList[i-1].popRegDate}" pattern="yyyy-MM-dd" /></td>
+                                            <td>${popupList[i-1].popRegDate}</td>
                                             <c:choose>
                                             <c:when test="${empty popupList[i-1].popImg}">
                                                 <td>이미지 없음</td>
@@ -77,8 +77,8 @@
                                             </c:choose>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-primary" onclick="location.href='/admin/popup/edit.do?popNo=${popupList[i-1].popNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/popup/delete.do?popNo=${popupList[i-1].popNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-primary" onclick="location.href='/admin/login/popup/edit?popNo=${popupList[i-1].popNo}'">수정</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/popup/delete?popNo=${popupList[i-1].popNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

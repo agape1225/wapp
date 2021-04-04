@@ -6,11 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PopupDto {
+    String popNo;
     String popType;
     String popImg;
     String popRegDate;
-
-    public String getImg(){
-        return popImg;
-    }
 }
