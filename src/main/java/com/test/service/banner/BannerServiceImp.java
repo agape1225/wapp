@@ -43,4 +43,9 @@ public class BannerServiceImp implements BannerService {
     public BannerDto readBasicDataByBanNo(String banNo) {
         return bannerDao.readBasicDataByBanNo(banNo);
     }
+
+    @Override
+    public void updateBanner(String banNo, BannerDto bannerDto){
+        bannerDao.updateBanner(banNo, bannerDto);
+    }
 }

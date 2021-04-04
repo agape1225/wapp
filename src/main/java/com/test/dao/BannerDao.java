@@ -74,4 +74,9 @@ public class BannerDao {
         }
     }
 
+    public void updateBanner(String banNo, BannerDto bannerDto){
+        BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+        bannerMapper.updateBanner(banNo, bannerDto);
+    }
+
 }

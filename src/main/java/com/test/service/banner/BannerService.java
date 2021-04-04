@@ -15,4 +15,6 @@ public interface BannerService {
 
     BannerDto readBasicDataByBanNo(String banNo);
 
+    void updateBanner(String banNo, BannerDto bannerDto);
+
 }

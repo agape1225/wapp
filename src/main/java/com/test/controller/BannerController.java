@@ -114,4 +114,66 @@ public class BannerController {
         }
         return "redirect:/admin/banner/data-table";
     }
+
+    @GetMapping("/admin/banner/edit")
+    public String update_banner_form(@RequestParam(value = "banNo") String banNo,  Model model) {
+        System.out.println("Start update lecture form");
+
+        try {
+            BannerDto bannerDto = bannerService.readBasicDataByBanNo(banNo);
+            model.addAttribute("banner",bannerDto);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "admin/banner/edit";
+    }
+
+    @RequestMapping(value = "/admin/editBanner", method = {RequestMethod.POST, RequestMethod.GET})
+    public String update_banner(@RequestParam(value = "banNo") String banNo,
+                                 BannerDto bannerDto, MultipartFile banImage,
+                                 Model model) {
+        System.out.println("Start update lecture");
+
+        try {
+            //BannerDto lectureInDb = lectureService.readBasicDataByLecNo(lecNo);
+            //System.out.println(lectureInDb.getLecName());
+            //String filename = lecImage.getOriginalFilename();
+            BannerDto bannerInDb = bannerService.readBasicDataByBanNo(banNo);
+            String fileName = banImage.getOriginalFilename();
+            if (fileName.isEmpty()) { // 이미지이름이 빈칸 == 이미지새로 업로드 안함
+                System.out.println("editItemWithoutImg");
+                bannerDto.setBanImg(bannerInDb.getBanImg()); // db에 있던 배너이미지를 그대로 넣어주기
+                //lectureDto.setLecImg(lectureInDb.getLecImg());
+
+            } else { // 이미지 이름이 있으면 기존이미지 삭제 후 새이미지를 저장
+                System.out.println("editItemWithImg");
+
+                File targetFile = new File(servletContext.getRealPath("/") + bannerInDb.getBanImg()); // 서버에있는 삭제할 배너파일 지정
+                String delName = targetFile.getName(); // 삭제될 배너파일이름
+                if (targetFile.delete()) {
+                    System.out.println("Deleted file : " + delName);
+                } else {
+                    System.out.println("Failed to delete the file.");
+                }
+
+                // 서버에 사진 저장
+                String rootPath = servletContext.getRealPath("/");
+                String relativeFolder =  "/files/bannerImage/";
+                System.out.println(rootPath + relativeFolder);
+
+                String serverFile = rootPath + relativeFolder + fileName;
+
+                FileCopyUtils.copy(banImage.getBytes(), new File(serverFile)); // 서버에 이미지 저장
+
+                bannerDto.setBanImg("/files/lectureImage/" + fileName); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
+            }
+
+            bannerService.updateBanner(banNo, bannerDto);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin/banner/data-table";
+    }
 }
