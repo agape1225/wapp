@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Banner</h6>
                             <c:set var="banner" value="${banner}"/>
-                            <form action="/admin/editBanner.do?banNo=${banner.banNo}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/login/editBanner.do?banNo=${banner.banNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">Title</label>
                                     <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="banTitle" value="${banner.banTitle}">

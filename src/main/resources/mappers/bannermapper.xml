@@ -19,5 +19,9 @@
     <select id="readBasicDataByBanNo" resultType="BannerDto">
         select * from banner where banNo = #{banNo}
     </select>
-
+    <update id="updateBanner">
+        update banner
+        set banImg=#{updateDto.banImg}, banRegDate=#{updateDto.banRegDate}, banTitle=#{updateDto.banTitle}, banContent=#{updateDto.banContent}
+        where banNo = #{banNo}
+    </update>
 </mapper>

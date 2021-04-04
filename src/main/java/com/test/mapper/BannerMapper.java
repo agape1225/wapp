@@ -16,7 +16,10 @@ public interface BannerMapper {
 
     void deleteBanner(@Param("banNo") String banNo);
 
+    void updateBanner(@Param("banNo") String banNo, @Param("updateDto") BannerDto bannerDto);
+
     ArrayList<BannerDto> readBasicDataList();
     BannerDto readBasicDataByBanNo(@Param("banNo") String banNo);
+
 
 }
