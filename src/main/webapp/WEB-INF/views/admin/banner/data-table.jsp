@@ -81,8 +81,8 @@
                                             </c:choose>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-primary" onclick="location.href='/admin/banner/edit.do?banNo=${bannerList[i-1].banNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/banner/delete.do?banNo=${bannerList[i-1].banNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-primary" onclick="location.href='/admin/banner/edit?banNo=${bannerList[i-1].banNo}'">수정</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/banner/delete?banNo=${bannerList[i-1].banNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

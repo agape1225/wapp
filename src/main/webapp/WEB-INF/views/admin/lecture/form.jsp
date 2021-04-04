@@ -47,7 +47,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
-                            <form action="/admin/login/addLecture" method="post" enctype="multipart/form-data">
+                            <form action="/admin/addLecture" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
                                     <input type="text" oninput="btn_status()" class="form-control"

@@ -32,7 +32,7 @@ public class PopupController {
     private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
 
     /////////////////////////////////////////////// CREATE
-    @GetMapping("admin/login/popup/form")
+    @GetMapping("admin/popup/form")
     public String manage_popup(Model model){
         try{
 
@@ -42,7 +42,7 @@ public class PopupController {
         return "admin/popup/form";
     }
 
-    @PostMapping("admin/login/popup/form")
+    @PostMapping("admin/popup/form")
     public String add_popup(PopupDto popupDto, MultipartFile popImage, HttpServletRequest request){
         try{
             Date currentTime = new Date();
@@ -59,11 +59,11 @@ public class PopupController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/admin/login/popup/data-table";
+        return "redirect:/admin/popup/data-table";
     }
 
     /////////////////////////////////////////////// READ
-    @GetMapping("admin/login/popup/data-table")
+    @GetMapping("admin/popup/data-table")
     public String popup_manage(Model model){
         try{
             System.out.println("Start manage_popup");
@@ -77,7 +77,7 @@ public class PopupController {
     }
 
     /////////////////////////////////////////////// DELETE
-    @GetMapping("admin/login/popup/delete")
+    @GetMapping("admin/popup/delete")
     public String delete(@RequestParam(value = "popNo") String popNo){
         try{
             PopupDto dbPopup = popupService.selectItem(popNo); // popNo로 삭제할 강의 정보 가져오기
@@ -93,11 +93,11 @@ public class PopupController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/admin/login/popup/data-table";
+        return "redirect:/admin/popup/data-table";
     }
 
     /////////////////////////////////////////////// UPDATE
-    @GetMapping("/admin/login/popup/edit") // 수정 폼
+    @GetMapping("/admin/popup/edit") // 수정 폼
     public String editForm(@RequestParam(value = "popNo") String popNo, Model model){
         try{
             System.out.println("popNo: " + popNo);
@@ -109,7 +109,7 @@ public class PopupController {
         return "admin/popup/edit";
     }
 
-    @RequestMapping(value = "/admin/login/editPopup", method = {RequestMethod.POST, RequestMethod.GET}) // 수정
+    @RequestMapping(value = "/admin/editPopup", method = {RequestMethod.POST, RequestMethod.GET}) // 수정
     public String editPopup(@Param("popNo") String popNo, PopupDto popupDto, MultipartFile popImage, HttpServletRequest request){
         try{
             System.out.println("start edit");
@@ -140,7 +140,7 @@ public class PopupController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:/admin/login/popup/data-table";
+        return "redirect:/admin/popup/data-table";
     }
 
     private static void saveImageOnServer(HttpServletRequest request, MultipartFile Image, String fullName){

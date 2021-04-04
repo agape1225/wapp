@@ -77,8 +77,8 @@
                                             </c:choose>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-primary" onclick="location.href='/admin/login/popup/edit?popNo=${popupList[i-1].popNo}'">수정</button>
-                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/popup/delete?popNo=${popupList[i-1].popNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-primary" onclick="location.href='/admin/popup/edit?popNo=${popupList[i-1].popNo}'">수정</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/popup/delete?popNo=${popupList[i-1].popNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

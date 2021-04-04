@@ -14,9 +14,9 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("userLogin");
 
-        if(userDto == null) {
+        if(session == null) {
+            session.getAttribute("userLogin");
             response.sendRedirect("/user/login");
             return false;
         }

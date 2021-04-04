@@ -20,7 +20,7 @@ public class LectureServiceImp implements LectureService {
 
     @Override
     public ArrayList<LectureDto> readBasicDataList() {
-        System.out.println("reading lecture List");
+        System.out.println("reading lecture Listttttt");
         return lectureDao.readBasicDataList();
     }
 
