@@ -15,10 +15,10 @@ public class LectureDao {
 
     public ArrayList<LectureDto> readBasicDataList() {
         try {
-            System.out.println("calling Lecture list dooooo");
+            System.out.println("calling Lecture list do");
             LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
             ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataList();
-            System.out.println("calling Lecture list enddddd");
+            System.out.println("calling Lecture list end");
             return lectureInfoList;
         } catch (Exception e) {
             e.printStackTrace();
