@@ -487,13 +487,12 @@ button{
 .baro-wrapper{
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .baro-content{
     margin: 20px 10px;
     width: 276px;
-    height: 400px;
+    height: 420px;
     flex-direction: column;
     display: inline-flex;
 }
@@ -511,7 +510,7 @@ button{
     line-height: 16px;
     letter-spacing: normal;
     margin: 5px 0px ;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
     white-space: nowrap;
     color: rgb(26, 26, 26);

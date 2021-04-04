@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -78,7 +77,7 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <select id="exampleInputText1" name="Category" oninput="btn_status()">
+                    <select id="exampleInputText1" name="Category" oninput="btn_status()" onchange="if(this.value) location.href='/baro?category='+(this.value);">
                         <option value="취미">취미</option>
                         <option value="수익 창출">수익 창출</option>
                         <option value="직무교육">직무교육</option>
@@ -106,7 +105,7 @@
                             <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
                         </div>
                         <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
+                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
                             <span class="total-month"> (?개월)(이벤트기간)</span>
                         </div>
                         <form action="/user/login/likes/insert" method="post">
@@ -166,46 +165,3 @@
 <script src="../js/bootstrap.js"></script>
 </body>
 </html>
-
-<%--<div class="recent-book">
-
-        <a href="/bookboard?book=1186343133 9791186343135">
-            <div class="recent-book__info">
-                <div class="recent-book__info__detail"><img class="recent-book__image" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5462088%3Ftimestamp%3D20201212154728">
-                </div>
-                <div class="recent-book__info__detail">
-                    <div class="recent-book__title">그림의 힘(리커버 에디션)</div>
-                    <div class="recent-book__author">김선현
-
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/bookboard?book=1190090015 9791190090018">
-            <div class="recent-book__info">
-                <div class="recent-book__info__detail"><img class="recent-book__image" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F4966995%3Ftimestamp%3D20201102141955">
-                </div>
-                <div class="recent-book__info__detail">
-                    <div class="recent-book__title">우리가 빛의 속도로 갈 수 없다면(양장본 HardCover)</div>
-                    <div class="recent-book__author">김초엽
-
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <a href="/bookboard?book=8937473097 9788937473098">
-            <div class="recent-book__info">
-                <div class="recent-book__info__detail"><img class="recent-book__image" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F541125%3Ftimestamp%3D20201031140640">
-                </div>
-                <div class="recent-book__info__detail">
-                    <div class="recent-book__title">보건교사 안은영(오늘의 젊은 작가 9)(양장본 HardCover)</div>
-                    <div class="recent-book__author">정세랑
-
-                    </div>
-                </div>
-            </div>
-        </a>
-
-    </div>--%>

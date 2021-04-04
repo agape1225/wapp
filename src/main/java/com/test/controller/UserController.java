@@ -66,10 +66,11 @@ public class UserController {
     }
 
     @GetMapping("/baro")
-    public String barohome(Model model) {
+    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "취미") String categoty) {
         System.out.println("바로수강페이지");
+        System.out.println(categoty);
         try {
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataByLecCategory(categoty);
             model.addAttribute("lectureList", lectureList);
         } catch (Exception e) {
             e.printStackTrace();

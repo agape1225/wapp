@@ -50,11 +50,13 @@
                             <form action="/admin/addLecture" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
-                                    <select id="exampleInputText1" name="lecCategory" oninput="btn_status()">
-                                        <option value="영상/디자인">영상/디자인</option>
-                                        <option value="온라인쇼핑몰">온라인쇼핑몰</option>
-                                        <option value="창업">창업</option>
-                                        <option value="etc">설정에서변경하세요</option>
+                                    <select style="color: black" id="exampleInputText1" name="lecCategory" oninput="btn_status()">
+                                        <option value="취미">취미</option>
+                                        <option value="수익 창출">수익 창출</option>
+                                        <option value="직무교육">직무교육</option>
+                                        <option value="데이터 · 개발">데이터 · 개발</option>
+                                        <option value="시그니처">시그니처</option>
+                                        <option value="키즈">키즈</option>
                                     </select>
 <%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
 <%--                                           id="exampleInputText1"--%>
