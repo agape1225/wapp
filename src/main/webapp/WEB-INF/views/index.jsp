@@ -152,7 +152,7 @@
             <div class="text-box">
                 <div class="class-title">
                     <div class="class-text" style="float: left; margin-right:19px; font-weight: bold">오늘의 0원 종료까지</div>
-                    <div style="color: blue; font-weight: bold" class="class-time">21:01:12</div>
+                    <div id="class-time" style="color: blue; font-weight: bold" ></div>
                 </div>
                 <div style="color: gray" class="class-description">매일 오후 2시! 다른 클래스와 함께 구매시 오늘만 무료</div>
             </div>
@@ -323,7 +323,7 @@
             <div class="promotion-card">
                 <div class="text-box">
                     <div class="class-title">
-                        <div class="class-text" style="margin-right:19px; font-weight: bold">101월드, 모든 혜택 모아보기 </div>
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">101월드, 모든 혜택 모아보기</div>
                         <div style="color: gray" class="class-description"></div>
                     </div>
                 </div>
@@ -390,7 +390,7 @@
             <div class="popular-card">
                 <div class="text-box">
                     <div class="class-title">
-                        <div class="class-text" style="margin-right:19px; font-weight: bold">인기있는 신규 클래스 </div>
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">인기있는 신규 클래스</div>
                     </div>
                     <div style="color: gray" class="class-description">얼리버드 기간에만 받을 수 있는 최저가 할인 중이에요.</div>
                 </div>
@@ -489,6 +489,37 @@
 
 <jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
 
+
+<script>
+    const countDownTimer = function (id, date) {
+    var _vDate = new Date(date);// 전달받은 일자
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distDt = _vDate - now;
+
+        var hours = Math.floor((distDt % _hour*24) / _hour);
+        var minutes = Math.floor((distDt % _hour) / _minute);
+        var seconds = Math.floor((distDt % _minute) / _second);
+
+        document.getElementById(id).textContent = ' ';
+        document.getElementById(id).textContent += hours;
+        document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
+        document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":")  + seconds;
+    }
+        timer = setInterval(showRemaining, 1000);
+}
+
+var dateObj = new Date();
+dateObj.setDate(dateObj.getDate() + 1);
+countDownTimer('class-time', dateObj);
+</script>
+
+
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
@@ -509,6 +540,8 @@
     });
 
 </script>
+
+
 <script>
     // function add_like_btn(item){
     //     alert('아');
