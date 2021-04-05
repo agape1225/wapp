@@ -47,10 +47,8 @@
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
-
                 </div>
             </div>
-
         </div>
 
         <div class="navbar">
