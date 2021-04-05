@@ -215,6 +215,371 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
+
+        <div class="card-wrapper">
+            <div class="best-class">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">가장 많이 같이 담는 BEST 클래스 >
+                        </div>
+                    </div>
+                    <div style="color: gray" class="class-description">단 24시간, 최저가로 만나보세요</div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                        <div class="swiper-slide">Slide 11</div>
+                        <div class="swiper-slide">Slide 12</div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
+
+            <%--        Mainpage Top Tutor Cards        --%>
+            <div class="tutor-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">카테고리별 명예의 전당 TOP20</div>
+                    </div>
+                    <div class="category-tab">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a href="#">머니・커리어</a></li>
+                            <li role="presentation"><a href="#">영상・디자인</a></li>
+                            <li role="presentation"><a href="#">공예</a></li>
+                            <li role="presentation"><a href="#">요리・운동・음악</a></li>
+                            <li role="presentation"><a href="#">디지털 드로잉</a></li>
+                            <li role="presentation"><a href="#">미술</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                        <div class="swiper-slide">Slide 11</div>
+                        <div class="swiper-slide">Slide 12</div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
+
+            <%--        Mainpage This Month Promotion Cards        --%>
+            <div class="promotion-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">101월드, 모든 혜택 모아보기 ></div>
+                        <div style="color: gray" class="class-description"></div>
+                    </div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                        <div class="swiper-slide">Slide 11</div>
+                        <div class="swiper-slide">Slide 12</div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
+
+            <%--        Mainpage Popular Item  Cards        --%>
+            <div class="popular-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">인기있는 신규 클래스 ></div>
+                    </div>
+                    <div style="color: gray" class="class-description">얼리버드 기간에만 받을 수 있는 최저가 할인 중이에요.</div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/hahaha.png" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                                <div class="Spacing__Box">
+                                    <span class="original-price">309,000원</span>
+                                </div>
+                                <div class="Spacing__Box">
+                                    <strong class="monthly-price">월 37,900원</strong>
+                                    <span class="total-month"> (5개월)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                        <div class="swiper-slide">Slide 11</div>
+                        <div class="swiper-slide">Slide 12</div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
+        </div>
+
+
     </div>
 </div>
 
