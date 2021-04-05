@@ -48,12 +48,12 @@
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
                             <c:set var="popup" value="${popup}"/>
-                            <form action="/admin/login/editPopup?popNo=${popup.popNo}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/editPopup?popNo=${popup.popNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">Type</label>
                                     <input type="text" oninput="btn_status()" class="form-control"
                                            id="exampleInputText1"
-                                           placeholder="Popup Type" name="popType" value="${popup.popType}">
+                                           placeholder="Popup Type" name="popType" value="${popup.popType}" disabled>
                                 </div>
 
                                 <div class="form-group">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn">수정</button>
-                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/login/popup-data-table'">취소</button>
+                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/popup-data-table'">취소</button>
                             </form>
                         </div>
                     </div>

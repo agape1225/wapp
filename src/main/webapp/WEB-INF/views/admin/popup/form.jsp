@@ -47,12 +47,16 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Popup</h6>
-                            <form action="/admin/login/popup/form" method="post" enctype="multipart/form-data">
+                            <form action="/admin/popup/form" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">Type</label>
-                                    <input type="text" oninput="btn_status()" class="form-control"
-                                           id="exampleInputText1"
-                                           placeholder="Popup Type" name="popType">
+                                    <select id="exampleInputText1" name="popType" oninput="btn_status()" oninput="btn_status()">
+                                        <option value="everyone">Everyone</option>
+                                        <option value="new">New</option>
+                                    </select>
+<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
+<%--                                           id="exampleInputText1"--%>
+<%--                                           placeholder="Popup Type" name="popType">--%>
                                 </div>
 
                                 <div class="form-group">

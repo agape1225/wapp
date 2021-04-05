@@ -23,26 +23,27 @@ public class adminLoginInterceptor extends HandlerInterceptorAdapter {
         System.out.println("Start adminLoginInterceptor session");
 
         HttpSession session = request.getSession(false);
-
-        if(session != null){
+        if (session != null) {
             Object admin = session.getAttribute("adminLogin");
-            AdminLoginDto adminLog = (AdminLoginDto) admin;
-
             System.out.println("session is not null");
+            if (admin != null) {
+                System.out.println("adminLogin is not null");
+                AdminLoginDto adminLog = (AdminLoginDto) admin;
 
-            ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
-            AdminLoginDto result = loginInfo.get(0);
+                ArrayList<AdminLoginDto> loginInfo = adminloginService.getLoginInfo();
+                AdminLoginDto result = loginInfo.get(0);
 
-            System.out.println(adminLog.getId());
-            System.out.println(adminLog.getPassword());
-
-            if(adminLog.getId().equals(result.getId()) &&
-                    adminLog.getPassword().equals(result.getPassword())){
-                return true;
+                if (adminLog.getId().equals(result.getId()) &&
+                        adminLog.getPassword().equals(result.getPassword())) {
+                    return true;
+                }
+            } else {
+                System.out.println("adminLogin is null");
             }
+        } else {
+            System.out.println("session is null");
         }
-        System.out.println("session is null");
-        response.sendRedirect("/admin");
+        response.sendRedirect("/admin/login");
         return false;
     }
 }

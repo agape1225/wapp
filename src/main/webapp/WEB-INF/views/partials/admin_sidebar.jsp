@@ -24,49 +24,49 @@
             <li class="nav-item nav-category">MANAGE</li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/lecture/form.do">
+                <a class="nav-link" href="/admin/lecture/form">
                     <i class="link-icon" data-feather="feather"></i>
                     <span class="link-title">강의 추가</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/lecture/data-table.do">
+                <a class="nav-link" href="/admin/lecture/data-table">
                     <i class="link-icon" data-feather="anchor"></i>
                     <span class="link-title">강의 관리</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/banner/form.do">
+                <a class="nav-link" href="/admin/banner/form">
                     <i class="link-icon" data-feather="inbox"></i>
                     <span class="link-title">배너 추가</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/banner/data-table.do">
+                <a class="nav-link" href="/admin/banner/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">배너 관리</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/popup/form">
+                <a class="nav-link" href="/admin/popup/form">
                     <i class="link-icon" data-feather="inbox"></i>
                     <span class="link-title">팝업 추가</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/popup/data-table">
+                <a class="nav-link" href="/admin/popup/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">팝업 관리</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/user/data-table.do">
+                <a class="nav-link" href="/admin/user/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">유저 관리</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login/logout">
+                <a class="nav-link" href="/admin/logout">
                     <i class="link-icon" data-feather="log-out"></i>
                     <span class="link-title">로그아웃</span>
                 </a>

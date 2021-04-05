@@ -70,7 +70,7 @@
                                             <td>${userList[i-1].userRegDate}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/login/user/delete.do?userNo=${userList[i-1].userNo}';} else {return false;}">삭제</button>
+                                                    <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/user/delete.do?userNo=${userList[i-1].userNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>

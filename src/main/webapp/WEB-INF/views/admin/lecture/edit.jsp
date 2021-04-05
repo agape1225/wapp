@@ -48,10 +48,10 @@
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
                             <c:set var="lecture" value="${lecture}"/>
-                            <form action="/admin/login/editLecture?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/editLecture?lecNo=${lecture.lecNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
-                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}">
+                                    <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="lecCategory" value="${lecture.lecCategory}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputText2">NAME</label>
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn">수정</button>
-                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/login/lecture/data-table'">취소</button>
+                                <button class="btn btn-primary" type="button" onclick="location.href='/admin/lecture/data-table'">취소</button>
                             </form>
                         </div>
                     </div>

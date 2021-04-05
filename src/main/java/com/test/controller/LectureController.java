@@ -34,7 +34,7 @@ public class LectureController {
     private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
 
     //////////////////////////////////////// CREATE
-    @GetMapping("admin/login/lecture/form")
+    @GetMapping("admin/lecture/form")
     public String manage_lecture(Model model){
         try{
 
@@ -44,7 +44,7 @@ public class LectureController {
         return "admin/lecture/form";
     }
 
-    @PostMapping("/admin/login/addLecture")
+    @PostMapping("/admin/addLecture")
     public String insert(LectureDto lectureDto, MultipartFile lecImage) throws IOException {
 
         Date currentTime = new Date();
@@ -67,11 +67,11 @@ public class LectureController {
         FileCopyUtils.copy(lecImage.getBytes(), new File(filename_server)); // 서버에 저장
         lectureService.insertLecture(lectureDto); // DB에 저장
 
-        return "redirect:/admin/login/lecture/data-table";
+        return "redirect:/admin/lecture/data-table";
     }
 
     //////////////////////////////////////// READ
-    @GetMapping("admin/login/lecture/data-table")
+    @GetMapping("admin/lecture/data-table")
     public String lecture_manage(Model model){
         try{
             System.out.println("Start manage_lecture");
@@ -86,7 +86,7 @@ public class LectureController {
     }
 
     //////////////////////////////////////// UPDATE
-    @GetMapping("/admin/login/lecture/edit")
+    @GetMapping("/admin/lecture/edit")
     public String update_lecture_form(@RequestParam(value = "lecNo") String lecNo,  Model model) {
         System.out.println("Start update lecture form");
 
@@ -100,7 +100,7 @@ public class LectureController {
         return "admin/lecture/edit";
     }
 
-    @RequestMapping(value = "/admin/login/editLecture", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/admin/editLecture", method = {RequestMethod.POST, RequestMethod.GET})
     public String update_lecture(@RequestParam(value = "lecNo") String lecNo, LectureDto lectureDto, MultipartFile lecImage, Model model) {
 
         System.out.println("Start update lecture");
@@ -146,11 +146,11 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/lecture/data-table";
+        return "redirect:/admin/lecture/data-table";
     }
 
     //////////////////////////////////////// DELETE
-    @GetMapping("/admin/login/lecture/delete")
+    @GetMapping("/admin/lecture/delete")
     public String delete_lec(@RequestParam(value = "lecNo") String lecNo) {
         System.out.println("Start delLecture");
 
@@ -160,7 +160,7 @@ public class LectureController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/lecture/data-table";
+        return "redirect:/admin/lecture/data-table";
     }
 
     @GetMapping("/myPage")

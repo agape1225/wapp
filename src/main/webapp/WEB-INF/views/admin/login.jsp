@@ -31,17 +31,17 @@
                 <div class="col-md-8 pl-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
                     <a href="#" class="noble-ui-logo d-block mb-2">Wapp<span>TeamB</span></a>
-                    <form class="forms-sample">
+                    <form class="forms-sample" action="/admin/login" method="post">
                       <div class="form-group">
                         <label for="exampleInputEmail1">ID</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="id" placeholder="ID">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" name="password" placeholder="Password">
                       </div>
                       <div class="mt-3">
-                        <a href="../../dashboard-one.html" class="btn btn-primary mr-2 mb-2 mb-md-0 text-white">Login</a>
+                        <button type="submit" class="btn btn-primary mr-2 mb-2 mb-md-0 text-white">Login</button>
                       </div>
                     </form>
                   </div>

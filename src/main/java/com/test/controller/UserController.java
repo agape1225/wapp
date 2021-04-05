@@ -27,23 +27,17 @@ public class UserController {
     @GetMapping("/")
     public String main(Model model){
         try{
-
-            System.out.printf("Start main");
+            System.out.println("Start main");
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
-            System.out.println(lectureList.size());
-            for(int i = 0; i < lectureList.size(); i++){
-                System.out.println(lectureList.get(i).getLecName());
-            }
             model.addAttribute("lectureList",lectureList);
-            System.out.printf("End main");
-
+            System.out.println("End main");
         }catch (Exception e){
             e.printStackTrace();
         }
         return "index";
     }
 
-    @GetMapping("admin/login/user/data-table.do")
+    @GetMapping("admin/user/data-table.do")
     public String user_manage(Model model){
         try{
             System.out.println("Start manage_user");
@@ -58,7 +52,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/admin/login/user/delete.do")
+    @GetMapping("/admin/user/delete.do")
     public String delete_lec(@RequestParam(value = "userNo") String userNo) {
         System.out.println("Start delUser");
 
@@ -68,7 +62,44 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/user/data-table.do";
+        return "redirect:/admin/user/data-table.do";
     }
+
+    @GetMapping("/baro")
+    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "all") String categoty,
+                           @RequestParam(value = "sort", defaultValue = "latest") String sortKey) {
+        System.out.println("바로수강페이지");
+        System.out.println(categoty);
+        System.out.println(sortKey);
+        try {
+            if (categoty.equals("all")){
+                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataList(), sortKey);
+                model.addAttribute("lectureList", sortedList);
+            } else {
+                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataByLecCategory(categoty), sortKey);
+                model.addAttribute("lectureList", sortedList);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "baro";
+    }
+
+    private ArrayList<LectureDto> lectureSort(ArrayList<LectureDto> lectureList, String sortKey) {
+        if (sortKey.equals("latest")) {
+            lectureList.sort((l1, l2) -> {
+                String RegDate1 = l1.getLecRegDate().replace("-", "");
+                String RegDate2 = l2.getLecRegDate().replace("-", "");
+                int Date1 = Integer.parseInt(RegDate1);
+                int Date2 = Integer.parseInt(RegDate2);
+                return Date2 - Date1; // 최신순
+            });
+        } else if (sortKey.equals("popular")) { // 인기순으로 정렬하기 (미구현)
+
+        }
+
+        return lectureList;
+    }
+
 
 }

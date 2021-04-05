@@ -29,18 +29,6 @@ button{
     color: rgb(26, 26, 26);
 }
 
-.kakao-login {
-    background: url('../img/kakao_login_large_wide.png');
-    width: 376px;
-    height: 60px;
-    background-size: 100%;
-    background-position: center;
-}
-.kakao-login-btn{
-    width: 100%;
-    height: 100%;
-}
-
 .main-page{
     width: 100%;
     height: 4302px;
@@ -484,11 +472,33 @@ button{
 }
 
 .slide-content{
-    width: 100%;
+    width: 276px;
     flex-direction: column;
     display: inline-flex;
 }
+
 .slide-img{
+    vertical-align: middle;
+    height: 207px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.baro-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.baro-content{
+    margin: 20px 10px;
+    width: 276px;
+    height: 420px;
+    flex-direction: column;
+    display: inline-flex;
+}
+
+
+.baro-img{
     vertical-align: middle;
     height: 207px;
     border-radius: 6px;
@@ -500,7 +510,7 @@ button{
     line-height: 16px;
     letter-spacing: normal;
     margin: 5px 0px ;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
     white-space: nowrap;
     color: rgb(26, 26, 26);

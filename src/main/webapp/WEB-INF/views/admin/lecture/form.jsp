@@ -47,12 +47,20 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Lecture</h6>
-                            <form action="/admin/login/addLecture" method="post" enctype="multipart/form-data">
+                            <form action="/admin/addLecture" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">CATEGORY</label>
-                                    <input type="text" oninput="btn_status()" class="form-control"
-                                           id="exampleInputText1"
-                                           placeholder="Lecture Category" name="lecCategory">
+                                    <select style="color: black" id="exampleInputText1" name="lecCategory" oninput="btn_status()">
+                                        <option value="취미">취미</option>
+                                        <option value="수익 창출">수익 창출</option>
+                                        <option value="직무교육">직무교육</option>
+                                        <option value="데이터 · 개발">데이터 · 개발</option>
+                                        <option value="시그니처">시그니처</option>
+                                        <option value="키즈">키즈</option>
+                                    </select>
+<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
+<%--                                           id="exampleInputText1"--%>
+<%--                                           placeholder="Lecture Category" name="lecCategory">--%>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputText2">NAME</label>

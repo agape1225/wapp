@@ -1,10 +1,6 @@
-out
 out/*
 aws_s3.*
 .idea/*
-.idea
-wap.iml
-target
+*.iml
 target/*
-/src/main/webapp/resources/aws_s3
-/src/main/webapp/WEB-INF/spring/applicationContext.xml
+src/main/webapp/WEB-INF/spring/applicationContext.xml

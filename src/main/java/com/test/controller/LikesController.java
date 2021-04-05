@@ -18,7 +18,7 @@ public class LikesController {
     LikesService likesService;
 
     @PostMapping("/user/login/likes/insert")
-    public String insert(@RequestParam(value = "lecNo") String lecNo,
+    public String insert(@RequestParam(value = "lecNo") String lecNo, // 찜 추가
                          HttpServletRequest request) {
         System.out.println(lecNo);
 
@@ -32,7 +32,7 @@ public class LikesController {
     }
 
     @PostMapping("/user/login/likes/delete")
-    public String delete(@RequestParam(value = "lecNo") String lecNo,
+    public String delete(@RequestParam(value = "lecNo") String lecNo, // 찜 해제
                          HttpServletRequest request) {
         System.out.println(lecNo);
 

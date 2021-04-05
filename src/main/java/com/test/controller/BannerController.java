@@ -28,20 +28,30 @@ public class BannerController {
     @Autowired
     BannerService bannerService;
 
-    @GetMapping("admin/login/banner/data-table.do")
+    /////////////////////////////////////////////// 배너
+    @GetMapping("admin/banner/form")
+    public String add_banner(Model model){
+        try{
+            System.out.println("Start manage_banner");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "admin/banner/form";
+    }
+
+    @GetMapping("admin/banner/data-table")
     public String banner_manage(Model model){
         try{
             System.out.println("Start manage_banner");
             ArrayList<BannerDto> bannerDto = bannerService.readBasicDataList();
             model.addAttribute("bannerData",bannerDto);
-
         }catch (Exception e){
             e.printStackTrace();
         }
         return "admin/banner/data-table";
     }
 
-    @PostMapping(value = "/admin/login/addBanner.do")
+    @PostMapping(value = "/admin/addBanner")
     public String insert_banner(BannerDto bannerDto,
                          MultipartFile banImage,
                          HttpServletRequest request) throws IOException {
@@ -90,10 +100,10 @@ public class BannerController {
         bannerService.insertBanner(bannerDto);
         //lectureService.insertLecture(lecCategory, lecName, lecPrice, date, lecFileName);
 
-        return "redirect:/admin/login/banner/data-table.do";
+        return "redirect:/admin/banner/data-table";
     }
 
-    @RequestMapping(value = "/admin/login/banner/delete.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/banner/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(value = "banNo") String banNo) {
 
         try {
@@ -102,28 +112,10 @@ public class BannerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/banner/data-table.do";
+        return "redirect:/admin/banner/data-table";
     }
 
-    @GetMapping(value = "/admin/login/bannerList")
-    public String readBasicDataList(Model model){
-        ArrayList<BannerDto> bannerList =  bannerService.readBasicDataList();
-        model.addAttribute("bannerList", bannerList);
-
-        return "template/demo_1/manage-banner";
-    }
-
-    @GetMapping(value = "/admin/login/banner_data")
-    public String readBasicDataByBanNo(@RequestParam(value = "banNo") String banNo, Model model){
-        BannerDto banner =  bannerService.readBasicDataByBanNo(banNo);
-        model.addAttribute("banner_detail", banner);
-
-        return "template/demo_1/manage-banner";
-    }
-
-//    /admin/banner/edit.do
-
-    @GetMapping("/admin/banner/edit.do")
+    @GetMapping("/admin/banner/edit")
     public String update_banner_form(@RequestParam(value = "banNo") String banNo,  Model model) {
         System.out.println("Start update lecture form");
 
@@ -137,7 +129,7 @@ public class BannerController {
         return "admin/banner/edit";
     }
 
-    @RequestMapping(value = "/admin/login/editBanner.do", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/admin/editBanner", method = {RequestMethod.POST, RequestMethod.GET})
     public String update_banner(@RequestParam(value = "banNo") String banNo,
                                  BannerDto bannerDto, MultipartFile banImage,
                                  Model model) {
@@ -182,6 +174,6 @@ public class BannerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/login/banner/data-table.do";
+        return "redirect:/admin/banner/data-table";
     }
 }
