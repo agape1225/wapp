@@ -22,7 +22,7 @@
     <button>회원가입</button>
 </form>
 <a href="https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login">
-    <img src="/resources/img/kakao_login_medium.png">
+    <img src="/img/kakao_login_medium.png">
 </a>
 
 </body>
