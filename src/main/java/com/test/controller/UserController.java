@@ -37,7 +37,7 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("admin/user/data-table.do")
+    @GetMapping("admin/user/data-table")
     public String user_manage(Model model){
         try{
             System.out.println("Start manage_user");
@@ -52,7 +52,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/admin/user/delete.do")
+    @GetMapping("/admin/user/delete")
     public String delete_lec(@RequestParam(value = "userNo") String userNo) {
         System.out.println("Start delUser");
 
@@ -62,7 +62,7 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/user/data-table.do";
+        return "redirect:/admin/user/data-table";
     }
 
     @GetMapping("/baro")
