@@ -59,4 +59,9 @@ public class LectureServiceImp implements LectureService {
         System.out.println("service update " + lecNo);
         lectureDao.updateLecture(lecNo, updateDto);
     }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataByRegDateDesc() {
+        return lectureDao.readBasicDataListByRegDateDesc();
+    }
 }

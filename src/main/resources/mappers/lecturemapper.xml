@@ -39,4 +39,7 @@
                       from user, likes
                       where user.userNo = likes.userNo and likes.userNo = #{userNo})
     </select>
+    <select id="readBasicDataListByRegDateDesc" resultType="LectureDto">
+        select * from lecture order by lecRegDate desc
+    </select>
 </mapper>

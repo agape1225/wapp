@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Repository
@@ -108,6 +109,18 @@ public class LectureDao {
             System.out.println("dao: " + userNo);
             ArrayList<LectureDto> lectureInfoList = lecMapper.readBasicDataListByUserNo(userNo);
             return lectureInfoList;
+        } catch (Exception e) {
+            System.out.println("what error ㅜㅜ");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<LectureDto> readBasicDataListByRegDateDesc(){
+        try {
+            LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> orderedLectureList = lecMapper.readBasicDataListByRegDateDesc();
+            return orderedLectureList;
         } catch (Exception e) {
             System.out.println("what error ㅜㅜ");
             e.printStackTrace();
