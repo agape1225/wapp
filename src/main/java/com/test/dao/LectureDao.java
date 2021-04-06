@@ -114,4 +114,31 @@ public class LectureDao {
             return null;
         }
     }
+
+    public ArrayList<LectureDto> readBasicDataListNotInRec() {
+        try {
+            System.out.println("calling Lecture list not in Recommended do");
+            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListNotInRec();
+            System.out.println("calling Lecture list not in Recommended end");
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<LectureDto> readBasicDataListInRec() {
+        try {
+            System.out.println("calling Lecture list in Recommended do");
+            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListInRec();
+            System.out.println("calling Lecture list in Recommended end");
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
