@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class LikesController {
 
     @Autowired
     LikesService likesService;
+
+    private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
 
     @PostMapping("/user/login/likes/insert")
     public String insert(@RequestParam(value = "lecNo") String lecNo, // 찜 추가
@@ -25,7 +29,10 @@ public class LikesController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("userLogin");
 
-        likesService.insertLecture(userDto.getUserNo(), lecNo);
+        Date currentTime = new Date();
+        String likeDateForDB = dateForDB.format(currentTime);
+
+        likesService.insertLecture(userDto.getUserNo(), lecNo, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + lecNo);
 
         return "redirect:/";

@@ -64,4 +64,9 @@ public class LectureServiceImp implements LectureService {
     public ArrayList<LectureDto> readBasicDataByRegDateDesc() {
         return lectureDao.readBasicDataListByRegDateDesc();
     }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataByPopularity() {
+        return lectureDao.readDataListByPopularity();
+    }
 }

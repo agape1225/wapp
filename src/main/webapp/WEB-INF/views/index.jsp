@@ -233,82 +233,36 @@
 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="img/hahaha.png" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
+                        <c:forEach varStatus="i" begin="0" end="${popularLectureList.size()}" var="item" items="${popularLectureList}">
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <img src="${item.lecImg}" class="slide-img">
+                                    <div class="card-tag">${item.lecCategory}
+                                        <span class="between-tag">・</span>
+                                        (강사이름)
+                                    </div>
+                                    <div class="best-class-name">${item.lecName}</div>
+                                    <div class="Spacing__Box">
+                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                                                                       type="currency"
+                                                                                       currencySymbol=""/>원</span>
+                                    </div>
+                                    <div class="registered-date">
+                                            ${item.lecRegDate}
+                                    </div>
+                                    <div class="Spacing__Box">
+                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
+                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                    </div>
                                 </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                                <div class="Spacing__Box">
-                                    <span class="original-price">309,000원</span>
-                                </div>
-                                <div class="Spacing__Box">
-                                    <strong class="monthly-price">월 37,900원</strong>
-                                    <span class="total-month"> (5개월)</span>
-                                </div>
+                                <form action="/user/login/likes/insert" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                </form>
+                                <form action="/user/login/likes/delete" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                </form>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="img/hahaha.png" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                                <div class="Spacing__Box">
-                                    <span class="original-price">309,000원</span>
-                                </div>
-                                <div class="Spacing__Box">
-                                    <strong class="monthly-price">월 37,900원</strong>
-                                    <span class="total-month"> (5개월)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="img/hahaha.png" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                                <div class="Spacing__Box">
-                                    <span class="original-price">309,000원</span>
-                                </div>
-                                <div class="Spacing__Box">
-                                    <strong class="monthly-price">월 37,900원</strong>
-                                    <span class="total-month"> (5개월)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="img/hahaha.png" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                                <div class="Spacing__Box">
-                                    <span class="original-price">309,000원</span>
-                                </div>
-                                <div class="Spacing__Box">
-                                    <strong class="monthly-price">월 37,900원</strong>
-                                    <span class="total-month"> (5개월)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">Slide 5</div>
-                        <div class="swiper-slide">Slide 6</div>
-                        <div class="swiper-slide">Slide 7</div>
-                        <div class="swiper-slide">Slide 8</div>
-                        <div class="swiper-slide">Slide 9</div>
-                        <div class="swiper-slide">Slide 10</div>
-                        <div class="swiper-slide">Slide 11</div>
-                        <div class="swiper-slide">Slide 12</div>
+                        </c:forEach>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
@@ -409,8 +363,8 @@
                                                                                        type="currency"
                                                                                        currencySymbol=""/>원</span>
                                     </div>
-                                    <div class="registered-date">
-                                        ${item.lecRegDate}
+                                    <div class="like-number">
+                                        찜한 수 ${item.lecLike}
                                     </div>
                                     <div class="Spacing__Box">
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>

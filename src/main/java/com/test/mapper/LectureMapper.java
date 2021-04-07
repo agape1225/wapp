@@ -20,4 +20,7 @@ public interface LectureMapper {
 
     ArrayList<LectureDto> readBasicDataListByRegDateDesc();
 
+    void updateLike(@Param("lecNo") String lecNo,
+                    @Param("lecLike") String lecLike);
+
 }

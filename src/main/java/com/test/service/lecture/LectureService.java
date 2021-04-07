@@ -23,4 +23,6 @@ public interface LectureService {
     void updateLecture(String lecNo, LectureDto updateDto);
 
     ArrayList<LectureDto> readBasicDataByRegDateDesc();
+
+    ArrayList<LectureDto> readBasicDataByPopularity();
 }

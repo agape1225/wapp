@@ -11,8 +11,8 @@ public class LikesServiceImp implements LikesService{
     LikesDao likesDao;
 
     @Override
-    public void insertLecture(String userNo, String lecNo) {
-        likesDao.insertLikes(userNo, lecNo);
+    public void insertLecture(String userNo, String lecNo, String likeDate) {
+        likesDao.insertLikes(userNo, lecNo, likeDate);
     }
 
     @Override

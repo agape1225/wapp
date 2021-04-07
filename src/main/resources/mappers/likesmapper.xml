@@ -8,7 +8,10 @@
         delete from likes where userNo=#{userNo} and lecNo=#{lecNo}
     </delete>
     <insert id="insertLikes">
-        insert into likes(userNo, lecNo)
-        VALUES(#{userNo}, #{lecNo})
+        insert into likes(userNo, lecNo, likeDate)
+        VALUES(#{userNo}, #{lecNo}, #{likeDate})
     </insert>
+    <select id="readLikesListsOrderByLikeDateDesc" resultType="LikesDto">
+        select * from likes order by likeDate desc
+    </select>
 </mapper>
