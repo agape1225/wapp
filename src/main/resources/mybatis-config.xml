@@ -16,5 +16,8 @@
         <typeAlias alias="UserDto" type="com.test.dto.UserDto"/>
         <typeAlias alias="PopupDto" type="com.test.dto.PopupDto"/>
         <typeAlias alias="LikesDto" type="com.test.dto.LikesDto"/>
+        <typeAlias alias="InquiryDto" type="com.test.dto.InquiryDto"/>
+        <typeAlias alias="RecommendedDto" type="com.test.dto.RecommendedDto"/>
+
     </typeAliases>
 </configuration>
