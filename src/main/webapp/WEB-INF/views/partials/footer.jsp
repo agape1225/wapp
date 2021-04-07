@@ -39,9 +39,11 @@
 			</div>
 			<div class="another-menu">
 				<div class="another-menu-title">고객 센터</div>
-				<button class="button-complain">
-					문의하기
-				</button>
+
+					<button class="button-complain" onclick="location.href='/inquiryRegister'">
+						문의하기
+					</button>
+				</form>
 				<div class="menu-description">오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</div>
 			</div>
 		</div>
