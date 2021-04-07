@@ -47,4 +47,18 @@
         set lecLike=#{lecLike}
         where lecNo=#{lecNo}
     </update>
+    <select id="readBasicDataListNotInRec" resultType="LectureDto">
+        select *
+        from lecture
+        where lecNo
+                  not in (select lecNo
+                          from recommended)
+    </select>
+    <select id="readBasicDataListInRec" resultType="LectureDto">
+        select *
+        from lecture
+        where lecNo
+                  in (select lecNo
+                          from recommended)
+    </select>
 </mapper>

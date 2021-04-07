@@ -10,6 +10,10 @@ public interface LectureService {
 
     ArrayList<LectureDto> readBasicDatListByUserNo(String userNo);
 
+    ArrayList<LectureDto> readBasicDataListNotInRec();
+
+    ArrayList<LectureDto> readBasicDataListInRec();
+
     void deleteLecture(String lecNo);
 
     LectureDto readBasicDataByLecNo(String lecNo);

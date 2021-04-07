@@ -60,6 +60,21 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/admin/inquiry/data-table">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">문의 관리</span>
+                <a class="nav-link" href="/admin/recommended/form">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">추천 추가</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/recommended/data-table">
+                    <i class="link-icon" data-feather="layout"></i>
+                    <span class="link-title">추천 관리</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/user/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">유저 관리</span>

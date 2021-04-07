@@ -31,6 +31,16 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
+    public ArrayList<LectureDto> readBasicDataListNotInRec() {
+        return lectureDao.readBasicDataListNotInRec();
+    }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataListInRec() {
+        return lectureDao.readBasicDataListInRec();
+    }
+
+    @Override
     public void deleteLecture(String lecNo) {
         System.out.println("service delete " + lecNo);
         lectureDao.deleteLecture(lecNo);
