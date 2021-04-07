@@ -122,14 +122,12 @@ public class LectureDao {
     }
 
 
-    public ArrayList<LectureDto> readBasicDataListNotInRec() {
+    public ArrayList<LectureDto> readBasicDataListByRegDateDesc() {
         try {
-            System.out.println("calling Lecture list not in Recommended do");
-            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
-            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListNotInRec();
-            System.out.println("calling Lecture list not in Recommended end");
-            return lectureInfoList;
+            LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
+            return lecMapper.readBasicDataListByRegDateDesc();
         } catch (Exception e) {
+            System.out.println("what error ㅜㅜ");
             e.printStackTrace();
             return null;
         }
@@ -149,6 +147,7 @@ public class LectureDao {
     }
 
     public ArrayList<LectureDto> readDataListByPopularity() {
+
         try {
             // 찜을 누를 때 동시 등록되는 날짜를 내림차순으로 불러옴 -> 무조건 첫 인덱스의 날짜는 가장 최근날짜
             // 이 날짜를 기점으로 같은 날짜에 있는 (중복되지 않게) 강의의 번호를 받아옴
