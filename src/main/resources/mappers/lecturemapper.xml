@@ -39,4 +39,18 @@
                       from user, likes
                       where user.userNo = likes.userNo and likes.userNo = #{userNo})
     </select>
+    <select id="readBasicDataListNotInRec" resultType="LectureDto">
+        select *
+        from lecture
+        where lecNo
+                  not in (select lecNo
+                          from recommended)
+    </select>
+    <select id="readBasicDataListInRec" resultType="LectureDto">
+        select *
+        from lecture
+        where lecNo
+                  in (select lecNo
+                          from recommended)
+    </select>
 </mapper>
