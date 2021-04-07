@@ -18,6 +18,7 @@ public class LectureDao {
     SqlSession sqlSession;
 
     private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
+
     public ArrayList<LectureDto> readBasicDataList() {
         try {
             System.out.println("calling Lecture list do");
@@ -121,29 +122,32 @@ public class LectureDao {
     }
 
 
-    public ArrayList<LectureDto> readBasicDataListByRegDateDesc(){
+    public ArrayList<LectureDto> readBasicDataListByRegDateDesc() {
         try {
             LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
             return lecMapper.readBasicDataListByRegDateDesc();
         } catch (Exception e) {
             System.out.println("what error ㅜㅜ");
-
-    public ArrayList<LectureDto> readBasicDataListNotInRec() {
-        try {
-            System.out.println("calling Lecture list not in Recommended do");
-            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
-            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListNotInRec();
-            System.out.println("calling Lecture list not in Recommended end");
-            return lectureInfoList;
-        } catch (Exception e) {
-
             e.printStackTrace();
             return null;
         }
     }
 
+    public ArrayList<LectureDto> readBasicDataListInRec() {
+        try {
+            System.out.println("calling Lecture list in Recommended do");
+            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListInRec();
+            System.out.println("calling Lecture list in Recommended end");
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-    public ArrayList<LectureDto> readDataListByPopularity(){
+    public ArrayList<LectureDto> readDataListByPopularity() {
+
         try {
             // 찜을 누를 때 동시 등록되는 날짜를 내림차순으로 불러옴 -> 무조건 첫 인덱스의 날짜는 가장 최근날짜
             // 이 날짜를 기점으로 같은 날짜에 있는 (중복되지 않게) 강의의 번호를 받아옴
@@ -154,7 +158,7 @@ public class LectureDao {
             ArrayList<LectureDto> recentLikedLectureList = new ArrayList<>();
             ArrayList<LikesDto> likesDtos = likesMapper.readLikesListsOrderByLikeDateDesc();
 
-            if(!likesDtos.isEmpty()) {
+            if (!likesDtos.isEmpty()) {
                 Date recentLikeDate = dateForDB.parse(likesDtos.get(0).getLikeDate());
                 LectureDto firstRecentLikedLecture = lecMapper.readBasicDataByLecNo(likesDtos.get(0).getLecNo());
                 recentLikedLectureList.add(firstRecentLikedLecture);
@@ -180,28 +184,18 @@ public class LectureDao {
                             System.out.println("알 수 없는 오류 발생");
                             break;
                         }
-                    }else{
+                    } else {
                         break;
                     }
                 }
                 return recentLikedLectureList;
-            }else{
+            } else {
                 // 찜 목록이 전혀 없는 경우 등록 날짜 순으로 데이터 정렬
                 return lecMapper.readBasicDataListByRegDateDesc();
             }
-
-    public ArrayList<LectureDto> readBasicDataListInRec() {
-        try {
-            System.out.println("calling Lecture list in Recommended do");
-            LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
-            ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListInRec();
-            System.out.println("calling Lecture list in Recommended end");
-            return lectureInfoList;
-
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-
 }

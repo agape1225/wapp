@@ -24,7 +24,6 @@ public interface LectureMapper {
     void updateLike(@Param("lecNo") String lecNo,
                     @Param("lecLike") String lecLike);
 
-
     ArrayList<LectureDto> readBasicDataListNotInRec();
 
     ArrayList<LectureDto> readBasicDataListInRec();
