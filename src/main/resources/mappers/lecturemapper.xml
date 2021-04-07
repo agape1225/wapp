@@ -39,6 +39,14 @@
                       from user, likes
                       where user.userNo = likes.userNo and likes.userNo = #{userNo})
     </select>
+    <select id="readBasicDataListByRegDateDesc" resultType="LectureDto">
+        select * from lecture order by lecRegDate desc
+    </select>
+    <update id="updateLike">
+        update lecture
+        set lecLike=#{lecLike}
+        where lecNo=#{lecNo}
+    </update>
     <select id="readBasicDataListNotInRec" resultType="LectureDto">
         select *
         from lecture

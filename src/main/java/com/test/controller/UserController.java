@@ -29,7 +29,11 @@ public class UserController {
         try{
             System.out.println("Start main");
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
-            model.addAttribute("lectureList",lectureList);
+            ArrayList<LectureDto> newLectureList = lectureService.readBasicDataByRegDateDesc();
+            ArrayList<LectureDto> popularLectureList = lectureService.readBasicDataByPopularity();
+            model.addAttribute("lectureList", lectureList);
+            model.addAttribute("newLectureList", newLectureList);
+            model.addAttribute("popularLectureList", popularLectureList);
             System.out.println("End main");
         }catch (Exception e){
             e.printStackTrace();
