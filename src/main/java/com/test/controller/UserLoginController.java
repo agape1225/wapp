@@ -3,6 +3,8 @@ package com.test.controller;
 import com.test.dto.UserDto;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,8 +48,10 @@ public class UserLoginController {
         System.out.println("password: " + userPw);
 
         UserDto userDto = userService.readUserInfoListByUserEmail(userEmail);
-        if(userDto != null && userDto.getUserEmail().equals(userEmail) && userDto.getUserPw().equals(userPw)) {
+        PasswordEncoder passwordEncoder =  new BCryptPasswordEncoder(10);
+        if(userDto != null && userDto.getUserEmail().equals(userEmail) && passwordEncoder.matches(userPw, userDto.getUserPw())) {
             session.setAttribute("userLogin", userDto);
+            System.out.println("로그인 성공!");
             return "redirect:/";
         }
         else {
@@ -60,6 +64,6 @@ public class UserLoginController {
     public String logOut(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.invalidate();
-        return "index";
+        return "redirect:/";
     }
 }

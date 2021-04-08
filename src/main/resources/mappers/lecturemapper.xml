@@ -39,6 +39,19 @@
                       from user, likes
                       where user.userNo = likes.userNo and likes.userNo = #{userNo})
     </select>
+
+    <select id="readAllLectureSortedByLikes" resultType="LectureDto">
+        select lecture.lecNo, lecCategory, lecName, lecPrice, lecRegDate, lecImg from lecture left join likes on lecture.lecNo = likes.lecNo group by lecture.lecNo order by count(likeNo) desc;
+    </select>
+    <select id="readAllLectureSortedByRegDate" resultType="LectureDto">
+        select * from lecture order by lecRegDate desc ;
+    </select>
+    <select id="readLectureSortedByLikes" resultType="LectureDto">
+        select lecture.lecNo, lecCategory, lecName, lecPrice, lecRegDate, lecImg from lecture left join likes on lecture.lecNo = likes.lecNo where lecCategory=#{category} group by lecture.lecNo order by count(likeNo) desc;
+    </select>
+    <select id="readLectureSortedByRegDate" resultType="LectureDto">
+        select * from lecture where lecCategory=#{category} order by lecRegDate desc ;
+
     <select id="readBasicDataListByRegDateDesc" resultType="LectureDto">
         select * from lecture order by lecRegDate desc
     </select>
@@ -60,5 +73,6 @@
         where lecNo
                   in (select lecNo
                           from recommended)
+
     </select>
 </mapper>

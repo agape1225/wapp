@@ -122,12 +122,37 @@ public class LectureDao {
     }
 
 
+    public ArrayList<LectureDto> readAllLectureSortedByLikes() {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readAllLectureSortedByLikes();
+            return lectureInfoList;
+        } catch (Exception e) {
+          e.printStackTrace();
+          return null;
+      }
+  }
+
+
     public ArrayList<LectureDto> readBasicDataListByRegDateDesc() {
         try {
             LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
             return lecMapper.readBasicDataListByRegDateDesc();
         } catch (Exception e) {
             System.out.println("what error ㅜㅜ");
+
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public ArrayList<LectureDto> readAllLectureSortedByRegDate() {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readAllLectureSortedByRegDate();
+            return lectureInfoList;
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -139,8 +164,21 @@ public class LectureDao {
             LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
             ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListNotInRec();
             System.out.println("calling Lecture list not in Recommended end");
+
             return lectureInfoList;
         } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
+    public ArrayList<LectureDto> readLectureSortedByLikes(String category) {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByLikes(category);
+          } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -152,12 +190,25 @@ public class LectureDao {
             LectureMapper lMapper = sqlSession.getMapper(LectureMapper.class);
             ArrayList<LectureDto> lectureInfoList = lMapper.readBasicDataListInRec();
             System.out.println("calling Lecture list in Recommended end");
+
             return lectureInfoList;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
+    public ArrayList<LectureDto> readLectureSortedByRegDate(String category) {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByRegDate(category);
+            return lectureInfoList;
+           } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
 
     public ArrayList<LectureDto> readDataListByPopularity() {
 
@@ -206,6 +257,7 @@ public class LectureDao {
                 // 찜 목록이 전혀 없는 경우 등록 날짜 순으로 데이터 정렬
                 return lecMapper.readBasicDataListByRegDateDesc();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;

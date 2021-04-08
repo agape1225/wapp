@@ -71,6 +71,29 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
+
+    public ArrayList<LectureDto> readAllLectureSortedByLikes() {
+        System.out.println("reading All List sorted by likes");
+        return lectureDao.readAllLectureSortedByLikes();
+    }
+
+    @Override
+    public ArrayList<LectureDto> readAllLectureSortedByRegDate() {
+        System.out.println("reading All List sorted by RegDate");
+        return lectureDao.readAllLectureSortedByRegDate();
+    }
+
+    @Override
+    public ArrayList<LectureDto> readLectureSortedByLikes(String category) {
+        System.out.println("reading " + category + "List sorted by likes");
+        return lectureDao.readLectureSortedByLikes(category);
+    }
+
+    @Override
+    public ArrayList<LectureDto> readLectureSortedByRegDate(String category) {
+        System.out.println("reading " + category + "List sorted by RegDate");
+        return lectureDao.readLectureSortedByRegDate(category);
+
     public ArrayList<LectureDto> readBasicDataByRegDateDesc() {
         return lectureDao.readBasicDataListByRegDateDesc();
     }
@@ -78,5 +101,6 @@ public class LectureServiceImp implements LectureService {
     @Override
     public ArrayList<LectureDto> readBasicDataByPopularity() {
         return lectureDao.readDataListByPopularity();
+
     }
 }

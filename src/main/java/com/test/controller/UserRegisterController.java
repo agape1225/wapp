@@ -7,6 +7,8 @@ import com.test.service.kakao.KakaoApiService;
 import com.test.service.user.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,33 +33,35 @@ public class UserRegisterController {
     KakaoApiService kakaoApiService;
 
     @GetMapping("/user/register")
-    public String registerUserView() {
-        return "userRegister";
-    }
+    public String registerUserView() { return "userRegister";}
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
     public String registerUser(UserRegisterDto userRegisterDto) {
 
         UserDto originUserDto = userService.readUserInfoListByUserEmail(userRegisterDto.getUserEmail());
-        if (originUserDto != null)
+        if (originUserDto != null) // 이미 존재하는 아이디입니다 알림창 띄워주기 or 중복확인기능 만들기
             return "userRegister";
 
-        Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(d);
+
+        String targetPw = userRegisterDto.getUserPw();
+        PasswordEncoder passwordEncoder =  new BCryptPasswordEncoder(10); // 비밀번호 인코더 생성
+        userRegisterDto.setUserPw(passwordEncoder.encode(targetPw)); // 인코딩한 비밀번호를 userDto에 저장
+
+
 
         UserInsertDto userDto = new UserInsertDto(
                 userRegisterDto.getUserName(),
                 userRegisterDto.getUserEmail(),
                 userRegisterDto.getUserPw(),
-                date
+                sdf.format(new Date())
         );
 
         System.out.println("control " + userDto.toString());
 
         userService.insertUser(userDto);
 
-        System.out.println("insert userDto success");
+        System.out.println("insert userDto success"); // 유저에게 회원가입 완료 메세지 보여주기
         return "redirect:/user/login";
     }
 

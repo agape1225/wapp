@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 public class UserController {
@@ -70,40 +71,47 @@ public class UserController {
     }
 
     @GetMapping("/baro")
-    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "all") String categoty,
+    public String barohome(Model model, @RequestParam(value = "category", defaultValue = "all") String category,
                            @RequestParam(value = "sort", defaultValue = "latest") String sortKey) {
         System.out.println("바로수강페이지");
-        System.out.println(categoty);
+        System.out.println(category);
         System.out.println(sortKey);
+
         try {
-            if (categoty.equals("all")){
-                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataList(), sortKey);
+            if (category.equals("all")){ // 모든강의 보기
+                ArrayList<LectureDto> sortedList = lectureService.readAllLectureSortedByRegDate();
+
+                switch (sortKey){
+                    case "latest": // 최신순 정렬
+                        // default: 최신순 정렬한 데이터 보내주기.
+                        break;
+                    case "popular": // 인기순 정렬
+                        sortedList = lectureService.readAllLectureSortedByLikes();
+                        break;
+                    default:
+                        break;
+                }
                 model.addAttribute("lectureList", sortedList);
-            } else {
-                ArrayList<LectureDto> sortedList = lectureSort(lectureService.readBasicDataByLecCategory(categoty), sortKey);
+
+            } else { // 카테고리별 보기
+                ArrayList<LectureDto> sortedList = lectureService.readLectureSortedByRegDate(category);
+                switch (sortKey){
+                    case "latest": // 최신순 정렬
+                        // default로 최신순 정렬한 데이터 보내주기.
+                        break;
+                    case "popular": // 인기순 정렬
+                        sortedList = lectureService.readLectureSortedByLikes(category);
+                        break;
+                    default:
+                        break;
+                }
                 model.addAttribute("lectureList", sortedList);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        model.addAttribute("selectedCategory", category);
+        model.addAttribute("selectedSortkey", sortKey);
         return "baro";
     }
-
-    private ArrayList<LectureDto> lectureSort(ArrayList<LectureDto> lectureList, String sortKey) {
-        if (sortKey.equals("latest")) {
-            lectureList.sort((l1, l2) -> {
-                String RegDate1 = l1.getLecRegDate().replace("-", "");
-                String RegDate2 = l2.getLecRegDate().replace("-", "");
-                int Date1 = Integer.parseInt(RegDate1);
-                int Date2 = Integer.parseInt(RegDate2);
-                return Date2 - Date1; // 최신순
-            });
-        } else if (sortKey.equals("popular")) { // 인기순으로 정렬하기 (미구현)
-
-        }
-
-        return lectureList;
-    }
-
-
 }

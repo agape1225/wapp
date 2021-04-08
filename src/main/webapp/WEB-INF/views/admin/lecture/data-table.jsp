@@ -69,7 +69,7 @@
                                             <td>${i}</td>
                                             <td>${lectureList[i-1].lecCategory}</td>
                                             <td>${lectureList[i-1].lecName}</td>
-<%--                                            <td style="text-align: right"><fmt:formatNumber value="${lectureList[i-1].lecPrice}" type="currency" currencySymbol="" />원</td>--%>
+                                            <td style="text-align: right"><fmt:formatNumber value="${lectureList[i-1].lecPrice}" type="currency" currencySymbol="" />원</td>
 <%--                                            <td><fmt:formatDate value="${lectureList[i-1].lecRegDate}" pattern="yyyy-MM-dd" /></td>--%>
                                             <td>${lectureList[i-1].lecRegDate}</td>
                                             <c:choose>
