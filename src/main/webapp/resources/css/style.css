@@ -236,16 +236,37 @@ button{
     -webkit-box-align: center;
     align-items: center;
 }
-.progress-bar{
+
+.progress{
+    margin-bottom: 0px;
     display: flex;
-    overflow: hidden;
+    /*overflow: hidden;*/
     -webkit-box-flex: 1;
     flex-grow: 1;
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.3);
     height: 1px;
 }
+.progress-bar{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    animation-duration: 17s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+}
 
+
+@keyframes slidein {
+    from {
+        margin-left: 0%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 100%;
+        width: 100%;
+    }
+}
 /*footer*/
 .footer-wrapper{
     position: relative;
