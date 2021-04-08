@@ -43,7 +43,8 @@
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button> <!-- 미구현 -->
+                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button>
+                            <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
@@ -77,7 +78,9 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <select id="exampleInputText1" onchange="if(this.value) location.href='/baro?category='+(this.value);">
+
+                    <select id="exampleInputText1"
+                            onchange="if(this.value) location.href='/baro?category='+(this.value);">
                         <option value="all">모두보기</option>
                         <option value="취미">취미</option>
                         <option value="수익 창출">수익 창출</option>
@@ -95,27 +98,28 @@
             <div>
                 <div class="baro-wrapper">
                     <c:forEach varStatus="i" var="item" items="${lectureList}">
-                    <div class="baro-content">
-                        <img src="${item.lecImg}" class="baro-img">
-                        <div class="card-tag">${item.lecCategory}
-                            <span class="between-tag">・</span>
-                            (강사이름)
+                        <div class="baro-content">
+                            <img src="${item.lecImg}" class="baro-img">
+                            <div class="card-tag">${item.lecCategory}
+                                <span class="between-tag">・</span>
+                                (강사이름)
+                            </div>
+                            <div class="best-class-name">${item.lecName}</div>
+                            <div class="Spacing__Box">
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                               currencySymbol=""/>원</span>
+                            </div>
+                            <div class="Spacing__Box">
+                                <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
+                                <span class="total-month"> (?개월)(이벤트기간)</span>
+                            </div>
+                            <form action="/user/login/likes/insert" method="post">
+                                <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                            </form>
+                            <form action="/user/login/likes/delete" method="post">
+                                <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                            </form>
                         </div>
-                        <div class="best-class-name">${item.lecName}</div>
-                        <div class="Spacing__Box">
-                            <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
-                        </div>
-                        <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                            <span class="total-month"> (?개월)(이벤트기간)</span>
-                        </div>
-                        <form action="/user/login/likes/insert" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                        </form>
-                        <form action="/user/login/likes/delete" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                        </form>
-                    </div>
                     </c:forEach>
                 </div>
             </div>
@@ -129,6 +133,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+    //$('.dropdown-toggle').dropdown()
     // function add_like_btn(item){
     //     alert('아');
     //

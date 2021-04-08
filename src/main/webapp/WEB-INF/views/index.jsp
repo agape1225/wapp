@@ -70,34 +70,50 @@
         </div>
 
         <div class="main-banner">
-            <div class="blue-banner"></div>
-            <div class="wrapper-banner">
-                <div class="img-banner"></div>
-                <div class="wrapper-ment">
-                    <div class="banner-ment">
-                        <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
-                        <div class="small-ment">최대 9만원 상당 준비물 전격 지원</div>
-                    </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="blue-banner"></div>
+                <div class="wrapper-banner">
 
-                    <div class="banner-bar">
-                        <span>02</span>
-                        <div class="block"></div>
-                        <span style="margin-left: 8px">16</span>
-                        <div class="progress-bar"></div>
-                        <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
-                            <svg width="24" height="24">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#1a1a1a"></path>
-                            </svg>
-                        </button>
-                        <button style="background-color:transparent; border: none">
-                            <svg width="24" height="24">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#1a1a1a"></path>
-                            </svg>
-                        </button>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-banner" src="/img/rectangle.png">
+                        </div>
+                        <div class="item">
+                            <img class="img-banner" src="/img/hahaha.png">
+                        </div>
+                    </div>
+                    <div class="wrapper-ment">
+                        <div class="banner-ment">
+                            <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
+                            <div class="small-ment">최대 9만원 상당 준비물 전격 지원</div>
+                        </div>
+
+                        <div class="banner-bar">
+                            <span>02</span>
+                            <div class="block"></div>
+                            <span style="margin-left: 8px">16</span>
+
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar"></div>
+                            </div>
+
+
+                            <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
+                                <svg width="24" height="24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#1a1a1a"></path>
+                                </svg>
+                            </button>
+                            <button style="background-color:transparent; border: none">
+                                <svg width="24" height="24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#1a1a1a"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -152,7 +168,7 @@
             <div class="text-box">
                 <div class="class-title">
                     <div class="class-text" style="float: left; margin-right:19px; font-weight: bold">오늘의 0원 종료까지</div>
-                    <div id="class-time" style="color: blue; font-weight: bold" ></div>
+                    <div id="class-time" style="color: blue; font-weight: bold"></div>
                 </div>
                 <div style="color: gray" class="class-description">매일 오후 2시! 다른 클래스와 함께 구매시 오늘만 무료</div>
             </div>
@@ -492,31 +508,32 @@
 
 <script>
     const countDownTimer = function (id, date) {
-    var _vDate = new Date(date);// 전달받은 일자
-    var _second = 1000;
-    var _minute = _second * 60;
-    var _hour = _minute * 60;
-    var timer;
+        var _vDate = new Date(date);// 전달받은 일자
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var timer;
 
-    function showRemaining() {
-        var now = new Date();
-        var distDt = _vDate - now;
+        function showRemaining() {
+            var now = new Date();
+            var distDt = _vDate - now;
 
-        var hours = Math.floor((distDt % _hour*24) / _hour);
-        var minutes = Math.floor((distDt % _hour) / _minute);
-        var seconds = Math.floor((distDt % _minute) / _second);
+            var hours = Math.floor((distDt % _hour * 24) / _hour);
+            var minutes = Math.floor((distDt % _hour) / _minute);
+            var seconds = Math.floor((distDt % _minute) / _second);
 
-        document.getElementById(id).textContent = ' ';
-        document.getElementById(id).textContent += hours;
-        document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
-        document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":")  + seconds;
-    }
+            document.getElementById(id).textContent = ' ';
+            document.getElementById(id).textContent += hours;
+            document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
+            document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":") + seconds;
+        }
+
         timer = setInterval(showRemaining, 1000);
-}
+    }
 
-var dateObj = new Date();
-dateObj.setDate(dateObj.getDate() + 1);
-countDownTimer('class-time', dateObj);
+    var dateObj = new Date();
+    dateObj.setDate(dateObj.getDate() + 1);
+    countDownTimer('class-time', dateObj);
 </script>
 
 
@@ -577,6 +594,8 @@ countDownTimer('class-time', dateObj);
     //     });
     // };
 </script>
+
+
 <script src="../js/bootstrap.js"></script>
 </body>
 </html>
