@@ -59,4 +59,28 @@ public class LectureServiceImp implements LectureService {
         System.out.println("service update " + lecNo);
         lectureDao.updateLecture(lecNo, updateDto);
     }
+
+    @Override
+    public ArrayList<LectureDto> readAllLectureSortedByLikes() {
+        System.out.println("reading All List sorted by likes");
+        return lectureDao.readAllLectureSortedByLikes();
+    }
+
+    @Override
+    public ArrayList<LectureDto> readAllLectureSortedByRegDate() {
+        System.out.println("reading All List sorted by RegDate");
+        return lectureDao.readAllLectureSortedByRegDate();
+    }
+
+    @Override
+    public ArrayList<LectureDto> readLectureSortedByLikes(String category) {
+        System.out.println("reading " + category + "List sorted by likes");
+        return lectureDao.readLectureSortedByLikes(category);
+    }
+
+    @Override
+    public ArrayList<LectureDto> readLectureSortedByRegDate(String category) {
+        System.out.println("reading " + category + "List sorted by RegDate");
+        return lectureDao.readLectureSortedByRegDate(category);
+    }
 }

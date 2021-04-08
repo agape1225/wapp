@@ -114,4 +114,49 @@ public class LectureDao {
             return null;
         }
     }
+
+    public ArrayList<LectureDto> readAllLectureSortedByLikes() {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readAllLectureSortedByLikes();
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<LectureDto> readAllLectureSortedByRegDate() {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readAllLectureSortedByRegDate();
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public ArrayList<LectureDto> readLectureSortedByLikes(String category) {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByLikes(category);
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<LectureDto> readLectureSortedByRegDate(String category) {
+        try {
+            LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
+            ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByRegDate(category);
+            return lectureInfoList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

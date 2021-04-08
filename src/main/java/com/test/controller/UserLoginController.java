@@ -64,6 +64,6 @@ public class UserLoginController {
     public String logOut(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.invalidate();
-        return "index";
+        return "redirect:/";
     }
 }

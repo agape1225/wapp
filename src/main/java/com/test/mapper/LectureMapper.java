@@ -15,5 +15,10 @@ public interface LectureMapper {
 
     void updateLecture(@Param("lecNo") String lecNo, @Param("updateDto") LectureDto updateDto);
     ArrayList<LectureDto> readBasicDataListByUserNo(@Param("userNo") String userNo);
+    ArrayList<LectureDto> readAllLectureSortedByLikes();
+    ArrayList<LectureDto> readAllLectureSortedByRegDate();
+    ArrayList<LectureDto> readLectureSortedByLikes(@Param("category") String category);
+    ArrayList<LectureDto> readLectureSortedByRegDate(@Param("category") String category);
+
 
 }
