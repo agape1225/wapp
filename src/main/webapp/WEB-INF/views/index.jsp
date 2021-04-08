@@ -43,14 +43,13 @@
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button> <!-- 미구현 -->
+                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button>
+                            <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
-
                 </div>
             </div>
-
         </div>
 
         <div class="navbar">
@@ -131,7 +130,6 @@
                 <div class="container-box">
                     <img src="../img/im-101-world-kids.png" class="img-responsive" alt="Responsive image">
                     <div class="image-text">키즈존 할인</div>
-
                 </div>
             </div>
         </div>
@@ -152,7 +150,7 @@
             <div class="text-box">
                 <div class="class-title">
                     <div class="class-text" style="float: left; margin-right:19px; font-weight: bold">오늘의 0원 종료까지</div>
-                    <div style="color: blue; font-weight: bold" class="class-time">21:01:12</div>
+                    <div id="class-time" style="color: blue; font-weight: bold" ></div>
                 </div>
                 <div style="color: gray" class="class-description">매일 오후 2시! 다른 클래스와 함께 구매시 오늘만 무료</div>
             </div>
@@ -177,51 +175,256 @@
         <div class="empty-space"></div>
 
 
-        <div class="best-class">
-            <div class="text-box">
-                <div class="class-title">
-                    <div class="class-text" style="margin-right:19px; font-weight: bold">가장 많이 같이 담는 BEST 클래스 ></div>
+        <div class="card-wrapper">
+            <div class="best-class">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">MD 추천 클래스
+                        </div>
+                    </div>
+                    <div style="color: gray" class="class-description"></div>
                 </div>
-                <div style="color: gray" class="class-description">단 24시간, 최저가로 만나보세요</div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <c:forEach varStatus="i" var="item" items="${lectureList}">
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <img src="${item.lecImg}" class="slide-img">
+                                    <div class="card-tag">${item.lecCategory}
+                                        <span class="between-tag">・</span>
+                                        (강사이름)
+                                    </div>
+                                    <div class="best-class-name">${item.lecName}</div>
+                                    <div class="Spacing__Box">
+                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                                                                       type="currency"
+                                                                                       currencySymbol=""/>원</span>
+                                    </div>
+                                    <div class="Spacing__Box">
+                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
+                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                    </div>
+                                </div>
+                                <form action="/user/login/likes/insert" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                </form>
+                                <form action="/user/login/likes/delete" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                </form>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <c:forEach varStatus="i" var="item" items="${lectureList}">
-                    <div class="swiper-slide">
-                        <div class="slide-content">
-                            <img src="${item.lecImg}" class="slide-img">
-                            <div class="card-tag">${item.lecCategory}
-                                <span class="between-tag">・</span>
-                                (강사이름)
+            <div class="empty-space"></div>
+
+            <%--        Mainpage Top Tutor Cards        --%>
+            <div class="tutor-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">실시간 TOP 10 클래스
+                        </div>
+                    </div>
+                    <div style="color: gray" class="class-description"></div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <c:forEach varStatus="i" begin="0" end="${popularLectureList.size()}" var="item" items="${popularLectureList}">
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <img src="${item.lecImg}" class="slide-img">
+                                    <div class="card-tag">${item.lecCategory}
+                                        <span class="between-tag">・</span>
+                                        (강사이름)
+                                    </div>
+                                    <div class="best-class-name">${item.lecName}</div>
+                                    <div class="Spacing__Box">
+                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                                                                       type="currency"
+                                                                                       currencySymbol=""/>원</span>
+                                    </div>
+                                    <div class="registered-date">
+                                            ${item.lecRegDate}
+                                    </div>
+                                    <div class="Spacing__Box">
+                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
+                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                    </div>
+                                </div>
+                                <form action="/user/login/likes/insert" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                </form>
+                                <form action="/user/login/likes/delete" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                </form>
                             </div>
-                            <div class="best-class-name">${item.lecName}</div>
-                            <div class="Spacing__Box">
-                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
-                            </div>
-                            <div class="Spacing__Box">
-                                <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
-                                <span class="total-month"> (?개월)(이벤트기간)</span>
+                        </c:forEach>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
+
+            <%--        Mainpage This Month Promotion Cards        --%>
+            <div class="promotion-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">101월드, 모든 혜택 모아보기</div>
+                        <div style="color: gray" class="class-description"></div>
+                    </div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
                             </div>
                         </div>
-                        <form action="/user/login/likes/insert" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                        </form>
-                        <form action="/user/login/likes/delete" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                        </form>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-content">
+                                <img src="img/2048xauto.webp" class="slide-img">
+                                <div class="card-tag">디지털 드로잉
+                                    <span class="between-tag">・</span>
+                                    이지
+                                </div>
+                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 10</div>
+                        <div class="swiper-slide">Slide 11</div>
+                        <div class="swiper-slide">Slide 12</div>
                     </div>
-                    </c:forEach>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
+            <div class="empty-space"></div>
+
+            <%--        Mainpage Popular Item  Cards        --%>
+            <div class="popular-card">
+                <div class="text-box">
+                    <div class="class-title">
+                        <div class="class-text" style="margin-right:19px; font-weight: bold">인기있는 신규 클래스</div>
+                    </div>
+                    <div style="color: gray" class="class-description">얼리버드 기간에만 받을 수 있는 최저가 할인 중이에요.</div>
+                </div>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <c:forEach varStatus="i" begin="0" end="6" var="item" items="${newLectureList}">
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <img src="${item.lecImg}" class="slide-img">
+                                    <div class="card-tag">${item.lecCategory}
+                                        <span class="between-tag">・</span>
+                                        (강사이름)
+                                    </div>
+                                    <div class="best-class-name">${item.lecName}</div>
+                                    <div class="Spacing__Box">
+                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                                                                       type="currency"
+                                                                                       currencySymbol=""/>원</span>
+                                    </div>
+                                    <div class="like-number">
+                                        찜한 수 ${item.lecLike}
+                                    </div>
+                                    <div class="Spacing__Box">
+                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
+                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                    </div>
+                                </div>
+                                <form action="/user/login/likes/insert" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                </form>
+                                <form action="/user/login/likes/delete" method="post">
+                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                </form>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty-space"></div>
         </div>
+
+
     </div>
 </div>
 
 
 <jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
+
+
+<script>
+    const countDownTimer = function (id, date) {
+    var _vDate = new Date(date);// 전달받은 일자
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distDt = _vDate - now;
+
+        var hours = Math.floor((distDt % _hour*24) / _hour);
+        var minutes = Math.floor((distDt % _hour) / _minute);
+        var seconds = Math.floor((distDt % _minute) / _second);
+
+        document.getElementById(id).textContent = ' ';
+        document.getElementById(id).textContent += hours;
+        document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
+        document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":")  + seconds;
+    }
+        timer = setInterval(showRemaining, 1000);
+}
+
+var dateObj = new Date();
+dateObj.setDate(dateObj.getDate() + 1);
+countDownTimer('class-time', dateObj);
+</script>
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -243,6 +446,8 @@
     });
 
 </script>
+
+
 <script>
     // function add_like_btn(item){
     //     alert('아');

@@ -2,6 +2,8 @@ package com.test.mapper;
 
 import com.test.dto.LectureDto;
 import org.apache.ibatis.annotations.Param;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface LectureMapper {
@@ -20,5 +22,15 @@ public interface LectureMapper {
     ArrayList<LectureDto> readLectureSortedByLikes(@Param("category") String category);
     ArrayList<LectureDto> readLectureSortedByRegDate(@Param("category") String category);
 
+
+
+    ArrayList<LectureDto> readBasicDataListByRegDateDesc();
+
+    void updateLike(@Param("lecNo") String lecNo,
+                    @Param("lecLike") String lecLike);
+
+    ArrayList<LectureDto> readBasicDataListNotInRec();
+
+    ArrayList<LectureDto> readBasicDataListInRec();
 
 }

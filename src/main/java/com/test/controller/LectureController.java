@@ -54,6 +54,7 @@ public class LectureController {
 
         lectureDto.setLecRegDate(regDateForDB); // 현재시간 저장
         lectureDto.setLecImg(fullName); // 이미지이름 저장
+        lectureDto.setLecLike("0");
 
         String root_path = servletContext.getRealPath("/");
         String filename_server = root_path + fullName;
