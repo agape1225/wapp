@@ -30,7 +30,7 @@
     <div class="header">
         <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
             <div class="header-container">
-                <div class="logo"></div>
+                <a href="/"><div class="logo"></div></a>
                 <form action="" class="search">
                     <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
                            class="search-ment">
@@ -204,13 +204,13 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
+                                    <form action="/user/login/likes/insert" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                    </form>
+                                    <form action="/user/login/likes/delete" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                    </form>
                                 </div>
-                                <form action="/user/login/likes/insert" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                </form>
-                                <form action="/user/login/likes/delete" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                </form>
                             </div>
                         </c:forEach>
                     </div>
@@ -254,13 +254,13 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
+                                    <form action="/user/login/likes/insert" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                    </form>
+                                    <form action="/user/login/likes/delete" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                    </form>
                                 </div>
-                                <form action="/user/login/likes/insert" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                </form>
-                                <form action="/user/login/likes/delete" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                </form>
                             </div>
                         </c:forEach>
                     </div>
@@ -284,7 +284,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="slide-content">
-                                <img src="img/2048xauto.webp" class="slide-img">
+                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
                                 <div class="card-tag">디지털 드로잉
                                     <span class="between-tag">・</span>
                                     이지
@@ -294,7 +294,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-content">
-                                <img src="img/2048xauto.webp" class="slide-img">
+                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
                                 <div class="card-tag">디지털 드로잉
                                     <span class="between-tag">・</span>
                                     이지
@@ -304,7 +304,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-content">
-                                <img src="img/2048xauto.webp" class="slide-img">
+                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
                                 <div class="card-tag">디지털 드로잉
                                     <span class="between-tag">・</span>
                                     이지
@@ -314,7 +314,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="slide-content">
-                                <img src="img/2048xauto.webp" class="slide-img">
+                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
                                 <div class="card-tag">디지털 드로잉
                                     <span class="between-tag">・</span>
                                     이지
@@ -322,14 +322,6 @@
                                 <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
                             </div>
                         </div>
-                        <div class="swiper-slide">Slide 5</div>
-                        <div class="swiper-slide">Slide 6</div>
-                        <div class="swiper-slide">Slide 7</div>
-                        <div class="swiper-slide">Slide 8</div>
-                        <div class="swiper-slide">Slide 9</div>
-                        <div class="swiper-slide">Slide 10</div>
-                        <div class="swiper-slide">Slide 11</div>
-                        <div class="swiper-slide">Slide 12</div>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
@@ -370,13 +362,13 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
+                                    <form action="/user/login/likes/insert" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                                    </form>
+                                    <form action="/user/login/likes/delete" method="post">
+                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                                    </form>
                                 </div>
-                                <form action="/user/login/likes/insert" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                </form>
-                                <form action="/user/login/likes/delete" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                </form>
                             </div>
                         </c:forEach>
                     </div>

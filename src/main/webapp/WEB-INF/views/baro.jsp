@@ -45,7 +45,7 @@
     <div class="header">
         <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
             <div class="header-container">
-                <div class="logo"></div>
+                <a href="/"><div class="logo"></div></a>
                 <form action="" class="search">
                     <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
                            class="search-ment">

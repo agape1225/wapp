@@ -74,7 +74,8 @@ button{
     background-color: rgb(255, 255, 255);
     display: flex;
     /*box-shadow: rgb(239 239 239) 0px -1px 0px inset;*/
-    overflow: auto
+    overflow: auto;
+    margin-bottom: 0;
 }
 
 .gap{
@@ -120,7 +121,9 @@ button{
     height: 69px;
     margin-right: 20px;
     background: url('../img/화면 캡처 2021-03-05 132543.png');
+    cursor: pointer;
 }
+
 .search{
     width: 420px;
     height: 52px;
@@ -170,7 +173,6 @@ button{
     position: absolute;
     width: 100%;
     height: 424px;
-    top: -5px;
     background: #1257E2;
     border-radius: 0px;
 }
@@ -454,27 +456,21 @@ button{
     justify-content: space-between;
 }
 
-
-
 .swiper-container {
-    /*background: #E5E5E5;*/
     width: 100%;
-    height: 400px;
+    height: 100%;
 }
 
 .swiper-slide {
-    /*background: #E5E5E5;*/
     /* Center slide text vertically */
     align-items: center;
-    display: inline-flex;
-    flex-direction: column;
-    height:100%;
 }
 
 .slide-content{
     width: 276px;
     flex-direction: column;
     display: inline-flex;
+    height:100%;
 }
 
 .slide-img{
