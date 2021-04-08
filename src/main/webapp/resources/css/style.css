@@ -261,6 +261,40 @@ button{
 .footer{
     display: flex;
 }
+
+.rows2 {
+    padding-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+.rows2 span {
+    font-size: 12px;
+    color: var(--gray2);
+    margin-left: 5px;
+}
+.rows2 span:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.rows2 p {
+    font-size: 11px;
+    color: var(--gray);
+    margin-left: 5px;
+}
+.rows2 > div {
+    text-align: left;
+}
+.rows2__column1 {
+    width: 95%;
+}
+.rows2__column1 div,
+.rows2__column2 div {
+    margin-bottom: 10px;
+}
+
 .first-menu{
     margin-top: 24px;
     flex-basis: 398px;
