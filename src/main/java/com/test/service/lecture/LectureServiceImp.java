@@ -71,7 +71,6 @@ public class LectureServiceImp implements LectureService {
     }
 
     @Override
-
     public ArrayList<LectureDto> readAllLectureSortedByLikes() {
         System.out.println("reading All List sorted by likes");
         return lectureDao.readAllLectureSortedByLikes();
@@ -93,6 +92,7 @@ public class LectureServiceImp implements LectureService {
     public ArrayList<LectureDto> readLectureSortedByRegDate(String category) {
         System.out.println("reading " + category + "List sorted by RegDate");
         return lectureDao.readLectureSortedByRegDate(category);
+    }
 
     public ArrayList<LectureDto> readBasicDataByRegDateDesc() {
         return lectureDao.readBasicDataListByRegDateDesc();

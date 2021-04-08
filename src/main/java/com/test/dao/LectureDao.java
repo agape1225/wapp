@@ -128,10 +128,10 @@ public class LectureDao {
             ArrayList<LectureDto> lectureInfoList = lectureMapper.readAllLectureSortedByLikes();
             return lectureInfoList;
         } catch (Exception e) {
-          e.printStackTrace();
-          return null;
-      }
-  }
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     public ArrayList<LectureDto> readBasicDataListByRegDateDesc() {
@@ -173,12 +173,12 @@ public class LectureDao {
     }
 
 
-
     public ArrayList<LectureDto> readLectureSortedByLikes(String category) {
         try {
             LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
             ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByLikes(category);
-          } catch (Exception e) {
+            return lectureInfoList;
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -203,12 +203,12 @@ public class LectureDao {
             LectureMapper lectureMapper = sqlSession.getMapper(LectureMapper.class);
             ArrayList<LectureDto> lectureInfoList = lectureMapper.readLectureSortedByRegDate(category);
             return lectureInfoList;
-           } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-}
+
 
     public ArrayList<LectureDto> readDataListByPopularity() {
 
@@ -263,4 +263,6 @@ public class LectureDao {
             return null;
         }
     }
+
+
 }

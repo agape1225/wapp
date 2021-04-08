@@ -51,6 +51,7 @@
     </select>
     <select id="readLectureSortedByRegDate" resultType="LectureDto">
         select * from lecture where lecCategory=#{category} order by lecRegDate desc ;
+    </select>
 
     <select id="readBasicDataListByRegDateDesc" resultType="LectureDto">
         select * from lecture order by lecRegDate desc
