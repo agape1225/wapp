@@ -1,9 +1,15 @@
 package com.test.controller;
 
 import com.test.dto.AdminLoginDto;
+import com.test.dto.LectureDto;
+import com.test.dto.UserDto;
+import com.test.dto.InquiryDto;
 import com.test.service.adminLogin.AdminLoginService;
 import com.test.service.banner.BannerService;
+import com.test.service.inquiry.InquiryService;
+import com.test.service.lecture.LectureService;
 import com.test.service.popup.PopupService;
+import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +28,26 @@ public class adminController {
     PopupService popupService;
     @Autowired
     BannerService bannerService;
-
+    @Autowired
+    LectureService lectureService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    InquiryService inquiryService;
 
     @GetMapping("/admin")
     public String main(Model model){
         try{
             System.out.println("welcome admin home");
+            ArrayList<LectureDto> HomeLectureList = lectureService.readBasicDataList();
+            ArrayList<UserDto> HomeUserList = userService.readUserInfoList();
+            ArrayList<InquiryDto> HomeInquiryList = inquiryService.readInquiryDataList();
+            ArrayList<LectureDto> ReclectureList = lectureService.readBasicDataListInRec();
+
+            model.addAttribute("HomeLectureList", HomeLectureList);
+            model.addAttribute("HomeUserList", HomeUserList);
+            model.addAttribute("HomeInquiryList", HomeInquiryList);
+            model.addAttribute("ReclectureList", ReclectureList);
         }catch (Exception e){
             e.printStackTrace();
         }
