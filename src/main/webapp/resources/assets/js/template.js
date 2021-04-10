@@ -90,7 +90,8 @@
 
     //Add active class to nav-link based on url dynamically
     function addActiveClass(element) {
-        if (current === "") {
+      console.log(current);
+        if (current === "/admin") {
           //for root url
           if (element.attr('href').indexOf("index.html") !== -1) {
             element.parents('.nav-item').last().addClass('active');
