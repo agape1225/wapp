@@ -79,6 +79,7 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">비밀번호</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                    <span style="color: orangered; font-size: 0.8em"><i class="fas fa-exclamation-triangle"></i>영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합. 8자~32자</span>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword2">비밀번호 확인</label>
@@ -87,7 +88,7 @@
                 <div class="form-group">
                     <button style="background-color: orangered; color: white; width: 100%; border-radius: 3px">동의하고 회원가입</button>
                 </div>
-                <div class="form-group" style="font-size: 0.7em; text-align: center;">
+                <div class="form-group" style="font-size: 0.8em; text-align: center;">
                     <a href="https://class101.net/docs/terms" style="color: dodgerblue">이용약관</a>, &nbsp
                     <a href="https://class101.net/docs/privacy/collect" style="color: dodgerblue">개인정보 수집 및 이용</a>,&nbsp
                     <a href="https://class101.net/docs/privacy/provide" style="color: dodgerblue">개인정보 제공</a> &nbsp
