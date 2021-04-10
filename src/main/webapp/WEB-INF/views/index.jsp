@@ -30,7 +30,9 @@
     <div class="header">
         <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
             <div class="header-container">
-                <a href="/"><div class="logo"></div></a>
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
                 <form action="" class="search">
                     <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
                            class="search-ment">
@@ -81,7 +83,9 @@
                         <span>02</span>
                         <div class="block"></div>
                         <span style="margin-left: 8px">16</span>
-                        <div class="progress-bar"></div>
+                        <div class="progress" style="height: 2px;">
+                            <div class="progress-bar"></div>
+                        </div>
                         <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
                             <svg width="24" height="24">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -150,7 +154,7 @@
             <div class="text-box">
                 <div class="class-title">
                     <div class="class-text" style="float: left; margin-right:19px; font-weight: bold">오늘의 0원 종료까지</div>
-                    <div id="class-time" style="color: blue; font-weight: bold" ></div>
+                    <div id="class-time" style="color: blue; font-weight: bold"></div>
                 </div>
                 <div style="color: gray" class="class-description">매일 오후 2시! 다른 클래스와 함께 구매시 오늘만 무료</div>
             </div>
@@ -233,7 +237,8 @@
 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <c:forEach varStatus="i" begin="0" end="${popularLectureList.size()}" var="item" items="${popularLectureList}">
+                        <c:forEach varStatus="i" begin="0" end="${popularLectureList.size()}" var="item"
+                                   items="${popularLectureList}">
                             <div class="swiper-slide">
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
@@ -390,31 +395,32 @@
 
 <script>
     const countDownTimer = function (id, date) {
-    var _vDate = new Date(date);// 전달받은 일자
-    var _second = 1000;
-    var _minute = _second * 60;
-    var _hour = _minute * 60;
-    var timer;
+        var _vDate = new Date(date);// 전달받은 일자
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var timer;
 
-    function showRemaining() {
-        var now = new Date();
-        var distDt = _vDate - now;
+        function showRemaining() {
+            var now = new Date();
+            var distDt = _vDate - now;
 
-        var hours = Math.floor((distDt % _hour*24) / _hour);
-        var minutes = Math.floor((distDt % _hour) / _minute);
-        var seconds = Math.floor((distDt % _minute) / _second);
+            var hours = Math.floor((distDt % _hour * 24) / _hour);
+            var minutes = Math.floor((distDt % _hour) / _minute);
+            var seconds = Math.floor((distDt % _minute) / _second);
 
-        document.getElementById(id).textContent = ' ';
-        document.getElementById(id).textContent += hours;
-        document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
-        document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":")  + seconds;
-    }
+            document.getElementById(id).textContent = ' ';
+            document.getElementById(id).textContent += hours;
+            document.getElementById(id).textContent += ((minutes < 10) ? ":0" : ":") + minutes;
+            document.getElementById(id).textContent += ((seconds < 10) ? ":0" : ":") + seconds;
+        }
+
         timer = setInterval(showRemaining, 1000);
-}
+    }
 
-var dateObj = new Date();
-dateObj.setDate(dateObj.getDate() + 1);
-countDownTimer('class-time', dateObj);
+    var dateObj = new Date();
+    dateObj.setDate(dateObj.getDate() + 1);
+    countDownTimer('class-time', dateObj);
 </script>
 
 
