@@ -49,17 +49,17 @@
                             <h6 class="card-title">Popup</h6>
                             <form action="/admin/benefit/form" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="exampleInputText1">Type</label>
+                                    <label for="exampleInputText1">Title</label>
                                     <input type="text" id="exampleInputText1" name="benTitle" oninput="btn_status()" placeholder="Event Title" class="form-control"/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputText1">Type</label>
+                                    <label for="exampleInputText1">이벤트 시작 날짜</label>
                                     <input type="date" id="inputTime1" name="benStartTime" oninput="btn_status()" placeholder="Start Time" class="form-control"/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputText1">Type</label>
+                                    <label for="exampleInputText1">이벤트 마지막 날짜</label>
                                     <input type="date" id="inputTime2" name="benEndTime" oninput="btn_status()" placeholder="End Time" class="form-control"/>
                                 </div>
 

@@ -287,20 +287,37 @@
 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
+                        <%--현재시간을 date타입 변수로 불러오기--%>
+                        <c:set var="currentTime" value="<%=new java.util.Date()%>"/>
+
                         <c:forEach var="item" items="${benefitList}">
-                            <div class="swiper-slide benefits">
-                                <div class="slide-content benefit">
-                                    <img src="${item.benImg}" class="slide-img">
-                                    <div class="best-class-name">${item.benTitle}</div>
+                            <%-- statrTime, endTime을 Date타입 변수로 변환 --%>
+                            <fmt:parseDate var="startTime" value="${item.benStartTime}" pattern="yyyy-MM-dd"/>
+                            <fmt:parseDate var="endTime" value="${item.benEndTime}" pattern="yyyy-MM-dd"/>
+                            <%-- statrTime, endTime을 Day(integer)로 변환 --%>
+                            <fmt:parseNumber value="${currentTime.time/(1000*60*60*24)}" integerOnly="true" var="today" scope="request"/>
+                            <fmt:parseNumber value="${endTime.time/(1000*60*60*24)}" integerOnly="true" var="endDay" scope="request"/>
+                            <fmt:parseNumber value="${startTime.time/(1000*60*60*24)}" integerOnly="true" var="startDay" scope="request"/>
+                            <%-- 시작, 종료까지 남은날짜 계산 --%>
+                            <c:set value="${endDay-today+1}" var="Dday"/>
+                            <c:set value="${today-startDay-1}" var="timeLeft"/>
 
-                                    <div class="Spacing__Box">
-<%--                                        예외처리하기 : Dday 남은일수 계산, 데이트형식 포맷팅, 요일 표시--%>
-                                        <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-2</span><br>
-                                        <span class="total-month">${item.benStartTime} ~ ${item.benEndTime}</span>
+                            <c:choose>
+                                <%-- Dday가 0보다 클때 && timeLeft이 0 이상일때만 표시--%>
+                                <c:when test="${(Dday gt 0) && (timeLeft >= 0)}">
+                                    <div class="swiper-slide benefits">
+                                        <div class="slide-content benefit">
+                                            <img src="${item.benImg}" class="slide-img">
+                                            <div class="best-class-name">${item.benTitle}</div>
+                                            <div class="Spacing__Box">
+                                                <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-${Dday}</span>
+                                                <fmt:formatDate value="${startTime}" pattern="MM.dd (E)"/>~
+                                                <fmt:formatDate value="${endTime}" pattern="MM.dd (E)"/>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-                            </div>
+                                </c:when>
+                            </c:choose>
                         </c:forEach>
                     </div>
                     <!-- Add Arrows -->
