@@ -83,7 +83,7 @@
                     <span class="link-title">MD 추천</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="navigation">
+                <div class="collapse" id="recommended">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/recommended/form">추천 추가</a>
