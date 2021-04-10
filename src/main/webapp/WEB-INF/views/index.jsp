@@ -287,46 +287,21 @@
 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
+                        <c:forEach var="item" items="${benefitList}">
+                            <div class="swiper-slide benefits">
+                                <div class="slide-content benefit">
+                                    <img src="${item.benImg}" class="slide-img">
+                                    <div class="best-class-name">${item.benTitle}</div>
+
+                                    <div class="Spacing__Box">
+<%--                                        예외처리하기 : Dday 남은일수 계산, 데이트형식 포맷팅, 요일 표시--%>
+                                        <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-2</span><br>
+                                        <span class="total-month">${item.benStartTime} ~ ${item.benEndTime}</span>
+                                    </div>
+
                                 </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>

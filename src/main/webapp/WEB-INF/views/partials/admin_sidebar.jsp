@@ -78,6 +78,18 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/admin/benefit/form">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">이벤트 추가</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/benefit/data-table">
+                    <i class="link-icon" data-feather="layout"></i>
+                    <span class="link-title">이벤트 관리</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/user/data-table">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">유저 관리</span>

@@ -126,7 +126,7 @@
             </div> <!-- row -->
 
             <div class="row">
-                <div class="col-lg-7 col-xl-8 stretch-card">
+                <div class="col-lg-7 col-xl-12 stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-baseline mb-2">
