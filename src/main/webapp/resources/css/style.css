@@ -31,7 +31,7 @@ button{
 
 .main-page{
     width: 100%;
-    height: 4302px;
+    height: 100%;
 }
 .header{
     position: relative;
@@ -74,7 +74,8 @@ button{
     background-color: rgb(255, 255, 255);
     display: flex;
     /*box-shadow: rgb(239 239 239) 0px -1px 0px inset;*/
-    overflow: auto
+    overflow: auto;
+    margin-bottom: 0;
 }
 
 .gap{
@@ -120,7 +121,9 @@ button{
     height: 69px;
     margin-right: 20px;
     background: url('../img/화면 캡처 2021-03-05 132543.png');
+    cursor: pointer;
 }
+
 .search{
     width: 420px;
     height: 52px;
@@ -170,7 +173,6 @@ button{
     position: absolute;
     width: 100%;
     height: 424px;
-    top: -5px;
     background: #1257E2;
     border-radius: 0px;
 }
@@ -234,16 +236,37 @@ button{
     -webkit-box-align: center;
     align-items: center;
 }
-.progress-bar{
+
+.progress{
+    margin-bottom: 0px;
     display: flex;
-    overflow: hidden;
+    /*overflow: hidden;*/
     -webkit-box-flex: 1;
     flex-grow: 1;
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.3);
     height: 1px;
 }
+.progress-bar{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    animation-duration: 17s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+}
 
+
+@keyframes slidein {
+    from {
+        margin-left: 0%;
+        width: 300%
+    }
+
+    to {
+        margin-left: 100%;
+        width: 100%;
+    }
+}
 /*footer*/
 .footer-wrapper{
     position: relative;
@@ -259,6 +282,40 @@ button{
 .footer{
     display: flex;
 }
+
+.rows2 {
+    padding-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+.rows2 span {
+    font-size: 12px;
+    color: var(--gray2);
+    margin-left: 5px;
+}
+.rows2 span:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.rows2 p {
+    font-size: 11px;
+    color: var(--gray);
+    margin-left: 5px;
+}
+.rows2 > div {
+    text-align: left;
+}
+.rows2__column1 {
+    width: 95%;
+}
+.rows2__column1 div,
+.rows2__column2 div {
+    margin-bottom: 10px;
+}
+
 .first-menu{
     margin-top: 24px;
     flex-basis: 398px;
@@ -454,27 +511,21 @@ button{
     justify-content: space-between;
 }
 
-
-
 .swiper-container {
-    /*background: #E5E5E5;*/
     width: 100%;
-    height: 400px;
+    height: 100%;
 }
 
 .swiper-slide {
-    /*background: #E5E5E5;*/
     /* Center slide text vertically */
     align-items: center;
-    display: inline-flex;
-    flex-direction: column;
-    height:100%;
 }
 
 .slide-content{
     width: 276px;
     flex-direction: column;
     display: inline-flex;
+    height:100%;
 }
 
 .slide-img{
