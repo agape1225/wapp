@@ -280,46 +280,38 @@
 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
+                        <%--현재시간을 date타입 변수로 불러오기--%>
+                        <c:set var="currentTime" value="<%=new java.util.Date()%>"/>
+
+                        <c:forEach var="item" items="${benefitList}">
+                            <%-- statrTime, endTime을 Date타입 변수로 변환 --%>
+                            <fmt:parseDate var="startTime" value="${item.benStartTime}" pattern="yyyy-MM-dd"/>
+                            <fmt:parseDate var="endTime" value="${item.benEndTime}" pattern="yyyy-MM-dd"/>
+                            <%-- statrTime, endTime을 Day(integer)로 변환 --%>
+                            <fmt:parseNumber value="${currentTime.time/(1000*60*60*24)}" integerOnly="true" var="today" scope="request"/>
+                            <fmt:parseNumber value="${endTime.time/(1000*60*60*24)}" integerOnly="true" var="endDay" scope="request"/>
+                            <fmt:parseNumber value="${startTime.time/(1000*60*60*24)}" integerOnly="true" var="startDay" scope="request"/>
+                            <%-- 시작, 종료까지 남은날짜 계산 --%>
+                            <c:set value="${endDay-today+1}" var="Dday"/>
+                            <c:set value="${today-startDay-1}" var="timeLeft"/>
+
+                            <c:choose>
+                                <%-- Dday가 0보다 클때 && timeLeft이 0 이상일때만 표시--%>
+                                <c:when test="${(Dday gt 0) && (timeLeft >= 0)}">
+                                    <div class="swiper-slide benefits">
+                                        <div class="slide-content benefit">
+                                            <img src="${item.benImg}" class="slide-img">
+                                            <div class="best-class-name">${item.benTitle}</div>
+                                            <div class="Spacing__Box">
+                                                <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-${Dday}</span>
+                                                <fmt:formatDate value="${startTime}" pattern="MM.dd (E)"/>~
+                                                <fmt:formatDate value="${endTime}" pattern="MM.dd (E)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
