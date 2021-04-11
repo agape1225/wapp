@@ -14,4 +14,7 @@
     <select id="readLikesListsOrderByLikeDateDesc" resultType="LikesDto">
         select * from likes order by likeDate desc
     </select>
+    <select id="readBasicDataByUserNoNLecNo" resultType="LikesDto">
+        select * from likes where userNo=#{userNo} and lecNo=#{lecNo}
+    </select>
 </mapper>
