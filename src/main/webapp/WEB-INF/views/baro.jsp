@@ -170,6 +170,50 @@
                             </div>
                         </c:forEach>
                     </div>
+                    <div class="baro-content">
+                        <img src="../img/hahaha.png" class="baro-img">
+                        <div class="card-tag">디지털 드로잉
+                            <span class="between-tag">・</span>
+                            이지
+                        </div>
+                        <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                        <div class="Spacing__Box">
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                               currencySymbol=""/>원</span>
+                        </div>
+                        <div class="Spacing__Box">
+                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
+                            <span class="total-month"> (?개월)(이벤트기간)</span>
+                        </div>
+                        <form action="/user/login/likes/insert" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                        </form>
+                        <form action="/user/login/likes/delete" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                        </form>
+                    </div>
+                    <div class="baro-content">
+                        <img src="../img/hahaha.png" class="baro-img">
+                        <div class="card-tag">디지털 드로잉
+                            <span class="between-tag">・</span>
+                            이지
+                        </div>
+                        <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                        <div class="Spacing__Box">
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                               currencySymbol=""/>원</span>
+                        </div>
+                        <div class="Spacing__Box">
+                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
+                            <span class="total-month"> (?개월)(이벤트기간)</span>
+                        </div>
+                        <form action="/user/login/likes/insert" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
+                        </form>
+                        <form action="/user/login/likes/delete" method="post">
+                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="empty-space"></div>
 
