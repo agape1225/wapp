@@ -12,4 +12,5 @@ public class LectureDto {
     String lecRegDate;
     String lecImg;
     String lecLike;
+
 }
