@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>class101</title>
 </head>
 
@@ -208,12 +209,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -259,12 +256,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -359,12 +352,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -434,44 +423,46 @@
             prevEl: '.swiper-button-prev',
         },
     });
-
-</script>
-
-
-<script>
-    // function add_like_btn(item){
-    //     alert('아');
-    //
-    //     $.ajax({
-    //         url: '/user/login/likes/insert',
-    //         type: 'POST',
-    //         data: JSON.stringify(item),
-    //         dataType: 'json',
-    //         contentType: 'application/json; charset=utf-8',
-    //         success : function (data) {
-    //             alert('성공');
-    //         }
-    //     }).done(function () {
-    //         alert('찜이 추가되었습니다.');
-    //         window.location.href = '/';
-    //     }).fail(function (error) {
-    //         alert(JSON.stringify(error));
-    //     });
-    // };
-    // function del_like_btn(item){
-    //     alert(s);
-    //     $.ajax({
-    //         url: '/user/login/likes/delete',
-    //         type: 'POST',
-    //         dataType: 'json',
-    //         contentType: 'application/json; charset=utf-8',
-    //         data: JSON.stringify(s)
-    //     }).done(function () {
-    //         window.location.href = '/';
-    //     }).fail(function (error) {
-    //         alert(JSON.stringify(error));
-    //     });
-    // };
+    function btn_add_likes_onclick(lecNo) {
+        console.log(lecNo);
+        var data = {"lecNo": lecNo};
+        $.ajax({
+            type: 'POST',
+            url: '/user/likes/insert',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(result) {
+            console.log(result);
+            if (result === true) {
+                alert('찜이 추가되었습니다.');
+            } else {
+                alert('이미 찜하기한 강의입니다.');
+            }
+        }).fail(function (error) {
+            window.location.href = '/user/login';
+        });
+    }
+    function btn_del_likes_onclick(lecNo) {
+        console.log(lecNo);
+        var data = {"lecNo": lecNo};
+        $.ajax({
+            type: 'POST',
+            url: '/user/likes/delete',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(result) {
+            console.log(result);
+            if (result === true) {
+                alert('찜이 해제되었습니다.');
+            } else {
+                alert('찜하지 않은 강의입니다.');
+            }
+        }).fail(function (error) {
+            window.location.href = '/user/login';
+        });
+    }
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

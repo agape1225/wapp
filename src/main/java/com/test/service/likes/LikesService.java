@@ -1,7 +1,7 @@
 package com.test.service.likes;
 
 public interface LikesService {
-    void insertLecture(String userNo, String lecNo, String likeDate);
+    boolean insertLecture(String userNo, String lecNo, String likeDate);
 
-    void deleteLecture(String userNo, String lecNo);
+    boolean deleteLecture(String userNo, String lecNo);
 }
