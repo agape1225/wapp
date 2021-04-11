@@ -53,17 +53,20 @@
                                     <label for="exampleInputText1">Title</label>
                                     <input type="text" id="exampleInputText1" name="benTitle" value="${benefit.benTitle}" oninput="btn_status()" placeholder="Event Title" class="form-control"/>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputText1">이벤트 시작 날짜</label>
-                                    <input type="date" id="inputTime1" name="benStartTime" value="${benefit.benStartTime}" oninput="btn_status()" placeholder="Start Time" class="form-control"/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText1">이벤트 시작 날짜</label>
+                                            <input type="date" id="inputTime1" name="benStartTime" value="${benefit.benStartTime}" oninput="btn_status()" placeholder="Start Time" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputText1">이벤트 마지막 날짜</label>
+                                            <input type="date" id="inputTime2" name="benEndTime" value="${benefit.benEndTime}" oninput="btn_status()" placeholder="End Time" class="form-control"/>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputText1">이벤트 마지막 날짜</label>
-                                    <input type="date" id="inputTime2" name="benEndTime" value="${benefit.benEndTime}" oninput="btn_status()" placeholder="End Time" class="form-control"/>
-                                </div>
-
                                 <div class="form-group">
                                     <label>Image upload</label>
                                     <input type="file" oninput="btn_status()" name="benImage" id="exampleImage1"
