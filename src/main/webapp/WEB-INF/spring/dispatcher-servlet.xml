@@ -44,7 +44,6 @@
 
         <mvc:interceptor>
             <mvc:mapping path="/user/**" />
-            <mvc:exclude-mapping path="/user/login"/>
             <bean class="com.test.controller.UserLoginInterceptor" />
         </mvc:interceptor>
 

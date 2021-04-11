@@ -54,11 +54,11 @@
 
                     <c:choose>
                         <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/user'">로그인 ${selectedCategory}</button>
+                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인 ${selectedCategory}</button>
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button> <!-- 미구현 -->
+                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button> <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
@@ -157,7 +157,7 @@
                 alert('이미 찜하기한 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
     function btn_del_likes_onclick(lecNo) {
@@ -177,7 +177,7 @@
                 alert('찜하지 않은 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
 </script>
