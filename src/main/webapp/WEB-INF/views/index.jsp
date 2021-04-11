@@ -441,10 +441,11 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-    });
+    })
+
+
 
 </script>
-
 
 <script>
     // function add_like_btn(item){

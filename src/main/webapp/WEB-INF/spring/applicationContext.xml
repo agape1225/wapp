@@ -5,9 +5,9 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/wapp?serverTimezone=UTC"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3308/wapp?serverTimezone=UTC"/>
         <property name="username" value="root"/>
-        <property name="password" value="1248"/>
+        <property name="password" value="root"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -18,6 +18,19 @@
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+    <bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
+        <property value="smtp.gmail.com" name="host"/>
+        <property value="587" name="port"/>
+        <property value="wapp.study@gmail.com" name="username"/>
+        <property value="wapp1234" name="password"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
     </bean>
 
 </beans>

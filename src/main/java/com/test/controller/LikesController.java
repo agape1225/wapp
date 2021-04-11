@@ -28,13 +28,15 @@ public class LikesController {
 
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("userLogin");
+        if(session.getAttribute("userLogin") == null){
+            System.out.println("로그인 후 이용해주세요.");
+        }else{
+            Date currentTime = new Date();
+            String likeDateForDB = dateForDB.format(currentTime);
 
-        Date currentTime = new Date();
-        String likeDateForDB = dateForDB.format(currentTime);
-
-        likesService.insertLecture(userDto.getUserNo(), lecNo, likeDateForDB);
-        System.out.println("Success insert likes " + userDto.getUserNo() + " " + lecNo);
-
+            likesService.insertLecture(userDto.getUserNo(), lecNo, likeDateForDB);
+            System.out.println("Success insert likes " + userDto.getUserNo() + " " + lecNo);
+        }
         return "redirect:/";
     }
 
@@ -45,10 +47,12 @@ public class LikesController {
 
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("userLogin");
-
-        likesService.deleteLecture(userDto.getUserNo(), lecNo);
-        System.out.println("Success delete likes " + userDto.getUserNo() + " " + lecNo);
-
+        if(session.getAttribute("userLogin") == null){
+            System.out.println("로그인 후 이용해주세요.");
+        }else {
+            likesService.deleteLecture(userDto.getUserNo(), lecNo);
+            System.out.println("Success delete likes " + userDto.getUserNo() + " " + lecNo);
+        }
         return "redirect:/";
     }
 
