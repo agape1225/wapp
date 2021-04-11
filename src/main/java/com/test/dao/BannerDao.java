@@ -33,7 +33,7 @@ public class BannerDao {
             bannerMapper.insertBanner(bannerDto);
 
         }catch(Exception e){
-
+            e.printStackTrace();
         }
     }
 

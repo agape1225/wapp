@@ -1,9 +1,6 @@
 package com.test.controller;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.dto.LectureDto;
-
 import com.test.dto.UserDto;
 import com.test.service.email.EmailService;
 import com.test.service.likes.LikesService;

@@ -13,4 +13,5 @@ public interface UserService {
     UserDto readUserInfoListByUserEmail(String userEmail);
     void insertUser(UserInsertDto userDto);
 
+    int checkUserEmailExists(String userEmail);
 }

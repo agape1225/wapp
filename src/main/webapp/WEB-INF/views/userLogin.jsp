@@ -99,7 +99,7 @@
                 <button
                         type="button"
                         class="kakao kakao_page2"
-                        onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login'"
+                        onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/kakao_login&response_type=code&prompt=login'"
                 >
                     <img
                             src="https://class101.net/images/ic-kakaotalk-symbol-brown.png"

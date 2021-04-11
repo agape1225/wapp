@@ -45,6 +45,8 @@
         <mvc:interceptor>
             <mvc:mapping path="/user/**" />
             <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/kakao_login"/>
+            <mvc:exclude-mapping path="/user/register"/>
             <bean class="com.test.controller.UserLoginInterceptor" />
         </mvc:interceptor>
 
