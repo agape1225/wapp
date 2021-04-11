@@ -164,25 +164,5 @@ public class LectureController {
         return "redirect:/admin/lecture/data-table";
     }
 
-    @GetMapping("/myPage")
-    public String getLectureListByUserNo(HttpServletRequest request, Model model) {
-        try{
-            HttpSession session = request.getSession();
-            UserDto userLogin = (UserDto) session.getAttribute("userLogin");
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDatListByUserNo(userLogin.getUserNo());
-            for (LectureDto lectureDto : lectureList) {
-                System.out.println(lectureDto.getLecNo()
-                        + lectureDto.getLecCategory()
-                        + lectureDto.getLecName()
-                        + lectureDto.getLecPrice()
-                        + lectureDto.getLecRegDate()
-                        + lectureDto.getLecImg());
-            }
-            model.addAttribute("lectureList", lectureList);
-        } catch (Exception e) {
-            System.out.println("!!!getLectureListByUserNo Error!!!");
-            e.printStackTrace();
-        }
-        return "myPage";
-    }
+
 }

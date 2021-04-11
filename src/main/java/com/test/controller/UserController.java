@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Controller
@@ -119,5 +121,28 @@ public class UserController {
         model.addAttribute("selectedCategory", category);
         model.addAttribute("selectedSortkey", sortKey);
         return "baro";
+    }
+
+    @GetMapping("/myPage")
+    public String getLectureListByUserNo(HttpServletRequest request, Model model) {
+        try{
+            HttpSession session = request.getSession();
+            UserDto userInfo = (UserDto) session.getAttribute("userLogin");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDatListByUserNo(userInfo.getUserNo());
+            for (LectureDto lectureDto : lectureList) {
+                System.out.println(lectureDto.getLecNo()
+                        + lectureDto.getLecCategory()
+                        + lectureDto.getLecName()
+                        + lectureDto.getLecPrice()
+                        + lectureDto.getLecRegDate()
+                        + lectureDto.getLecImg());
+            }
+            model.addAttribute("userInfo", userInfo);
+            model.addAttribute("lectureList", lectureList);
+        } catch (Exception e) {
+            System.out.println("!!!getLectureListByUserNo Error!!!");
+            e.printStackTrace();
+        }
+        return "myPage";
     }
 }

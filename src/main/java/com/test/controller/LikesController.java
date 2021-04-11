@@ -1,14 +1,9 @@
 package com.test.controller;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.dto.LectureDto;
-
 import com.test.dto.UserDto;
 import com.test.service.email.EmailService;
 import com.test.service.likes.LikesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
@@ -51,9 +46,9 @@ public class LikesController {
         boolean result = likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + no);
 
-        emailService.sendMail(userDto,lecNo, likeDateForDB);
+        emailService.sendMail(userDto,no, likeDateForDB);
 
-        likesService.insertLecture(userDto.getUserNo(), lecNo, likeDateForDB);
+        likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + lecNo);
 
 
