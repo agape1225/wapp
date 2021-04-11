@@ -51,9 +51,9 @@ public class LikesController {
         boolean result = likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + no);
 
-        emailService.sendMail(userDto,lecNo, likeDateForDB);
+        emailService.sendMail(userDto,no, likeDateForDB);
 
-        likesService.insertLecture(userDto.getUserNo(), lecNo, likeDateForDB);
+        likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + lecNo);
 
 
