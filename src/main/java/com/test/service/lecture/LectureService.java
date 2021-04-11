@@ -10,6 +10,10 @@ public interface LectureService {
 
     ArrayList<LectureDto> readBasicDatListByUserNo(String userNo);
 
+    ArrayList<LectureDto> readBasicDataListNotInRec();
+
+    ArrayList<LectureDto> readBasicDataListInRec();
+
     void deleteLecture(String lecNo);
 
     LectureDto readBasicDataByLecNo(String lecNo);
@@ -21,5 +25,15 @@ public interface LectureService {
     ArrayList<LectureDto> readBasicDataByLecPrice(String minPrice, String maxPrice);
 
     void updateLecture(String lecNo, LectureDto updateDto);
+
+
+    ArrayList<LectureDto> readAllLectureSortedByLikes();
+    ArrayList<LectureDto> readAllLectureSortedByRegDate();
+    ArrayList<LectureDto> readLectureSortedByLikes(String category);
+    ArrayList<LectureDto> readLectureSortedByRegDate(String category);
+
+    ArrayList<LectureDto> readBasicDataByRegDateDesc();
+
+    ArrayList<LectureDto> readBasicDataByPopularity();
 
 }

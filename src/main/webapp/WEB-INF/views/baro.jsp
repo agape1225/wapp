@@ -12,6 +12,21 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#category option[value="${selectedCategory}"]').prop('selected', true);
+            $('#sortkey option[value="${selectedSortkey}"]').prop('selected', true);
+        });
+        function forGetMethod() {
+            var categoryElement = document.getElementById("category");
+            var sortkeyElement = document.getElementById("sortkey");
+
+            var category = categoryElement.options[categoryElement.selectedIndex].value;
+            var sortkey = sortkeyElement.options[sortkeyElement.selectedIndex].value;
+            window.location.href = "/baro?category=" + category + "&"+"sort=" + sortkey;
+        }
+    </script>
     <title>class101</title>
 </head>
 
@@ -30,7 +45,7 @@
     <div class="header">
         <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
             <div class="header-container">
-                <div class="logo"></div>
+                <a href="/"><div class="logo"></div></a>
                 <form action="" class="search">
                     <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
                            class="search-ment">
@@ -39,7 +54,7 @@
 
                     <c:choose>
                         <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/user'">로그인</button>
+                            <button style="font-weight: normal;" onclick="location.href='/user'">로그인 ${selectedCategory}</button>
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
@@ -77,7 +92,7 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <select id="exampleInputText1" onchange="if(this.value) location.href='/baro?category='+(this.value);">
+                    <select onchange="forGetMethod()" id="category">
                         <option value="all">모두보기</option>
                         <option value="취미">취미</option>
                         <option value="수익 창출">수익 창출</option>
@@ -86,7 +101,7 @@
                         <option value="시그니처">시그니처</option>
                         <option value="키즈">키즈</option>
                     </select>
-                    <select id="exampleInputText2" onchange="if(this.value) location.href='/baro?sort='+(this.value);">
+                    <select onchange="forGetMethod()" id="sortkey">
                         <option value="latest">최신순</option>
                         <option value="popular">인기순</option>
                     </select>

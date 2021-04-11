@@ -56,6 +56,7 @@
                                         <th>No</th>
                                         <th>이름</th>
                                         <th>이메일</th>
+                                        <th>가입 경로</th>
                                         <th>등록 날짜</th>
                                         <th>Edit</th>
                                     </tr>
@@ -67,6 +68,14 @@
                                             <td>${i}</td>
                                             <td>${userList[i-1].userName}</td>
                                             <td>${userList[i-1].userEmail}</td>
+                                            <c:choose>
+                                                <c:when test="${empty userList[i-1].userPw}">
+                                                <td>카카오</td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                <td>클래스 101</td>
+                                                </c:otherwise>
+                                            </c:choose>
                                             <td>${userList[i-1].userRegDate}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">

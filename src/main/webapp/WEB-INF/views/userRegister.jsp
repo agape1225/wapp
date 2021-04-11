@@ -64,29 +64,33 @@
     <div>
         <div style="display: flex; justify-content: center; flex-direction: row;">
             <div style="width: 500px">
-            <form>
+            <form class="forms-sample" action="/user/register" enctype="multipart/form-data" method="post">
                 <div class="form-group" style="margin: 70px 0px">
                     <h2>회원가입</h2>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">이름</label>
-                    <input type="text" class="form-control" id="exampleInputName" placeholder="홍길동">
+                    <input type="text" class="form-control" id="exampleInputName" placeholder="홍길동" name="userName">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">이메일 주소</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="example@example.com">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="example@example.com" name="userEmail">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">비밀번호</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" name="userPw">
                     <span style="color: orangered; font-size: 0.8em"><i class="fas fa-exclamation-triangle"></i>영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상 조합. 8자~32자</span>
+
+<!--                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" name="userPw"> -->
+
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword2">비밀번호 확인</label>
                     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="********">
                 </div>
                 <div class="form-group">
-                    <button style="background-color: orangered; color: white; width: 100%; border-radius: 3px">동의하고 회원가입</button>
+                    <button type="submit" style="background-color: orangered; color: white; width: 100%; border-radius: 3px">동의하고 회원가입</button>
                 </div>
                 <div class="form-group" style="font-size: 0.8em; text-align: center;">
                     <a href="https://class101.net/docs/terms" style="color: dodgerblue">이용약관</a>, &nbsp
@@ -96,7 +100,8 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <button style="background-color: #fef01b; color: black; width: 100%; border-radius: 3px"><i class="fas fa-comment"></i>&nbsp카카오로 3초만에 시작하기</button>
+                    <button onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login'"
+                            style="background-color: #fef01b; color: black; width: 100%; border-radius: 3px"><i class="fas fa-comment"></i>&nbsp카카오로 3초만에 시작하기</button>
                 </div>
             </form>
         </div>
