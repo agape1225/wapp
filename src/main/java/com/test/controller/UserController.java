@@ -1,7 +1,9 @@
 package com.test.controller;
 
+import com.test.dto.BenefitDto;
 import com.test.dto.LectureDto;
 import com.test.dto.UserDto;
+import com.test.service.benefit.BenefitService;
 import com.test.service.lecture.LectureService;
 import com.test.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Controller
 public class UserController {
@@ -23,17 +24,22 @@ public class UserController {
     LectureService lectureService;
 
     @Autowired
+    BenefitService benefitService;
+
+    @Autowired
     UserService userService;
 
     @GetMapping("/")
     public String main(Model model){
         try{
             System.out.println("Start main");
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDataList();
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDataListInRec();
             ArrayList<LectureDto> newLectureList = lectureService.readBasicDataByRegDateDesc();
+            ArrayList<BenefitDto> benefitList = benefitService.getBenefitList();
             ArrayList<LectureDto> popularLectureList = lectureService.readBasicDataByPopularity();
             model.addAttribute("lectureList", lectureList);
             model.addAttribute("newLectureList", newLectureList);
+            model.addAttribute("benefitList", benefitList);
             model.addAttribute("popularLectureList", popularLectureList);
             System.out.println("End main");
         }catch (Exception e){
