@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <%--    <link rel="stylesheet" href="../css/contents.css">--%>
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/FortAwesome/FontAwesome@5.14.0/css/all.min.css"
+    />
+
     <title>class101</title>
 </head>
 
@@ -71,34 +78,77 @@
 
         <div class="main-banner">
             <div class="blue-banner"></div>
-            <div class="wrapper-banner">
-                <div class="img-banner"></div>
-                <div class="wrapper-ment">
-                    <div class="banner-ment">
-                        <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
-                        <div class="small-ment">최대 9만원 상당 준비물 전격 지원</div>
+            <div class="swiper-container swiper3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="wrapper-banner">
+                            <div class="img-banner-wrapper"><img src="../img/rectangle.png" class="img-banner"></div>
+                            <div class="wrapper-ment">
+                                <div class="banner-ment">
+                                    <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
+                                    <div class="small-ment">최대 9만원 상당 준비물 전격 지원</div>
+                                </div>
+                                <div class="banner-bar">
+                                    <span>02</span>
+                                    <div class="block"></div>
+                                    <span style="margin-left: 8px">16</span>
+                                    <div class="progress" style="height: 2px;">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
+                                        <svg width="24" height="24">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
+                                                  fill="#1a1a1a"></path>
+                                        </svg>
+                                    </button>
+                                    <button style="background-color:transparent; border: none">
+                                        <svg width="24" height="24">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
+                                                  fill="#1a1a1a"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="wrapper-banner">
+                            <div class="img-banner-wrapper"><img src="../img/hahaha.png" class="img-banner"></div>
+                            <div class="wrapper-ment">
+                                <div class="banner-ment">
+                                    <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
+                                    <div class="small-ment">최대 9만원 상당 준비물 전격 </div>
+                                </div>
+                                <div class="banner-bar">
+                                    <span>02</span>
+                                    <div class="block"></div>
+                                    <span style="margin-left: 8px">16</span>
+                                    <div class="progress" style="height: 2px;">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
+                                        <svg width="24" height="24">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
+                                                  fill="#1a1a1a"></path>
+                                        </svg>
+                                    </button>
+                                    <button style="background-color:transparent; border: none">
+                                        <svg width="24" height="24">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
+                                                  fill="#1a1a1a"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="banner-bar">
-                        <span>02</span>
-                        <div class="block"></div>
-                        <span style="margin-left: 8px">16</span>
-                        <div class="progress" style="height: 2px;">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
-                            <svg width="24" height="24">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z" fill="#1a1a1a"></path>
-                            </svg>
-                        </button>
-                        <button style="background-color:transparent; border: none">
-                            <svg width="24" height="24">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z" fill="#1a1a1a"></path>
-                            </svg>
-                        </button>
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
@@ -188,7 +238,7 @@
                     </div>
                     <div style="color: gray" class="class-description"></div>
                 </div>
-                <div class="swiper-container">
+                <div class="swiper-container swiper1">
                     <div class="swiper-wrapper">
                         <c:forEach varStatus="i" var="item" items="${lectureList}">
                             <div class="swiper-slide">
@@ -235,7 +285,7 @@
                     <div style="color: gray" class="class-description"></div>
                 </div>
 
-                <div class="swiper-container">
+                <div class="swiper-container swiper1">
                     <div class="swiper-wrapper">
                         <c:forEach varStatus="i" begin="0" end="${popularLectureList.size()}" var="item"
                                    items="${popularLectureList}">
@@ -285,7 +335,7 @@
                     </div>
                 </div>
 
-                <div class="swiper-container">
+                <div class="swiper-container swiper2">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="slide-content">
@@ -344,7 +394,7 @@
                     <div style="color: gray" class="class-description">얼리버드 기간에만 받을 수 있는 최저가 할인 중이에요.</div>
                 </div>
 
-                <div class="swiper-container">
+                <div class="swiper-container swiper1">
                     <div class="swiper-wrapper">
                         <c:forEach varStatus="i" begin="0" end="6" var="item" items="${newLectureList}">
                             <div class="swiper-slide">
@@ -427,7 +477,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper1', {
         slidesPerView: 4,
         spaceBetween: 30,
         slidesPerGroup: 1,
@@ -442,6 +492,42 @@
             prevEl: '.swiper-button-prev',
         },
     });
+
+    var swiper = new Swiper('.swiper2', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 1,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    var swiper = new Swiper('.swiper3', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        slidesPerGroup: 1,
+        loop: true,
+        loopFillGroupWithBlank: true,
+
+        autoplay: {delay: 10000},
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
 
 </script>
 

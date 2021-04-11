@@ -199,14 +199,18 @@ button{
     padding-bottom: 32px;
     z-index: 900;
 }
-.img-banner{
+.img-banner-wrapper{
     position: relative;
     width: 660px;
     height: 416px;
     margin-top: 40px;
-    background: url('../img/rectangle.png');
+    /*background: url('../img/rectangle.png');*/
     border-radius: 0px;
     z-index: 900;
+}
+.img-banner{
+    width:auto;
+    height: auto;
 }
 .ment-1{
     width: 298px;
@@ -250,7 +254,7 @@ button{
 .progress-bar{
     width: 100%;
     background-color: rgb(255, 255, 255);
-    animation-duration: 17s;
+    animation-duration: 10s;
     animation-name: slidein;
     animation-iteration-count: infinite;
 }
@@ -535,14 +539,18 @@ button{
     object-fit: cover;
 }
 
+.dropdown > button{
+    margin: 3px;
+}
+
 .baro-wrapper{
     display: flex;
     flex-wrap: wrap;
 }
 
 .baro-content{
-    margin: 20px 10px;
-    width: 276px;
+    margin: 30px 10px;
+    width: 278px;
     height: 420px;
     flex-direction: column;
     display: inline-flex;
@@ -626,6 +634,8 @@ button{
     .card-wrapper{
         margin: 0px 50px;
     }
+    .baro-page{margin: 0px 50px;}
+
 }
 @media (max-width: 1023px) {
 
@@ -672,5 +682,6 @@ button{
     .card-wrapper{
         margin: 0px 25px;
     }
+    .baro-page{margin: 0px 25px;}
 
 }
