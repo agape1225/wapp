@@ -209,8 +209,9 @@ button{
     z-index: 900;
 }
 .img-banner{
-    width:auto;
-    height: auto;
+    width:676px;
+    height: 415px;
+    object-fit: cover;
 }
 .ment-1{
     width: 298px;
@@ -526,7 +527,7 @@ button{
 }
 
 .slide-content{
-    width: 276px;
+    width: 100%;
     flex-direction: column;
     display: inline-flex;
     height:100%;

@@ -96,19 +96,21 @@
                 <h1>견적에 대한 문의가 필요한가요?</h1>
                 <h3>질문 또는 언급할게 있다면 여길 이용해주세요!</h3>
             </div>
-            <div id="inquiry_contents">
-                <h1>문의 내용을 작성해주세요.</h1>
-                <input type="text" placeholder="제목"/>
-                <div class="inquiry_contents_twobox">
-                    <input type="text" placeholder="이름"/>
-                    <input type="email" placeholder="회신 이메일" required/>
+            <form action="/inquiry/addInquiry" method="post">
+                <div id="inquiry_contents">
+                    <h1>문의 내용을 작성해주세요.</h1>
+                    <input type="text" placeholder="제목" name="inqTitle"/>
+                    <div class="inquiry_contents_twobox">
+                        <input type="text" placeholder="이름" name="inqUserName"/>
+                        <input type="email" placeholder="회신 이메일" required name="inqEmail"/>
+                    </div>
+                    <div class="inquiry_contents_content" >
+                                  <textarea type="text" style="height: 200px; width:680px"
+                                            placeholder="내용을 작성해주세요." name="inqQuestion"></textarea>
+                    </div>
+                    <input type="submit" value="문의하기"/>
                 </div>
-                <div class="inquiry_contents_content" >
-                          <textarea type="text" style="height: 200px; width:680px"
-                                    placeholder="내용을 작성해주세요."></textarea>
-                </div>
-                <input type="button" value="문의하기"/>
-            </div>
+            </form>
         </div>
         <div id="inquiry_aside">
             <h1>회사 정보</h1>
@@ -127,6 +129,8 @@
         </div>
     </div>
 </div>
+
+<jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
 <%--<div class="main-wrapper">--%>
 
 
