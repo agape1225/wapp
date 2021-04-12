@@ -30,7 +30,6 @@ public class InquiryController {
     @Autowired
     InquiryService inquiryService;
 
-    private final SimpleDateFormat dateForServer = new SimpleDateFormat("yyyyMMddHHmmss_");
     private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("/inquiryRegister")
@@ -48,13 +47,8 @@ public class InquiryController {
 
         Date currentTime = new Date();
         String regDateForDB = dateForDB.format(currentTime);
-        String regDateForServer = dateForServer.format(currentTime);
-
 
         inquiryDto.setInqRegDate(regDateForDB); // 현재시간 저장
-
-        String root_path = servletContext.getRealPath("/");
-        String filename_server = root_path;
 
         System.out.println(inquiryDto.getInqTitle());
         System.out.println(inquiryDto.getInqUserName());

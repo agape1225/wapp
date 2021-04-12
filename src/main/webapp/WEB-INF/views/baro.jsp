@@ -63,7 +63,7 @@
                     <c:choose>
                         <c:when test="${empty userLogin}">
                             <button style="font-weight: normal;" onclick="location.href='/user'">
-                                로그인 ${selectedCategory}</button>
+                                로그인</button>
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
@@ -100,90 +100,62 @@
             <div class="empty-space"></div>
                 <div class="text-box">
                     <div>
-                        <div class="dropdown" style="float:left">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                모두보기
-                                <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">취미</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">수익 창출</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">직무교육</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">데이터 · 개발</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">시그니처</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">키즈</a></li>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                최신순
-                                <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">최신순</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">인기순</a></li>
-                            </div>
-                        </div>
-<%--                        <select onchange="forGetMethod()" id="category">--%>
-<%--                            <option value="all">모두보기</option>--%>
-<%--                            <option value="취미">취미</option>--%>
-<%--                            <option value="수익 창출">수익 창출</option>--%>
-<%--                            <option value="직무교육">직무교육</option>--%>
-<%--                            <option value="데이터 · 개발">데이터 · 개발</option>--%>
-<%--                            <option value="시그니처">시그니처</option>--%>
-<%--                            <option value="키즈">키즈</option>--%>
-<%--                        </select>--%>
-<%--                        <select onchange="forGetMethod()" id="sortkey">--%>
-<%--                            <option value="latest">최신순</option>--%>
-<%--                            <option value="popular">인기순</option>--%>
-<%--                        </select>--%>
+<%--                        <div class="dropdown" style="float:left">--%>
+<%--                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"--%>
+<%--                                    data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">--%>
+<%--                                모두보기--%>
+<%--                                <span class="caret"></span>--%>
+<%--                            </button>--%>
+<%--                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">취미</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">수익 창출</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">직무교육</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">데이터 · 개발</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">시그니처</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">키즈</a></li>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="dropdown">--%>
+<%--                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"--%>
+<%--                                    data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">--%>
+<%--                                최신순--%>
+<%--                                <span class="caret"></span>--%>
+<%--                            </button>--%>
+<%--                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">최신순</a></li>--%>
+<%--                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">인기순</a></li>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+                        <select onchange="forGetMethod()" id="category">
+                            <option value="all">모두보기</option>
+                            <option value="취미">취미</option>
+                            <option value="수익 창출">수익 창출</option>
+                            <option value="직무교육">직무교육</option>
+                            <option value="데이터 · 개발">데이터 · 개발</option>
+                            <option value="시그니처">시그니처</option>
+                            <option value="키즈">키즈</option>
+                        </select>
+                        <select onchange="forGetMethod()" id="sortkey">
+                            <option value="latest">최신순</option>
+                            <option value="popular">인기순</option>
+                        </select>
                     </div>
                 </div>
                 <div class="empty-space"></div>
                 <div class="baro-wrapper">
+                    <c:forEach varStatus="i" var="item" items="${lectureList}">
                     <div class="baro-content">
-                        <c:forEach varStatus="i" var="item" items="${lectureList}">
-                            <div class="baro-content">
-                                <img src="${item.lecImg}" class="baro-img">
-                                <div class="card-tag">${item.lecCategory}
-                                    <span class="between-tag">・</span>
-                                    (강사이름)
-                                </div>
-                                <div class="best-class-name">${item.lecName}</div>
-                                <div class="Spacing__Box">
-                                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
-                                                                                               type="currency"
-                                                                                               currencySymbol=""/>원</span>
-                                </div>
-                                <div class="Spacing__Box">
-                                    <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                                    <span class="total-month"> (?개월)(이벤트기간)</span>
-                                </div>
-                                <form action="/user/login/likes/insert" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                </form>
-                                <form action="/user/login/likes/delete" method="post">
-                                    <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                </form>
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <div class="baro-content">
-                        <img src="../img/hahaha.png" class="baro-img">
-                        <div class="card-tag">디지털 드로잉
-                            <span class="between-tag">・</span>
-                            이지
-                        </div>
-                        <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
+                        <img src="${item.lecImg}" class="baro-img">
+                        <div class="card-tag">${item.lecCategory}</div>
+                        <div class="best-class-name">${item.lecName}</div>
                         <div class="Spacing__Box">
                                 <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
                                                                                currencySymbol=""/>원</span>
                         </div>
                         <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                            <span class="total-month"> (?개월)(이벤트기간)</span>
+<%--                            할부개월수로 나눈 값--%>
+                            <strong class="monthly-price">월 <fmt:formatNumber value="${item.lecPrice / 6}" type="currency"
+                                                                            currencySymbol=""/>원</strong><br>
                         </div>
                         <form action="/user/login/likes/insert" method="post">
                             <button name="lecNo" value="${item.lecNo}">찜하기</button>
@@ -192,24 +164,7 @@
                             <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
                         </form>
                     </div>
-                    <div class="baro-content">
-                        <img src="../img/hahaha.png" class="baro-img">
-                        <div class="card-tag">디지털 드로잉
-                            <span class="between-tag">・</span>
-                            이지
-                        </div>
-                        <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                        <div class="Spacing__Box">
-                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
-                                                                               currencySymbol=""/>원</span>
-                        </div>
-                        <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                            <span class="total-month"> (?개월)(이벤트기간)</span>
-                        </div>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
-                    </div>
+                    </c:forEach>
                 </div>
                 <div class="empty-space"></div>
 

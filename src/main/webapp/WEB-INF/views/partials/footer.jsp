@@ -22,7 +22,7 @@
                     </svg>
                 </div>
                 <div class="menu-description">
-                    클래스101은 모든 사람이 사랑하는 일을 하며<br>살 수 있도록 세상을 바꾸고자 합니다daasdasdasdasdas.
+                    클래스101은 모든 사람이 사랑하는 일을 하며<br>살 수 있도록 세상을 바꾸고자 합니다.
                 </div>
                 <div class="global first-menu-description">🇰🇷 한국어/ 한국 스토어</div>
 
