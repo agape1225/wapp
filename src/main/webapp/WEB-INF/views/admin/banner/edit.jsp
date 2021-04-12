@@ -60,7 +60,7 @@
 
                                 <div class="form-group">
                                     <label>File upload</label>
-                                    <input type="file" oninput="btn_status()" name="banImage" id="exampleImage1" class="file-upload-default">
+                                    <input type="file" oninput="btn_status()" name="banImage" id="exampleImage1" class="file-upload-default" onchange="fileTypeCheck(this)">
                                     <div class="input-group col-xs-12" accept="image/*">
                                         <c:set var="banImg" value="${banner.banImg.replaceAll('/files/banner/','')}"/>
                                         <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image"  value="${banImg}">
@@ -94,6 +94,22 @@
             document.getElementById("sub_btn").disabled = false;
         } else {
             document.getElementById("sub_btn").disabled = true;
+        }
+    }
+
+    function fileTypeCheck(obj) {
+
+        pathpoint = obj.value.lastIndexOf('.');
+        filepoint = obj.value.substring(pathpoint + 1, obj.length);
+        filetype = filepoint.toLowerCase();
+
+        if (filetype == 'jpg' || filetype == 'gif' || filetype == 'png' || filetype == 'jpeg' || filetype == 'bmp') {
+            return true;
+        } else {
+            alert('옳지 않은 파일형식입니다.');
+            parentObj = obj.parentNode
+            node = parentObj.replaceChild(obj.cloneNode(true), obj);
+            return false;
         }
     }
 </script>

@@ -64,7 +64,7 @@
 
                                 <div class="form-group">
                                     <label>File upload</label>
-                                    <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1" class="file-upload-default">
+                                    <input type="file" oninput="btn_status()" name="lecImage" id="exampleImage1" class="file-upload-default" onchange="fileTypeCheck(this)" accept="image/*">
                                     <div class="input-group col-xs-12" accept="image/*">
                                         <c:set var="lecimg" value="${lecture.lecImg.replaceAll('/files/lectureImage/','')}"/>
                                         <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image"  value="${lecimg}">
@@ -101,6 +101,23 @@
             document.getElementById("sub_btn").disabled = true;
         }
     }
+
+    function fileTypeCheck(obj) {
+
+        pathpoint = obj.value.lastIndexOf('.');
+        filepoint = obj.value.substring(pathpoint + 1, obj.length);
+        filetype = filepoint.toLowerCase();
+
+        if (filetype == 'jpg' || filetype == 'gif' || filetype == 'png' || filetype == 'jpeg' || filetype == 'bmp') {
+            return true;
+        } else {
+            alert('옳지 않은 파일형식입니다.');
+            parentObj = obj.parentNode
+            node = parentObj.replaceChild(obj.cloneNode(true), obj);
+            return false;
+        }
+    }
+
 </script>
 <!-- core:js -->
 <script src="../../../assets/vendors/core/core.js"></script>
