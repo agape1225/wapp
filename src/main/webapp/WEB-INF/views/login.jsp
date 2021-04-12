@@ -77,12 +77,12 @@
           <div>
             <h2>준비물까지 챙겨주는<br />온라인 클래스</h2>
           </div>
-          <button type="button" class="kakao" onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login'">
+          <button type="button" class="kakao" onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/kakao_login&response_type=code&prompt=login'">
             <img
                     src="https://class101.net/images/ic-kakaotalk-symbol-brown.png"
             /><span>카카오로 3초 만에 시작하기</span>
           </button>
-          <button type="button" class="local" onclick="location.href = '/user/login'">
+          <button type="button" class="local" onclick="location.href = '/login'">
             <span>다른 방법으로 시작하기</span>
           </button>
         </div>

@@ -43,10 +43,7 @@
         </mvc:interceptor>
 
         <mvc:interceptor>
-            <mvc:mapping path="/user/login/**" />
-            <mvc:exclude-mapping path="/user/login"/>
-            <mvc:exclude-mapping path="/user/register"/>
-
+            <mvc:mapping path="/user/**" />
             <bean class="com.test.controller.UserLoginInterceptor" />
         </mvc:interceptor>
 

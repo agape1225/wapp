@@ -31,7 +31,7 @@ public class KakaoApiServiceImp implements KakaoApiService{
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             String parameters = "grant_type=authorization_code" +
                     "&client_id=6ea961726165307daa0af03f7cca7d1a" +
-                    "&redirect_uri=http://localhost:8080/user/kakao_login" +
+                    "&redirect_uri=http://localhost:8080/kakao_login" +
                     "&code=" + authorize_code;
             bw.write(parameters);
             bw.flush();

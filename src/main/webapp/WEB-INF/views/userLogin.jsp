@@ -78,14 +78,14 @@
             </div>
             <h2 class="grid-1__header">로그인</h2>
             <div class="grid-1__login-page2">
-                <form action="/user/login" method="post">
+                <form action="/login" method="post">
                     <div class="grid-1__login-page2__email">이메일</div>
                     <input type="text" placeholder="example@naver.com" required name="userEmail"/>
                     <div class="grid-1__login-page2__password">비밀번호</div>
                     <input type="password" placeholder="********" required name="userPw"/>
                     <div class="grid-1__login__box">
                         <a href="#"><span>비밀번호를 잊으셨나요?</span></a>
-                        <a href="/user/register"><span>회원 가입하기</span></a>
+                        <a href="/register"><span>회원 가입하기</span></a>
                     </div>
                     <button
                             type="submit"
@@ -99,7 +99,7 @@
                 <button
                         type="button"
                         class="kakao kakao_page2"
-                        onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login'"
+                        onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/kakao_login&response_type=code&prompt=login'"
                 >
                     <img
                             src="https://class101.net/images/ic-kakaotalk-symbol-brown.png"

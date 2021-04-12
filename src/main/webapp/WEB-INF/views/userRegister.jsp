@@ -64,7 +64,7 @@
     <div>
         <div style="display: flex; justify-content: center; flex-direction: row;">
             <div style="width: 500px">
-            <form class="forms-sample" action="/user/register" enctype="multipart/form-data" method="post">
+            <form class="forms-sample" action="/register" enctype="multipart/form-data" method="post">
                 <div class="form-group" style="margin: 70px 0px">
                     <h2>회원가입</h2>
                 </div>
@@ -100,7 +100,7 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <button onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/user/kakao_login&response_type=code&prompt=login'"
+                    <button onclick="location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=6ea961726165307daa0af03f7cca7d1a&redirect_uri=http://localhost:8080/kakao_login&response_type=code&prompt=login'"
                             style="background-color: #fef01b; color: black; width: 100%; border-radius: 3px"><i class="fas fa-comment"></i>&nbsp카카오로 3초만에 시작하기</button>
                 </div>
             </form>
