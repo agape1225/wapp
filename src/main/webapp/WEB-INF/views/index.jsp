@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<!-- check here -->
     <%--    <link rel="stylesheet" href="../css/contents.css">--%>
 
     <link
@@ -19,6 +20,9 @@
             href="https://cdn.jsdelivr.net/gh/FortAwesome/FontAwesome@5.14.0/css/all.min.css"
     />
 
+<!-- check here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- check here -->
     <title>class101</title>
 </head>
 
@@ -258,12 +262,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -309,12 +309,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -337,46 +333,38 @@
 
                 <div class="swiper-container swiper2">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-content">
-                                <img src="/files/lectureImage/20210404235159_2.jpg" class="slide-img">
-                                <div class="card-tag">디지털 드로잉
-                                    <span class="between-tag">・</span>
-                                    이지
-                                </div>
-                                <div class="best-class-name">[단 24시간] 무채색이 주는 다채로움, 이지의 패션 크로키와 데일리룩 기록하기</div>
-                            </div>
-                        </div>
+                        <%--현재시간을 date타입 변수로 불러오기--%>
+                        <c:set var="currentTime" value="<%=new java.util.Date()%>"/>
+
+                        <c:forEach var="item" items="${benefitList}">
+                            <%-- statrTime, endTime을 Date타입 변수로 변환 --%>
+                            <fmt:parseDate var="startTime" value="${item.benStartTime}" pattern="yyyy-MM-dd"/>
+                            <fmt:parseDate var="endTime" value="${item.benEndTime}" pattern="yyyy-MM-dd"/>
+                            <%-- statrTime, endTime을 Day(integer)로 변환 --%>
+                            <fmt:parseNumber value="${currentTime.time/(1000*60*60*24)}" integerOnly="true" var="today" scope="request"/>
+                            <fmt:parseNumber value="${endTime.time/(1000*60*60*24)}" integerOnly="true" var="endDay" scope="request"/>
+                            <fmt:parseNumber value="${startTime.time/(1000*60*60*24)}" integerOnly="true" var="startDay" scope="request"/>
+                            <%-- 시작, 종료까지 남은날짜 계산 --%>
+                            <c:set value="${endDay-today+1}" var="Dday"/>
+                            <c:set value="${today-startDay-1}" var="timeLeft"/>
+
+                            <c:choose>
+                                <%-- Dday가 0보다 클때 && timeLeft이 0 이상일때만 표시--%>
+                                <c:when test="${(Dday gt 0) && (timeLeft >= 0)}">
+                                    <div class="swiper-slide benefits">
+                                        <div class="slide-content benefit">
+                                            <img src="${item.benImg}" class="slide-img">
+                                            <div class="best-class-name">${item.benTitle}</div>
+                                            <div class="Spacing__Box">
+                                                <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-${Dday}</span>
+                                                <fmt:formatDate value="${startTime}" pattern="MM.dd (E)"/>~
+                                                <fmt:formatDate value="${endTime}" pattern="MM.dd (E)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
@@ -417,12 +405,8 @@
                                         <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
                                         <span class="total-month"> (?개월)(이벤트기간)</span>
                                     </div>
-                                    <form action="/user/login/likes/insert" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                                    </form>
-                                    <form action="/user/login/likes/delete" method="post">
-                                        <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                                    </form>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -533,39 +517,47 @@
 
 
 <script>
-    // function add_like_btn(item){
-    //     alert('아');
-    //
-    //     $.ajax({
-    //         url: '/user/login/likes/insert',
-    //         type: 'POST',
-    //         data: JSON.stringify(item),
-    //         dataType: 'json',
-    //         contentType: 'application/json; charset=utf-8',
-    //         success : function (data) {
-    //             alert('성공');
-    //         }
-    //     }).done(function () {
-    //         alert('찜이 추가되었습니다.');
-    //         window.location.href = '/';
-    //     }).fail(function (error) {
-    //         alert(JSON.stringify(error));
-    //     });
-    // };
-    // function del_like_btn(item){
-    //     alert(s);
-    //     $.ajax({
-    //         url: '/user/login/likes/delete',
-    //         type: 'POST',
-    //         dataType: 'json',
-    //         contentType: 'application/json; charset=utf-8',
-    //         data: JSON.stringify(s)
-    //     }).done(function () {
-    //         window.location.href = '/';
-    //     }).fail(function (error) {
-    //         alert(JSON.stringify(error));
-    //     });
-    // };
+    function btn_add_likes_onclick(lecNo) {
+        console.log(lecNo);
+        var data = {"lecNo": lecNo};
+        $.ajax({
+            type: 'POST',
+            url: '/user/likes/insert',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(result) {
+            console.log(result);
+            if (result === true) {
+                alert('찜이 추가되었습니다.');
+            } else {
+                alert('이미 찜하기한 강의입니다.');
+            }
+        }).fail(function (error) {
+            window.location.href = '/user/login';
+        });
+    }
+    function btn_del_likes_onclick(lecNo) {
+        console.log(lecNo);
+        var data = {"lecNo": lecNo};
+        $.ajax({
+            type: 'POST',
+            url: '/user/likes/delete',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(result) {
+            console.log(result);
+            if (result === true) {
+                alert('찜이 해제되었습니다.');
+            } else {
+                alert('찜하지 않은 강의입니다.');
+            }
+        }).fail(function (error) {
+            window.location.href = '/user/login';
+        });
+    }
+
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

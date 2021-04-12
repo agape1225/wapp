@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.BenefitMapper">
+    <select id="getBenefitList" resultType="BenefitDto">
+        select * from benefit
+    </select>
+    <delete id="deleteItem">
+        delete from benefit where benNo=#{benNo}
+    </delete>
+    <insert id="addItem">
+        insert into benefit(benImg, benStartTime, benEndTime, benRegDate, benTitle)
+        VALUES(#{benefitDto.benImg}, #{benefitDto.benStartTime}, #{benefitDto.benEndTime}, #{benefitDto.benRegDate}, #{benefitDto.benTitle})
+    </insert>
+    <select id="selectItem" resultType="BenefitDto">
+        select * from benefit where benNo=${benNo}
+    </select>
+    <update id="editItem">
+        update benefit set benStartTime=#{benefitDto.benStartTime}, benEndTime=#{benefitDto.benEndTime}, benImg=#{benefitDto.benImg}, benTitle=#{benefitDto.benTitle} where benNo=#{benefitDto.benNo}
+    </update>
+</mapper>

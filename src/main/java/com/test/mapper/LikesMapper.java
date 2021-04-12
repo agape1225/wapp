@@ -12,4 +12,6 @@ public interface LikesMapper {
     void deleteLikes(@Param("userNo") String userNo,
                      @Param("lecNo") String lecNo);
     ArrayList<LikesDto> readLikesListsOrderByLikeDateDesc();
+
+    LikesDto readBasicDataByUserNoNLecNo(@Param("userNo") String userNo, @Param("lecNo") String lecNo);
 }

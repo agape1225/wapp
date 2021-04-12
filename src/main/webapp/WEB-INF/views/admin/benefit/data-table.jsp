@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
+    <title>Wapp Team B Admin</title>
     <!-- core:css -->
     <link rel="stylesheet" href="../../../assets/vendors/core/core.css">
     <!-- endinject -->
@@ -40,7 +40,7 @@
 
             <nav class="page-breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Users</a></li>
+                    <li class="breadcrumb-item"><a href="#">Lectures</a></li>
                 </ol>
             </nav>
 
@@ -48,38 +48,41 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">User Table</h6>
+                            <h6 class="card-title">Lecture Table</h6>
                             <div class="table-responsive">
                                 <table id="dataTableExample" class="table">
                                     <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>가입 경로</th>
+                                        <th>시작 시간</th>
+                                        <th>종료 시간</th>
                                         <th>등록 날짜</th>
+                                        <th>이미지</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var="userList" value="${userList}"/>
-                                    <c:forEach var="i" begin = "1" end = "${userList.size()}">
+                                    <c:set var="benefitList" value="${benefitList}"/>
+                                    <c:forEach var="i" begin = "1" end = "${benefitList.size()}">
                                         <tr>
                                             <td>${i}</td>
-                                            <td>${userList[i-1].userName}</td>
-                                            <td>${userList[i-1].userEmail}</td>
+                                            <td>${benefitList[i-1].benTitle}</td>
+                                            <td>${benefitList[i-1].benStartTime}</td>
+                                            <td>${benefitList[i-1].benEndTime}</td>
+                                            <td>${benefitList[i-1].benRegDate}</td>
                                             <c:choose>
-                                                <c:when test="${empty userList[i-1].userPw}">
-                                                <td>카카오</td>
-                                                </c:when>
-                                                <c:otherwise>
-                                                <td>클래스 101</td>
-                                                </c:otherwise>
+                                            <c:when test="${empty benefitList[i-1].benImg}">
+                                                <td>이미지 없음</td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td><button class="btn btn-primary" onclick="window.open('${benefitList[i-1].benImg}')">이미지 보기</button></td>
+                                            </c:otherwise>
                                             </c:choose>
-                                            <td>${userList[i-1].userRegDate}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/user/delete.do?userNo=${userList[i-1].userNo}';} else {return false;}">삭제</button>
+                                                <button class="btn btn-primary" onclick="location.href='/admin/benefit/edit?benNo=${benefitList[i-1].benNo}'">수정</button>
+                                                <button class="btn btn-secondary" onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/benefit/delete?benNo=${benefitList[i-1].benNo}';} else {return false;}">삭제</button>
                                                 </div>
                                             </td>
                                         </tr>
