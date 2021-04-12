@@ -85,18 +85,19 @@
             <div class="blue-banner"></div>
             <div class="swiper-container swiper3">
                 <div class="swiper-wrapper">
+                    <c:forEach var="i" begin = "1" end = "${bannerList.size()}">
                     <div class="swiper-slide">
                         <div class="wrapper-banner">
-                            <div class="img-banner-wrapper"><img src="../img/rectangle.png" class="img-banner"></div>
+                            <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner"></div>
                             <div class="wrapper-ment">
                                 <div class="banner-ment">
-                                    <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
-                                    <div class="small-ment">최대 9만원 상당 준비물 전격 지원</div>
+                                    <div class="ment-1">${bannerList[i-1].banTitle}</div>
+                                    <div class="small-ment">${bannerList[i-1].banContent}</div>
                                 </div>
                                 <div class="banner-bar">
-                                    <span>02</span>
+                                    <span>${i}</span>
                                     <div class="block"></div>
-                                    <span style="margin-left: 8px">16</span>
+                                    <span style="margin-left: 8px">${bannerList.size()}</span>
                                     <div class="progress" style="height: 2px;">
                                         <div class="progress-bar"></div>
                                     </div>
@@ -118,39 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="wrapper-banner">
-                            <div class="img-banner-wrapper"><img src="../img/hahaha.png" class="img-banner"></div>
-                            <div class="wrapper-ment">
-                                <div class="banner-ment">
-                                    <div class="ment-1">선착순 한정 필수 준비물이 무료!</div>
-                                    <div class="small-ment">최대 9만원 상당 준비물 전격 </div>
-                                </div>
-                                <div class="banner-bar">
-                                    <span>02</span>
-                                    <div class="block"></div>
-                                    <span style="margin-left: 8px">16</span>
-                                    <div class="progress" style="height: 2px;">
-                                        <div class="progress-bar"></div>
-                                    </div>
-                                    <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
-                                    <button style="background-color:transparent; border: none">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
 
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -250,18 +219,12 @@
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
                                     <div class="card-tag">${item.lecCategory}
-                                        <span class="between-tag">・</span>
-                                        (강사이름)
                                     </div>
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
-                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                        <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
                                                                                        type="currency"
-                                                                                       currencySymbol=""/>원</span>
-                                    </div>
-                                    <div class="Spacing__Box">
-                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
-                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                                                                       currencySymbol=""/>원</strong>
                                     </div>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
@@ -294,21 +257,12 @@
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
                                     <div class="card-tag">${item.lecCategory}
-                                        <span class="between-tag">・</span>
-                                        (강사이름)
                                     </div>
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
-                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                        <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
                                                                                        type="currency"
-                                                                                       currencySymbol=""/>원</span>
-                                    </div>
-                                    <div class="registered-date">
-                                            ${item.lecRegDate}
-                                    </div>
-                                    <div class="Spacing__Box">
-                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
-                                        <span class="total-month"> (?개월)(이벤트기간)</span>
+                                                                                       currencySymbol=""/>원</strong>
                                     </div>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
@@ -351,7 +305,7 @@
 
                             <c:choose>
                                 <%-- Dday가 0보다 클때 && timeLeft이 0 이상일때만 표시--%>
-                                <c:when test="${(Dday gt 0) && (timeLeft >= 0)}">
+                                <c:when test="${(Dday >= 0) && (timeLeft >= 0)}">
                                     <div class="swiper-slide benefits">
                                         <div class="slide-content benefit">
                                             <img src="${item.benImg}" class="slide-img">
@@ -390,22 +344,22 @@
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
                                     <div class="card-tag">${item.lecCategory}
-                                        <span class="between-tag">・</span>
-                                        (강사이름)
+<%--                                        <span class="between-tag">・</span>--%>
+<%--                                        (강사이름)--%>
                                     </div>
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
-                                        <span class="original-price"><fmt:formatNumber value="${item.lecPrice}"
+                                        <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
                                                                                        type="currency"
-                                                                                       currencySymbol=""/>원</span>
+                                                                                       currencySymbol=""/>원</strong>
                                     </div>
                                     <div class="like-number">
-                                        찜한 수 ${item.lecLike}
+                                        ♥${item.lecLike}
                                     </div>
-                                    <div class="Spacing__Box">
-                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>
-                                        <span class="total-month"> (?개월)(이벤트기간)</span>
-                                    </div>
+<%--                                    <div class="Spacing__Box">--%>
+<%--                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>--%>
+<%--                                        <span class="total-month"> (?개월)(이벤트기간)</span>--%>
+<%--                                    </div>--%>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
                                     <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                                 </div>

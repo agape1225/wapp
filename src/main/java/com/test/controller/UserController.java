@@ -1,8 +1,10 @@
 package com.test.controller;
 
+import com.test.dto.BannerDto;
 import com.test.dto.BenefitDto;
 import com.test.dto.LectureDto;
 import com.test.dto.UserDto;
+import com.test.service.banner.BannerService;
 import com.test.service.benefit.BenefitService;
 import com.test.service.lecture.LectureService;
 import com.test.service.user.UserService;
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 @Controller
@@ -24,6 +28,9 @@ public class UserController {
     LectureService lectureService;
 
     @Autowired
+    BannerService bannerService;
+
+    @Autowired
     BenefitService benefitService;
 
     @Autowired
@@ -32,11 +39,15 @@ public class UserController {
     @GetMapping("/")
     public String main(Model model){
         try{
+
             System.out.println("Start main");
+
+            ArrayList<BannerDto> bannerList = bannerService.readBasicDataList();
             ArrayList<LectureDto> lectureList = lectureService.readBasicDataListInRec();
             ArrayList<LectureDto> newLectureList = lectureService.readBasicDataByRegDateDesc();
             ArrayList<BenefitDto> benefitList = benefitService.getBenefitList();
             ArrayList<LectureDto> popularLectureList = lectureService.readBasicDataByPopularity();
+            model.addAttribute("bannerList", bannerList);
             model.addAttribute("lectureList", lectureList);
             model.addAttribute("newLectureList", newLectureList);
             model.addAttribute("benefitList", benefitList);
@@ -44,6 +55,7 @@ public class UserController {
             System.out.println("End main");
         }catch (Exception e){
             e.printStackTrace();
+            return "404";
         }
         return "index";
     }
@@ -58,6 +70,7 @@ public class UserController {
             System.out.println("end manageUser");
         }catch (Exception e){
             e.printStackTrace();
+            return "404";
         }
         return "admin/user/data-table";
     }
@@ -72,6 +85,7 @@ public class UserController {
             userService.deleteUser(userNo);
         } catch (Exception e) {
             e.printStackTrace();
+            return "404";
         }
         return "redirect:/admin/user/data-table";
     }
@@ -115,9 +129,34 @@ public class UserController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return "404";
         }
         model.addAttribute("selectedCategory", category);
         model.addAttribute("selectedSortkey", sortKey);
         return "baro";
+    }
+
+    @GetMapping("/myPage")
+    public String getLectureListByUserNo(HttpServletRequest request, Model model) {
+        try{
+            HttpSession session = request.getSession();
+            UserDto userInfo = (UserDto) session.getAttribute("userLogin");
+            ArrayList<LectureDto> lectureList = lectureService.readBasicDatListByUserNo(userInfo.getUserNo());
+            for (LectureDto lectureDto : lectureList) {
+                System.out.println(lectureDto.getLecNo()
+                        + lectureDto.getLecCategory()
+                        + lectureDto.getLecName()
+                        + lectureDto.getLecPrice()
+                        + lectureDto.getLecRegDate()
+                        + lectureDto.getLecImg());
+            }
+            model.addAttribute("userInfo", userInfo);
+            model.addAttribute("lectureList", lectureList);
+        } catch (Exception e) {
+            System.out.println("!!!getLectureListByUserNo Error!!!");
+            e.printStackTrace();
+            return "404";
+        }
+        return "myPage";
     }
 }
