@@ -13,20 +13,41 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#category option[value="${selectedCategory}"]').prop('selected', true);
-            $('#sortkey option[value="${selectedSortkey}"]').prop('selected', true);
-        });
-        function forGetMethod() {
-            var categoryElement = document.getElementById("category");
-            var sortkeyElement = document.getElementById("sortkey");
-
-            var category = categoryElement.options[categoryElement.selectedIndex].value;
-            var sortkey = sortkeyElement.options[sortkeyElement.selectedIndex].value;
-            window.location.href = "/baro?category=" + category + "&"+"sort=" + sortkey;
+    <style>
+        .multiselect {
+            width: 100px;
         }
-    </script>
+
+        .selectBox {
+            position: relative;
+        }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #category-checkboxes {
+            display: none;
+            border: 1px #dadada solid;
+        }
+
+        #category-checkboxes label {
+            display: block;
+        }
+
+        #category-checkboxes label:hover {
+            background-color: #1e90ff;
+        }
+    </style>
     <title>class101</title>
 </head>
 
@@ -63,7 +84,7 @@
 
                     <c:choose>
                         <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인 ${selectedCategory}</button>
+                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인</button>
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
@@ -101,41 +122,52 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <select onchange="forGetMethod()" id="category">
-                        <option value="all">모두보기</option>
-                        <option value="취미">취미</option>
-                        <option value="수익 창출">수익 창출</option>
-                        <option value="직무교육">직무교육</option>
-                        <option value="데이터 · 개발">데이터 · 개발</option>
-                        <option value="시그니처">시그니처</option>
-                        <option value="키즈">키즈</option>
-                    </select>
-                    <select onchange="forGetMethod()" id="sortkey">
-                        <option value="latest">최신순</option>
-                        <option value="popular">인기순</option>
+                    <form>
+                        <div class="multiselect">
+                            <div class="selectBox" onclick="showCheckboxes()">
+                                <select>
+                                    <option>Category</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="category-checkboxes">
+                                <label><input type="checkbox" name="category" value="취미" />취미</label>
+                                <label><input type="checkbox" name="category" value="수익 창출" />수익 창출</label>
+                                <label><input type="checkbox" name="category" value="직무교육" />직무교육</label>
+                                <label><input type="checkbox" name="category" value="데이터 · 개발" />데이터 · 개발</label>
+                                <label><input type="checkbox" name="category" value="시그니처" />시그니처</label>
+                                <label><input type="checkbox" name="category" value="키즈" />키즈</label>
+                                <button onclick="go_search()">확인</button>
+                            </div>
+                        </div>
+                    </form>
+                    <select onchange="go_search()" id="sortKey">
+                        <option value="accuracyOrder" selected>정확도순</option>
+                        <option value="latestOrder">최신순</option>
+                        <option value="likedOrder">인기순</option>
                     </select>
                 </div>
             </div>
             <div>
                 <div class="baro-wrapper">
                     <c:forEach varStatus="i" var="item" items="${lectureList}">
-                    <div class="baro-content">
-                        <img src="${item.lecImg}" class="baro-img">
-                        <div class="card-tag">${item.lecCategory}
-                            <span class="between-tag">・</span>
-                            (강사이름)
+                        <div class="baro-content">
+                            <img src="${item.lecImg}" class="baro-img">
+                            <div class="card-tag">${item.lecCategory}
+                                <span class="between-tag">・</span>
+                                (강사이름)
+                            </div>
+                            <div class="best-class-name">${item.lecName}</div>
+                            <div class="Spacing__Box">
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
+                            </div>
+                            <div class="Spacing__Box">
+                                <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
+                                <span class="total-month"> (?개월)(이벤트기간)</span>
+                            </div>
+                            <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
+                            <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                         </div>
-                        <div class="best-class-name">${item.lecName}</div>
-                        <div class="Spacing__Box">
-                            <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
-                        </div>
-                        <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                            <span class="total-month"> (?개월)(이벤트기간)</span>
-                        </div>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
-                    </div>
                     </c:forEach>
                 </div>
             </div>
@@ -149,6 +181,38 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+    var show = true;
+
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("category-checkboxes");
+        if (show) {
+            checkboxes.style.display = "block";
+            show = false;
+        } else {
+            checkboxes.style.display = "none";
+            show = true;
+        }
+    }
+
+    function getCheckboxValue(url) {
+        const query = 'input[name="category"]:checked';
+        var selectOption = document.getElementById("sortKey");
+        const selectedEls = document.querySelectorAll(query);
+
+        var sortKey = selectOption.options[selectOption.selectedIndex].value;
+        console.log(sortKey);
+
+        url += '&sort='+sortKey;
+        console.log(url);
+
+        selectedEls.forEach((el) => {
+            url += '&category='+el.value;
+            console.log(el.value);
+        })
+
+        location.replace(url);
+        // window.location.href = url;
+    }
     function go_search() {
         var search_url = "/search?";
         var inputVal = document.getElementById('input-search').value;
@@ -156,7 +220,7 @@
         if (inputVal != null && inputVal !='') {
             search_url += 'query='+inputVal;
         }
-        location.replace(search_url);
+        getCheckboxValue(search_url);
     }
 </script>
 <script>

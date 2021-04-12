@@ -265,4 +265,8 @@ public class LectureDao {
     }
 
 
+    public ArrayList<LectureDto> readBasicDataListBySearch(String[] strQueries, String[] categories, String sortKey) {
+        LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
+        return lecMapper.readBasicDataListBySearch(strQueries, categories, sortKey);
+    }
 }

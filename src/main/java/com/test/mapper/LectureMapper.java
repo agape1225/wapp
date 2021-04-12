@@ -33,4 +33,7 @@ public interface LectureMapper {
 
     ArrayList<LectureDto> readBasicDataListInRec();
 
+    ArrayList<LectureDto> readBasicDataListBySearch(@Param("strQueries") String[] strQueries,
+                                                   @Param("categories") String[] categories,
+                                                   @Param("sortKey") String sortKey);
 }
