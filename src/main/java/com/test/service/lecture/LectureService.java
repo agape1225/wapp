@@ -36,4 +36,5 @@ public interface LectureService {
 
     ArrayList<LectureDto> readBasicDataByPopularity();
 
+    ArrayList<LectureDto> readBasicDataListBySearch(String[] strQueries, String[] categories, String sortKey);
 }

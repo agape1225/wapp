@@ -44,19 +44,20 @@
                 <a href="/">
                     <div class="logo"></div>
                 </a>
-                <form action="" class="search">
-                    <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                           class="search-ment">
-                </form>
+                <span class="search">
+                    <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
+                           class="search-ment" id="input-search">
+                    <button onclick="go_search()">검색</button>
+                </span>
                 <div class="login-container">
 
                     <c:choose>
                         <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/user'">로그인</button>
+                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인</button>
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button>
+                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button>
                             <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
@@ -556,7 +557,7 @@
                 alert('이미 찜하기한 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
 
@@ -577,10 +578,18 @@
                 alert('찜하지 않은 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
+    function go_search() {
+        var search_url = "/search?";
+        var inputVal = document.getElementById('input-search').value;
+        if (inputVal != null && inputVal !='') {
+            search_url += 'query='+inputVal;
+        }
+        window.location.href = search_url;
 
+    }
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

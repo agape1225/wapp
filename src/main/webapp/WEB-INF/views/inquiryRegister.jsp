@@ -91,18 +91,23 @@
 </header>
 <div class="main-wrapper">
     <div id="content">
-        <div id="inquiry_section">
-            <div id="inquiry_title">
-                <h1>견적에 대한 문의가 필요한가요?</h1>
-                <h3>질문 또는 언급할게 있다면 여길 이용해주세요!</h3>
-            </div>
-            <form action="/inquiry/addInquiry" method="post">
+      
+        <form action="/inquiry/addInquiry" method="post" enctype="multipart/form-data">
+            <div id="inquiry_section">
+                <div id="inquiry_title">
+                    <h1>견적에 대한 문의가 필요한가요?</h1>
+                    <h3>질문 또는 언급할게 있다면 여길 이용해주세요!</h3>
+                </div>
                 <div id="inquiry_contents">
+
                     <h1>문의 내용을 작성해주세요.</h1>
-                    <input type="text" placeholder="제목" name="inqTitle"/>
+                    <input type="text" oninput="btn_status()"
+                           id="exampleInputText1" placeholder="제목" name="inqTitle"/>
                     <div class="inquiry_contents_twobox">
-                        <input type="text" placeholder="이름" name="inqUserName"/>
-                        <input type="email" placeholder="회신 이메일" required name="inqEmail"/>
+                        <input type="text" oninput="btn_status()"
+                               id="exampleInputText2" name="inqUserName" placeholder="이름"/>
+                        <input type="email" oninput="btn_status()"
+                               id="exampleInputText3" name="inqEmail" placeholder="회신 이메일" required/>
                     </div>
                     <div class="inquiry_contents_content">
                                   <textarea type="text" style="height: 200px; width:680px"
@@ -110,8 +115,8 @@
                     </div>
                     <input type="submit" value="문의하기" class="btn btn-primary" style="width: 150px"/>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
         <div id="inquiry_aside">
             <h1>회사 정보</h1>
             <div class="inquiry_aside_information">
@@ -129,68 +134,7 @@
         </div>
     </div>
 </div>
-
-<jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
-<%--<div class="main-wrapper">--%>
-
-
-<%--    <div class="page-w  rapper">--%>
-
-
-<%--        <div class="page-content">--%>
-
-<%--            <nav class="page-breadcrumb">--%>
-<%--                <ol class="breadcrumb">--%>
-<%--                    <li class="breadcrumb-item"><a href="#">Forms</a></li>--%>
-<%--                </ol>--%>
-<%--            </nav>--%>
-
-<%--            <div class="row">--%>
-<%--                <div class="col-md-12 grid-margin stretch-card">--%>
-<%--                    <div class="card">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h6 class="card-title">Inquiry</h6>--%>
-<%--                            <form action="/inquiry/addInquiry" method="post" enctype="multipart/form-data">--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="exampleInputText1">TITLE</label>--%>
-<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
-<%--                                           id="exampleInputText1"--%>
-<%--                                           placeholder="Inquiry Title" name="inqTitle">--%>
-<%--                                </div>--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="exampleInputText2">NAME</label>--%>
-<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
-<%--                                           id="exampleInputText2"--%>
-<%--                                           placeholder="Inquiry User Name" name="inqUserName">--%>
-<%--                                </div>--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="exampleInputText3">EMAIL</label>--%>
-<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
-<%--                                           id="exampleInputText3"--%>
-<%--                                           placeholder="Inquiry Email" name="inqEmail">--%>
-<%--                                </div>--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label for="exampleInputText4">Question</label>--%>
-<%--                                    <input type="text" oninput="btn_status()" class="form-control"--%>
-<%--                                           id="exampleInputText4"--%>
-<%--                                           placeholder="Inquiry Question" name="inqQuestion">--%>
-<%--                                </div>--%>
-
-
-<%--                                <button class="btn btn-primary" type="submit" id="sub_btn" disabled="disabled">문의--%>
-<%--                                </button>--%>
-<%--                            </form>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
-<%--        </div>--%>
-
-
-<%--    </div>--%>
-<%--</div>--%>
-
+  
 <script>
 
     function btn_status() {
