@@ -122,7 +122,7 @@
         <div class="best-class">
             <div class="text-box">
                 <div>
-                    <form>
+                    <div>
                         <div class="multiselect">
                             <div class="selectBox" onclick="showCheckboxes()">
                                 <select>
@@ -131,20 +131,32 @@
                                 <div class="overSelect"></div>
                             </div>
                             <div id="category-checkboxes">
-                                <label><input type="checkbox" name="category" value="취미" />취미</label>
-                                <label><input type="checkbox" name="category" value="수익 창출" />수익 창출</label>
-                                <label><input type="checkbox" name="category" value="직무교육" />직무교육</label>
-                                <label><input type="checkbox" name="category" value="데이터 · 개발" />데이터 · 개발</label>
-                                <label><input type="checkbox" name="category" value="시그니처" />시그니처</label>
-                                <label><input type="checkbox" name="category" value="키즈" />키즈</label>
+                                <c:forEach var="category" items="${categoryList}">
+<%--                                    <c:set var="item">${category}</c:set>--%>
+                                    <c:choose>
+                                        <c:when test="${categories[category] == category}" >
+                                            <label><input type="checkbox" name="category" value="${category}" checked />${category}</label>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <label><input type="checkbox" name="category" value="${category}" />${category}</label>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                                 <button onclick="go_search()">확인</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                     <select onchange="go_search()" id="sortKey">
-                        <option value="accuracyOrder" selected>정확도순</option>
-                        <option value="latestOrder">최신순</option>
-                        <option value="likedOrder">인기순</option>
+                        <c:forEach var="sort" items="${sortListENG}" varStatus="status">
+                            <c:choose>
+                                <c:when test="${sort == sortKey}" >
+                                    <option value="${sort}" selected>${sortListKOR[status.index]}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${sort}" >${sortListKOR[status.index]}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
