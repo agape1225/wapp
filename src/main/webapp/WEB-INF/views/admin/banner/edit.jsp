@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Banner</h6>
                             <c:set var="banner" value="${banner}"/>
-                            <form action="/admin/login/editBanner?banNo=${banner.banNo}" method="post" enctype="multipart/form-data">
+                            <form action="/admin/editBanner?banNo=${banner.banNo}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputText1">Title</label>
                                     <input type="text" oninput="btn_status()" class="form-control" id="exampleInputText1" placeholder="Lecture Category" name="banTitle" value="${banner.banTitle}">
@@ -61,7 +61,7 @@
                                 <div class="form-group">
                                     <label>File upload</label>
                                     <input type="file" oninput="btn_status()" name="banImage" id="exampleImage1" class="file-upload-default">
-                                    <div class="input-group col-xs-12">
+                                    <div class="input-group col-xs-12" accept="image/*">
                                         <c:set var="banImg" value="${banner.banImg.replaceAll('/files/banner/','')}"/>
                                         <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image"  value="${banImg}">
                                         <span class="input-group-append">
@@ -69,7 +69,7 @@
 											</span>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn">수정</button>
+                                <button class="btn btn-primary" type="submit" disabled="disabled" id="sub_btn" >수정</button>
                                 <button class="btn btn-primary" type="button" onclick="location.href='/admin/banner/data-table'">취소</button>
                             </form>
                         </div>

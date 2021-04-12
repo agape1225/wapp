@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label>Image upload</label>
                                     <input type="file" oninput="btn_status()" name="banImage" id="exampleImage1"
-                                           class="file-upload-default">
+                                           class="file-upload-default" accept="image/*">
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info"
                                                id="exampleInputImage1"
