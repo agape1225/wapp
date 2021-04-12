@@ -103,11 +103,10 @@
                     <input type="text" placeholder="이름"/>
                     <input type="email" placeholder="회신 이메일" required/>
                 </div>
-                <input
-                        class="inquiry_contents_content"
-                        type="text"
-                        placeholder="내용을 작성해주세요."
-                />
+                <div class="inquiry_contents_content" >
+                          <textarea type="text" style="height: 200px; width:680px"
+                                    placeholder="내용을 작성해주세요."></textarea>
+                </div>
                 <input type="button" value="문의하기"/>
             </div>
         </div>
