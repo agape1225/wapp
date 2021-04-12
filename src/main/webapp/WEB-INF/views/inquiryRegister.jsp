@@ -104,11 +104,11 @@
                         <input type="text" placeholder="이름" name="inqUserName"/>
                         <input type="email" placeholder="회신 이메일" required name="inqEmail"/>
                     </div>
-                    <div class="inquiry_contents_content" >
+                    <div class="inquiry_contents_content">
                                   <textarea type="text" style="height: 200px; width:680px"
                                             placeholder="내용을 작성해주세요." name="inqQuestion"></textarea>
                     </div>
-                    <input type="submit" value="문의하기"/>
+                    <input type="submit" value="문의하기" class="btn btn-primary" style="width: 150px"/>
                 </div>
             </form>
         </div>
