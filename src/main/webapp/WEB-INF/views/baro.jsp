@@ -163,12 +163,11 @@
                             <strong class="monthly-price">월 <fmt:formatNumber value="${item.lecPrice / 6}" type="currency"
                                                                             currencySymbol=""/>원</strong><br>
                         </div>
-                        <form action="/user/login/likes/insert" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜하기</button>
-                        </form>
-                        <form action="/user/login/likes/delete" method="post">
-                            <button name="lecNo" value="${item.lecNo}">찜 해제하기</button>
-                        </form>
+<%--                        <form action="/user/login/likes/insert" method="post">--%>
+<%--                            <button name="lecNo" value="${item.lecNo}" >찜하기</button>--%>
+<%--                        </form>--%>
+                        <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})" > 찜하기</button>
+                        <button name="lecNo" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                     </div>
                     </c:forEach>
                 </div>
@@ -195,6 +194,7 @@
     }
 </script>
 <script>
+
     function btn_add_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
