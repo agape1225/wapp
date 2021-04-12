@@ -105,6 +105,7 @@
                             src="https://class101.net/images/ic-kakaotalk-symbol-brown.png"
                     /><span>카카오로 3초 만에 시작하기</span>
                 </button>
+
             </div>
             <span class="personal_impormation_blue personal_impormation"
             >이용약관 개인정보 수집 및 이용 개인정보 제공</span
