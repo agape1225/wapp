@@ -103,4 +103,9 @@ public class LectureServiceImp implements LectureService {
         return lectureDao.readDataListByPopularity();
 
     }
+
+    @Override
+    public ArrayList<LectureDto> readBasicDataListBySearch(String[] strQueries, String[] categories, String sortKey) {
+        return lectureDao.readBasicDataListBySearch(strQueries, categories, sortKey);
+    }
 }

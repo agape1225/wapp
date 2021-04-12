@@ -51,24 +51,30 @@
     <div class="header">
         <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
             <div class="header-container">
-                <a href="/">
-                    <div class="logo"></div>
-                </a>
-                <form action="" class="search">
-                    <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                           class="search-ment">
-                </form>
+                <a href="/"><div class="logo"></div></a>
+                <span class="search">
+                    <c:choose>
+                        <c:when test="${empty query}">
+                            <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
+                                   class="search-ment" id="input-search">
+                        </c:when>
+                        <c:otherwise>
+                            <input autocomplete="off" maxlength="100" value="${query}"
+                                   class="search-ment" id="input-search">
+                        </c:otherwise>
+                    </c:choose>
+                    <button onclick="go_search()">검색</button>
+                </span>
                 <div class="login-container">
 
                     <c:choose>
                         <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/user'">
-                                로그인</button>
+                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인 ${selectedCategory}</button>
+
                         </c:when>
                         <c:otherwise>
                             <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/myPage'">마이페이지</button>
-                            <!-- 미구현 -->
+                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button> <!-- 미구현 -->
                             <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
                         </c:otherwise>
                     </c:choose>
@@ -178,6 +184,17 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+    function go_search() {
+        var search_url = "/search?";
+        var inputVal = document.getElementById('input-search').value;
+        console.log(inputVal);
+        if (inputVal != null && inputVal !='') {
+            search_url += 'query='+inputVal;
+        }
+        location.replace(search_url);
+    }
+</script>
+<script>
     function btn_add_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
@@ -195,7 +212,7 @@
                 alert('이미 찜하기한 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
     function btn_del_likes_onclick(lecNo) {
@@ -215,7 +232,7 @@
                 alert('찜하지 않은 강의입니다.');
             }
         }).fail(function (error) {
-            window.location.href = '/user/login';
+            window.location.href = '/login';
         });
     }
 </script>
