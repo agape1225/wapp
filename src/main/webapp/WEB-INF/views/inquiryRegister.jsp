@@ -91,6 +91,7 @@
 </header>
 <div class="main-wrapper">
     <div id="content">
+      
         <form action="/inquiry/addInquiry" method="post" enctype="multipart/form-data">
             <div id="inquiry_section">
                 <div id="inquiry_title">
@@ -139,8 +140,7 @@
         </div>
     </div>
 </div>
-
-
+  
 <script>
 
     function btn_status() {

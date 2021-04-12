@@ -1,14 +1,9 @@
 package com.test.controller;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.dto.LectureDto;
-
 import com.test.dto.UserDto;
 import com.test.service.email.EmailService;
 import com.test.service.likes.LikesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
