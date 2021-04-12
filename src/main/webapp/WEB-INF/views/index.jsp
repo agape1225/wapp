@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-<!-- check here -->
+    <!-- check here -->
     <%--    <link rel="stylesheet" href="../css/contents.css">--%>
 
     <link
@@ -20,9 +20,9 @@
             href="https://cdn.jsdelivr.net/gh/FortAwesome/FontAwesome@5.14.0/css/all.min.css"
     />
 
-<!-- check here -->
+    <!-- check here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- check here -->
+    <!-- check here -->
     <title>class101</title>
 </head>
 
@@ -67,13 +67,61 @@
 
         <div class="navbar">
             <div class="navbar-container">
-                <button>취미</button>
-                <button>수익 창출</button>
-                <button>직무 ・ 자기개발</button>
-                <button>시그니처</button>
-                <button>아동 교육</button>
-                <button>Created by</button>
-                <button>DIY ・ 키트</button>
+                <div class="dropdown" style="float:left;">
+                    <button class="dropbtn">취미</button>
+                    <div class="dropdown-content">
+                        <a href="#">미술</a>
+                        <a href="#">공예</a>
+                        <a href="#">디지털 드로잉</a>
+                        <a href="#">라이프 스타일</a>
+                        <a href="#">사진/영상</a>
+                        <a href="#">요리/음료</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">수익 창출</button>
+                    <div class="dropdown-content">
+                        <a href="#">부동산/주식</a>
+                        <a href="#">재테크</a>
+                        <a href="#">온라인 쇼핑몰</a>
+                        <a href="#">SNS/콘텐츠</a>
+                        <a href="#">창업</a>
+                        <a href="#">마인드/자기계발</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">직무교육</button>
+                    <div class="dropdown-content">
+                        <a href="#">비즈니스/생산성</a>
+                        <a href="#">영상/디자인</a>
+                        <a href="#">글쓰기/콘텐츠</a>
+                        <a href="#">어학/외국어</a>
+                        <a href="#">기타</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">데이터 ・ 개발</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Created by</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">시그니쳐</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">키즈</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">DIY ・ 키트</button>
+                    <div class="dropdown-content">
+                        <a href="#">공예키트</a>
+                        <a href="#">미술키트</a>
+                        <a href="#">밀키트</a>
+                        <a href="#">키즈키트</a>
+                        <a href="#">굿즈</a>
+                        <a href="#">재료&도구</a>
+                    </div>
+                </div>
                 <div class="gap"></div>
                 <button style="font-weight: normal; color: #1D4EFA;">101월드</button>
                 <button style="font-weight: normal; margin-right: 0px" onclick="location.href='/baro'">바로 수강</button>
@@ -84,40 +132,41 @@
             <div class="blue-banner"></div>
             <div class="swiper-container swiper3">
                 <div class="swiper-wrapper">
-                    <c:forEach var="i" begin = "1" end = "${bannerList.size()}">
-                    <div class="swiper-slide">
-                        <div class="wrapper-banner">
-                            <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner"></div>
-                            <div class="wrapper-ment">
-                                <div class="banner-ment">
-                                    <div class="ment-1">${bannerList[i-1].banTitle}</div>
-                                    <div class="small-ment">${bannerList[i-1].banContent}</div>
+                    <c:forEach var="i" begin="1" end="${bannerList.size()}">
+                        <div class="swiper-slide">
+                            <div class="wrapper-banner">
+                                <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner">
                                 </div>
-                                <div class="banner-bar">
-                                    <span>${i}</span>
-                                    <div class="block"></div>
-                                    <span style="margin-left: 8px">${bannerList.size()}</span>
-                                    <div class="progress" style="height: 2px;">
-                                        <div class="progress-bar"></div>
+                                <div class="wrapper-ment">
+                                    <div class="banner-ment">
+                                        <div class="ment-1">${bannerList[i-1].banTitle}</div>
+                                        <div class="small-ment">${bannerList[i-1].banContent}</div>
                                     </div>
-                                    <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
-                                    <button style="background-color:transparent; border: none">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
+                                    <div class="banner-bar">
+                                        <span>${i}</span>
+                                        <div class="block"></div>
+                                        <span style="margin-left: 8px">${bannerList.size()}</span>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar"></div>
+                                        </div>
+                                        <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
+                                            <svg width="24" height="24">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
+                                                      fill="#1a1a1a"></path>
+                                            </svg>
+                                        </button>
+                                        <button style="background-color:transparent; border: none">
+                                            <svg width="24" height="24">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
+                                                      fill="#1a1a1a"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </c:forEach>
 
                     <div class="swiper-button-next"></div>
@@ -217,16 +266,23 @@
                             <div class="swiper-slide">
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
+                                    <div class="class-box__heart"><i
+                                            class="far fa-heart class-box__heart-btn"></i>
+                                    </div>
                                     <div class="card-tag">${item.lecCategory}
                                     </div>
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
                                         <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
-                                                                                       type="currency"
-                                                                                       currencySymbol=""/>원</strong>
+                                                                                         type="currency"
+                                                                                         currencySymbol=""/>원</strong>
                                     </div>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_add_likes_onclick(${item.lecNo})">찜하기
+                                    </button>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기
+                                    </button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -260,11 +316,15 @@
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
                                         <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
-                                                                                       type="currency"
-                                                                                       currencySymbol=""/>원</strong>
+                                                                                         type="currency"
+                                                                                         currencySymbol=""/>원</strong>
                                     </div>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_add_likes_onclick(${item.lecNo})">찜하기
+                                    </button>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기
+                                    </button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -295,9 +355,12 @@
                             <fmt:parseDate var="startTime" value="${item.benStartTime}" pattern="yyyy-MM-dd"/>
                             <fmt:parseDate var="endTime" value="${item.benEndTime}" pattern="yyyy-MM-dd"/>
                             <%-- statrTime, endTime을 Day(integer)로 변환 --%>
-                            <fmt:parseNumber value="${currentTime.time/(1000*60*60*24)}" integerOnly="true" var="today" scope="request"/>
-                            <fmt:parseNumber value="${endTime.time/(1000*60*60*24)}" integerOnly="true" var="endDay" scope="request"/>
-                            <fmt:parseNumber value="${startTime.time/(1000*60*60*24)}" integerOnly="true" var="startDay" scope="request"/>
+                            <fmt:parseNumber value="${currentTime.time/(1000*60*60*24)}" integerOnly="true" var="today"
+                                             scope="request"/>
+                            <fmt:parseNumber value="${endTime.time/(1000*60*60*24)}" integerOnly="true" var="endDay"
+                                             scope="request"/>
+                            <fmt:parseNumber value="${startTime.time/(1000*60*60*24)}" integerOnly="true" var="startDay"
+                                             scope="request"/>
                             <%-- 시작, 종료까지 남은날짜 계산 --%>
                             <c:set value="${endDay-today+1}" var="Dday"/>
                             <c:set value="${today-startDay-1}" var="timeLeft"/>
@@ -310,7 +373,8 @@
                                             <img src="${item.benImg}" class="slide-img">
                                             <div class="best-class-name">${item.benTitle}</div>
                                             <div class="Spacing__Box">
-                                                <span class="total-month" style="color: rgb(253, 48, 73); font-weight: bold">D-${Dday}</span>
+                                                <span class="total-month"
+                                                      style="color: rgb(253, 48, 73); font-weight: bold">D-${Dday}</span>
                                                 <fmt:formatDate value="${startTime}" pattern="MM.dd (E)"/>~
                                                 <fmt:formatDate value="${endTime}" pattern="MM.dd (E)"/>
                                             </div>
@@ -343,24 +407,28 @@
                                 <div class="slide-content">
                                     <img src="${item.lecImg}" class="slide-img">
                                     <div class="card-tag">${item.lecCategory}
-<%--                                        <span class="between-tag">・</span>--%>
-<%--                                        (강사이름)--%>
+                                            <%--                                        <span class="between-tag">・</span>--%>
+                                            <%--                                        (강사이름)--%>
                                     </div>
                                     <div class="best-class-name">${item.lecName}</div>
                                     <div class="Spacing__Box">
                                         <strong class="original-price"><fmt:formatNumber value="${item.lecPrice}"
-                                                                                       type="currency"
-                                                                                       currencySymbol=""/>원</strong>
+                                                                                         type="currency"
+                                                                                         currencySymbol=""/>원</strong>
                                     </div>
                                     <div class="like-number">
                                         ♥${item.lecLike}
                                     </div>
-<%--                                    <div class="Spacing__Box">--%>
-<%--                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>--%>
-<%--                                        <span class="total-month"> (?개월)(이벤트기간)</span>--%>
-<%--                                    </div>--%>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                                    <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
+                                        <%--                                    <div class="Spacing__Box">--%>
+                                        <%--                                        <strong class="monthly-price">월 ??,???원(이벤트가격)</strong>--%>
+                                        <%--                                        <span class="total-month"> (?개월)(이벤트기간)</span>--%>
+                                        <%--                                    </div>--%>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_add_likes_onclick(${item.lecNo})">찜하기
+                                    </button>
+                                    <button name="lecNo" value="${item.lecNo}"
+                                            onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기
+                                    </button>
                                 </div>
                             </div>
                         </c:forEach>
@@ -478,9 +546,9 @@
             type: 'POST',
             url: '/user/likes/insert',
             dataType: 'json',
-            contentType:'application/json; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(result) {
+        }).done(function (result) {
             console.log(result);
             if (result === true) {
                 alert('찜이 추가되었습니다.');
@@ -491,6 +559,7 @@
             window.location.href = '/user/login';
         });
     }
+
     function btn_del_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
@@ -498,9 +567,9 @@
             type: 'POST',
             url: '/user/likes/delete',
             dataType: 'json',
-            contentType:'application/json; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(result) {
+        }).done(function (result) {
             console.log(result);
             if (result === true) {
                 alert('찜이 해제되었습니다.');
