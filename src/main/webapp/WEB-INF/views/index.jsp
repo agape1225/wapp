@@ -47,8 +47,8 @@
                 <span class="search">
                     <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
                            class="search-ment" id="input-search">
-                    <button onclick="go_search()">검색</button>
                 </span>
+                <button onclick="go_search()">검색</button>
                 <div class="login-container">
 
                     <c:choose>

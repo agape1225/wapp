@@ -41,7 +41,8 @@
 <body>
 <header id="main_header">
     <div class="bar__column">
-        <div class="logo">
+        <a href="/">
+            <div class="logo">
             <svg
                     class="Logo__MainLogoSvg-juoklg-1 kjEHil"
                     width="100%"
@@ -85,6 +86,7 @@
                 ></path>
             </svg>
         </div>
+        </a>
         <form class="input">
             <input type="text" placeholder="찾으시는 취미가 있으신가요?"/>
             <a href="#"><i class="fas fa-search"></i></a>
