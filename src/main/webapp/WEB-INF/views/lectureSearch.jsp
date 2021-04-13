@@ -47,6 +47,10 @@
         #category-checkboxes label:hover {
             background-color: #1e90ff;
         }
+
+        .checkboxes {
+            display: flex;
+        }
     </style>
     <title>class101</title>
 </head>
@@ -72,7 +76,7 @@
 
         <div class="best-class">
             <div class="text-box">
-                <div>
+                <div class="checkboxes">
                     <form>
                         <div class="multiselect">
                             <div class="selectBox" onclick="showCheckboxes()">
@@ -100,27 +104,31 @@
                 </div>
             </div>
             <div>
+                <div class="empty-space"></div>
                 <div class="baro-wrapper">
                     <c:forEach varStatus="i" var="item" items="${lectureList}">
                         <div class="baro-content">
                             <img src="${item.lecImg}" class="baro-img">
-                            <div class="card-tag">${item.lecCategory}
-                                <span class="between-tag">・</span>
-                                (강사이름)
-                            </div>
+                            <div class="card-tag">${item.lecCategory}</div>
                             <div class="best-class-name">${item.lecName}</div>
                             <div class="Spacing__Box">
-                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span>
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                               currencySymbol=""/>원</span>
                             </div>
                             <div class="Spacing__Box">
-                                <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                                <span class="total-month"> (?개월)(이벤트기간)</span>
+                                    <%--                            할부개월수로 나눈 값--%>
+                                <strong class="monthly-price">월 <fmt:formatNumber value="${item.lecPrice / 6}" type="currency"
+                                                                                  currencySymbol=""/>원</strong><br>
                             </div>
-                            <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기</button>
-                            <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
+                                <%--                        <form action="/user/login/likes/insert" method="post">--%>
+                                <%--                            <button name="lecNo" value="${item.lecNo}" >찜하기</button>--%>
+                                <%--                        </form>--%>
+                            <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})" > 찜하기</button>
+                            <button name="lecNo" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
                         </div>
                     </c:forEach>
                 </div>
+                <div class="empty-space"></div>
             </div>
         </div>
     </div>

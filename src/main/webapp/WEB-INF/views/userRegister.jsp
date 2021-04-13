@@ -172,5 +172,17 @@
 </div>
 <div class="empty-space"></div>
 <jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
+
+<script>
+    function go_search() {
+        var search_url = "/search?";
+        var inputVal = document.getElementById('input-search').value;
+        console.log(inputVal);
+        if (inputVal != null && inputVal !='') {
+            search_url += 'query='+inputVal;
+        }
+        location.replace(search_url);
+    }
+</script>
 </body>
 </html>
