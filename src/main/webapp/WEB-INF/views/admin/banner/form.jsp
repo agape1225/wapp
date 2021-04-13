@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label>Image upload</label>
                                     <input type="file" oninput="btn_status()" name="banImage" id="exampleImage1"
-                                           class="file-upload-default">
+                                           class="file-upload-default" accept="image/*" onchange="fileTypeCheck(this)">
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info"
                                                id="exampleInputImage1"
@@ -102,6 +102,22 @@
             document.getElementById("sub_btn").disabled = false;
         } else {
             document.getElementById("sub_btn").disabled = true;
+        }
+    }
+
+    function fileTypeCheck(obj) {
+
+        pathpoint = obj.value.lastIndexOf('.');
+        filepoint = obj.value.substring(pathpoint + 1, obj.length);
+        filetype = filepoint.toLowerCase();
+
+        if (filetype == 'jpg' || filetype == 'gif' || filetype == 'png' || filetype == 'jpeg' || filetype == 'bmp') {
+            return true;
+        } else {
+            alert('옳지 않은 파일형식입니다.');
+            parentObj = obj.parentNode
+            node = parentObj.replaceChild(obj.cloneNode(true), obj);
+            return false;
         }
     }
 </script>

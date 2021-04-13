@@ -108,8 +108,9 @@ button{
 }
 .header-container {
     width: 100%;
-    margin-right: 24px;
-    margin-left: 24px;
+    max-width: 1176px;
+    margin: 0px auto;
+    margin-left: 340px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;

@@ -28,6 +28,8 @@
             href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../css/myPage.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -39,7 +41,8 @@
 <body>
 <header id="main_header">
     <div class="bar__column">
-        <div class="logo">
+        <a href="/">
+            <div class="logo">
             <svg
                     class="Logo__MainLogoSvg-juoklg-1 kjEHil"
                     width="100%"
@@ -83,6 +86,7 @@
                 ></path>
             </svg>
         </div>
+        </a>
         <form class="input">
             <input type="text" placeholder="찾으시는 취미가 있으신가요?"/>
             <a href="#"><i class="fas fa-search"></i></a>
@@ -122,8 +126,10 @@
                         <div><span>내 포인트</span></div>
                         <div><span>0P</span><i class="fas fa-chevron-right"></i></div>
                     </div>
-                    <div class="aside-contents__btn"><span>내 쿠폰</span><span class="aside-contents__btn-num">7</span></div>
-                    <div class="aside-contents__btn"><span>내 응원</span><span class="aside-contents__btn-num">0</span></div>
+                    <div class="aside-contents__btn"><span>내 쿠폰</span><span class="aside-contents__btn-num">7</span>
+                    </div>
+                    <div class="aside-contents__btn"><span>내 응원</span><span class="aside-contents__btn-num">0</span>
+                    </div>
                     <div class="aside-contents__btn"><span>주문 내역</span></div>
                 </div>
 
@@ -187,21 +193,39 @@
             </div>
         </div>
         <div id="main_section">
+            <div class="empty-space" style="margin-top: 115px"></div>
             <div class="aside-contents">
-                <h5>찜한 상품</h5>
+                <div>
+                    <h5>찜한 상품</h5>
+                </div>
                 <div class="class-box">
-                    <c:forEach varStatus="i" var="item" items="${lectureList}">
-                    <div>
-                        <img class="class-img" size="50vw,300px"
-                             src="${item.lecImg}"/>
-                        <div class="class-box__heart"><i class="far fa-heart class-box__heart-btn"></i></div>
-                        <span class="class-title">${item.lecCategory}</span>
-                        <p>${item.lecName}</p>
-                        <div class="class-heart"><i class="fas fa-heart"></i><span>${item.lecLike}</span></div>
-                        <div><span class="class-price"><fmt:formatNumber value="${item.lecPrice}" type="currency" currencySymbol="" />원</span></div>
-                    </c:forEach>
-                    <button class="class-code" type="button"><i class="fas fa-ticket-alt"></i>수강권 코드 등록하기</button>
+                    <div class="swiper-container swiper4">
+                        <div class="swiper-wrapper">
+                            <c:forEach varStatus="i" var="item" items="${lectureList}">
+                                <div class="swiper-slide" style="width: 239px; height: 300px;">
+                                    <div class="class-box myContent">
+                                        <img class="class-img" size="50vw,300px"
+                                             src="${item.lecImg}"/>
+                                        <div class="class-box__heart"><i
+                                                class="far fa-heart class-box__heart-btn"></i>
+                                        </div>
+                                        <span class="class-title">${item.lecCategory}</span>
+                                        <p>${item.lecName}</p>
+                                        <div class="class-heart"><i
+                                                class="fas fa-heart"></i><span>${item.lecLike}</span>
+                                        </div>
+                                        <div><span class="class-price"><fmt:formatNumber value="${item.lecPrice}"
+                                                                                         type="currency"
+                                                                                         currencySymbol=""/>원</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
+                    <button class="class-code" type="button"><i class="fas fa-ticket-alt"></i>수강권 코드 등록하기</button>
                 </div>
             </div>
         </div>
@@ -332,5 +356,24 @@
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"
 ></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper4', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 1,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
 </body>
 </html>

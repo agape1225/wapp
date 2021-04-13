@@ -37,88 +37,48 @@
         </div>
     </div>
 
-
     <div class="header">
-        <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
-            <div class="header-container">
-                <a href="/">
-                    <div class="logo"></div>
-                </a>
-                <span class="search">
-                    <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                           class="search-ment" id="input-search">
-                    <button onclick="go_search()">검색</button>
-                </span>
-                <div class="login-container">
-
-                    <c:choose>
-                        <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인</button>
-                        </c:when>
-                        <c:otherwise>
-                            <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button>
-                            <!-- 미구현 -->
-                            <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </div>
-        </div>
-
-        <div class="navbar">
-            <div class="navbar-container">
-                <button>취미</button>
-                <button>수익 창출</button>
-                <button>직무 ・ 자기개발</button>
-                <button>시그니처</button>
-                <button>아동 교육</button>
-                <button>Created by</button>
-                <button>DIY ・ 키트</button>
-                <div class="gap"></div>
-                <button style="font-weight: normal; color: #1D4EFA;">101월드</button>
-                <button style="font-weight: normal; margin-right: 0px" onclick="location.href='/baro'">바로 수강</button>
-            </div>
-        </div>
+        <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
+        <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
 
         <div class="main-banner">
             <div class="blue-banner"></div>
             <div class="swiper-container swiper3">
                 <div class="swiper-wrapper">
                     <c:forEach var="i" begin = "1" end = "${bannerList.size()}">
-                    <div class="swiper-slide">
-                        <div class="wrapper-banner">
-                            <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner"></div>
-                            <div class="wrapper-ment">
-                                <div class="banner-ment">
-                                    <div class="ment-1">${bannerList[i-1].banTitle}</div>
-                                    <div class="small-ment">${bannerList[i-1].banContent}</div>
-                                </div>
-                                <div class="banner-bar">
-                                    <span>${i}</span>
-                                    <div class="block"></div>
-                                    <span style="margin-left: 8px">${bannerList.size()}</span>
-                                    <div class="progress" style="height: 2px;">
-                                        <div class="progress-bar"></div>
+                        <div class="swiper-slide">
+                            <div class="wrapper-banner">
+                                <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner"></div>
+                                <div class="wrapper-ment">
+                                    <div class="banner-ment">
+                                        <div class="ment-1">${bannerList[i-1].banTitle}</div>
+                                        <div class="small-ment">${bannerList[i-1].banContent}</div>
                                     </div>
-                                    <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
-                                    <button style="background-color:transparent; border: none">
-                                        <svg width="24" height="24">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
-                                                  fill="#1a1a1a"></path>
-                                        </svg>
-                                    </button>
+                                    <div class="banner-bar">
+                                        <span>${i}</span>
+                                        <div class="block"></div>
+                                        <span style="margin-left: 8px">${bannerList.size()}</span>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar"></div>
+                                        </div>
+                                        <button style="background-color:transparent; border: none; margin: 0px 6px 0px 16px;">
+                                            <svg width="24" height="24">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M15.5 5.5l-6 6.5 6 6.5L14 20l-7.5-8L14 4l1.5 1.5z"
+                                                      fill="#1a1a1a"></path>
+                                            </svg>
+                                        </button>
+                                        <button style="background-color:transparent; border: none">
+                                            <svg width="24" height="24">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M8.5 18.5l6-6.5-6-6.5L10 4l7.5 8-7.5 8-1.5-1.5z"
+                                                      fill="#1a1a1a"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </c:forEach>
 
                     <div class="swiper-button-next"></div>
@@ -127,6 +87,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="main-wrapper">
         <div class="Categories">
@@ -429,7 +390,8 @@
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
+    }
+
     });
 
     var swiper = new Swiper('.swiper2', {
@@ -468,10 +430,49 @@
     });
 
 
+
 </script>
 
 
+<script></script>
+    // function add_like_btn(item){
+    //     alert('아');
+    //
+    //     $.ajax({
+    //         url: '/user/login/likes/insert',
+    //         type: 'POST',
+    //         data: JSON.stringify(item),
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         success : function (data) {
+    //             alert('성공');
+    //         }
+    //     }).done(function () {
+    //         alert('찜이 추가되었습니다.');
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    // function del_like_btn(item){
+    //     alert(s);
+    //     $.ajax({
+    //         url: '/user/login/likes/delete',
+    //         type: 'POST',
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         data: JSON.stringify(s)
+    //     }).done(function () {
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    //});
+
+
 <script>
+
     function btn_add_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
@@ -512,6 +513,7 @@
             window.location.href = '/login';
         });
     }
+
     function go_search() {
         var search_url = "/search?";
         var inputVal = document.getElementById('input-search').value;
@@ -521,6 +523,7 @@
         window.location.href = search_url;
 
     }
+
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>
