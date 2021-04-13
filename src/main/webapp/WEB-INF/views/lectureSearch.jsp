@@ -67,14 +67,68 @@
     </div>
 
 
+    <div class="header">
+        <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
+            <div class="header-container">
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
+                <span class="search">
+                    <c:choose>
+                        <c:when test="${empty query}">
+                            <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
+                                   class="search-ment" id="input-search">
+                        </c:when>
+                        <c:otherwise>
+                            <input autocomplete="off" maxlength="100" value="${query}"
+                                   class="search-ment" id="input-search">
+                        </c:otherwise>
+                    </c:choose>
+                    <button onclick="go_search()">검색</button>
+                </span>
+                <div class="login-container">
+
+                    <c:choose>
+                        <c:when test="${empty userLogin}">
+                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인</button>
+                        </c:when>
+                        <c:otherwise>
+                            <span>${userLogin.userName}님 </span>
+                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button>
+                            <!-- 미구현 -->
+                            <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
+                        </c:otherwise>
+                    </c:choose>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-container">
+                <button>취미</button>
+                <button>수익 창출</button>
+                <button>직무 ・ 자기개발</button>
+                <button>시그니처</button>
+                <button>아동 교육</button>
+                <button>Created by</button>
+                <button>DIY ・ 키트</button>
+                <div class="gap"></div>
+                <button style="font-weight: normal; color: #1D4EFA;">101월드</button>
+                <button style="font-weight: normal; margin-right: 0px">바로 수강</button>
+            </div>
+        </div>
+
+    </div>
+
     <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
     <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
 
+
     <div class="main-wrapper">
-
-        <div class="empty-space"></div>
-
-        <div class="best-class">
+        <div class="baro-page">
+            <div class="empty-space"></div>
             <div class="text-box">
 
                 <div>
@@ -83,7 +137,8 @@
                 <div class="checkboxes">
                     <form>
 
-                        <div class="multiselect">
+                        <div class="multiselect" style="float:left; margin-right: 2px">
+
                             <div class="selectBox" onclick="showCheckboxes()">
                                 <select>
                                     <option>Category</option>
@@ -91,6 +146,14 @@
                                 <div class="overSelect"></div>
                             </div>
                             <div id="category-checkboxes">
+
+                                <label><input type="checkbox" name="category" value="취미"/>취미</label>
+                                <label><input type="checkbox" name="category" value="수익 창출"/>수익 창출</label>
+                                <label><input type="checkbox" name="category" value="직무교육"/>직무교육</label>
+                                <label><input type="checkbox" name="category" value="데이터 · 개발"/>데이터 · 개발</label>
+                                <label><input type="checkbox" name="category" value="시그니처"/>시그니처</label>
+                                <label><input type="checkbox" name="category" value="키즈"/>키즈</label>
+
                                 <c:forEach var="category" items="${categoryList}">
 <%--                                    <c:set var="item">${category}</c:set>--%>
                                     <c:choose>
@@ -102,6 +165,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
+
                                 <button onclick="go_search()">확인</button>
                             </div>
                         </div>
@@ -120,6 +184,32 @@
                     </select>
                 </div>
             </div>
+<!--             <div class="empty-space"></div>
+            <div class="baro-wrapper">
+                <c:forEach varStatus="i" var="item" items="${lectureList}">
+                    <div class="baro-content">
+                        <img src="${item.lecImg}" class="baro-img">
+                        <div class="card-tag">${item.lecCategory}
+                            <span class="between-tag">・</span>
+                            (강사이름)
+                        </div>
+                        <div class="best-class-name">${item.lecName}</div>
+                        <div class="Spacing__Box">
+                            <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                           currencySymbol=""/>원</span>
+                        </div>
+                        <div class="Spacing__Box">
+                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
+                            <span class="total-month"> (?개월)(이벤트기간)</span>
+                        </div>
+                        <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기
+                        </button>
+                        <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜
+                            해제하기
+                        </button>
+                    </div>
+                </c:forEach> -->
+
             <div>
                 <div class="empty-space"></div>
                 <div class="baro-wrapper">
@@ -146,10 +236,13 @@
                     </c:forEach>
                 </div>
                 <div class="empty-space"></div>
+
             </div>
+            <div class="empty-space"></div>
         </div>
     </div>
 </div>
+
 
 
 <jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
@@ -178,23 +271,24 @@
         var sortKey = selectOption.options[selectOption.selectedIndex].value;
         console.log(sortKey);
 
-        url += '&sort='+sortKey;
+        url += '&sort=' + sortKey;
         console.log(url);
 
         selectedEls.forEach((el) => {
-            url += '&category='+el.value;
+            url += '&category=' + el.value;
             console.log(el.value);
         })
 
         location.replace(url);
         // window.location.href = url;
     }
+
     function go_search() {
         var search_url = "/search?";
         var inputVal = document.getElementById('input-search').value;
         console.log(inputVal);
-        if (inputVal != null && inputVal !='') {
-            search_url += 'query='+inputVal;
+        if (inputVal != null && inputVal != '') {
+            search_url += 'query=' + inputVal;
         }
         getCheckboxValue(search_url);
     }
@@ -207,9 +301,9 @@
             type: 'POST',
             url: '/user/likes/insert',
             dataType: 'json',
-            contentType:'application/json; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(result) {
+        }).done(function (result) {
             console.log(result);
             if (result === true) {
                 alert('찜이 추가되었습니다.');
@@ -220,6 +314,7 @@
             window.location.href = '/login';
         });
     }
+
     function btn_del_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
@@ -227,9 +322,9 @@
             type: 'POST',
             url: '/user/likes/delete',
             dataType: 'json',
-            contentType:'application/json; charset=utf-8',
+            contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function(result) {
+        }).done(function (result) {
             console.log(result);
             if (result === true) {
                 alert('찜이 해제되었습니다.');
