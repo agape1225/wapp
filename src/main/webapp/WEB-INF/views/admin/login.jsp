@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+	<title>WAPP Team Admin</title>
 	<!-- core:css -->
 	<link rel="stylesheet" href="../../../assets/vendors/core/core.css">
 	<!-- endinject -->
@@ -30,7 +30,7 @@
 							<div class="row">
                 <div class="col-md-8 pl-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo d-block mb-2">Wapp<span>TeamB</span></a>
+                    <a href="#" class="noble-ui-logo d-block mb-2">Wapp<span>TeamA&B</span></a>
                     <form class="forms-sample" action="/admin/login" method="post">
                       <div class="form-group">
                         <label for="exampleInputEmail1">ID</label>

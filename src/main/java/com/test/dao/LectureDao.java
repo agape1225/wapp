@@ -219,6 +219,7 @@ public class LectureDao {
             LectureMapper lecMapper = sqlSession.getMapper(LectureMapper.class);
             LikesMapper likesMapper = sqlSession.getMapper(LikesMapper.class);
 
+            System.out.println("Popularity Dao start");
             ArrayList<LectureDto> recentLikedLectureList = new ArrayList<>();
             ArrayList<LikesDto> likesDtos = likesMapper.readLikesListsOrderByLikeDateDesc();
 
@@ -242,7 +243,7 @@ public class LectureDao {
                             }
                             if (!isAlreadyAdded)
                                 recentLikedLectureList.add(lecMapper.readBasicDataByLecNo(likesDtos.get(index).getLecNo()));
-                        } else if (result < 0) {
+                        } else if (result > 0) {
                             break;
                         } else {
                             System.out.println("알 수 없는 오류 발생");
@@ -252,6 +253,7 @@ public class LectureDao {
                         break;
                     }
                 }
+                System.out.println("Popularity Dao end");
                 return recentLikedLectureList;
             } else {
                 // 찜 목록이 전혀 없는 경우 등록 날짜 순으로 데이터 정렬

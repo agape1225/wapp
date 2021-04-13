@@ -70,7 +70,7 @@
                                             <td>${bannerList[i-1].banTitle}</td>
                                             <td>${bannerList[i-1].banContent}</td>
                                             <td>${bannerList[i-1].banCount}</td>
-<%--                                            <td><fmt:formatDate value="${bannerList[i-1].banRegDate}" pattern="yyyy-MM-dd" /></td>--%>
+                                            <td>${bannerList[i-1].banRegDate}</td>
                                             <c:choose>
                                             <c:when test="${empty bannerList[i-1].banImg}">
                                                 <td>이미지 없음</td>

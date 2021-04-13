@@ -118,8 +118,8 @@ public class LectureController {
                 System.out.println("editItemWithImg");
 
                 String root_path = servletContext.getRealPath("/");
-                File targetFile = new File(root_path + lectureInDb.getLecImg()); // 서버에있는 삭제할 배너파일 지정
-                String delName = targetFile.getName(); // 삭제될 배너파일이름
+                File targetFile = new File(root_path + lectureInDb.getLecImg()); // 서버에있는 삭제할 강의파일 지정
+                String delName = targetFile.getName(); // 삭제될 강의파일이름
                 if (targetFile.delete()) {
                     System.out.println("Deleted file : " + delName);
                 } else {
@@ -135,8 +135,7 @@ public class LectureController {
                 String filename_server = root_path + fullName;
                 FileCopyUtils.copy(lecImage.getBytes(), new File(filename_server)); // 서버에 저장
             }
-
-
+            lectureDto.setLecCategory(lectureInDb.getLecCategory());
             System.out.println(lectureDto.getLecCategory());
             System.out.println(lectureDto.getLecName());
             System.out.println(lectureDto.getLecPrice());
@@ -164,25 +163,4 @@ public class LectureController {
         return "redirect:/admin/lecture/data-table";
     }
 
-    @GetMapping("/user/myPage")
-    public String getLectureListByUserNo(HttpServletRequest request, Model model) {
-        try{
-            HttpSession session = request.getSession();
-            UserDto userLogin = (UserDto) session.getAttribute("userLogin");
-            ArrayList<LectureDto> lectureList = lectureService.readBasicDatListByUserNo(userLogin.getUserNo());
-            for (LectureDto lectureDto : lectureList) {
-                System.out.println(lectureDto.getLecNo()
-                        + lectureDto.getLecCategory()
-                        + lectureDto.getLecName()
-                        + lectureDto.getLecPrice()
-                        + lectureDto.getLecRegDate()
-                        + lectureDto.getLecImg());
-            }
-            model.addAttribute("lectureList", lectureList);
-        } catch (Exception e) {
-            System.out.println("!!!getLectureListByUserNo Error!!!");
-            e.printStackTrace();
-        }
-        return "myPage";
-    }
 }

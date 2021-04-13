@@ -136,7 +136,7 @@ public class UserController {
         return "baro";
     }
 
-    @GetMapping("/myPage")
+    @GetMapping("/user/myPage")
     public String getLectureListByUserNo(HttpServletRequest request, Model model) {
         try{
             HttpSession session = request.getSession();

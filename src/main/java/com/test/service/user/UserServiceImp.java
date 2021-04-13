@@ -14,9 +14,10 @@ public class UserServiceImp implements UserService {
     UserDao userDao;
 
 
-
     @Override
-    public void deleteUser(String userNo) {userDao.deleteUser(userNo);}
+    public void deleteUser(String userNo) {
+        userDao.deleteUser(userNo);
+    }
 
     @Override
     public ArrayList<UserDto> readUserInfoList() {
@@ -38,6 +39,14 @@ public class UserServiceImp implements UserService {
         System.out.println("service insertUser" + userDto.toString());
         userDao.insertUser(userDto);
         System.out.println("service insertUser success");
+    }
+
+    @Override
+    public int checkUserEmailExists(String userEmail) {
+        if (userDao.readBasicDataByUserEmail(userEmail) != null)
+            return 1;
+        else
+            return 0;
     }
 
 }

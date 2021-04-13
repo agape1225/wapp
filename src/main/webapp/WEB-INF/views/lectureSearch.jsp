@@ -47,6 +47,10 @@
         #category-checkboxes label:hover {
             background-color: #1e90ff;
         }
+
+        .checkboxes {
+            display: flex;
+        }
     </style>
     <title>class101</title>
 </head>
@@ -118,13 +122,23 @@
 
     </div>
 
+    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
+    <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
+
+
     <div class="main-wrapper">
         <div class="baro-page">
             <div class="empty-space"></div>
             <div class="text-box">
+
                 <div>
+                    <div>
+
+                <div class="checkboxes">
                     <form>
+
                         <div class="multiselect" style="float:left; margin-right: 2px">
+
                             <div class="selectBox" onclick="showCheckboxes()">
                                 <select>
                                     <option>Category</option>
@@ -132,24 +146,45 @@
                                 <div class="overSelect"></div>
                             </div>
                             <div id="category-checkboxes">
+
                                 <label><input type="checkbox" name="category" value="취미"/>취미</label>
                                 <label><input type="checkbox" name="category" value="수익 창출"/>수익 창출</label>
                                 <label><input type="checkbox" name="category" value="직무교육"/>직무교육</label>
                                 <label><input type="checkbox" name="category" value="데이터 · 개발"/>데이터 · 개발</label>
                                 <label><input type="checkbox" name="category" value="시그니처"/>시그니처</label>
                                 <label><input type="checkbox" name="category" value="키즈"/>키즈</label>
+
+                                <c:forEach var="category" items="${categoryList}">
+<%--                                    <c:set var="item">${category}</c:set>--%>
+                                    <c:choose>
+                                        <c:when test="${categories[category] == category}" >
+                                            <label><input type="checkbox" name="category" value="${category}" checked />${category}</label>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <label><input type="checkbox" name="category" value="${category}" />${category}</label>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
                                 <button onclick="go_search()">확인</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                     <select onchange="go_search()" id="sortKey">
-                        <option value="accuracyOrder" selected>정확도순</option>
-                        <option value="latestOrder">최신순</option>
-                        <option value="likedOrder">인기순</option>
+                        <c:forEach var="sort" items="${sortListENG}" varStatus="status">
+                            <c:choose>
+                                <c:when test="${sort == sortKey}" >
+                                    <option value="${sort}" selected>${sortListKOR[status.index]}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${sort}" >${sortListKOR[status.index]}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
-            <div class="empty-space"></div>
+<!--             <div class="empty-space"></div>
             <div class="baro-wrapper">
                 <c:forEach varStatus="i" var="item" items="${lectureList}">
                     <div class="baro-content">
@@ -173,7 +208,35 @@
                             해제하기
                         </button>
                     </div>
-                </c:forEach>
+                </c:forEach> -->
+
+            <div>
+                <div class="empty-space"></div>
+                <div class="baro-wrapper">
+                    <c:forEach varStatus="i" var="item" items="${lectureList}">
+                        <div class="baro-content">
+                            <img src="${item.lecImg}" class="baro-img">
+                            <div class="card-tag">${item.lecCategory}</div>
+                            <div class="best-class-name">${item.lecName}</div>
+                            <div class="Spacing__Box">
+                                <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
+                                                                               currencySymbol=""/>원</span>
+                            </div>
+                            <div class="Spacing__Box">
+                                    <%--                            할부개월수로 나눈 값--%>
+                                <strong class="monthly-price">월 <fmt:formatNumber value="${item.lecPrice / 6}" type="currency"
+                                                                                  currencySymbol=""/>원</strong><br>
+                            </div>
+                                <%--                        <form action="/user/login/likes/insert" method="post">--%>
+                                <%--                            <button name="lecNo" value="${item.lecNo}" >찜하기</button>--%>
+                                <%--                        </form>--%>
+                            <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})" > 찜하기</button>
+                            <button name="lecNo" onclick="btn_del_likes_onclick(${item.lecNo})">찜 해제하기</button>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div class="empty-space"></div>
+
             </div>
             <div class="empty-space"></div>
         </div>

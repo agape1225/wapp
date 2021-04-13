@@ -77,15 +77,27 @@
 
     </select>
     <select id="readBasicDataListBySearch" resultType="LectureDto">
-        select * from lecture
+        select * from
+        <choose>
+            <when test="strQueries != null">
+                ( select * from lecture where
+                    <foreach collection="strQueries" item="item" index="i" open="(" separator=" or " close=")">
+                        lecName like concat('%', #{item}, '%')
+                    </foreach>
+                union
+                select * from lecture where
+                    <foreach collection="strQueries" item="item" index="i" open="(" separator=" or " close=")">
+                        lecCategory like concat('%', #{item}, '%')
+                    </foreach>
+                ) sl
+            </when>
+            <otherwise>
+                lecture
+            </otherwise>
+        </choose>
         <trim prefix="where" prefixOverrides="and">
-            <if test="strQueries != null">
-                <foreach collection="strQueries" item="item" index="i" open="(" separator=" or " close=")">
-                    lecName like concat('%', #{item}, '%') or lecCategory like concat('%', #{item}, '%')
-                </foreach>
-            </if>
             <if test="categories != null">
-                and lecCategory in
+                lecCategory in
                 <foreach collection="categories" item="category" index="i" open="(" separator="," close=")">
                     #{category}
                 </foreach>
