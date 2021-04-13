@@ -56,23 +56,42 @@
             }
         }
 
-        function checkPassword(){
+        function checkRegister(){
+            var email = $('input[name=userEmail]').val();
             var pw = $('input[name=userPw]').val();
+            var name = $('input[name=userName]').val();
             var num = pw.search(/[0-9]/g);
             var eng = pw.search(/[a-z]/ig);
             var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-            if(pw.length < 8 || pw.length > 32){
-                alert('비밀번호는 8자 이상, 32자 이하로 작성해주세요.');
-                return false;
-            }else if(pw.search(/\s/) !== -1){
-                alert('비밀번호 내에 공백이 없어야 합니다.');
-                return false;
-            }else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){
-                alert('영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상을 조합해야합니다.');
-                return false;
+            if($('#checkMessage').text() === ' 사용 가능한 아이디입니다. ' ){
+                if(pw.length < 8 || pw.length > 32){
+                    alert('비밀번호는 8자 이상, 32자 이하로 작성해주세요.');
+                    setInputInfo(email, pw, name);
+                }else if(pw.search(/\s/) !== -1){
+                    alert('비밀번호 내에 공백이 없어야 합니다.');
+                    setInputInfo(email, pw, name);
+                }else if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){
+                    alert('영문 대문자/영문 소문자/숫자/특수문자 중 2가지 이상을 조합해야합니다.');
+                    setInputInfo(email, pw, name);
+                }else if($('#pwMatchCheckMessage').text() === '비밀번호가 일치하지 않습니다.'){
+                    alert('비밀번호 확인란을 확인해주세요.');
+                    setInputInfo(email, pw, name);
+                }else{
+                    $('#registerForm').submit();
+                }
+            }else{
+                alert("아이디를 다시 확인해주세요.")
+                setInputInfo('', pw, name);
+                $('#checkMessage').html('<span id="checkMessage" style="color:orangered; font-size: 0.8em"><i class="fas fa-exclamation-triangle"></i> 이메일 형식으로 입력해주세요. </span>')
             }
         }
+
+        function setInputInfo(email, pw, name){
+            $('input[name=userEmail]').val(email);
+            $('input[name=userPw]').val(pw);
+            $('input[name=userName]').val(name);
+        }
+
         function checkPasswordPreview(){
             var pw = $('input[name=userPw]').val();
             var num = pw.search(/[0-9]/g);
@@ -142,7 +161,7 @@
     <div>
         <div style="display: flex; justify-content: center; flex-direction: row;">
             <div style="width: 500px">
-            <form class="forms-sample" action="/register" enctype="multipart/form-data" method="post">
+            <form class="forms-sample" action="/register" enctype="multipart/form-data" method="post" id="registerForm">
                 <div class="form-group" style="margin: 70px 0px">
                     <h2>회원가입</h2>
                 </div>
@@ -170,7 +189,7 @@
                     <span id="pwMatchCheckMessage" style="color: orangered; font-size: 0.8em"><i class="fas fa-exclamation-triangle"></i>비밀번호가 일치하지 않습니다.</span>
                 </div>
                 <div class="form-group">
-                    <button type="submit" onclick="checkPassword()" style="background-color: orangered; color: white; width: 100%; border-radius: 3px">동의하고 회원가입</button>
+                    <button type="button" onclick="checkRegister()" style="background-color: orangered; color: white; width: 100%; border-radius: 3px">동의하고 회원가입</button>
                 </div>
                 <div class="form-group" style="font-size: 0.8em; text-align: center;">
                     <a href="https://class101.net/docs/terms" style="color: dodgerblue">이용약관</a>, &nbsp
