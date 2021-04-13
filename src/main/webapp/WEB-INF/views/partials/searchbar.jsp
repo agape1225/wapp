@@ -6,9 +6,9 @@
             <div class="logo"></div>
         </a>
         <span class="search">
-                    <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                           class="search-ment" id="input-search">
-                </span>
+            <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
+                   class="search-ment" id="input-search">
+        </span>
         <button onclick="go_search()">검색</button>
         <div class="login-container">
 

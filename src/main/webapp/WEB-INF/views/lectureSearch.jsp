@@ -66,77 +66,15 @@
         </div>
     </div>
 
-
-    <div class="header">
-        <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
-            <div class="header-container">
-                <a href="/">
-                    <div class="logo"></div>
-                </a>
-                <span class="search">
-                    <c:choose>
-                        <c:when test="${empty query}">
-                            <input autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                                   class="search-ment" id="input-search">
-                        </c:when>
-                        <c:otherwise>
-                            <input autocomplete="off" maxlength="100" value="${query}"
-                                   class="search-ment" id="input-search">
-                        </c:otherwise>
-                    </c:choose>
-                    <button onclick="go_search()">검색</button>
-                </span>
-                <div class="login-container">
-
-                    <c:choose>
-                        <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/social_login'">로그인</button>
-                        </c:when>
-                        <c:otherwise>
-                            <span>${userLogin.userName}님 </span>
-                            <button style="font-weight: normal;" onclick="location.href='/user/myPage'">마이페이지</button>
-                            <!-- 미구현 -->
-                            <button style="font-weight: normal;" onclick="location.href='/logout'">로그아웃</button>
-                        </c:otherwise>
-                    </c:choose>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div class="navbar">
-            <div class="navbar-container">
-                <button>취미</button>
-                <button>수익 창출</button>
-                <button>직무 ・ 자기개발</button>
-                <button>시그니처</button>
-                <button>아동 교육</button>
-                <button>Created by</button>
-                <button>DIY ・ 키트</button>
-                <div class="gap"></div>
-                <button style="font-weight: normal; color: #1D4EFA;">101월드</button>
-                <button style="font-weight: normal; margin-right: 0px">바로 수강</button>
-            </div>
-        </div>
-
-    </div>
-
-<%--    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>--%>
-<%--    <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>--%>
-
+    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
+    <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
 
     <div class="main-wrapper">
         <div class="baro-page">
             <div class="empty-space"></div>
             <div class="text-box">
-
-                <div>
-                    <div>
-
                 <div class="checkboxes">
                     <form>
-
                         <div class="multiselect" style="float:left; margin-right: 2px">
 
                             <div class="selectBox" onclick="showCheckboxes()">
@@ -169,46 +107,21 @@
                                 <button onclick="go_search()">확인</button>
                             </div>
                         </div>
-                    </div>
-                    <select onchange="go_search()" id="sortKey">
-                        <c:forEach var="sort" items="${sortListENG}" varStatus="status">
-                            <c:choose>
-                                <c:when test="${sort == sortKey}" >
-                                    <option value="${sort}" selected>${sortListKOR[status.index]}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${sort}" >${sortListKOR[status.index]}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </select>
+                        <select onchange="go_search()" id="sortKey">
+                            <c:forEach var="sort" items="${sortListENG}" varStatus="status">
+                                <c:choose>
+                                    <c:when test="${sort == sortKey}" >
+                                        <option value="${sort}" selected>${sortListKOR[status.index]}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${sort}" >${sortListKOR[status.index]}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
+                    </form>
                 </div>
             </div>
-<!--             <div class="empty-space"></div>
-            <div class="baro-wrapper">
-                <c:forEach varStatus="i" var="item" items="${lectureList}">
-                    <div class="baro-content">
-                        <img src="${item.lecImg}" class="baro-img">
-                        <div class="card-tag">${item.lecCategory}
-                            <span class="between-tag">・</span>
-                            (강사이름)
-                        </div>
-                        <div class="best-class-name">${item.lecName}</div>
-                        <div class="Spacing__Box">
-                            <span class="original-price"><fmt:formatNumber value="${item.lecPrice}" type="currency"
-                                                                           currencySymbol=""/>원</span>
-                        </div>
-                        <div class="Spacing__Box">
-                            <strong class="monthly-price">월 ??,???원(이벤트가격)</strong><br>
-                            <span class="total-month"> (?개월)(이벤트기간)</span>
-                        </div>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_add_likes_onclick(${item.lecNo})">찜하기
-                        </button>
-                        <button name="lecNo" value="${item.lecNo}" onclick="btn_del_likes_onclick(${item.lecNo})">찜
-                            해제하기
-                        </button>
-                    </div>
-                </c:forEach> -->
 
             <div>
                 <div class="empty-space"></div>
