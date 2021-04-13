@@ -70,10 +70,10 @@
     </div>
 
     <div class="header">
-
+        <div class="main-wrapper">
         <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
         <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
-
+        </div>
         <div class="main-banner">
             <div class="blue-banner"></div>
             <div class="swiper-container swiper3">
