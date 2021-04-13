@@ -76,4 +76,29 @@
                           from recommended)
 
     </select>
+    <select id="readBasicDataListBySearch" resultType="LectureDto">
+        select * from lecture
+        <trim prefix="where" prefixOverrides="and">
+            <if test="strQueries != null">
+                <foreach collection="strQueries" item="item" index="i" open="(" separator=" or " close=")">
+                    lecName like concat('%', #{item}, '%') or lecCategory like concat('%', #{item}, '%')
+                </foreach>
+            </if>
+            <if test="categories != null">
+                and lecCategory in
+                <foreach collection="categories" item="category" index="i" open="(" separator="," close=")">
+                    #{category}
+                </foreach>
+            </if>
+        </trim>
+        <choose>
+            <when test='sortKey != null and sortKey == "latestOrder"'>
+                order by lecRegDate DESC
+            </when>
+            <when test='sortKey != null and sortKey == "likedOrder"'>
+                order by lecLike desc
+            </when>
+            <otherwise></otherwise>
+        </choose>
+    </select>
 </mapper>

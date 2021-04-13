@@ -31,10 +31,10 @@ public class UserRegisterController {
     @Autowired
     KakaoApiService kakaoApiService;
 
-    @GetMapping("/user/register")
+    @GetMapping("/register")
     public String registerUserView() { return "userRegister";}
 
-    @RequestMapping(value = "/user/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerUser(UserRegisterDto userRegisterDto) {
 
         UserDto originUserDto = userService.readUserInfoListByUserEmail(userRegisterDto.getUserEmail());
@@ -59,7 +59,7 @@ public class UserRegisterController {
         userService.insertUser(userDto);
 
         System.out.println("insert userDto success"); // 유저에게 회원가입 완료 메세지 보여주기
-        return "redirect:/user/login";
+        return "redirect:/login";
     }
 
     @RequestMapping("/kakao_login")

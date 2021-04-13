@@ -6,6 +6,7 @@
   float: left;
   margin-top: 100px;
   padding: 0 50px 0 50px;
+  height: auto;
 }
 #inquiry_aside {
   margin-top: 100px;
@@ -44,6 +45,13 @@
 #inquiry_contents input:not(input[type="button"])::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
+#inquiry_contents textarea:not(input[type="button"]) {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+}
+#inquiry_contents textarea:not(input[type="button"])::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
 #inquiry_contents input[type="button"] {
   background-color: #4b72fb;
   border-radius: 3px;
@@ -58,7 +66,7 @@
   height: 50px;
 }
 .inquiry_contents_content {
-  height: 100px;
+  height: 200px;
 }
 .inquiry_contents_content::placeholder {
   position: absolute;

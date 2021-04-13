@@ -34,7 +34,7 @@ public class RecommendedController {
         return "admin/recommended/form";
     }
 
-    @PostMapping("admin/recommended/form")
+    @GetMapping("admin/recommended/insert")
     public String insertRecommended(@RequestParam(value = "lecNo") String lecNo){
         recommendedService.insertRecommended(lecNo);
         return "redirect:/admin/recommended/form";

@@ -58,8 +58,7 @@
                                         <th>이름</th>
                                         <th>가격</th>
                                         <th>등록 날짜</th>
-                                        <th>이미지</th>
-                                        <th>Edit</th>
+                                        <th>삭제</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -83,7 +82,7 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <button class="btn btn-secondary"
-                                                            onclick="if(confirm('정말 삭제하시겠습니까?${lectureList[i-1].lecNo}')){location.href='/admin/recommended/delete?lecNo=${lectureList[i-1].lecNo}';} else {return false;}">
+                                                            onclick="if(confirm('정말 삭제하시겠습니까?')){location.href='/admin/recommended/delete?lecNo=${lectureList[i-1].lecNo}';} else {return false;}">
                                                         삭제</button>
                                                 </div>
                                             </td>
@@ -98,6 +97,8 @@
             </div>
 
         </div>
+
+
 
         <!-- partial:../../partials/_footer.html -->
         <jsp:include page="/WEB-INF/views/partials/admin_footer.jsp"/>

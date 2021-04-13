@@ -142,7 +142,7 @@
     <div>
         <div style="display: flex; justify-content: center; flex-direction: row;">
             <div style="width: 500px">
-            <form class="forms-sample" action="/user/register" enctype="multipart/form-data" method="post">
+            <form class="forms-sample" action="/register" enctype="multipart/form-data" method="post">
                 <div class="form-group" style="margin: 70px 0px">
                     <h2>회원가입</h2>
                 </div>

@@ -24,17 +24,17 @@ public class UserLoginController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/social_login")
     public String user(Model model){
         return "login";
     }
 
-    @GetMapping("/user/login")
+    @GetMapping("/login")
     public String userLogin(Model model){
         return "userLogin";
     }
 
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String userCheck(HttpServletRequest request, Model model,
                             @RequestParam String userEmail,
                             @RequestParam String userPw){
