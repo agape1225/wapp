@@ -21,5 +21,6 @@ public interface BannerMapper {
     ArrayList<BannerDto> readBasicDataList();
     BannerDto readBasicDataByBanNo(@Param("banNo") String banNo);
 
+    void countUpdate(@Param("banNo") String banNo);
 
 }

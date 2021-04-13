@@ -17,4 +17,6 @@ public interface BannerService {
 
     void updateBanner(String banNo, BannerDto bannerDto);
 
+    void countUpdate(String banNo);
+
 }

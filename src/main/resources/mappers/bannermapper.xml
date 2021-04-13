@@ -24,4 +24,8 @@
         set banImg=#{updateDto.banImg}, banRegDate=#{updateDto.banRegDate}, banTitle=#{updateDto.banTitle}, banContent=#{updateDto.banContent}
         where banNo = #{banNo}
     </update>
+    <update id="countUpdate">
+        update banner set banCount=banCount+1 where banNo = #{banNo}
+    </update>
+
 </mapper>

@@ -2,6 +2,7 @@ package com.test.controller;
 
 
 import com.test.dto.UserDto;
+import com.test.service.banner.BannerService;
 import com.test.service.email.EmailService;
 import com.test.service.likes.LikesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class LikesController {
 
     @Autowired
     LikesService likesService;
+
+    @Autowired
+    BannerService bannerService;
 
     private final SimpleDateFormat dateForDB = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -78,6 +82,15 @@ public class LikesController {
 
         return result;
 
+    }
+
+    @RequestMapping("/banner/clicked") // 배너 클릭수 카운트
+    public void delete(@RequestBody Map<String, String> banJson) {
+        String banNo = banJson.get("banNo");
+        System.out.println(banNo);
+
+        bannerService.countUpdate(banNo);
+        System.out.println("Success count +1 for banNp : "+ banNo);
     }
 
 }
