@@ -1,5 +1,6 @@
 package com.test.controller;
 
+
 import com.test.dto.UserDto;
 import com.test.service.email.EmailService;
 import com.test.service.likes.LikesService;
@@ -37,6 +38,7 @@ public class LikesController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("userLogin");
 
+
         System.out.println(userDto.getUserEmail());
 
         Date currentTime = new Date();
@@ -46,15 +48,15 @@ public class LikesController {
         boolean result = likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + no);
 
+
         emailService.sendMail(userDto,no, likeDateForDB);
 
         likesService.insertLecture(userDto.getUserNo(), no, likeDateForDB);
 
         System.out.println("Success insert likes " + userDto.getUserNo() + " " + no);
 
-
-
         return result;
+
     }
 
     @RequestMapping("/user/likes/delete")
@@ -67,10 +69,15 @@ public class LikesController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("userLogin");
 
+
+        likesService.deleteLecture(userDto.getUserNo(), no);
+        System.out.println("Success delete likes " + userDto.getUserNo() + " " + lecNo);
+
         boolean result = likesService.deleteLecture(userDto.getUserNo(), no);
         System.out.println("Success delete likes " + userDto.getUserNo() + " " + no);
 
         return result;
+
     }
 
 }

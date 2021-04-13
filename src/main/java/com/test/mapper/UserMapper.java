@@ -16,4 +16,5 @@ public interface UserMapper {
     UserDto readUserInfoListByUserNo(@Param("userNo") String userNo);
     UserDto readUserInfoListByUserEmail(@Param("userEmail") String userEmail);
     void insertUser(UserInsertDto userDto);
+
 }

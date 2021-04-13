@@ -62,4 +62,5 @@ public class UserDao {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         userMapper.insertUser(userDto);
     }
+
 }

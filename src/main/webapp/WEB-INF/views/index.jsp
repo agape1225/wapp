@@ -429,7 +429,8 @@
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
+    }
+
     });
 
     var swiper = new Swiper('.swiper2', {
@@ -468,10 +469,49 @@
     });
 
 
+
 </script>
 
 
+<script></script>
+    // function add_like_btn(item){
+    //     alert('아');
+    //
+    //     $.ajax({
+    //         url: '/user/login/likes/insert',
+    //         type: 'POST',
+    //         data: JSON.stringify(item),
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         success : function (data) {
+    //             alert('성공');
+    //         }
+    //     }).done(function () {
+    //         alert('찜이 추가되었습니다.');
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    // function del_like_btn(item){
+    //     alert(s);
+    //     $.ajax({
+    //         url: '/user/login/likes/delete',
+    //         type: 'POST',
+    //         dataType: 'json',
+    //         contentType: 'application/json; charset=utf-8',
+    //         data: JSON.stringify(s)
+    //     }).done(function () {
+    //         window.location.href = '/';
+    //     }).fail(function (error) {
+    //         alert(JSON.stringify(error));
+    //     });
+    // };
+    //});
+
+
 <script>
+
     function btn_add_likes_onclick(lecNo) {
         console.log(lecNo);
         var data = {"lecNo": lecNo};
@@ -512,6 +552,7 @@
             window.location.href = '/login';
         });
     }
+
     function go_search() {
         var search_url = "/search?";
         var inputVal = document.getElementById('input-search').value;
@@ -521,6 +562,7 @@
         window.location.href = search_url;
 
     }
+
 </script>
 <script src="../js/bootstrap.js"></script>
 </body>

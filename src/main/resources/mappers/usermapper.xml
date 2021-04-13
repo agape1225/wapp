@@ -26,4 +26,5 @@
         insert into user(userName, userEmail, userRegDate, userPw)
         values(#{userName}, #{userEmail}, #{userRegDate}, #{userPw})
     </insert>
+
 </mapper>
