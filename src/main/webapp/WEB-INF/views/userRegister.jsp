@@ -138,25 +138,7 @@
         </div>
     </div>
 </div>
-    <div class="header">
-        <div style="background-color: rgb(255, 255, 255); display: flex;-webkit-box-align: center; align-items: center;">
-            <div class="header-container">
-                <div class="logo"></div>
-                <form action="" class="search">
-                    <input type="search" autocomplete="off" maxlength="100" placeholder="찾으시는 취미가 있으신가요?"
-                           class="search-ment">
-                </form>
-                <div class="login-container">
-                    <button style="font-weight: normal;">크리에이터 지원</button>
-                    <c:choose>
-                        <c:when test="${empty userLogin}">
-                            <button style="font-weight: normal;" onclick="location.href='/user'">로그인</button>
-                        </c:when>
-                    </c:choose>
-                </div>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
 
     <div>
         <div style="display: flex; justify-content: center; flex-direction: row;">
@@ -209,5 +191,17 @@
 </div>
 <div class="empty-space"></div>
 <jsp:include page="/WEB-INF/views/partials/footer.jsp"/>
+
+<script>
+    function go_search() {
+        var search_url = "/search?";
+        var inputVal = document.getElementById('input-search').value;
+        console.log(inputVal);
+        if (inputVal != null && inputVal !='') {
+            search_url += 'query='+inputVal;
+        }
+        location.replace(search_url);
+    }
+</script>
 </body>
 </html>

@@ -18,7 +18,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
         Object user = session.getAttribute("userLogin");
         if(user == null) {
             System.out.println("로그인 정보가 없습니다.");
-            response.sendRedirect("/login");
+            response.sendRedirect("/social_login");
             return false;
         }
 
