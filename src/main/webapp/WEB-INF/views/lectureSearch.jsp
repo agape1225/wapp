@@ -122,8 +122,8 @@
 
     </div>
 
-    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>
-    <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>
+<%--    <jsp:include page="/WEB-INF/views/partials/searchbar.jsp"/>--%>
+<%--    <jsp:include page="/WEB-INF/views/partials/navbar.jsp"/>--%>
 
 
     <div class="main-wrapper">

@@ -168,7 +168,8 @@ public class BannerController {
 
                 bannerDto.setBanImg("/files/lectureImage/" + fileName); // 새로운 이미지이름으로 dto객체의 이미지이름 저장
             }
-
+            bannerDto.setBanRegDate(bannerInDb.getBanRegDate());
+            bannerDto.setBanCount(bannerInDb.getBanCount());
             bannerService.updateBanner(banNo, bannerDto);
 
         } catch (Exception e) {
