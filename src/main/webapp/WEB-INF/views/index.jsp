@@ -140,7 +140,11 @@
                     <c:forEach var="i" begin="1" end="${bannerList.size()}">
                         <div class="swiper-slide">
                             <div class="wrapper-banner">
-                                <div class="img-banner-wrapper"><img src="${bannerList[i-1].banImg}" class="img-banner">
+
+                                <div class="img-banner-wrapper">
+                                    <a href="${bannerList[i-1].banImg}" onclick="banner_clicked(${bannerList[i-1].banNo})">
+                                        <img src="${bannerList[i-1].banImg}" class="img-banner">
+                                    </a>
                                 </div>
 
                                 <div class="wrapper-ment">
@@ -636,6 +640,18 @@
         }
         window.location.href = search_url;
 
+    }
+
+    function banner_clicked(banNo) {
+        console.log(banNo);
+        var data = {"banNo": banNo};
+        $.ajax({
+            type: 'POST',
+            url: '/banner/clicked',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        });
     }
 
 </script>

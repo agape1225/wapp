@@ -79,4 +79,9 @@ public class BannerDao {
         bannerMapper.updateBanner(banNo, bannerDto);
     }
 
+    public void countUpdate(String banNo){
+        BannerMapper bannerMapper = sqlSession.getMapper(BannerMapper.class);
+        bannerMapper.countUpdate(banNo);
+    }
+
 }
