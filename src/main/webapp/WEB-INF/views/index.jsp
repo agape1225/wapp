@@ -16,6 +16,38 @@
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+
+        <div style="cursor:pointer; float: right;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt; color: white;" >
+                     X
+                </span>
+        </div>
+    </div>
+
+</div>
+<!--End Modal-->
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        $('#myModal').show();
+    });
+    //팝업 Close 기능
+    function close_pop(flag) {
+        $('#myModal').hide();
+    };
+
+</script>
+
 
 <div class="main-page">
     <div>
