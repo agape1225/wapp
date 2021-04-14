@@ -2,9 +2,10 @@
  wapp clone coding class101
  
  - 프로젝트 설명
-  -> Class101 Clone Coding
+  > Class101 Clone Coding
   
   - 팀원
+  
  Back_end
 |이름|역할|구현 기술|
 |------|---|---|
