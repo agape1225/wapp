@@ -1,5 +1,5 @@
-# wapp
- wapp clone coding class101
+# WAPP
+ Wapp 1기 - Class101 Web Clone Coding 
  
  >프로젝트 설명
  - Class101 Clone Coding
@@ -9,7 +9,7 @@
  Back_end
 |이름|git|역할|구현 기술|
 |-----|----|---|---|
-|박상우|[sangwoo-sean](https://github.com/sangwoo-sean "google link")|CTO, Back_end|admin page, 배너 CRUD, User CRUD, 이벤트 CRUD, 강의 Sort, Admin page 총괄|
+|박상우|[sangwoo-sean](https://github.com/sangwoo-sean "google link")|CTO, Back_end|Admin Page 총괄, 배너 CRUD, User CRUD, 이벤트 CRUD, 강의 Sort, 비밀번호 암호화|
 |방규빈|[9b2n](https://github.com/9b2n "9b2n")|Back_end|강의 CRUD, 배너 CRUD, MD 추천 알고리즘, User CRUD, User Login, My page, 찜하기|
 |성창규|[agape1225](https://github.com/agape1225 "agape1225")|팀 리더, Back_end|Admin Login, 강의 CRUD, 배너 CRUD, 팝업 CRUD, User CRUD, 강의 Sort, 메일 보내기|
 |최현민|[vivalahm](https://github.com/vivalahm "vivalahm")|Back_end|User CRUD, 문의 관리 CURD, Admin main page Design|
@@ -23,6 +23,8 @@ Front_end
 |한지윤|[Jiyoorin](https://github.com/Jiyoorin "Jiyoorin")|팀 리더, Front_end|Main Page, 회원가입 Page|
 
 > 주요기술
- 1. Spring Framework 사용
- 2. Kakao Api를 활용한 로그인 구현
- 3. JavaMailSenderImpl를 활용한 메일 전송 자동화
+ 1. Java Spring Framework 사용 (MVC)
+ 2. Mysql을 활용한 Database 관리
+ 3. Kakao API OAuth를 활용한 로그인 구현
+ 4. BCrypt를 활용한 password 암호화
+ 5. JavaMailSenderImpl를 활용한 메일 전송 자동화
