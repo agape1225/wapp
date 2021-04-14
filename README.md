@@ -1,7 +1,7 @@
 # wapp
  wapp clone coding class101
  
- - Back_end
+ Back_end
 |이름|역할|구현 기술|
 |------|---|---|
 |박상우|CTO, Back_end|admin page, 배너 CRUD, User CRUD, 이벤트 CRUD, 강의 Sort, Admin page 총괄|
@@ -10,7 +10,7 @@
 |최현민|Back_end|User CRUD, 문의 관리 CURD, Admin main page Design|
 |한지우|Back_end|강의 CRUD, 배너 CRUD, Search Algorithm, Kakao Api, User CRUD, 실시간 Top 10, 인기있는 신규 클래스|
 
-- Front_end
+Front_end
 |이름|역할|구현 기술|
 |------|---|---|
 |이한슬|Front_end|Category drop, Banner, Popup|
