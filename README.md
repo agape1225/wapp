@@ -8,7 +8,7 @@
   
  Back_end
 |이름|git|역할|구현 기술|
-|------|---|---|
+|------|-----|---|---|
 |박상우|[sangwoo-sean](https://github.com/sangwoo-sean, "google link")
 |CTO, Back_end|admin page, 배너 CRUD, User CRUD, 이벤트 CRUD, 강의 Sort, Admin page 총괄|
 |방규빈|[9b2n](https://github.com/9b2n, "9b2n")|Back_end|강의 CRUD, 배너 CRUD, MD 추천 알고리즘, User CRUD, User Login, My page, 찜하기|
@@ -18,7 +18,7 @@
 
 Front_end
 |이름|git|역할|구현 기술|
-|------|---|---|
+|------|-----|---|---|
 |이한슬|[christy-hs-lee](https://github.com/christy-hs-lee, "christy-hs-lee")|Front_end|Category drop, Banner, Popup|
 |진현서||Front_end|Login page, 문의 Page|
 |한지윤||팀 리더, Front_end|Main Page, 회원가입 Page|
