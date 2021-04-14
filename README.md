@@ -20,7 +20,7 @@ Front_end
 |------|-----|---|---|
 |이한슬|[christy-hs-lee](https://github.com/christy-hs-lee "christy-hs-lee")|Front_end|Category drop, Banner, Popup|
 |진현서||Front_end|Login page, 문의 Page|
-|한지윤||팀 리더, Front_end|Main Page, 회원가입 Page|
+|한지윤|[Jiyoorin](https://github.com/Jiyoorin "Jiyoorin")|팀 리더, Front_end|Main Page, 회원가입 Page|
 
 > 주요기술
  1. Spring Framework 사용
