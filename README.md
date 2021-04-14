@@ -1,10 +1,10 @@
 # wapp
  wapp clone coding class101
  
- - 프로젝트 설명
-  > Class101 Clone Coding
+ >프로젝트 설명
+ - Class101 Clone Coding
   
-  - 팀원
+ >팀원
   
  Back_end
 |이름|역할|구현 기술|
@@ -22,7 +22,7 @@ Front_end
 |진현서|Front_end|Login page, 문의 Page|
 |한지윤|팀 리더, Front_end|Main Page, 회원가입 Page|
 
-- 주요기술
+> 주요기술
  1. Spring Framework 사용
  2. Kakao Api를 활용한 로그인 구현
  3. JavaMailSenderImpl를 활용한 메일 전송 자동화
