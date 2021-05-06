@@ -20,7 +20,7 @@ Front_end
 |------|-----|---|---|
 |한지윤|[Jiyoorin](https://github.com/Jiyoorin "Jiyoorin")|팀 리더, Front_end|Main Page, 회원가입 Page, Popup, Admin Page, Bootstrap 사용|
 |이한슬|[christy-hs-lee](https://github.com/christy-hs-lee "christy-hs-lee")|Front_end|Main Page, Category drop, Banner, Carousel, 바로수강 Page, Bootstrap 사용|
-|진현서||Front_end| Login page, 문의 Page, foort, Mypage|
+|진현서|[wlsgustj ](https://github.com/wlsgustj)|Front_end| Login page, 문의 Page, foort, Mypage|
 
 
 > 주요기술
